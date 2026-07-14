@@ -10,6 +10,8 @@ from typing import Any
 import pandas as pd
 from google.cloud import bigquery
 
+from gbq.config import BILLING_PROJECT, DATA_PROJECT, DATASET, DATASET_ALIASES
+
 _DEFAULT_CREDS_PATH = Path(__file__).resolve().parent.parent / ".gcp" / "credentials.json"
 
 
@@ -33,10 +35,21 @@ def ensure_credentials(creds_path: Path | None = None) -> Path:
     return path
 
 
+def resolve_dataset(dataset: str | None = None) -> str:
+    """Resolve dataset shorthand (e.g. speed) to the actual dataset name."""
+    name = dataset or DATASET
+    return DATASET_ALIASES.get(name, name)
+
+
+def table_ref(table: str, dataset: str | None = None, project: str | None = None) -> str:
+    """Return a fully qualified BigQuery table reference."""
+    return f"`{project or DATA_PROJECT}.{resolve_dataset(dataset)}.{table}`"
+
+
 def get_client(project: str | None = None) -> bigquery.Client:
     """Return an authenticated BigQuery client."""
     ensure_credentials()
-    return bigquery.Client(project=project)
+    return bigquery.Client(project=project or BILLING_PROJECT)
 
 
 def query(sql: str, project: str | None = None, **job_config_kwargs: Any) -> bigquery.table.RowIterator:

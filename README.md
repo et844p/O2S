@@ -2,6 +2,16 @@
 
 BigQuery (GBQ) connection utilities.
 
+## Target project
+
+| Setting | Value |
+|---------|-------|
+| Data project | `wf-gcp-us-ae-global-tnd-prod` |
+| Dataset | `speed_and_reliability` (alias: `speed`) |
+| Billing project | `wf-gcp-us-ae-profit-prod` |
+
+The `speed` shorthand maps to the `speed_and_reliability` dataset in the global TND project.
+
 ## Setup
 
 ```bash
@@ -19,13 +29,18 @@ python scripts/connect_gbq.py
 ## Usage
 
 ```python
-from gbq import get_client, query, query_df
+from gbq import DATA_PROJECT, DATASET, get_client, query, query_df, table_ref
 
-# List datasets
 client = get_client()
 print(client.project)
 
-# Run SQL
-rows = query("SELECT 1 AS ok")
-df = query_df("SELECT * FROM `wf-gcp-us-ae-profit-prod.marketplace.some_table` LIMIT 10")
+# Run SQL against the speed dataset
+df = query_df(f"SELECT * FROM {table_ref('FM_LP_SpeedMetricsRaw_Global')} LIMIT 10")
+
+# Or use the fully qualified name directly
+df = query_df("""
+    SELECT *
+    FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.FM_LP_SpeedMetricsRaw_Global`
+    LIMIT 10
+""")
 ```
