@@ -26,21 +26,28 @@ pip install -r requirements.txt
 python scripts/connect_gbq.py
 ```
 
+## Small Parcel data pulls
+
+Column definitions and query rules for `HVE_perf_Monitoring` live in
+[`docs/small_parcel/HVE_perf_Monitoring.md`](docs/small_parcel/HVE_perf_Monitoring.md).
+
+Ask in plain language, for example:
+
+- "Show IFR by STO for the last 7 days"
+- "Top 10 suppliers by late order volume in March 2026"
+- "Pull orders where `inducted_late = 1` for Decor suppliers"
+
 ## Usage
 
 ```python
-from gbq import DATA_PROJECT, DATASET, get_client, query, query_df, table_ref
+from gbq import SP_TABLE_FQN, query_df
 
-client = get_client()
-print(client.project)
-
-# Run SQL against the speed dataset
-df = query_df(f"SELECT * FROM {table_ref('FM_LP_SpeedMetricsRaw_Global')} LIMIT 10")
-
-# Or use the fully qualified name directly
-df = query_df("""
-    SELECT *
-    FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.FM_LP_SpeedMetricsRaw_Global`
+df = query_df(f"""
+    SELECT sto, COUNT(DISTINCT ops) AS volume, AVG(inducted_on_time_or_early) AS ifr
+    FROM {SP_TABLE_FQN}
+    WHERE msbd_su >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+    GROUP BY sto
+    ORDER BY volume DESC
     LIMIT 10
 """)
 ```

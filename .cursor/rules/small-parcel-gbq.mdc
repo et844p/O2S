@@ -1,0 +1,32 @@
+---
+description: Query Small Parcel metrics from HVE_perf_Monitoring in BigQuery
+alwaysApply: true
+---
+
+# Small Parcel BigQuery pulls
+
+When the user asks for Small Parcel (SP) metrics, data pulls, or performance from HVE monitoring:
+
+1. Read `docs/small_parcel/HVE_perf_Monitoring.md` for column definitions and business rules.
+2. Query only: `` `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring` ``
+3. Use `from gbq import query_df` to run SQL.
+
+## Defaults
+
+- Timebase: `msbd_su` unless the user specifies otherwise
+- Category / captain filter: `sto`
+- Volume: `COUNT(DISTINCT ops)` (or distinct PO if user asks for PO-level)
+- Performance / IFR: `AVG(inducted_on_time_or_early)`
+- Boolean columns: 1 = Yes, 0 = No
+- Limit: 10 rows unless user asks for more
+
+## Formulas
+
+- Late Orders = Volume × (1 - IFR)
+- CTC = (% of Network Volume) × (Late Orders)
+
+## Do not
+
+- Query other tables unless the user explicitly asks
+- Use non-distinct counts for volume aggregation
+- Omit backticks around the fully qualified table name

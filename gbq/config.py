@@ -11,3 +11,7 @@ BILLING_PROJECT = "wf-gcp-us-ae-profit-prod"
 DATASET_ALIASES = {
     "speed": DATASET,
 }
+
+# Small Parcel monitoring table.
+SP_TABLE = "HVE_perf_Monitoring"
+SP_TABLE_FQN = f"`{DATA_PROJECT}.{DATASET}.{SP_TABLE}`"
