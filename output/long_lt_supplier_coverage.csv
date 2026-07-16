@@ -1,7 +1,7 @@
-requested_id,past_year_status
-830,No orders in past year
-254971,No orders in past year
-31945,99 orders via supplier_id
-13208,910 orders via parent_suid (children: [np.int64(238939)])
-333066,No orders in past year
-333095,No orders in past year
+requested_id,su_name,sto,srm,past_year_status
+830,,,,No orders in past year
+254971,KaiMeiChen GA 31405,APS,Asia Supplier Service Desk,No orders in past year
+31945,South Sea Rattan NC27409,Outdoor Furniture,Isha Singh,99 orders via supplier_id
+13208,"Braxton Culler, Inc NC 27350",PG Upholstery - Core,Lizzie McCabe,910 orders via parent_suid (children: [np.int64(238939)])
+333066,,,,No orders in past year
+333095,,,,No orders in past year
