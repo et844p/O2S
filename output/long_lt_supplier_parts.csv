@@ -1,0 +1,575 @@
+supplier_id,su_name,parent_suid,parent_su_name,supplierpartid,supplierpartnumber,sku,product_category,order_count,avg_order_lt_hours,avg_sp_lt_hours,min_order_lt,max_order_lt,median_order_lt,all_order_lts,avg_order_lt_days,median_order_lt_days
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121572198,816-094/0807-52/SEAGLASS,BXCM3730,Accent Furniture,1,2880.0,,2880,2880,2880,[2880],120.0,120.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079186,1023-073/HONEY,BXCM1784,Accent Furniture,2,1440.0,,1440,1440,1440,[1440],60.0,60.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132874441,1023-073/MINERAL,BXCM1784,Accent Furniture,2,1440.0,,1440,1440,1440,[1440],60.0,60.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053087,1023-073/TRUFFLE,BXCM1784,Accent Furniture,1,1440.0,,1440,1440,1440,[1440],60.0,60.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079182,1023-073/FROSTWHITE,BXCM1784,Accent Furniture,1,1440.0,,1440,1440,1440,[1440],60.0,60.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",120615454,848-021/CELERY,BXCM5157,Furniture - Bedroom,14,1174.3,,960,1560,1200,[ 960 1200 1560],48.9,50.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569846,1023-073/WILLOW,BXCM1784,Accent Furniture,2,960.0,,480,1440,480,[ 480 1440],40.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079185,1023-073/HAVANA,BXCM1784,Accent Furniture,2,960.0,,480,1440,480,[ 480 1440],40.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",55218740,1046-094/0863-91/NAVY,BXCM3776,Accent Furniture,2,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96134067,818-094/0317-63/HONEY,BXCM4596,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113063481,767-009M/0317-61,BXCM5143,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",151576829,722-109W1/6205-74/HAVANA,BXCM4244,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126211878,1046-194/0863-91/AGEDBARREL,BXCM3777,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117124585,1031-009/0809-33/OCEAN,BXCM4525,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",151576868,722-109W1/0448-64/PUMICE,BXCM4244,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129799782,9740-009/0220-61/HONEY,BXCM5723,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126214117,1046-194/0863-93/TRUFFLE,BXCM3777,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116891309,914-009/0809-14/COFFEE,BXCL1616,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",134050091,1922-012/0886-91/FLAX,BXCM5641,Furniture - Kitchen and Dining,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022314,1064-029WS/HONEY,BXCL1684,Furniture - Kitchen and Dining,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96091136,705-109/0317-63/HAVANA,BXCM4063,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130064041,809-094/0268-54/AGEDBARREL,BXCM4490,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96984523,970-012/0120-61/NAVY,BXCM5029,Furniture - Kitchen and Dining,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",151576584,722-109W1/0210-61/HAVANA,BXCM4244,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986980,1023-094/0851-54/FROSTWHITE,BXCM5030,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64523610,520-009/0120-81/BLACK,BXCL1512,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64848252,1046-009/0884-93/ANTBLACK,BXCM3779,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987182,1023-094/0865-91/HONEY,BXCM5030,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126213375,1046-194/0742-83/AGEDBARREL,BXCM3777,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985746,970-012/0863-91/COFFEE,BXCM5029,Furniture - Kitchen and Dining,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",97007048,728-109/0256-54/ANTIQUEFROSTWHITE,BXCM4836,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",151139593,973-009/6205-43/HONEY,BXCM1822,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113063575,767-009/0126-63,BXCM5142,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64848773,1046-009/0126-63/BLACK,BXCM3779,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",151576793,722-109W1/0344-63/TRUFFLE,BXCM4244,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363531,546-009/0126-63,BXCM4522,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",150860956,546-009/0210-61,BXCM4522,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130069514,1023-094/0611-66/AGEDBARREL,BXCM5030,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363527,539-005/0884-91,BXCM4518,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115176190,1046-194/0204-64/OCEAN,BXCM3777,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116807359,520-009/0425-53/HAVANA,BXCL1512,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985988,1023-094/0126-73/COFFEE,BXCM5030,Accent Furniture,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117123033,1031-009/0425-63/HAZEL,BXCM4525,Upholstery - Core,1,840.0,,840,840,840,[840],35.0,35.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569844,1023-073/OCEAN,BXCM1784,Accent Furniture,3,800.0,,480,1440,480,[ 480 1440],33.3,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985085,970-012/0321-91/CELERY,BXCM5029,Furniture - Kitchen and Dining,2,720.0,,600,840,600,[600 840],30.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363572,546-009/0863-84,BXCM4522,Upholstery - Core,2,720.0,,600,840,600,[600 840],30.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64792282,549-005/0126-73,BXCM1676,Upholstery - Core,2,720.0,,600,840,600,[600 840],30.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985261,970-012/0611-66/CELERY,BXCM5029,Furniture - Kitchen and Dining,2,720.0,,600,840,600,[600 840],30.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",43716362,549-005/0865-91,BXCM1676,Upholstery - Core,2,720.0,,600,840,600,[600 840],30.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",55220047,1046-194/0865-91/SEAGLASS,BXCM3777,Accent Furniture,4,690.0,,480,840,600,[480 600 840],28.8,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985877,970-012/0886-91/CELERY,BXCM5029,Furniture - Kitchen and Dining,4,660.0,,600,840,600,[600 840],27.5,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543493,809-044G/SEAGLASS,BXCM4486,Furniture - Bedroom,16,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543505,809-144G/SEAGLASS,BXCM4487,Furniture - Bedroom,15,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",80206771,807-020/SEAGLASS,BXCM1655,Furniture - Bedroom,12,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50078502,1023-071/HONEY,BXCM1782,Entertainment Furniture,11,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053336,807-049/PUMICE,BXCM1656,Decorative Accent - Wall Accents,9,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543432,809-144G/ANTIQUEFROST,BXCM4487,Furniture - Bedroom,9,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879639,838-072/COFFEE,BXCM5133,Entertainment Furniture,8,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022384,914-071/HAVANA,BXCL1149,Entertainment Furniture,8,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543422,809-044G/NAVY,BXCM4486,Furniture - Bedroom,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866940,914-071/HONEY,BXCL1149,Entertainment Furniture,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",120615455,848-020/CELERY,BXCM5157,Furniture - Bedroom,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41693028,1977-075/GL0999-098/HONEY,BXCM1667,Furniture - Kitchen and Dining,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023025,1023-071/SEAGLASS,BXCM1782,Entertainment Furniture,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543450,809-144G/STONEHEARTH,BXCM4487,Furniture - Bedroom,6,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523438,1031-071/ANTFROSTWHITE,BXCM4529,Entertainment Furniture,5,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573166,4321-WAL-A53026-1,BYIL4818,Furniture - Kitchen and Dining,5,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523488,1031-122/NAVY,BXCM4528,Entertainment Furniture,5,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774927,818-044/CELERY,BXCL1785,Furniture - Bedroom,5,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27529517,979-075/GL0999-061/Bisque,BXCL1175,Furniture - Kitchen and Dining,5,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65045672,809-044/SEAGLASS,BXCM4486,Furniture - Bedroom,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523472,1031-122/CELERY,BXCM4528,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126211011,1045-273/AGEDBARREL,BXCM5146,Accent Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523467,1031-122/ANTFROSTWHITE,BXCM4528,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076599,807-021/PUMICE,BXCM1655,Furniture - Bedroom,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448736,1072-071/AGEDBARREL,BXCM5716,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866863,907-072/HONEY,BXCL1144,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569828,1024-122/SEAGLASS,BXCM1641,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076600,807-026/PUMICE,BXCM1655,Furniture - Bedroom,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774932,818-044/HAVANA,BXCL1785,Furniture - Bedroom,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",43716360,549-005/0863-91,BXCM1676,Upholstery - Core,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27592062,818-144/Havana,BXCL1753,Furniture - Bedroom,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568795,1046-171/OCEAN,BXCL1408,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053067,1023-071/PUMICE,BXCM1782,Entertainment Furniture,4,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117112446,1023-012/0425-53/PACIFIC,BXCM2380,Furniture - Kitchen and Dining,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",82263810,934-072/SEAGLASS,BXCL1152,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569834,1023-071/OCEAN,BXCM1782,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126211007,838-071/AGEDBARREL,BXCM5134,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569856,1031-122/OCEAN,BXCM4528,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210936,838-044/AGEDBARREL,BXCM5139,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079151,1023-072/NAVY,BXCM1783,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569839,1023-072/OCEAN,BXCM1783,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543470,809-044G/CELERY,BXCM4486,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022332,907-171/CELERY,BXCL1145,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448690,1072-072/AGEDBARREL,BXCM5715,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543435,809-144G/NAVY,BXCM4487,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543503,809-144G/HONEY,BXCM4487,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315431,818-049/CELERY,BXCM4734,Decorative Accent - Wall Accents,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41693027,1977-075/GL0999-098/HAVANA,BXCM1667,Furniture - Kitchen and Dining,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89428986,818-144/NAVY,BXCL1753,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41693024,1977-075/GL0999-098/FROSTWHITE,BXCM1667,Furniture - Kitchen and Dining,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65046151,809-144/SEAGLASS,BXCM4487,Furniture - Bedroom,3,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574681,72091-GRY-D33010-2,UNRS7812,Outdoor,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130052887,914-072/AGEDBARREL,BXCL1150,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568793,1046-171/SEAGLASS,BXCL1408,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569840,1023-072/PACIFIC,BXCM1783,Entertainment Furniture,3,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27592063,818-144/Honey,BXCL1753,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27592054,818-144/Black,BXCL1753,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",90138362,807-044GL/CELERY,BXCM1657,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573683,979-075/GL0999-098/HAZEL,BXCL1175,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201568,3100-DININGSET2-WAL-B27017-1,SA10160,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28545186,10006-ASB-B27019-1,SA2750,Upholstery - Core,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27529521,979-075/GL0999-061/Celery,BXCL1175,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839485,914-071/FLAX,BXCL1149,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210917,838-072/TRUFFLE,BXCM5133,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053384,818-144/AGEDBARREL,BXCL1753,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448780,1071-022/ANTBLACK,BXCM5706,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879569,838-071/OCEAN,BXCM5134,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39993219,1064-049/NAVY,BXCM1619,Decorative Accent - Wall Accents,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150425,1048-071/HAVANA,BXCM5149,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28545180,10006-ASB-A3304,SA2750,Upholstery - Core,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569841,1023-072/WILLOW,BXCM1783,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543495,809-044G/ANTIQUEFROST,BXCM4486,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938218,1054-073/FROSTWHITE,BXCM1606,Accent Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201838,3321-ANT-B27018-1,SA10182,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053167,1031-071/PUMICE,BXCM4529,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053177,1031-072/PUMICE,BXCM4523,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115370481,807-049/OCEAN,BXCM1656,Decorative Accent - Wall Accents,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523468,1031-122/BISQUE,BXCM4528,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569720,818-144/OCEAN,BXCL1753,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132874429,1023-072/FLAX,BXCM1783,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053073,1023-072/AGEDBARREL,BXCM1783,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210919,838-071/PUMICE,BXCM5134,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076513,907-171/AGEDBARREL,BXCL1145,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022446,953-071/CELERY,BXCL1160,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053364,818-044/AGEDBARREL,BXCL1785,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89482797,807-020/NICKEL,BXCM1655,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199509,809-044G/OCEAN,BXCM4486,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,17777704,72092-COF-D6311,UNRS7813,Outdoor,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569832,1023-071/HAZEL,BXCM1782,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117112466,1023-012/0425-63/PACIFIC,BXCM2380,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523461,1031-071/SEAGLASS,BXCM4529,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65045654,809-044/CELERY,BXCM4486,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022700,1054-073/COFFEE,BXCM1606,Accent Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022971,1054-171/COFFEE,BXCM1647,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987178,1023-094/0865-91/FROSTWHITE,BXCM5030,Accent Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,56482992,72101-BOU-E33024-2,SA10265,Outdoor,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022344,907-171/HAVANA,BXCL1145,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116943476,835-028/0913-61/HAVANA,BXCL1716,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022422,914-072/HAVANA,BXCL1150,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199531,807-021/OCEAN,BXCM1655,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96062315,1046-194/0321-91/BLACK,BXCM3777,Accent Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",90138375,807-044GL/SEAGLASS,BXCM1657,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523479,1031-122/FROSTWHITE,BXCM4528,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150428,1048-071/JAVA,BXCM5149,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022370,914-071/CELERY,BXCL1149,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079143,1023-072/FROSTWHITE,BXCM1783,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,7724314,72091-GRY-D6311,UNRS7812,Outdoor,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022747,1055-073/COFFEE,BXCM1607,Accent Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65045670,809-044/NAVY,BXCM4486,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199538,807-026/WILLOW,BXCM1655,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65046149,809-144/NAVY,BXCM4487,Furniture - Bedroom,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053332,807-049/AGEDBARREL,BXCM1656,Decorative Accent - Wall Accents,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",82263796,934-072/ANTFROSTWHITE,BXCL1152,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523454,1031-071/HONEY,BXCM4529,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053076,1023-072/PUMICE,BXCM1783,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201662,3300-DININGCASTER-ANT-C4712,SA10185,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022407,914-072/BRASS,BXCL1150,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327566,1024-022/MINERAL,BXCM1640,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,18943359,72091-COF-D6311,UNRS7812,Outdoor,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573676,979-075/GL0999-061/ANTIQUEFROSTWHITE,BXCL1175,Furniture - Kitchen and Dining,2,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210889,1048-072/TRUFFLE,BXCM5153,Entertainment Furniture,2,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574134,77806-PEB-D33011-2,DABH1875,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201466,3120-WAL-B4064,SA10143,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150426,1048-071/HAZEL,BXCM5149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363582,546-109/0204-64,BXCM4521,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130055069,835-028/0863-91/PUMICE,BXCL1716,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201828,3320-ANT-B27018-1,SA10181,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315437,818-049/HAVANA,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879751,838-044/SEAGLASS,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150478,1048-072/ANTIQUEBLACK,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64523637,520-009/0126-63/HAVANA,BXCL1512,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568798,1046-171/HAZEL,BXCL1408,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985082,970-012/0321-91/BLACK,BXCM5029,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866944,914-072/BISQUE,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65045649,809-044/ANTIQUEFROST,BXCM4486,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129799990,9740-009/0317-63/HAZEL,BXCM5723,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64848685,1046-009/0212-83/ANTBLACK,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115176174,1046-194/0213-61/MUSHROOM,BXCM3777,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89428989,818-144/SEAGLASS,BXCL1753,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519092,1031-072/ANTBLACK,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130065744,818-094/0851-55/AGEDBARREL,BXCM4596,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199532,807-026/OCEAN,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022731,1055-073/ANTBLACK,BXCM1607,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96993979,1031-094/0321-85/HONEY,BXCM4994,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115121990,970-028/0884-91/OCEAN,BXCM1751,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130058137,1007-009/0851-54/PUMICE,BXCM1806,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023021,1023-071/CELERY,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079134,1023-072/BISQUE,BXCM1783,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41438786,1024-122/HONEY,BXCM1641,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96977037,740-009/0884-91/HAVANA,BXCM4789,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568791,1046-171/WILLOW,BXCL1408,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116552211,767-009M/0643-61,BXCM5143,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130354090,809-044G/MINERAL,BXCM4486,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41691928,807-049/BLACK,BXCM1656,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116550520,549-005/0425-53,BXCM1676,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363608,546-109/0742-83,BXCM4521,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022338,907-171/FROSTWHITE,BXCL1145,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985088,970-012/0321-91/FROSTWHITE,BXCM5029,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569865,838-022/CELERY,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573632,1420-WW-C58003-B27019-1,BYIL4831,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519119,1031-072/STONEHEARTH,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985880,970-012/0886-91/FROSTWHITE,BXCM5029,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448377,1912-122/HAVANA,BXCM5701,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866871,907-171/JAVA,BXCL1145,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41438764,1024-022/HONEY,BXCM1640,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",80206752,807-044/SEAGLASS,BXCM1657,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96077355,546-109/0317-63,BXCM4521,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774941,818-044/FROSTWHITE,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315441,818-049/NAVY,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569836,1023-071/WILLOW,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",127576350,1922-012/0884-91/JAVA,BXCM5641,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65363525,539-005/0865-91,BXCM4518,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076708,1977-075/GL0999-060/PUMICE,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573673,1977-075/GL0999-098/HAZEL,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574665,75206-SPI-E46027-2,SA2115,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210933,838-022/AGEDBARREL,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327587,818-144/FLAX,BXCL1753,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774923,818-044/BISQUE,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573644,1423-WW-B27018-1,BYIL4812,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201470,3121-WAL-A3304,SA10144,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150424,1048-071/GREYSTONE,BXCM5149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022719,1054-073/NICKEL,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96994620,1031-094/0851-94/NAVY,BXCM4994,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132874407,1023-071/FLAX,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022958,1024-022/COFFEE,BXCM1640,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574132,77806-PEB-D33008-2,DABH1875,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129800442,9740-009/0425-63/COFFEE,BXCM5723,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41693016,1977-075/GL0999-098/BISQUE,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053064,1023-071/AGEDBARREL,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116792172,1064-029/0336-22/FROSTWHITE,BXCL1683,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150479,1048-072/ANTIQUEFROSTWHITE,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987175,1023-094/0865-91/CELERY,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573115,1031-071/WILLOW,BXCM4529,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199505,809-044G/WILLOW,BXCM4486,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569837,1023-072/HAZEL,BXCM1783,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126214244,1046-194/0206-61/TRUFFLE,BXCM3777,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89428942,818-044/ANTFROSTWHITE,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96985267,970-012/0611-66/HAVANA,BXCM5029,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126212622,529-009/0884-91/AGEDBARREL,BXCL1738,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569282,953-071/OCEAN,BXCL1160,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523437,1031-071/ANTBLACK,BXCM4529,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130062071,1023-012/0643-61/PUMICE,BXCM2380,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",118542933,1031-009/0809-33/CELERY,BXCM4525,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",97009906,947-194/0611-56/COFFEE,BXCM4835,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64830726,1046-094/0120-81/CELERY,BXCM3776,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774930,818-044/GREYSTONE,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41438769,1024-022/NAVY,BXCM1640,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569851,1031-072/OCEAN,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573167,4321-WAL-A53027-1,BYIL4818,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022326,907-171/ANTFROSTWHITE,BXCL1145,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96990739,708-109/0822-61/JAVA,BXCM4807,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879703,838-022/COFFEE,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573636,979-075/GL0999-098/OCEAN,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448699,1072-072/HAVANA,BXCM5715,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116790663,722-109P/0107-84/JAVA,BXCM4242,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053182,1031-122/AGEDBARREL,BXCM4528,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448752,1072-071/OCEAN,BXCM5716,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115208888,973-009/0886-91/OCEAN,BXCM1822,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117127224,1084-029/0414-43/WILLOW,BXCM4532,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574614,72092-COF-D33012-2,UNRS7813,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201745,3306-ANT-A3304,SA10174,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",82263799,934-072/COFFEE,BXCL1152,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",78219782,818-094/0884-91/HAVANA,BXCM4596,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938225,1054-073/NAVY,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053386,818-144/PUMICE,BXCL1753,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130065729,818-094/0809-63/AGEDBARREL,BXCM4596,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448625,1071-070/BLACK,BXCM5713,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41651130,1055-171/HAVANA,BXCM1648,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022533,129-027/SEAGLASS,BXCM1021,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",97007149,728-109/0317-85/JAVA,BXCM4836,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573674,979-075/GL0999-061/ANTIQUEBLACK,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076601,807-020/AGEDBARREL,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879753,838-044/WILLOW,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569853,1031-072/WILLOW,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126211020,1045-071/PUMICE,BXCM5150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113063570,767-009/0851-55,BXCM5142,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519094,1031-072/BISQUE,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986478,1023-094/0321-91/HONEY,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117243090,970-012/0809-14/FROSTWHITE,BXCM5029,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64836661,1046-194/0742-83/SEAGLASS,BXCM3777,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117124503,1031-009/0742-23/HAZEL,BXCM4525,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866948,914-072/JAVA,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022723,1054-073/SEAGLASS,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879634,838-072/ANTIQUEBLACK,BXCM5133,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879554,838-071/ANTIQUEBLACK,BXCM5134,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201742,3106-WAL-C4712,SA10171,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41691878,807-020/NAVY,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315439,818-049/JAVA,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199533,807-020/PACIFIC,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201476,3121-WAL-B4064,SA10144,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96076846,539-005/0851-54,BXCM4518,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",95661568,1977-075/GL0999-098/CELERY,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210875,1054-073/TRUFFLE,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116790299,1064-028/0336-22/FROSTWHITE,BXCM3960,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569037,914-072/WILLOW,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199535,807-026/PACIFIC,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573364,973-071/OCEAN,BXCL1204,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113063552,767-009/0851-54,BXCM5142,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",127577112,1922-012/0643-61/BISQUE,BXCM5641,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543459,809-144G/CELERY,BXCM4487,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27529542,979-075/GL0999-098/Celery,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523466,1031-122/ANTBLACK,BXCM4528,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64831224,1046-094/0884-91/SEAGLASS,BXCM3776,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115194406,818-094/0317-85/WILLOW,BXCM4596,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117083791,1023-029/0219-61/SEAGLASS,BXCM1633,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96065166,1079-009/0822-61/HONEY,BXCM3790,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022426,914-072/NAVY,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96990187,708-109/0317-83/HAVANA,BXCM4807,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022488,953-072/FROSTWHITE,BXCL1161,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574661,75206-SPI-D33011-2,SA2115,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150419,1048-071/BISQUE,BXCM5149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023006,1055-171/STONEHEARTH,BXCM1648,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938239,1055-073/GREYSTONE,BXCM1607,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774924,818-044/BLACK,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839395,838-044/MINERAL,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053370,818-049/AGEDBARREL,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65598127,1079-009/0256-54/HONEY,BXCM3790,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573681,979-075/GL0999-098/COFFEE,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022363,914-071/ANTFROSTWHITE,BXCL1149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022458,953-071/HAVANA,BXCL1160,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150417,1048-071/ANTIQUEBLACK,BXCM5149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879718,838-022/NAVY,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053327,1966-071/PUMICE,BXCM4736,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573497,809-144G/NICKEL,BXCM4487,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448304,1033-072/ANTFROSTWHITE,BXCM5696,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573102,4306-WAL-C58003-B27019-1,BYIL4845,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327482,818-044/MINERAL,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022993,1055-171/COFFEE,BXCM1648,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",95661575,1977-075/GL0999-098/COFFEE,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568668,934-072/WILLOW,BXCL1152,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210958,1054-171/PUMICE,BXCM1647,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50078501,1023-071/HAVANA,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986873,1023-094/0822-61/HAVANA,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28545195,98006-BAH-B27018-1,SA2751,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569785,818-044/MUSHROOM,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879697,838-022/BISQUE,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117123065,1031-009/0425-81/JAVA,BXCM4525,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,11230355,2406-WAL-A3304,BYIL4848,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115190710,1023-094/0611-56/OCEAN,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",134059667,1023-094/0268-54/FLAX,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938261,1055-071/HAVANA,BXCM1608,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022986,1055-171/ANTBLACK,BXCM1648,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,7464197,1420-P-A3304,BYIL4831,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",80206772,807-020/STONEHEARTH,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879559,838-071/COFFEE,BXCM5134,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448783,1912-070/ANTBLACK,BXCM5717,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",134183457,1071-070/CELERY,BXCM5713,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96077427,546-109/0206-61,BXCM4521,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448368,1912-122/AGEDBARREL,BXCM5701,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130061735,1031-029/0611-56/AGEDBARREL,BXCM2378,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022476,953-072/ANTFROSTWHITE,BXCL1161,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28573212,2406-WAL-B27018-1,BYIL4848,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201477,3121-WAL-C4712,SA10144,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573691,979-075/GL0999-061/WILLOW,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130063844,809-094/0219-61/PUMICE,BXCM4490,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130057121,970-028/0268-54/AGEDBARREL,BXCM1751,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210860,1054-171/AGEDBARREL,BXCM1647,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573136,818-049/PACIFIC,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",97007565,728-109/0805-61/HAVANA,BXCM4836,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199534,807-021/PACIFIC,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39810077,1046-171/FROSTWHITE,BXCL1408,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27529538,979-075/GL0999-098/Bisque,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022462,953-071/NAVY,BXCL1160,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25866945,914-072/BLACK,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022355,907-171/SEAGLASS,BXCL1145,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448599,1912-022/AGEDBARREL,BXCM5703,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133815613,1046-171/MINERAL,BXCL1408,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115199530,807-020/OCEAN,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116790627,1064-028/0425-53/ANTFROSTWHITE,BXCM3960,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076525,979-075/GL0999-098/AGEDBARREL,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938191,1054-071/BLACK,BXCM1605,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574133,77806-PEB-D33010-2,DABH1875,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,49285283,74101-DIAGRUSH-D33028-2,SA10227,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39993212,1064-049/FROSTWHITE,BXCM1619,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022964,1054-171/ANTBLACK,BXCM1647,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150486,1048-072/HAVANA,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986625,1023-094/0611-56/CELERY,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130052890,953-071/AGEDBARREL,BXCL1160,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130064504,1031-009/0317-63/AGEDBARREL,BXCM4525,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448760,1071-022/BLACK,BXCM5706,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448791,1912-070/HAVANA,BXCM5717,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96103731,816-094/0252-54/FROSTWHITE,BXCM3730,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116811961,773-009/0809-63/HAVANA,BXCL1562,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92515148,1046-094/0742-83/BRASS,BXCM3776,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",43716287,549-005/0268-54,BXCM1676,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126221897,1046-194/0219-61/AGEDBARREL,BXCM3777,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115194215,818-094/0884-91/WILLOW,BXCM4596,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39705091,TPS18-G6608,SA10194,Bedding,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27774933,818-044/HONEY,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64848868,1046-009/0126-73/ANTBLACK,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150491,1048-072/NAVY,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",90138358,807-044GL/BISQUE,BXCM1657,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96077366,546-109/0863-91,BXCM4521,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27526972,1064-029WS/HAVANA,BXCL1684,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126211014,1045-071/AGEDBARREL,BXCM5150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150487,1048-072/HAZEL,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117173908,1966-009/0414-63/JAVA,BXCM4796,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113143757,1045-273/BRASS,BXCM5146,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210847,1054-073/AGEDBARREL,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",27082593,520-009/0863-91/HAVANA,BXCL1512,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41651134,1055-171/NAVY,BXCM1648,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41651100,1054-171/BLACK,BXCM1647,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117122808,1031-009/0336-22/ANTBLACK,BXCM4525,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96065106,1046-009/0321-91/CELERY,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573640,979-075/GL0999-098/WILLOW,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023137,1031-071/NICKEL,BXCM4529,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569816,1024-022/OCEAN,BXCM1640,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130060706,973-009/0414-43/PUMICE,BXCM1822,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117121909,809-094/0414-43/JAVA,BXCM4490,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986481,1023-094/0321-91/NAVY,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28545185,10006-ASB-B27018-1,SA2750,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130069766,1023-094/0336-41/AGEDBARREL,BXCM5030,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022433,914-072/SEAGLASS,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39705090,TPS18-F33009-2,SA10193,Bedding,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,9390266,1406-P-A3304,BYIL4830,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022349,907-171/NAVY,BXCL1145,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89428949,818-044/SEAGLASS,BXCL1785,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,3015388,75206-SPI-E6635,SA2115,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,3784653,77806-PEB-D6311,DABH1875,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28574676,72091-COF-D33012-2,UNRS7812,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130064116,809-094/0913-61/TRUFFLE,BXCM4490,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",55221843,1046-009/0268-54/NAVY,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569822,1024-122/COFFEE,BXCM1641,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65046140,809-144/FROSTWHITE,BXCM4487,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839362,838-072/FLAX,BXCM5133,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568762,1064-049/OCEAN,BXCM1619,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879736,838-044/BISQUE,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327489,1031-122/MINERAL,BXCM4528,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121573111,1031-071/OCEAN,BXCM4529,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327585,818-144/MINERAL,BXCL1753,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",25869937,1046-171//Black,BXCL1408,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,4735899,1443-WW,BYIL4834,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327437,818-049/MINERAL,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022418,914-072/GREYSTONE,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39705088,TPS18-I33019-2,SA10191,Bedding,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",89428984,818-144/COFFEE,BXCL1753,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568993,914-072/PACIFIC,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133327640,1031-072/MINERAL,BXCM4523,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879743,838-044/HAZEL,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130064433,809-094/0553-43/AGEDBARREL,BXCM4490,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315444,818-049/SEAGLASS,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315323,1966-071/NAVY,BXCM4736,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126221212,1019-009XP/0107-84/TRUFFLE,BXCM3770,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96113017,728-009/0321-74/BLACK,BXCM4263,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523443,1031-071/CELERY,BXCM4529,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129264003,150-023/0863-93,BXCM5656,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39705089,TPS18-I33029-2,SA10192,Bedding,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117083948,1023-029/0425-53/COFFEE,BXCM1633,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879562,838-071/HAVANA,BXCM5134,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126232056,1064-012/0822-61/TRUFFLE,BXCM1612,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210888,1048-072/PUMICE,BXCM5153,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",55217957,1046-094/0229-66/NAVY,BXCM3776,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",93315434,818-049/FROSTWHITE,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,5891174,1421-WW-A3304,BYIL4816,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150430,1048-071/NAVY,BXCM5149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076598,807-020/PUMICE,BXCM1655,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022745,1055-073/CELERY,BXCM1607,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126212492,528-028SN/0519-61/TRUFFLE,BXCL1513,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022482,953-072/CELERY,BXCL1161,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",44920998,2979-075/GL0999-061,BXCM1745,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,27336542,8620-WAL-C4712,BYIL4858,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938222,1054-073/JAVA,BXCM1606,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201659,3300-DININGCASTER-ANT-B27018-1,SA10185,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022293,907-072/CELERY,BXCL1144,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64831475,1046-094/0212-83/BLACK,BXCM3776,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879717,838-022/MUSHROOM,BXCM5138,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448300,1033-072/AGEDBARREL,BXCM5696,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022379,914-071/GREYSTONE,BXCL1149,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130064135,809-094/0884-91/PUMICE,BXCM4490,Accent Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,15014431,75206-SPI-D6311,SA2115,Outdoor,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41693033,1977-075/GL0999-098/NAVY,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",107543482,809-044G/BISQUE,BXCM4486,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523493,1031-122/STONEHEARTH,BXCM4528,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076722,807-044GGL/AGEDBARREL,BXCM1657,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132860255,979-075/GL0999-061/FLAX,BXCL1175,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64848197,1046-009/0884-91/ANTBLACK,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879565,838-071/JAVA,BXCM5134,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",82263803,934-072/FROSTWHITE,BXCL1152,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126221688,1046-009/0219-61/TRUFFLE,BXCM3779,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130053372,818-049/PUMICE,BXCM4734,Decorative Accent - Wall Accents,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839367,838-071/FLAX,BXCM5134,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",130076710,1977-075/GL0999-098/AGEDBARREL,BXCM1667,Furniture - Kitchen and Dining,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839436,1912-070/MINERAL,BXCM5717,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569835,1023-071/PACIFIC,BXCM1782,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",97006695,728-109/0120-61/ANTIQUEBLACK,BXCM4836,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116864304,702-009/0425-81/JAVA,BXCM5005,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",133940026,708-109/0317-85/FLAX,BXCM4807,Upholstery - Core,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448793,1912-070/HONEY,BXCM5717,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",112879750,838-044/PACIFIC,BXCM5139,Furniture - Bedroom,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132839481,914-072/FLAX,BXCL1150,Entertainment Furniture,1,600.0,,600,600,600,[600],25.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519098,1031-072/CELERY,BXCM4523,Entertainment Furniture,9,586.7,,480,600,600,[480 600],24.4,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519116,1031-072/SEAGLASS,BXCM4523,Entertainment Furniture,14,582.9,,480,600,600,[480 600],24.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523490,1031-122/SEAGLASS,BXCM4528,Entertainment Furniture,13,581.5,,480,600,600,[480 600],24.2,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50078506,1023-071/NAVY,BXCM1782,Entertainment Furniture,12,580.0,,480,600,600,[480 600],24.2,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523482,1031-122/HAVANA,BXCM4528,Entertainment Furniture,6,580.0,,480,600,600,[480 600],24.2,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568671,1054-073/OCEAN,BXCM1606,Accent Furniture,5,576.0,,480,600,600,[480 600],24.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022962,1024-022/SEAGLASS,BXCM1640,Entertainment Furniture,5,576.0,,480,600,600,[480 600],24.0,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65523483,1031-122/HONEY,BXCM4528,Entertainment Furniture,9,573.3,,480,600,600,[480 600],23.9,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519093,1031-072/ANTFROSTWHITE,BXCM4523,Entertainment Furniture,4,570.0,,480,600,600,[480 600],23.8,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126210886,1048-071/TRUFFLE,BXCM5149,Entertainment Furniture,4,570.0,,480,600,600,[480 600],23.8,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150480,1048-072/BISQUE,BXCM5153,Entertainment Furniture,6,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023027,1023-072/ANTFROSTWHITE,BXCM1783,Entertainment Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448706,1072-072/OCEAN,BXCM5715,Entertainment Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121568799,1046-171/COFFEE,BXCL1408,Entertainment Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",65519109,1031-072/HONEY,BXCM4523,Entertainment Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938211,1054-073/BLACK,BXCM1606,Accent Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150418,1048-071/ANTIQUEFROSTWHITE,BXCM5149,Entertainment Furniture,3,560.0,,480,600,600,[480 600],23.3,25.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41438763,1024-022/HAVANA,BXCM1640,Entertainment Furniture,4,540.0,,480,600,480,[480 600],22.5,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39810086,1046-171/NAVY,BXCL1408,Entertainment Furniture,4,540.0,,480,600,480,[480 600],22.5,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448803,1912-070/TRUFFLE,BXCM5717,Entertainment Furniture,2,540.0,,480,600,480,[480 600],22.5,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938205,1054-071/NAVY,BXCM1605,Entertainment Furniture,2,540.0,,480,600,480,[480 600],22.5,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022957,1024-022/CELERY,BXCM1640,Entertainment Furniture,2,540.0,,480,600,480,[480 600],22.5,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023034,1023-072/SEAGLASS,BXCM1783,Entertainment Furniture,5,504.0,,480,600,480,[480 600],21.0,20.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,14458627,1444-WW,BYIL4844,Entertainment Furniture,2,480.0,,360,600,360,[360 600],20.0,15.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022521,129-027/CELERY,BXCM1021,Accent Furniture,2,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92023004,1055-171/SEAGLASS,BXCM1648,Entertainment Furniture,2,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938210,1054-073/BISQUE,BXCM1606,Accent Furniture,2,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",50079173,1023-073/BISQUE,BXCM1784,Accent Furniture,2,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987226,1023-094/0884-91/HONEY,BXCM5030,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",41438785,1024-122/HAVANA,BXCM1641,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117177239,1031-094/0127-33/HONEY,BXCM4994,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96066780,1046-009/0206-85/CELERY,BXCM3779,Upholstery - Core,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987216,1023-094/0884-91/BLACK,BXCM5030,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96986462,1023-094/0321-85/SEAGLASS,BXCM5030,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96064895,1079-009/0321-91/FROSTWHITE,BXCM3790,Upholstery - Core,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117084412,1023-029/0611-56/HAZEL,BXCM1633,Furniture - Kitchen and Dining,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",126222155,1046-194/0913-61/TRUFFLE,BXCM3777,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96064486,1079-009/0863-93/HONEY,BXCM3790,Upholstery - Core,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448642,1071-070/TRUFFLE,BXCM5713,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",92022309,1064-029WS/SEAGLASS,BXCL1684,Furniture - Kitchen and Dining,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117109050,1031-028/0414-63/FROSTWHITE,BXCM2377,Furniture - Kitchen and Dining,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150484,1048-072/FROSTWHITE,BXCM5153,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",64830841,1046-094/0851-94/HAVANA,BXCM3776,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",39938245,1055-073/NAVY,BXCM1607,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",117116354,1079-009/0414-43/BLACK,BXCM3790,Upholstery - Core,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",129448639,1071-070/PUMICE,BXCM5713,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150423,1048-071/FROSTWHITE,BXCM5149,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",115176335,1046-194/0884-91/WILLOW,BXCM3777,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",113150495,1048-072/SEAGLASS,BXCM5153,Entertainment Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96060886,1046-094/0317-83/BLACK,BXCM3776,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",96987225,1023-094/0884-91/HAVANA,BXCM5030,Accent Furniture,1,480.0,,480,480,480,[480],20.0,20.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201492,3344-ANT,SA10149,Entertainment Furniture,4,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,30396788,78343-RUW,HIDN6900,Outdoor,4,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201489,3144-WAL,SA10146,Entertainment Furniture,4,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28545158,10043-ASB,SA2747,Entertainment Furniture,4,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201491,3343-ANT,SA10148,Entertainment Furniture,2,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,16744427,5443-WW,BYIL4650,Entertainment Furniture,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,9446624,77844-PEB,DABH1869,Entertainment Furniture,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,56483039,72144-BOU,SA10258,Outdoor,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,16081480,75843-SHL,AGRV3637,Entertainment Furniture,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,15227528,5443-P,BYIL4650,Entertainment Furniture,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,23109093,76643-CHE,SA2006,Outdoor,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,30396790,78344-RUW,HIDN6901,Outdoor,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,28864274,73443-SND,SA2770,Outdoor,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,49285277,74143-DIAGRUSH,SA10226,Outdoor,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,39201757,3117-WAL-42RD,SA10176,Furniture - Kitchen and Dining,1,360.0,,360,360,360,[360],15.0,15.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,27758885,BR15-07-1824,FPRF1239,Furniture - Bedroom,4,168.0,,168,168,168,[168],7.0,7.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,8596375,ER-BLC-EA48-D,FPRF1059,Entertainment Furniture,1,168.0,,168,168,168,[168],7.0,7.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,15822840,ST-BLA-EC48-D,FPRF1103,Entertainment Furniture,1,168.0,,168,168,168,[168],7.0,7.0
+31945,South Sea Rattan NC27409,180,South Sea Rattan,5948079,7546-01,FPRF1001,Furniture - Bedroom,1,168.0,,168,168,168,[168],7.0,7.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",132874369,1054-171/FLAX,BXCM1647,Entertainment Furniture,1,120.0,,120,120,120,[120],5.0,5.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",121569787,818-044/PACIFIC,BXCL1785,Furniture - Bedroom,1,96.0,,96,96,96,[96],4.0,4.0
+238939,"Braxton Culler, Inc NC 27350",13208,"CCNC Operations, LLC dba Braxton Culler",116145486,807-044GGL/FROSTWHITE,BXCM1657,Furniture - Bedroom,1,,,,,,[],,
