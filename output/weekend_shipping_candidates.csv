@@ -1,0 +1,649 @@
+supplier_id,su_name,lt,cutoff,station_name,address,city,state,postal_code,sto,marketing_category,srm,last_6_weeks_volume,fri_sat_order_volume,fri_sat_weekend_shipped_volume,pct_fri_sat_shipped_on_sat_or_sun,ifr,weekend_shipping_candidate
+147944,孟菲斯仓Foxridge LLC,24.0,00:00:00,OLIVE BRANCH LOCAL,4259 Air Trans Road,Memphis,TN,38118,APS,Wayfair,Christal Ding,5437,1566,1207,0.7708,0.9452,True
+59466,nuLOOM CA 95206,24.0,14:00:00,TRACY LOCAL,1655 Tillie Lewis Rd,Stockton,CA,95206,Rugs,Rugs,Brianna Barrett,5788,1533,1087,0.7091,0.9515,True
+280028, CHINO,24.0,01:00:00,CHINO LOCAL,5125 Schaefer Ave ,Chino ,CA,91710,APS Outdoor,Outdoor,Amber Xiang,3997,1060,870,0.8208,0.9602,True
+111282,Costway CA 92374 [2],24.0,00:00:00,WEST RIALTO,9180 Alabama St,Redlands,CA,92374,APS Outdoor,Storage & Org - Systems,David Liu,3804,987,763,0.773,0.8933,True
+59554,EC EXPORT INC. NJ 08505,24.0,00:00:00,ROBBINSVILLE,1175 Florence Columbus Road,Bordentown,NJ,08505,APS,Plumbing - Vanities,Ida Li,1724,500,379,0.758,0.9594,True
+58218,"VM MP, LLC IN 46143",24.0,15:00:00,GREENWOOD LOCAL,831 N Graham Rd,Greenwood,IN,46143,Storage & Org - Frequency,Outdoor Structures,Claire Przybocki,1647,419,314,0.7494,0.9466,True
+429873,"Zhengzhou Bevi Import  Export Trading Co., Ltd. PA 19030",24.0,05:00:00,PHILADELPHIA,500 Ben Fairless Dr, Fairless Hills,PA,19030,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,1531,402,343,0.8532,0.9647,True
+336483,"NINGBO JOYS IMP. EXP. CO.,LTD CA 92374",24.0,00:00:00,WEST RIALTO,9180 Alabama St,Redlands,CA,92374,APS Outdoor,Storage & Org - Frequency,David Liu,1482,392,309,0.7883,0.8738,True
+190976,Esbenshades Garden Center PA 17517,24.0,13:00:00,EAST HARRISBURG,50 Denver Road,Denver,PA,17517,Decor,Outdoor Decor,Trevor Cody,1419,384,282,0.7344,0.9584,True
+12396,Ashley Furniture MS 38841,24.0,13:00:00,TUPELO,HWY 346 WEST BLDG 229,Ecru,MS,38841,Upholstery,Lighting,Anne Marie Conde,1305,378,286,0.7566,0.954,True
+356699,shanghaihuzidianzishangwuyouxiangongsi NJ 08016,24.0,10:00:00,ROBBINSVILLE,1950 River Road ,Burlington ,NJ,08016,APS Home Improvement,Storage & Org - Frequency,Yinan Du,1343,342,245,0.7164,0.9821,True
+372043,shenzhenshilijinchengmaoyiyouxiangongsi GA 30331,24.0,,AUSTELL,1950 Oak Lawn Ave,South Fulton,GA,30331,APS Home Improvement,Appliances,Yinan Du,1347,340,242,0.7118,0.925,True
+239701,HangzhouSkytech NJ 08016,24.0,,ROBBINSVILLE,"1950 River Road, Dock #1-80",Burlington ,NJ,08016,APS,Outdoor,Danica Guo,1244,332,245,0.738,0.9799,True
+325409,"Hangzhou Yingpan Network Technology Co., PA 19030 ",24.0,12:00:00,PHILADELPHIA,500 Ben Fairless Dr ,Fairless Hills,PA,19030,APS Bedroom,Storage & Org - Furniture Adj,Wendy Wang,1090,301,214,0.711,0.9394,True
+290919,ningboyaolindianzishangwuyouxiangongsi NJ 07012,24.0,00:00:00,SECAUCUS,35 Styertowne Road,Clifton,NJ,07012,Wayfair,Outdoor,Qiwen Fan,1143,299,219,0.7324,0.8994,True
+368845,GLERUS LTD NJ 07036,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,Casegoods,Furniture - Home Office,Zichu Wang,1042,298,218,0.7315,0.8935,True
+430712,shilijincheng CA 92316,24.0,09:00:00,WEST RIALTO,11260 Cedar Ave ,Bloomington,CA,92316,APS Home Improvement,Decorative Accent - Home Accents,Yinan Du,1121,297,218,0.734,0.9536,True
+358600,"NINGBO JOYS IMP. EXP. CO.,LTD IL60446[2]",24.0,,SOUTH CHICAGO,295 Southcreek Parkway,Romeoville,IL,60446,APS Outdoor,Outdoor,David Liu,1100,293,245,0.8362,0.96,True
+405768,"Haomaijia Technology (Shenzhen) Co., LTD NJ 07036",24.0,,LINDEN,500 Linden Logistics Way ,Linden,NJ,07036,APS Upholstery,Wayfair,Sean Xu,932,271,217,0.8007,0.9206,True
+313006,"Hangzhou Skytech Outdoor Co., LTD CA 92880",24.0,12:00:00,CHINO LOCAL,"14909 Summit Drive, DOCK #17-#18",Eastvale,CA,92880,APS,Wayfair,Danica Guo,1182,258,200,0.7752,0.9433,True
+56165,Costway IL 60446,24.0,00:00:00,SOUTH CHICAGO,50 N Paragon Drive,Romeoville,IL,60446,APS Outdoor,Storage & Org - Furniture Adj,David Liu,776,233,173,0.7425,0.8995,True
+369228,Yantaishi Xingyudianzishangwu Youxiangongsi NJ 07036,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS Bedroom,Storage & Org - Frequency,Asia Supplier Service Desk,811,225,158,0.7022,0.873,True
+56438,Costway CA 92337B,24.0,00:00:00,WEST RIALTO,11250 Poplar Ave,Fontana,CA,92337,APS Outdoor,Storage & Org - Frequency,David Liu,831,219,164,0.7489,0.8748,True
+442662,Yantai Luoming Xinxijishu Youxiangongsi NJ 07036,24.0,,LINDEN,500 Linden Logistics Way1,Linden,NJ,07036,APS Bedroom,Furniture - Bedroom,Wendy Wang,884,216,154,0.713,0.8937,True
+90447,TopBuy Inc NJ 08505,24.0,,ROBBINSVILLE,201 Old York Rd,Borden,NJ,08505,APS Outdoor,Outdoor,David Liu,776,208,149,0.7163,0.9497,True
+90442,TopBuy Inc CA 92374,24.0,00:00:00,WEST RIALTO,9180 Alabama Street,Redlands,CA,92374,APS Outdoor,Outdoor,David Liu,849,207,155,0.7488,0.8881,True
+173915,Costway WA 98387,24.0,00:00:00,OLYMPIA,5210 196th St E,Spanaway,WA,98387,APS Outdoor,Outdoor,David Liu,835,205,175,0.8537,0.9138,True
+358766,Yantai Nanmudianzikeji Youxiangongsi CA 91762,24.0,,CHINO LOCAL,8900 Merrill Ave,Ontario,CA,91762,APS Rugs,Rugs,Rainbow Wu,768,204,143,0.701,0.9128,True
+40754,Ashley Furniture TX 75149,24.0,15:00:00,MESQUITE,4000 E Scyene Rd,Mesquite,TX,75182,Upholstery,Decorative Accent - Home Accents,Anne Marie Conde,747,201,143,0.7114,0.9331,True
+271057,"Zhejiang Linya Co., Ltd GA 31322",24.0,,SAVANNAH,301 CYPRESS MEADOW,Pooler,GA,31322,APS Home Improvement,Outdoor Structures,Danica Guo,831,191,143,0.7487,0.8544,True
+441907,ENSHINES INC CA 92337,24.0,,WEST RIALTO,10985 Oleander Ave1,Fontana,CA,92337,APS Bedroom,Outdoor Structures,Asia Supplier Service Desk,728,189,133,0.7037,0.8681,True
+246790,  USNJ06,24.0,00:00:00,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS K&D,Furniture - Kitchen and Dining,Noemi Tang,645,184,133,0.7228,0.969,True
+350760,TopBuy Inc IL 60446(2),24.0,,SOUTH CHICAGO,"295 Southcreek Parkway, Building A",Romeoville,IL,60446,APS Outdoor,Outdoor,David Liu,695,178,151,0.8483,0.9727,True
+460001, GC-NJ-19,24.0,08:00:00,PHILADELPHIA, 500 Ben Fairless Dr,Fairless Hills,PA,19030,APS Home Improvement,Health & Fitness,Danica Guo,784,177,159,0.8983,0.9796,True
+174581,"Ningbo le verde home furnishing co.,ltd. NJ 08016",24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Outdoor,Furniture - Kitchen and Dining,Moti Mao,693,167,132,0.7904,0.9697,True
+374784,GLERUS LTD CA 91762 (2),24.0,,CHINO LOCAL,4705 Walker Avenue,Ontario,CA,91762,Casegoods,Furniture - Kitchen and Dining,Zichu Wang,576,160,121,0.7562,0.8941,True
+432816,"Hangzhou Tingyun International Trading Co., Ltd. TX 77494",24.0,12:00:00,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,Wayfair,Outdoor,Supplier Service Desk,598,158,114,0.7215,0.8763,True
+320326,Yaheetech FL 33815 ,24.0,11:00:00,DAVENPORT,2025 West Memorial Boulevard ,Lakeland ,FL,33815,APS AEOF,Furniture - Bedroom,Louisa Zhang,545,153,118,0.7712,0.989,True
+293173,XH COPE_HOU TX 77423,24.0,,HOUSTON LOCAL,28150 US 90,Brookshire,TX,77423,APS,Furniture - Bedroom,Stella Yin,651,150,121,0.8067,0.9078,True
+352044,"Shenzhen Jinjiachuang Trading Co., Ltd. NJ 08036",24.0,16:00:00,CAMDEN,"C/O 100 Lawrence Blvd, Hainesport",Hainesport,NJ,08036,APS K&D,Furniture - Home Office,Asia Supplier Service Desk,543,147,103,0.7007,0.9116,True
+80226,"NINGBO JOYS IMP. EXP. CO.,LTD CA91761",24.0,05:00:00,WEST RIALTO,"11250 Poplar Ave Bldg C,gymax",Fontana,CA,92337,APS Outdoor,Lighting,David Liu,597,145,115,0.7931,0.9162,True
+458506,shilijincheng CA 92337,24.0,,WEST RIALTO,11618 mulberry Ave,Fontana ,CA,92337,APS Home Improvement,Plumbing - Core,Yinan Du,594,142,104,0.7324,0.9848,True
+196857,Costway CA92374(3),24.0,00:00:00,WEST RIALTO,9180 Alabama Street,Redlands,CA,92374,APS Outdoor,Outdoor,David Liu,548,140,101,0.7214,0.9361,True
+326429,Yantai Nanmudianzikeji Youxiangongsi CA 92337 (2),24.0,00:00:00,WEST RIALTO,11281 Citrus Ave,Fontana,CA,92337 ,APS Rugs,Rugs,Rainbow Wu,526,137,98,0.7153,0.9144,True
+96568,"Chengdushi Furong Technology Co., Ltd. CA 92376",24.0,00:00:00,WEST RIALTO,CO 1420 N Tamarind Ave,Rialto ,CA,92376,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,506,135,99,0.7333,0.9486,True
+369938,运去哪-RWT-美西-92880,24.0,00:00:00,CHINO LOCAL,14909 Summit Dr,Eastvale,CA,92880,APS AEOF,Furniture - Home Office,Nora Li,536,135,95,0.7037,0.8918,True
+101025,Shenzhenshi Jiushangding Technology Co Ltd CA 91710,24.0,00:00:00,WEST RIALTO,C/O 1420 N.Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Lighting,Asia Supplier Service Desk,393,128,91,0.7109,0.9288,True
+39460,Planet Rugs,24.0,07:00:00,NILES,2017 N 25th Ave,Franklin Park,IL,60131,Rugs,Rugs,Brianna Barrett,422,126,93,0.7381,0.9739,True
+442166,"Hangzhou Gesong E-commerce Co., Ltd. TX 77494",24.0,,HOUSTON LOCAL,"28501 Hwy Blvd, Katy",Katy,TX,77494,APS Outdoor,Outdoor,Qiwen Fan,559,126,92,0.7302,0.9678,True
+366893,"Jiangmen Bohan trading Co., LTD CA 91762",24.0,,CHINO LOCAL,4705 Walker Ave,Ontario,CA,91762,APS Home Improvement,Lighting,Cheryl Zhang,463,124,98,0.7903,0.9374,True
+440842,"Shenzhen Chunxin E-Commerce Co., Ltd. CA 92880",24.0,,CHINO LOCAL,14909 Summit Drive,Eastvale,CA,92880,APS K&D,Storage & Org - Furniture Adj,Hannah Guan,576,123,89,0.7236,0.9045,True
+285993,ZHU INTERNATIONAL TRADE INC CA 91710 (2),24.0,,CHINO LOCAL,CO 13725 Pipeline Ave,Chino,CA,91710,Upholstery,Lighting,Kosi Obi,424,117,83,0.7094,0.967,True
+356147,Yantai Aifengdianzishangwu Youxiangongsi NJ 07036,24.0,,LINDEN,500 Linden Logistics Wy,Linden,NJ,07036,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,445,113,84,0.7434,0.8629,True
+110130,YYBS Company Ltd CA 91710,24.0,,WEST RIALTO,C/O 1420 N.Tamarind Ave,Rialto,CA,92376,APS,Storage & Org - Frequency,Asia Supplier Service Desk,390,109,80,0.7339,0.9462,True
+103304,YXSUN COMPANY LTD CA 91761,24.0,00:00:00,WEST RIALTO,C/O 1420 N.Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Storage & Org - Frequency,Lavinia Zhang,348,105,79,0.7524,0.9339,True
+308193,CG-SAV1/2/3,24.0,00:00:00,SAVANNAH,1004 Gateway Parkway,Rincon,GA,31326,APS Outdoor,Upholstery - Core,Danica Guo,477,105,76,0.7238,0.8574,True
+443692,Yiimo NJ 07036,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS Bedroom,Storage & Org - Systems,Asia Supplier Service Desk,399,103,73,0.7087,0.8672,True
+343898,Yantaishi Xingyudianzishangwu Youxiangongsi CA 91762,24.0,00:00:00,CHINO LOCAL,4705 Walker Ave, Ontario,CA,91762,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,399,102,73,0.7157,0.8972,True
+414339,SHENZHENSHI JULIBAIBIAN KEJIYOUXIANGONGSI NJ 08817,24.0,,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS K&D,Entertainment Furniture,Stella Yin,350,102,73,0.7157,0.9257,True
+97541,"Shenzhenshi Yiyibushe Technology Co., Ltd. CA91710",24.0,00:00:00,WEST RIALTO,C/O 1420 N.Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Decorative Accent - Home Accents,Asia Supplier Service Desk,355,100,73,0.73,0.9183,True
+360991,"Shenzhen Tanggelao Technology Co., Ltd. SAV",24.0,12:00:00,SAVANNAH,320 MorganLakes Industrial Blvd,Pooler,GA,31322,APS Upholstery,Small Electrics,Asia Supplier Service Desk,413,100,79,0.79,0.9588,True
+111799,Chengdushi Fengteng Technology Co Ltd CA 91761,24.0,00:00:00,WEST RIALTO,1420 N.Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Storage & Org - Furniture Adj,Asia Supplier Service Desk,366,99,70,0.7071,0.9235,True
+357508,"Shenzhen Litian Technology Co., Ltd CA  95304",24.0,00:00:00,TRACY LOCAL,2795 Paradise Rd NO140,Tracy,CA,95304,APS Home Improvement,Furniture - Home Office,Nicole Sun,398,95,75,0.7895,0.9347,True
+277243,AIVITUVIN INC HOU05,24.0,,HOUSTON LOCAL,14402 Fallbrook Drive,Cypress,TX,77429,APS,Pet,Regan Zou,344,93,67,0.7204,0.907,True
+108490,Chengdu Dingli Network Technology Co Ltd CA91761,24.0,,WEST RIALTO,CO 1420 N Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Decorative Accent - Wall Accents,Asia Supplier Service Desk,351,91,66,0.7253,0.9288,True
+366869,LD-运去哪-美东-BLL,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS AEOF,Furniture - Bedroom,Nora Li,287,91,68,0.7473,0.9024,True
+356191,GA5-WP,24.0,,SAVANNAH,302 International Trade Pkwy,Port Wentworth,GA,31407,APS AEOF,Accent Furniture,Ricky Yu,328,90,67,0.7444,0.9573,True
+442169,"VISION VORTEX CO.,LTD TX 75149",24.0,11:00:00,MESQUITE,5181 Samuell Blvd.,Mesquite,TX,75149,APS Outdoor,Outdoor,Qiwen Fan,360,90,66,0.7333,0.9833,True
+452211,YQNMD-BLL,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS Outdoor,Outdoor,Qiwen Fan,353,87,68,0.7816,0.8867,True
+272956,HONG KONG INNOVATE LIMITED TN 38118,24.0,00:00:00,OLIVE BRANCH LOCAL,4259 Air Trans Road,Memphis,TN,38118,APS,Wayfair,Asia Supplier Service Desk,241,83,70,0.8434,0.9461,True
+449427,USNJ25,24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Housewares & More,Small Electrics,Erica Zhou,240,81,60,0.7407,0.9375,True
+414247,shenzhenshi linenmaoyi youxiangongsi NJ 08817,24.0,,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS K&D,Furniture - Bedroom,Stella Yin,278,76,65,0.8553,0.9856,True
+331596,Equal Fitness Inc TX 77494,24.0,12:00:00,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494 ,Decor,Outdoor,Asia Supplier Service Desk,314,72,57,0.7917,0.9363,True
+281536, BCF_CA_US 92337,24.0,,WEST RIALTO,11281 CITRUS AVE ,FONTANA ,CA,92337,APS Youth,Decorative Accent - Wall Accents,Thomas Zhang,271,71,52,0.7324,0.9299,True
+299161,LUOYANG STEELCUBE TX 77494,24.0,,HOUSTON LOCAL,28119 KATY FWY KATY TX 77494,KATY FWY,TX,77494,APS Wayfair Professional,Furniture - Home Office,Yolanda GUI,294,69,49,0.7101,0.9558,True
+369967,"Bazhou Yunna Furniture Co., Ltd NJ 08505",24.0,,ROBBINSVILLE,Florence Columbus Road C/O 1183,Fieldsboro,NJ,08505,Wayfair,Furniture - Bedroom,Asia Supplier Service Desk,287,69,52,0.7536,0.9686,True
+361266,Shenzhen XinheTrade Limited Company NJ 08817 (2),24.0,09:00:00,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS K&D,Furniture - Bedroom,Stella Yin,268,65,53,0.8154,0.9104,True
+308103,Ning Bo Jing Wei Dian Zi Shang Wu TX 77494,24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS,Outdoor Decor,Amber Xiang,217,64,46,0.7188,0.9078,True
+289794,YDY,24.0,,WEST RIALTO,10395 Nobel Court,Jurupa Valley,CA,91752,APS,Pet,Regan Zou,287,62,46,0.7419,0.8885,True
+458514,shilijincheng TX 77423,24.0,12:00:00,HOUSTON LOCAL,30815 Kingsland Boulevard,Brookshire,TX,77423,APS Home Improvement,Pet,Yinan Du,229,62,50,0.8065,0.9694,True
+291116,Shen Zhen Shi Wei Bai Ke Ji You Xian NJ 08036,24.0,,CAMDEN,CO 100 Lawrence Blvd,Hainesport,NJ,08036,APS,Furniture - Kitchen and Dining,Wendy Wang,270,60,42,0.7,0.863,True
+101309,Chengdu Xiaoduo Network Technology Co Ltd CA 92376,24.0,,WEST RIALTO,CO 1420 N Tamarind Ave,Rialto,CA,92376,APS Home Improvement,Small Electrics,Asia Supplier Service Desk,219,59,42,0.7119,0.9087,True
+310159,Yantai Aifengdianzishangwu Youxiang CA 91762,24.0,,CHINO LOCAL,C/O 4705 Walker Ave,Ontario,CA,91762,APS,Entertainment Furniture,Asia Supplier Service Desk,149,58,44,0.7586,0.9329,True
+268485,XH COPE_XZX5 NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS,Furniture - Bedroom,Stella Yin,225,55,47,0.8545,0.9556,True
+460605,YYBS Company Ltd GA 31326,24.0,,SAVANNAH,"C/O 1100 Heritage Way Rincon, GA 31326",Rincon,GA,31326,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,208,53,38,0.717,0.976,True
+368151,MS-LTLCA,24.0,,WEST RIALTO,11010 Juniper Ave,Fontana,CA,92337,APS Upholstery,Upholstery - Core,Blair-Yaqing Gong,187,52,39,0.75,0.9412,True
+364980,良仓-NJ-06,24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,Wayfair,Outdoor Structures,Asia Supplier Service Desk,180,51,40,0.7843,0.9556,True
+372002,MEET SUNNY CORPORATION NJ 08554,24.0,,ROBBINSVILLE,839 Railroad Ave,Florence,NJ,08554,APS Home Improvement,Outdoor Structures,Danica Guo,222,51,39,0.7647,0.9775,True
+298159,HNB_TX_US 77493,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy ,TX,77493,APS Youth,Decorative Accent - Wall Accents,Thomas Zhang,141,49,36,0.7347,0.9078,True
+372386,"SHENZHEN WEIPU HOME TECHNOLOGY CO., LTD NJ 08016",24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Bedroom,Storage & Org - Furniture Adj,Asia Supplier Service Desk,161,49,35,0.7143,0.9814,True
+174585,TopBuy Inc WA 98387,24.0,00:00:00,OLYMPIA,5210 196th St E,Spanaway,WA,98387,APS Outdoor,Outdoor,David Liu,177,48,44,0.9167,0.9548,True
+80230,"NINGBO JOYS IMP. EXP. CO.,LTD IL60446",24.0,05:00:00,SOUTH CHICAGO,50N.Paragon Drive，gymax,Romeoville,IL,60446,APS Outdoor,Outdoor,David Liu,165,46,35,0.7609,0.9273,True
+173916,"NINGBO JOYS IMP. EXP. CO.,LTD WA 98387",24.0,01:00:00,OLYMPIA,Gymax Building 1,Spanaway,WA,98387,APS Outdoor,Grills,David Liu,206,46,41,0.8913,0.932,True
+457160,"FUFU and GAGA Trade Co., Ltd. CA 92880",24.0,,CHINO LOCAL,"14909 Summit Drive,DOCK ",Eastvale,CA,92880,APS Bedroom,Furniture - Home Office,Christal Ding,148,46,33,0.7174,0.9257,True
+269233,PP-BCF_CA_US,24.0,00:00:00,WEST RIALTO,11281 Citrus Ave,Fontana,CA,92337,APS,Entertainment Furniture,Asia Supplier Service Desk,173,45,37,0.8222,0.8844,True
+277098,  USSC,24.0,,AUSTELL,CO 240 The Bluffs,Austell,GA,30168,APS,Furniture - Home Office,Asia Supplier Service Desk,165,45,33,0.7333,0.9939,True
+466367,PP-BLL_NJ_US,24.0,,LINDEN,"Building E,500 Linden Logistics Way",Linden,NJ,07036,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,144,45,34,0.7556,0.9306,True
+492392,TRINITY  INTERNATIONAL NJ 08817,24.0,,WOODBRIDGE LOCAL,250 Carter Dr1,Edison,NJ,08817,APS Bedroom,Outdoor Structures,Wendy Wang,146,44,35,0.7955,0.9726,True
+347221,Rock Opnum Inc PA 19030,24.0,,PHILADELPHIA,500 Ben Fairless Dr,Fairless Hills,PA,19030,APS AEOF,Upholstery - Core,Ivy Mao,136,43,37,0.8605,0.9853,True
+360801,Shenzhenshiweilukejiyouxiangongsi NJ 08817 (2),24.0,,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS K&D,Furniture - Bedroom,Stella Yin,124,42,30,0.7143,0.9597,True
+367709,Hong Kong Comfortable Home Technology Limited NJ  08837 ,24.0,,WOODBRIDGE LOCAL,45 patrick ave Edison NJ,Edison,NJ,08837 ,APS Upholstery,Wayfair,Leonie Li,110,42,30,0.7143,0.9636,True
+219576,宁波高玮进出口有限公司 CA 92374,24.0,00:00:00,WEST RIALTO,9180 Alabama St,Redlands,CA,92374,APS AEOF,Storage & Org - Furniture Adj,Asia Supplier Service Desk,169,41,31,0.7561,0.8935,True
+339887,shanghaichenkungongyipinyouxiangongsi GA 31322,24.0,00:00:00,SAVANNAH,335 Morgan Lakes Industrial Blvd,Pooler,GA,31322,APS Youth,Furniture - Home Office,Thomas Zhang,97,41,31,0.7561,0.9691,True
+410551,"Fuzhou Xiaohao Er Trading Co., Ltd. CA 92376",24.0,,WEST RIALTO,1420 N.Tamarind Ave,Rialto,CA,92376,APS Housewares & More,Storage & Org - Systems,Jynn Jiang,148,40,30,0.75,0.9324,True
+292873,WL_COPE_HOU_TX_77423,24.0,,HOUSTON LOCAL,28150 US 90 ,Brookshire,TX,77423,APS,Furniture - Bedroom,Stella Yin,147,39,29,0.7436,0.8844,True
+311808, 运去哪-HNB-77494,24.0,,HOUSTON LOCAL,28501 Hwy Blvd ,Katy ,TX,77494,APS,Storage & Org - Furniture Adj,Nora Li,124,38,31,0.8158,0.9839,True
+343370,shenzhenshifeihuangxinxijishuyouxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Decor,Seasonal Decor,Asia Supplier Service Desk,130,38,27,0.7105,0.8846,True
+443988,BRIGHTCRAFT SOLUTIONS INC GA 31322,24.0,,SAVANNAH,301 CVDRFSS MEADOW DR,Pooler,GA,31322,APS Home Improvement,Lighting,Asia Supplier Service Desk,132,38,29,0.7632,0.8712,True
+320428,Esbenshades Garden Center FL 32254,24.0,,JACKSONVILLE,5638 Commonwealth Ave,Jacksonville,FL,32254,Decor,Outdoor Decor,Trevor Cody,133,37,30,0.8108,0.9925,True
+174582,RiverstarInc. NJ 08016,24.0,00:00:00,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Outdoor,Outdoor,Asia Supplier Service Desk,104,35,30,0.8571,0.9615,True
+245030,Hangzhou Daya Information Technology NJ 08505,24.0,09:00:00,PHILADELPHIA,C/O 500 Ben Fairless Dr,Fairless Hills,PA,19030,APS K&D,Playroom,Carol Li,120,34,25,0.7353,0.9083,True
+340866,Yantaishi ningxinshangmao(Luoshanji G1) CA 91762,24.0,,CHINO LOCAL,4705 Walkerl Ave,Ontario,CA,91762,APS Mattresses,Furniture - Bedroom,Checky Yi,101,34,28,0.8235,0.9208,True
+350085,"Zhejiang On Leap Furnishing Co.,Ltd. TX 77493",24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77493,APS Outdoor,Outdoor,Qiwen Fan,131,33,32,0.9697,0.9695,True
+71279,"FlySoar Trade Co., Ltd CA 92880",24.0,00:00:00,CHINO LOCAL,14909 Summit Drive,Eastvale,CA,92880,APS,Furniture - Bedroom,Christal Ding,140,32,25,0.7813,0.9,True
+240909,ZT TRADING INC. CA 91752,24.0,,WEST RIALTO,10395 Nobel Court,Jurupa Valley,CA,91752,APS Outdoor,Outdoor Structures,Asia Supplier Service Desk,128,32,30,0.9375,0.9063,True
+462141,HangzhouQiuyueKejiyouxiangongsi IL 60446,24.0,,SOUTH CHICAGO,160 Southcreek Pky,Romeoville,IL,60446,APS Bedroom,Storage & Org - Systems,Asia Supplier Service Desk,107,32,26,0.8125,0.8505,True
+292744,Tianjin heman kejiyouxiangongsi TX 77423,24.0,,HOUSTON LOCAL,28150 US 90 ,Brookshire ,TX,77423,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,96,31,23,0.7419,0.9271,True
+343878,"Zhejiang On Leap Furnishing Co.,Ltd. NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Outdoor,Outdoor,Qiwen Fan,131,31,28,0.9032,0.9618,True
+414295,Shenzhen dilili trading co ltd NJ 07064,24.0,00:00:00,SOUTH CARTERET,1001 W Middlesex Ave ,Port Reading,NJ,07064,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,73,31,25,0.8065,0.9863,True
+269870,CMP_GA,24.0,00:00:00,SAVANNAH,301 CYPRESS MEADOW DR,Pooler,GA,31322,APS,Furniture - Bedroom,Asia Supplier Service Desk,104,30,21,0.7,0.9519,True
+287472,Ningbo Youzi Jinchukou Youxiangongsi CA 92376,24.0,,WEST RIALTO,1420 N Tamarind Ave,Rialto,CA,92376,APS,Accent Furniture,Blair-Yaqing Gong,102,29,27,0.931,0.9314,True
+304908,SKC-YQN-TX-HNB,24.0,00:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS,Furniture - Bedroom,Nora Li,101,29,22,0.7586,0.9406,True
+354041,运去哪-BLL-美东-07036,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS AEOF,Furniture - Bedroom,Nora Li,123,29,24,0.8276,0.878,True
+88654,Yiimo CA 92337,24.0,00:00:00,WEST RIALTO,13052 Jurupa Ave,Fontana,CA,92337,APS Bedroom,Health & Fitness,Asia Supplier Service Desk,82,28,22,0.7857,0.9634,True
+400920,"Hangzhou Okapat Technology Co., Ltd. TX 77494",24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS Upholstery,Upholstery - Core,Estrella Wang,114,28,20,0.7143,0.886,True
+286894,bazhoushidetaijiajuyouxiangongsi CA 91748,24.0,,INDUSTRY,18961 East Arenth Ave,City of Industry,CA,91748,Wayfair,Furniture - Kitchen and Dining,Asia Supplier Service Desk,87,27,19,0.7037,0.908,True
+446937,"Ningbo Xin Su Da Trading Co., Ltd. NJ 08016",24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS AEOF,Furniture - Home Office,Fiona Jiang,109,27,19,0.7037,0.9817,True
+338945,Nanping Jianyang District Shanye Laity Tea Co. LTD GA 31322,24.0,,SAVANNAH,335 Morgan Lakes Industrial Blvd,Pooler,GA,31322,APS Home Improvement,Doors & Shutters,Aria Yao,86,26,19,0.7308,0.9767,True
+299086,WPGA4,24.0,,SAVANNAH,101 Feldspar Drive ,Savannah,GA,31405,APS Bedroom,Furniture - Bedroom,Wendy Wang,115,25,19,0.76,1.0,True
+471413, YQN-CPF_CA,24.0,,WEST RIALTO,13052 Jurupa Ave,Fontana ,CA,92337,APS Upholstery,Upholstery - Core,Blair-Yaqing Gong,200,25,19,0.76,0.855,True
+478794,SHENZHEN RONGYU SHIYE CO LTD CA 91710,24.0,,CHINO LOCAL,C/O 13725 Pipeline Avenue,Chino,CA,91710,APS Decor,Decorative Accent - Wall Accents,Supplier Service Desk,119,25,19,0.76,0.9664,True
+491649,Chengdu Cuihu Palace Wall Technology SAV,24.0,,SAVANNAH,320 MorganLakes Industrial Blvd ,Pooler,GA,31322,APS Upholstery,Storage & Org - Frequency,Asia Supplier Service Desk,74,24,20,0.8333,0.9324,True
+236839,3Hao-Meixi-18cang,24.0,00:00:00,WEST RIALTO,10395 Nobel Court,Jurupa Valley,CA,91752,APS,Entertainment Furniture,Yolanda GUI,72,23,17,0.7391,0.8611,True
+76024,Westfield Outdoor Inc NJ 08016,24.0,00:00:00,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Outdoor,Wayfair,Melody Lu,110,22,20,0.9091,1.0,True
+246131,WP_LAAL,24.0,00:00:00,INDUSTRY,18450 East Gale Avenue,City of Industry,CA,91748,APS,Furniture - Bedroom,Stella Yin,103,22,16,0.7273,0.9515,True
+319601,Masai off LLC_1 TX 77494 ,24.0,,HOUSTON LOCAL,28501 Hwy Blvd ,Katy ,TX,77494,APS,Furniture - Home Office,Asia Supplier Service Desk,64,22,17,0.7727,0.9531,True
+360850,HM DFG NJ 08817,24.0,,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,75,22,18,0.8182,0.9467,True
+317334,"Zhejiang Linya Co., Ltd TX 77494",24.0,11:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS Home Improvement,Outdoor,Danica Guo,77,21,18,0.8571,0.961,True
+363944,"Fuzhou Changle Shengchong E-Commerce Co., Ltd. CA 92880",24.0,,CHINO LOCAL,14909 Summit Drive,Eastvale,CA,92880,APS Pet,Recreation,Asia Supplier Service Desk,95,21,15,0.7143,0.9053,True
+368778,"Anhui Yinmaotai Technology Co., Ltd NJ 08505(1)",24.0,,ROBBINSVILLE,"Florence Columbus Road, C/O 1183",Fieldsboro,NJ,08505,Wayfair,Furniture - Bedroom,Asia Supplier Service Desk,66,20,14,0.7,0.9697,True
+485437,Rock Opnum Inc TX 77423 ,24.0,,HOUSTON LOCAL,C/O 30815 Kingsland Boulevard,Brookshire,TX,77423 ,APS AEOF,Upholstery - Core,Ivy Mao,61,20,14,0.7,0.9836,True
+243648,Yantaishi ningxinshangmao (Cope LA) CA 92337,24.0,00:00:00,WEST RIALTO,13052 Jurupa Ave,Fontana,CA,92337,APS Mattresses,Appliances,Checky Yi,63,19,16,0.8421,0.873,True
+271262,YantaiNanmudianzikeji NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave  Port Reading  NJ 07064,PORT READING,NJ,07064,APS Rugs,Accent Furniture,Rainbow Wu,63,19,18,0.9474,0.873,True
+314811,Xiamenchaoshengmaoyiyouxiangongsi TX 77429,24.0,00:00:00,HOUSTON LOCAL,14402 FALLBROOK DR,Cypress,TX,77429,Wayfair,Mattresses,Asia Supplier Service Desk,74,19,16,0.8421,0.9865,True
+321212,BLUEBELL INTERNATIONAL INC. TX 77449,24.0,,HOUSTON LOCAL,2244 North Mason Road,Katy,TX,77449,APS,Furniture - Kitchen and Dining,Yolanda GUI,65,19,14,0.7368,0.8923,True
+365194,Central Power International Limited LLC NJ 08505,24.0,,ROBBINSVILLE,3280 US Highway 206,Bordentown,NJ,08505,APS K&D,Furniture - Bedroom,Hannah Guan,86,19,14,0.7368,0.9884,True
+414303,Shenzhen dilili trading co ltd GA 31407,24.0,,SAVANNAH,302 International Trade Pkwy,Port Wentworth,GA,31407,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,93,19,14,0.7368,0.9892,True
+458375,YDY-WEST-7,24.0,,WEST RIALTO,13611 Jurupa Ave,Fontana,CA,92337,APS Upholstery,Wayfair,Lacey Yan,56,19,14,0.7368,0.9107,True
+419,Replogle Globes,24.0,,CHICAGO LOOP,125 Fencl ln,Hillside,IL,60612,Decor,Decorative Accent - Home Accents,Supplier Service Desk,40,18,14,0.7778,0.95,True
+50037,Big Box Marketing,24.0,00:00:00,OCALA LOCAL,4791 NE COUNTY RD ,Melrose ,FL,32666,Decor,Outdoor Decor,Supplier Service Desk,50,18,16,0.8889,0.94,True
+265125,(US)Guangzhou Yikedashu Trading Company Limited CA 91702,24.0,,ARCADIA,1033 N Todd Ave,Azusa,CA,91702,APS,Lighting,Cheryl Zhang,73,18,14,0.7778,0.8904,True
+351120,NEW BKFARMHOUSE INC CA 92880,24.0,,CHINO LOCAL,14909 Summit Drive,Eastvale,CA,92880,APS Pet,Pet,Regan Zou,93,18,14,0.7778,0.9462,True
+356513,"ZHEJIANG KEYUAN CHAIR INDUSTRY CO.,LTD. GA 31308",24.0,,SAVANNAH,1086 Oracal Parkway,Ellabell,GA,31308,APS K&D,Furniture - Kitchen and Dining,Eve Deng,100,18,13,0.7222,0.96,True
+90444,TopBuy Inc IL 60446,24.0,00:00:00,SOUTH CHICAGO,50N.Paragon Drive,Romeoville,IL,60446,APS Outdoor,Furniture - Home Office,David Liu,59,17,16,0.9412,0.8644,True
+372404,"Foshan Baogeli Furniture Co., LTD TX 77423",24.0,,HOUSTON LOCAL,2062 Woods Road,Brookshire,TX,77423,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,66,17,13,0.7647,1.0,True
+477621,"Xiamen Xuhui Trading Co., Ltd. TX 77494",24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS Mattresses,Mattresses,Blair-Yaqing Gong,71,17,13,0.7647,0.9155,True
+98734,"Zhejiang Linya Co., Ltd GA 30294",24.0,00:00:00,BRASELTON,2105 Buford Highway,Buford,GA,30518,APS Home Improvement,Outdoor Structures,Danica Guo,47,16,16,1.0,0.9149,True
+206124,ruianshiqitengjiejuyouxiangongsi CA 91710,24.0,00:00:00,,C/O 14310 Ramona Avenue,Chino ,CA,91710,Plumbing,Plumbing - Core,Asia Supplier Service Desk,46,16,15,0.9375,0.9348,True
+268493,WL_COPE_NJ5_NJ_07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS,Furniture - Bedroom,Stella Yin,48,16,14,0.875,0.9375,True
+344132,Shenzhenshi Daman Shiye Youxiangongsi TX 77494,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS K&D,Accent Furniture,Stella Yin,55,16,13,0.8125,0.9636,True
+86423,haoqingnianus inc CA 92337,24.0,00:00:00,WEST RIALTO,10850 Business Dr,Fontana,CA,92337,APS,Furniture - Bedroom,Asia Supplier Service Desk,53,15,13,0.8667,1.0,True
+321956,Zhejiang Huiguan Leisure Products NV 89115,24.0,00:00:00,NORTH LAS VEGAS RSF,5675 E Ann Rd,Las Vegas,NV,89115,APS Home Improvement,Outdoor Structures,Danica Guo,79,15,12,0.8,0.9367,True
+401116,Eco Candle Company WI 54911,24.0,,OSHKOSH,123 E College Ave,Appleton,WI,54911,Decor,Decorative Accent - Home Accents,Supplier Service Desk,59,15,11,0.7333,1.0,True
+460584,Chengdushi Fengteng Technology Co Ltd TX 77067,24.0,,SPRING,11142 Beltline Road,Houston,TX,77067,APS Home Improvement,Flooring,Asia Supplier Service Desk,63,15,12,0.8,0.9841,True
+496773,zhengzhoushirupiaodianzishangwuyouxiangongsi CA 92880,24.0,,CHINO LOCAL,"14909 Summit Drive,DOCK #17-#18 dock",Eastvale,CA,92880,APS Bedroom,Furniture - Bedroom,Lydia Liu,63,15,12,0.8,0.9841,True
+60850,Iconic Pet NJ 07027,24.0,,WOODBRIDGE LOCAL,611 South Ave,Garwood,NJ,07027,Pet,Pet,Alyssa Haniff,52,14,12,0.8571,1.0,True
+82228,CAN_Leisure Time Products,24.0,05:00:00,BARRIE,280 Victoria Street West,Dundalk,ON,N0C 1B0,Recreation,Recreation,Milana Malko,75,14,12,0.8571,0.96,True
+136990,"May Deco, Inc. NJ",24.0,00:00:00,SECAUCUS,480 Main Ave,Wallington,NJ,07057,Decor,Furniture - Kitchen and Dining,Allie Neyman,67,14,11,0.7857,0.8507,True
+147454,"Shenzhen Huli Network Technology Co., Ltd. TX 75050",24.0,,ARLINGTON,1113 West Oakdale Road,Grand Prairie,TX,75050,APS,Upholstery - Core,Naomi JI,41,14,10,0.7143,0.878,True
+319936,"VISION VORTEX CO.,LTD NJ 08016(2)",24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Outdoor,Outdoor,Qiwen Fan,36,14,13,0.9286,0.9722,True
+319993,Yantai Luoming Xinxijishu Youxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Bedroom,Outdoor,Wendy Wang,41,14,13,0.9286,0.8537,True
+460602,Shenzhenshi Jiushangding Technology Co Ltd IL 60502,24.0,,SOUTH CHICAGO,"C/O 4275 Ferry Rd, Aurora, IL 60502",Aurora,IL,60502,APS Home Improvement,Decorative Accent - Wall Accents,Asia Supplier Service Desk,54,14,10,0.7143,0.9444,True
+461235,"GOODLUX TRADING CO.,LTD. CA 92337-7457",24.0,,WEST RIALTO,11281 CITRUS AVE,FONTANA,CA,92337-7457,APS Home Improvement,Lighting,Asia Supplier Service Desk,36,14,10,0.7143,0.8889,True
+482754,shenzhenshishangfakejiyouxiangongsi PA 19030,24.0,,PHILADELPHIA,C/O 500 Ben Fairless Dr,Fairless Hills,PA,19030,APS Outdoor,Recreation,Supplier Service Desk,63,14,10,0.7143,0.9683,True
+200221,GC美中1号仓,24.0,,NILES,CO 901 Chase Ave,Elk Grove Village,IL,60007,APS Home Improvement,Lighting,Asia Supplier Service Desk,41,13,10,0.7692,0.9512,True
+266198,Ningbo Free Trade Zone Top Green Industry and Trade Co Ltd NJ 08016,24.0,,ROBBINSVILLE,1950 River Rd,Burlington,NJ,08016,Wayfair,Outdoor,Asia Supplier Service Desk,56,13,10,0.7692,0.9821,True
+307853,"Chengdushi Furong Technology Co., Ltd. GA 30168",24.0,,AUSTELL,CO 7915 White Road,Austell,GA,30168,APS Home Improvement,Lighting,Asia Supplier Service Desk,36,13,11,0.8462,0.9722,True
+353131,shenzhenshi linenmaoyi youxiangongsi CA 91748,24.0,00:00:00,INDUSTRY,18450 East Gale Avenue,Industry,CA,91748,APS K&D,Furniture - Bedroom,Stella Yin,71,13,11,0.8462,0.9718,True
+441900,NANPING ZHONGLEI JIAJUYONGPIN YOUXIANGONGSI TX 77494,24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS K&D,Storage & Org - Furniture Adj,Asia Supplier Service Desk,49,13,12,0.9231,0.9184,True
+190977,Esbenshades Garden Center PA 17543 (2),24.0,,EAST HARRISBURG,546a E 28th Division Hwy,Lititz,PA,17543,Decor,Outdoor Decor,Trevor Cody,60,12,10,0.8333,0.8833,True
+321979,"Zhejiang Huiguan Leisure Products Co., Ltd IN 4614",24.0,,GREENWOOD LOCAL,831 N Graham Rd ,Greenwood ,IN,46143,APS Home Improvement,Outdoor Structures,Danica Guo,54,12,10,0.8333,0.963,True
+356714,  GC-WE-21,24.0,,WEST RIALTO,8375 Sultana Ave ,Fontana ,CA,92335,APS AEOF,Entertainment Furniture,Asia Supplier Service Desk,55,12,10,0.8333,0.8909,True
+404081,Shanghai ShangQuan WuLiu Co.Ltd CA 92335,24.0,,WEST RIALTO,13277 San Bernardino Ave,Fontana,CA,92335,APS Outdoor,Outdoor,Moti Mao,31,12,9,0.75,0.871,True
+440644,"Ningxia Xingchenxin Trading Co., Ltd._1 TX 77494",24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS Upholstery,Upholstery - Core,Estrella Wang,46,12,9,0.75,0.8696,True
+446973,Haukkie Inc. GA 31407,24.0,,SAVANNAH,"302 International Trade Pkwy, suite 200",Port Wentworth,GA,31407,APS Housewares & More,Bath,Asia Supplier Service Desk,42,12,11,0.9167,1.0,True
+450104,Chengdu Yaotong Wangluo Keji Youxian Gongsi GA 30168,24.0,,AUSTELL,"C/O 7915 White Road, Building 100",Austell,GA,30168,APS Housewares & More,Furniture - Home Office,Asia Supplier Service Desk,33,12,9,0.75,1.0,True
+450333,"WenZhou Limu Furniture Co,.ltd CA 91710",24.0,,CHINO LOCAL,"5125 Schaefer Ave Suite 104.,dock # 30 to 33",Chino,CA,91710,APS AEOF,Furniture - Kitchen and Dining,Asia Supplier Service Desk,35,12,10,0.8333,0.9143,True
+19503,Island Stone CA 95065,24.0,00:00:00,SALINAS,78 Hangar Way,Watsonville,CA,95076,Flooring,Flooring,William Rappole,57,11,8,0.7273,0.8596,True
+21082,TashMart,24.0,00:00:00,HOUSTON LOCAL,18103 W Little York Rd,Katy,TX,77449,Plumbing,Plumbing - Core,Supplier Service Desk,32,11,10,0.9091,1.0,True
+27489,CAN_AG Trade Corp ON M9W 1P1,24.0,00:00:00,TORONTO_LOCAL,1475 Courtney Park Drive,Toronto,ON,M9W 1P1,CA Soft Home + Rugs,Rugs,Supplier Service Desk,38,11,9,0.8182,0.9737,True
+278523,Victrola CO 80601,24.0,,AURORA LOCAL,10899 Havana Street,Brighton,CO,80601,Decor,Decorative Accent - Home Accents,Supplier Service Desk,34,11,9,0.8182,1.0,True
+401337,"Ningbo Yanpu Technology Co., Ltd NV 89115",24.0,,NORTH LAS VEGAS RSF,5675 E. Ann Rd,Las Vegas,NV,89115,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,32,11,8,0.7273,0.9688,True
+100148,NingBo KaiMeiChen DianZiShangWu You CA 91761(2),24.0,,CHINO LOCAL,5721 E Santa Ana St,Ontario,CA,91761,APS Home Improvement,Outdoor Structures,Nicole Sun,27,10,8,0.8,0.8519,True
+328862,Ningbo Suntel Importing and Exporting TX 77493,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS,Outdoor Structures,Asia Supplier Service Desk,54,10,8,0.8,0.8519,True
+334036, SAVJW1,24.0,00:00:00,SAVANNAH,1086 Oracal Parkway,Ellabell,GA,31308,APS,Plumbing - Core,Yu Xie,26,10,7,0.7,0.9231,True
+375417,"Ningbo Sandinrayli impexp co.,Ltd PA 18634",24.0,,SCRANTON,250 Tradeport Rd,Nanticoke,PA,18634,APS Pet,Pet,Asia Supplier Service Desk,34,10,9,0.9,0.9706,True
+406637,HOP TUU IRON PRODUCTSMANUFACTURING COMPANY NJ 08016,24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,30,10,7,0.7,0.9333,True
+406976,ZHONGSHAN SHITIANYU DENGSHI YOUXIANGONGSI CA 90670,24.0,,SANTA FE SPRINGS,Knight Swift CA,Santa Fe Springs,CA,90670,APS Home Improvement,Lighting,Asia Supplier Service Desk,28,10,7,0.7,1.0,True
+413994,Shenzhenshi Jiushangding Technology Co Ltd GA 30168 ,24.0,00:00:00,AUSTELL,"C/O 7915 White Road, Building 100",Austell,GA,30168 ,APS Home Improvement,Outdoor Decor,Asia Supplier Service Desk,30,10,7,0.7,1.0,True
+441919,ENSHINES INC NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave1,Port Reading,NJ,07064,APS Bedroom,Seasonal Decor,Asia Supplier Service Desk,49,10,8,0.8,0.9796,True
+473460,"Shenzhen Putian Technology Co., Ltd TN 38115",24.0,,OLIVE BRANCH LOCAL,5625 Challenge Dr,Memphis,TN,38115,APS Pet,Pet,Regan Zou,34,10,7,0.7,1.0,True
+477089,QK-WPLA15,24.0,,WEST RIALTO,13277 San Bernardino Ave,Fontana,CA,92335,APS Outdoor,Outdoor,Moti Mao,37,10,7,0.7,1.0,True
+11901,Moradi LLC,24.0,00:00:00,WEST DALLAS,2104 Irving Blvd.,Dallas,TX,75207,Soft Home,Bedding,Supplier Service Desk,24,9,7,0.7778,0.9583,True
+243966,ARESON INC CA 91766,24.0,,,1589 E Nine St,Pomona,CA,91766,APS,Furniture - Bedroom,Wendy Wang,28,9,7,0.7778,0.9286,True
+298245,FlexiSpot Inc IL 60439,24.0,00:00:00,MCCOOK,11131 Katherines Crossing,Woodridge,IL,60517,APS,Entertainment Furniture,Fiona Jiang,21,9,9,1.0,1.0,True
+315042,Kichae USA Inc. CA 92571,24.0,,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS,Plumbing - Core,Asia Supplier Service Desk,28,9,7,0.7778,0.9286,True
+331142,Yantai Aifengdianzishangwu Youxiangongsi TX 77423,24.0,,HOUSTON LOCAL,28150 US 90,Brookshire,TX,77423,APS K&D,Storage & Org - Furniture Adj,Asia Supplier Service Desk,38,9,8,0.8889,0.9474,True
+407903,FLINT GARDEN INC NJ 08067,24.0,,CAMDEN,2 Gateway Blvd,Pedricktown,NJ,08067,APS Home Improvement,Lighting,Asia Supplier Service Desk,35,9,7,0.7778,0.9714,True
+415939,SHENZHENSHI JULIBAIBIAN KEJIYOUXIAN TX 77494,24.0,07:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS K&D,Furniture - Bedroom,Stella Yin,30,9,9,1.0,1.0,True
+417389,"Anji Yibo Furniture Co., Ltd NJ 07036",24.0,,LINDEN,"Building E, 500 Linden Logistics Way","Linden,",NJ,07036,APS K&D,Furniture - Kitchen and Dining,Noemi Tang,34,9,7,0.7778,0.9412,True
+441159,Vortex International Trading Limited TX 77494,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS Youth,Playroom,Emily Liao,41,9,7,0.7778,0.9268,True
+450512,"Ningbo Maowei E-commerce Co., Ltd. TX 77449",24.0,,HOUSTON LOCAL,4232 Clay Commerce Dr,Katy,TX,77449,APS Outdoor,Outdoor,Qiwen Fan,22,9,7,0.7778,0.9091,True
+460581,"Shenzhenshi Yiyibushe Technology Co., Ltd. IL 60502 ",24.0,,SOUTH CHICAGO,C/O 4275 Ferry Rd,Aurora,IL,60502 ,APS Home Improvement,Accent Furniture,Asia Supplier Service Desk,24,9,7,0.7778,1.0,True
+493563,Yiimo NJ 08817,24.0,,WOODBRIDGE LOCAL,250 Carter Dr1,Edison,NJ,08817,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,53,9,8,0.8889,0.9811,True
+62582,MOTIS Brands,24.0,15:00:00,NORTH MILWAUKEE,N102 W19400 Willow Creek Way,Germantown,WI,53022,Wayfair Professional,Education,Supplier Service Desk,27,8,6,0.75,1.0,True
+151386,"Aoodor (Ningbo) Tech CO.,LTD USNJ06",24.0,00:00:00,ROBBINSVILLE,1950 River Rd,Burlington,NJ,08016,APS,Spas,Asia Supplier Service Desk,30,8,6,0.75,0.9333,True
+231809,Shenzhen Zhichen Trading Co. LTD. NJB,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS K&D,Furniture - Home Office,Stella Yin,24,8,6,0.75,0.875,True
+249436,DH-BC02,24.0,00:00:00,VANCOUVER_LOCAL,11251 Dyke Rd,Richmond,BC,V7A 0A1,Wayfair,Outdoor Decor,Zoey Li,20,8,8,1.0,0.9,True
+286793,Shanghai zhicheng commercial trading NJ 08505,24.0,07:00:00,ROBBINSVILLE,1175 Florence Columbus Road ,Bordentown,NJ,08505,APS Other,Decorative Accent - Wall Accents,Asia Supplier Service Desk,43,8,6,0.75,1.0,True
+302582,shen zhen shi mi ge zhi ke ji you xian gong si CA 92336,24.0,00:00:00,WEST RIALTO,14779 Bar Harbor Rd,Fontana,CA,92336,Wayfair,Pet,Asia Supplier Service Desk,35,8,6,0.75,0.8571,True
+322100,Hangzhou Mengfeisi Home Furnishings TX 77494,24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS Outdoor,Outdoor,Moti Mao,14,8,6,0.75,0.9286,True
+413596,YXSUN COMPANY LTD GA 30168,24.0,00:00:00,AUSTELL,"C/O 7915 White Road, Building 100 ",Austell,GA,30168,APS Home Improvement,Seasonal Decor,Lavinia Zhang,34,8,6,0.75,1.0,True
+414323,Shenzhen dilili trading co ltd NJ 08817,24.0,09:00:00,WOODBRIDGE LOCAL,250 CARTER DR,EDISON,NJ,08817,APS Bedroom,Plumbing - Vanities,Asia Supplier Service Desk,28,8,7,0.875,1.0,True
+433375,Home Live Relax INC. CA 92571,24.0,,RIALTO LOCAL,728 W Rider St ,Perris,CA,92571,APS K&D,Accent Furniture,Ricky Yu,27,8,6,0.75,0.963,True
+460561,DingFar Company Ltd. GA 30168,24.0,,AUSTELL,"C/O 7915 White Road, Building 100 ",Austell,GA,30168,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,35,8,6,0.75,0.9714,True
+472792,"MANYBOX TECHNOLOGY CO., LIMITED CA 91789",24.0,,INDUSTRY,"20300 Business Pkwy, Dock 30",City of Industry,CA,91789,APS Home Improvement,Entertainment Furniture,Supplier Service Desk,21,8,6,0.75,1.0,True
+479676,"Hangzhou Cloudyard Technology Co., Ltd. TX 77066",24.0,,SPRING,11833 Cutten Road,Houston,TX,77066,APS Outdoor,Outdoor,Asia Supplier Service Desk,40,8,6,0.75,1.0,True
+717,World Marketing,24.0,00:00:00,ALTOONA,7034 Juniata Valley Pike,petersburg,PA,16669,Casegoods,Appliances,Karolina Coulter,28,7,6,0.8571,0.8929,True
+214401,PB USA LLC FL 33907,24.0,00:00:00,NORTH FORT MYERS,1941 Dana Dr,Fort Myers,FL,33907,Tabletop,Tabletop,Araj Shaikh,45,7,7,1.0,0.9556,True
+275562,Grand Leisure Outdoor Product Co. CA 91746,24.0,00:00:00,ARCADIA,13060 Temple Ave,City of Industry,CA,91746,APS Outdoor,Lighting,Melody Lu,24,7,5,0.7143,0.9167,True
+291865,GIFYET LTD NJ 08016 ,24.0,,ROBBINSVILLE,1620 River Rd,Burlington,NJ,08016 ,APS AEOF,Entertainment Furniture,Asia Supplier Service Desk,40,7,5,0.7143,0.875,True
+299542,SHENZHENSHI AOJIA KEJIYOUXIANGONGSI CA 91748,24.0,,INDUSTRY,18450 East Gale Avenue ,City of Industry,CA,91748,APS K&D,Furniture - Bedroom,Hannah Guan,19,7,7,1.0,1.0,True
+306557,GuCang-NJ-11629-13,24.0,,INDUSTRY,1183 Florence Rd,Columbus,NJ,08022,APS Home Improvement,Outdoor Structures,Nicole Sun,16,7,7,1.0,0.875,True
+313018,"Hangzhou Gesong E-commerce Co., Ltd. GA 30168",24.0,,AUSTELL,545 Lake Careco Road,Austell,GA,30168,Wayfair,Outdoor,Qiwen Fan,22,7,5,0.7143,1.0,True
+321001,"NINGBO QAYA ILLUMINATION CO.,LTD WA 98424",24.0,,TACOMA,6546 20th St E,Fife,WA,98424,APS,Furniture - Bedroom,Asia Supplier Service Desk,22,7,5,0.7143,1.0,True
+323265,"Putianshi Wantaiwujin Co., Ltd. NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,Wayfair,Furniture - Bedroom,Asia Supplier Service Desk,21,7,6,0.8571,1.0,True
+324818,运去哪儿-NJ美东仓,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Youth,Decorative Accent - Wall Accents,Asia Supplier Service Desk,39,7,6,0.8571,0.9231,True
+326715,GuCang-NJ-19,24.0,,PHILADELPHIA,CO 500 Ben Fairless Dr,Fairless Hills,PA,19030,APS Home Improvement,Outdoor Decor,Nicole Sun,28,7,7,1.0,0.8929,True
+375460,"Ningbo Sandinrayli impexp co.,Ltd GA 31308",24.0,,SAVANNAH,1119 Interstate Center Blvd,Ellabell,GA,31308,APS Pet,Pet,Asia Supplier Service Desk,24,7,5,0.7143,1.0,True
+401331,"Ningbo Yanpu Technology Co., Ltd PA 18634",24.0,,SCRANTON,250 Tradeport Rd,Nanticoke,PA,18634,APS Bedroom,Storage & Org - Frequency,Asia Supplier Service Desk,42,7,6,0.8571,0.9762,True
+402261,shenzhen weimoli dianzishangwuyouxiangongsi NJ 08016,24.0,,ROBBINSVILLE,1620 River Road (door 9-46),Burlington,NJ,08016,APS Home Improvement,Appliances,Asia Supplier Service Desk,25,7,6,0.8571,0.92,True
+405725,CAJW07,24.0,,WEST RIALTO,2163 Riverside Ave,Colton,CA,92324,APS Home Improvement,Plumbing - Core,Yu Xie,28,7,5,0.7143,0.9286,True
+449183,GC-HOU-2,24.0,,HOUSTON LOCAL,30815 Kingsland Boulevard TX ,Brookshire ,TX,77423,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,40,7,7,1.0,1.0,True
+475949,91440700MAC6BY20X3 CA 92337,24.0,,WEST RIALTO,11281 CITRUS AVE,FONTANA,CA,92337,APS Home Improvement,Lighting,Asia Supplier Service Desk,18,7,5,0.7143,0.8889,True
+479535,"Fujian Yitai Investment Co.,LTD. NY 11530",24.0,,GARDEN CITY,4 Commercial Av,Garden City,NY,11530,APS Home Improvement,Storage & Org - Systems,Asia Supplier Service Desk,23,7,5,0.7143,0.8696,True
+488722,Shenzhen shi jingchuang feilu keji youxian gongsi GA 31322,24.0,,SAVANNAH,301 CYPRESS MEADOW DR,Pooler,GA,31322,APS Decor,Outdoor Decor,Asia Supplier Service Desk,25,7,5,0.7143,0.96,True
+48901,Joels Antiques,24.0,00:00:00,MANITOWOC,8122 Morrison Rd,Greenleaf,WI,54126,Decor,Decorative Accent - Wall Accents,Supplier Service Desk,28,6,5,0.8333,0.9643,True
+219851,ANT19137,24.0,00:00:00,PHILADELPHIA,2900 Bridge St,Philadelphia,PA,19137,APS Youth,Decorative Accent - Wall Accents,Asia Supplier Service Desk,41,6,5,0.8333,1.0,True
+271460,WILLAMSPACE LLC CA 91764,24.0,,CHINO LOCAL,800 N Barrington Avenue,Ontario,CA,91764,APS,Entertainment Furniture,Nora Li,18,6,6,1.0,0.9444,True
+292448,LCNJ06,24.0,,ROBBINSVILLE,1950 River Road ,Burlington ,NJ,08016 ,APS Youth,Outdoor,Asia Supplier Service Desk,20,6,6,1.0,0.95,True
+297472,YIGOBUY INC NJ 08016,24.0,00:00:00,ROBBINSVILLE,1950 River Road,Burlington ,NJ,08016,APS,Accent Furniture,Blair-Yaqing Gong,19,6,5,0.8333,0.9474,True
+352993,SKC-YQN-NJ-BLL,24.0,,LINDEN, 500 Linden Logistics Way,Linden,NJ,07036,APS AEOF,Furniture - Bedroom,Nora Li,29,6,5,0.8333,0.8621,True
+358255,FUJIANJIABEISIKEJIYOUXIANGONGSI PA 18052,24.0,,LEHIGH VALLEY LOCAL,"3585 S. Church St. Whitehall, PA 18052",Whitehall,PA,18052,APS K&D,Entertainment Furniture,Asia Supplier Service Desk,17,6,5,0.8333,0.9412,True
+367622,Craft Home Inc CA 92337,24.0,,WEST RIALTO,13521 Santa Ana Ave, Fontana,CA,92337,Upholstery,Upholstery - Core,Demi Wang,8,6,5,0.8333,0.875,True
+411941,Shenzhenshi Daman Shiye Youxiangongsi NJ 07036,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS K&D,Furniture - Bedroom,Stella Yin,21,6,5,0.8333,1.0,True
+414257,"NINGBO GLOBALWAY IMP.& EXP.CO.,LTD CA 92337",24.0,,WEST RIALTO,"11250 Poplar Ave, Bldg C",Fontana,CA,92337,APS AEOF,Furniture - Bedroom,Asia Supplier Service Desk,17,6,5,0.8333,0.9412,True
+432697,EFFLIKE BLEALL GNARUSE INC CA 92337,24.0,,WEST RIALTO,11281 Citrus Ave,Fontana,CA,92337,Wayfair,Outdoor,Asia Supplier Service Desk,34,6,6,1.0,0.8529,True
+445044,TURVISION INC NJ 07064,24.0,,SOUTH CARTERET,"1001 W Middlesex Ave, Port Reading, NJ 07064",Port Reading,NJ,07064,APS Housewares & More,Indoor Fireplaces,Supplier Service Desk,44,6,6,1.0,0.9091,True
+452859,JUSTMAE INC AL 08859-1098,24.0,,,99 CALLAHAN BLVD PARLIN,PARLIN,NJ,08859-1098,APS AEOF,Entertainment Furniture,Fiona Jiang,6,6,6,1.0,1.0,True
+465626,Linyibaisenjiajuyongpinyouxiangongsi CA 92336,24.0,,WEST RIALTO,C/O 14779 Bar Harbor Rd Fontana,Fontana,CA,92336,APS Upholstery,Storage & Org - Frequency,Asia Supplier Service Desk,28,6,5,0.8333,0.9643,True
+476167,YQN BCF_CA,24.0,,WEST RIALTO,11281 CITRUS AVE,FONTANA,CA,92337,APS Home Improvement,Lighting,Asia Supplier Service Desk,27,6,5,0.8333,0.8519,True
+2227,Micro World Corp,24.0,00:00:00,INDUSTRY,855 Towne Center Dr,Pomona,CA,91767,Casegoods,Furniture - Home Office,Ashley Green,19,5,4,0.8,1.0,True
+13573,Little Tikes CA 92345,24.0,00:00:00,WEST RIALTO,10200 Amargosa rd,Hesperia,CA,92345,Recreation,Recreation,XiLin Choi,26,5,5,1.0,1.0,True
+17080,Durham Manufacturing CT 06422,24.0,07:00:00,NORTH HAVEN,201 Main Street,Durham,CT,06422,Storage & Org - Frequency,Storage & Org - Systems,Supplier Service Desk,11,5,5,1.0,1.0,True
+24173,KW Hammocks,24.0,00:00:00,KNOXVILLE,245 LANDS RD,MADISONVILLE,TN,37354,Outdoor Furniture,Outdoor,Isha Singh,35,5,4,0.8,0.9714,True
+58048,Cosiest GA 30122,24.0,00:00:00,AUSTELL,Douglas Hill Park3,Lithia Springs,GA,30122,APS Outdoor,Outdoor Fireplaces,Qiwen Fan,38,5,5,1.0,0.9474,True
+219582,宁波高玮进出口有限公司 WA 98387,24.0,00:00:00,OLYMPIA,5210 196th St E,Spanaway,WA,98387,APS AEOF,Furniture - Kitchen and Dining,Asia Supplier Service Desk,20,5,4,0.8,0.95,True
+244092,Nicetree Consultant Inc CA 91730,24.0,,WEST RIALTO,9189 Utica Ave,Rancho Cucamonga,CA,91730,Upholstery,Upholstery - Core,Kosi Obi,22,5,5,1.0,0.9091,True
+245570,MEET SUNNY CORPORATION CA 91752,24.0,00:00:00,WEST RIALTO,3900 Hamner Ave,Eastvale,CA,91752,APS,Outdoor,Danica Guo,17,5,4,0.8,0.8824,True
+285088,Qianhai Qianyi (Shenzhen) Technology Co.CA91761(2),24.0,,CHINO LOCAL,1521 E Francis St,Ontario,CA,91761,APS Home Improvement,Lighting,Hernando Xia,17,5,4,0.8,0.9412,True
+291042,MEET SUNNY CORPORATION CA 91752(2),24.0,00:00:00,WEST RIALTO,11010 Hopkins st,jurupa valley,CA,91752,APS,Outdoor,Danica Guo,6,5,5,1.0,1.0,True
+307546,RunFine Group CA 95691,24.0,00:00:00,SACRAMENTO LOCAL,1810 Enterprise Boulevard,West Sacramento,CA,95691,Plumbing,Plumbing - Vanities,Supplier Service Desk,22,5,4,0.8,0.9545,True
+308818,Sunon TX 77493,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS,Upholstery - Core,Fiona Jiang,10,5,4,0.8,0.9,True
+351437,Tmekeeper INC. TX 77494,24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY ,TX,77494,APS Bedroom,Lighting,Christal Ding,15,5,4,0.8,0.9333,True
+351738,"Zhejiang Huaaokang Furniture Co.,Ltd NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Outdoor,Outdoor,Qiwen Fan,20,5,4,0.8,0.9,True
+353643,"FUFU and GAGA Trade Co., Ltd. TX 77494",24.0,,HOUSTON LOCAL,28119 KATY FWY,KATY ,TX,77494,APS Bedroom,Nursery,Christal Ding,25,5,4,0.8,0.96,True
+361399,OSTBA APPLIANCE INC TX 77494,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,Appliances,Small Electrics,Tracy Rong,9,5,4,0.8,1.0,True
+361471,Ningboyuxudianzishangwuyouxiangongsi CA 91730,24.0,,WEST RIALTO,11340 Jersey Boulevard,Rancho Cucamonga,CA,91730,APS AEOF,Wayfair,Ricky Yu,18,5,4,0.8,0.9444,True
+365190,Central Power International Limited LLC CA 92337,24.0,,WEST RIALTO,13083 Slover Ave,Fontana,CA,92337,APS K&D,Wayfair,Hannah Guan,20,5,5,1.0,0.9,True
+372797,TaizhouYishabeianJiejuCLtd. NJ 08036,24.0,,CAMDEN,"C/O 100 Lawrence Blvd, Hainesport",Hainesport,NJ,08036,Wayfair,Pet,Asia Supplier Service Desk,16,5,4,0.8,1.0,True
+373915,hangzhousushijiajushejiyouxiangongsi CA 91731,24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Bedroom,Wayfair,Asia Supplier Service Desk,7,5,4,0.8,1.0,True
+408557,"Ganzhou Yong Xin Zuo Furniture Co., Ltd. NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Readin,NJ,07064,Wayfair,Entertainment Furniture,Asia Supplier Service Desk,11,5,4,0.8,1.0,True
+431283,GYM HERO TECHNOLOGY CO LTD NJ 08831,24.0,,PRINCETON,117 Interstate Blvd,Monroe,NJ,08831,APS Decor,Furniture - Home Office,Asia Supplier Service Desk,11,5,4,0.8,1.0,True
+432817,"Hangzhou Tingyun International Trading Co., Ltd. PA 18052",24.0,05:00:00,LEHIGH VALLEY LOCAL,3585 S. Church St.,Whitehall,PA,18052,Wayfair,Outdoor,Supplier Service Desk,26,5,4,0.8,0.9615,True
+451986,HONGKONG AODK UNIVERSAL LIMITED NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS AEOF,Furniture - Bedroom,Fiona Jiang,17,5,5,1.0,1.0,True
+472162,"Shenzhen Vivid Trading Co., Ltd. CA 92324",24.0,,WEST RIALTO,"2163 Riverside Ave, Colton, CA 92324",CA,CA,92324,APS Bedroom,Furniture - Kitchen and Dining,Supplier Service Desk,23,5,4,0.8,0.9565,True
+476622,hangzhoukuajingyiwangluokejiyouxiangongsi CA 91730-1111,24.0,,WEST RIALTO,9189 Utica Ave,Rancho Cucamonga,CA,91730-1111,APS Home Improvement,Outdoor,Asia Supplier Service Desk,22,5,4,0.8,0.9091,True
+306,Bradley Smoker,24.0,00:00:00,ROCK ISLAND,644 Enterprise Ave,Galesburg,IL,61401,Grills,Grills,Annie Reed,18,4,3,0.75,1.0,True
+99315,nicesoul furniture inc CHINO CA 91710,24.0,00:00:00,CHINO LOCAL,DONG FANG MARKETING INC 5125 Schaefer Ave,Chino ,CA,91710,APS Outdoor,Outdoor,Moti Mao,17,4,3,0.75,0.8824,True
+148984,CAP CA 92571,24.0,00:00:00,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,Appliances,Appliances,Adam Quarterman,13,4,4,1.0,0.9231,True
+202241,Sonor Rous INC CA,24.0,00:00:00,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS,Pet,Asia Supplier Service Desk,19,4,3,0.75,0.9474,True
+235001,ZHUHAI PEITIANLI DECORATIVE MATERIAL CA 91710,24.0,00:00:00,CHINO LOCAL,14310 Ramona Avenue,Chino,CA,91710,APS,Decorative Accent - Wall Accents,Asia Supplier Service Desk,9,4,3,0.75,0.8889,True
+247397,Nicaragua Innovation Technology CA 91766,24.0,,INDUSTRY,1589 E Nine St,Pomona,CA,91766,APS,Plumbing - Core,Ida Li,18,4,3,0.75,1.0,True
+279061,"Anji Wuyeqianxing Furniture Co., Ltd CA 92571",24.0,,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS Home Improvement,Outdoor Decor,Danica Guo,16,4,3,0.75,0.9375,True
+285924,"Shenzhen Laiwo Trading Co., Ltd. NJ 08505",24.0,,ROBBINSVILLE,3280 US 206,Bordentown,NJ,08505,APS,Furniture - Kitchen and Dining,Stella Yin,31,4,3,0.75,0.871,True
+286009,WILLAMSPACE LLC CA 91731 ,24.0,,ARCADIA,4388 Shirley Ave,El Monte ,CA,91731,APS,Entertainment Furniture,Nora Li,15,4,3,0.75,0.8667,True
+288223,Oxford USA Corporation TX 77423,24.0,,HOUSTON LOCAL,32045 US-90 Bus ,Brookshire,TX,77423,Wayfair,Tabletop,Isabella Keel,12,4,4,1.0,1.0,True
+298758,BDI Alabama,24.0,00:00:00,ANNISTON,809 Bama Drive,Oxford,AL,36203,Pet,Pet,Supplier Service Desk,7,4,3,0.75,1.0,True
+327779,"AD ASTRA(Xiamen) E-Commerce Co.,LTD NJ 08846 ",24.0,,WOODBRIDGE LOCAL,245 Mountain Ave,Middlesex,NJ,08846,APS Youth,Decorative Accent - Wall Accents,Thomas Zhang,11,4,3,0.75,1.0,True
+328841,Foshanshiqizhengdianqiyouxiangongsi CA 91724,24.0,,ARCADIA,1067 N Grand Ave,Covina,CA,91724,APS Home Improvement,Seasonal Decor,Asia Supplier Service Desk,19,4,4,1.0,0.9474,True
+333498,Shenzhen shi jingchuang feilu keji CA 92337(2),24.0,00:00:00,WEST RIALTO, 11281 CITRUS AVE,FONTANA,CA,92337,APS Youth,Outdoor Decor,Asia Supplier Service Desk,25,4,3,0.75,0.88,True
+334357,GIROMET CO NJ 08817 (2),24.0,00:00:00,WOODBRIDGE LOCAL,18 Distribution Blvd,Edison,NJ,08817,Casegoods,Furniture - Home Office,Prisha Mark,11,4,3,0.75,1.0,True
+344769,Deepcooling LLC TX 77494,24.0,00:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,Casegoods,Storage & Org - Furniture Adj,Asia Supplier Service Desk,17,4,4,1.0,1.0,True
+351741,"Zhejiang Huaaokang Furniture Co.,Ltd TX 77494",24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS Outdoor,Outdoor,Qiwen Fan,14,4,4,1.0,1.0,True
+353157,WPHOU4-WPHOU6-HOU05.,24.0,,HOUSTON LOCAL,14402 Fallbrook Dr Suite 290,Cypress,TX,77429,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,25,4,3,0.75,0.96,True
+355328,Heininger Holdings LLC CA 94538,24.0,00:00:00,FREMONT,40577 Albrae St Ste E,Fremont,CA,94538,Outdoor Furniture,Outdoor,Kate Schryver,22,4,3,0.75,1.0,True
+365479,YQN-GA,24.0,,BRASELTON,2105 Buford Highway,Buford,GA,30518 ,APS Rugs,Rugs,Rainbow Wu,13,4,4,1.0,1.0,True
+372238,Nantongmijieshangmaoyouxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave, Port Reading,NJ,07064,APS AEOF,Furniture - Home Office,Asia Supplier Service Desk,23,4,3,0.75,1.0,True
+372644,anjihengyidianzishangwuyouxiangongsi CA 92335,24.0,,WEST RIALTO,13277 San Bernardino Ave,Fontana,CA,92335,APS K&D,Furniture - Kitchen and Dining,Hannah Guan,28,4,4,1.0,0.8929,True
+375475,shenzhen weimoli dianzishangwuyouxiangongsi TX 75056,24.0,,IRVING,"C/O 4301 Live Oak Dr, Building E",The Colony,TX,75056,APS Home Improvement,Small Electrics,Asia Supplier Service Desk,12,4,3,0.75,0.9167,True
+375833,WANYITONG USWC5,24.0,,INDUSTRY,151 Marcellin Dr,City of Industry,CA,91789,APS Bedroom,Furniture - Bedroom,Noemi Tang,10,4,3,0.75,1.0,True
+399388, 乐歌HOU07,24.0,00:00:00,HOUSTON LOCAL,28119 KATY FWY,KATY,TX,77494,APS Bedroom,Storage & Org - Furniture Adj,Iris Sang,11,4,4,1.0,0.9091,True
+406400,ZT TRADING INC. CA 92337 (2),24.0,,WEST RIALTO,13423 Santa Ana Avenue,Fontana,CA,92337,APS Outdoor,Spas,Asia Supplier Service Desk,22,4,3,0.75,0.9545,True
+412125,anjigufengjiajuyouxiangongsi CA 92571,24.0,,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,15,4,4,1.0,1.0,True
+413704,Chengdushi Fengteng Technology Co Ltd GA 30168,24.0,,AUSTELL,"C/O 7915 White Road, Building 100",Austell,GA,30168,APS Home Improvement,Tabletop,Asia Supplier Service Desk,23,4,4,1.0,0.913,True
+414055,"NANJING HENGKE ELECTRONIC COMMERCE CO., LTD KY 41048",24.0,,N.  KENTUCKY LOCAL,2125 Gateway Blvd,Hebron,KY,41048,APS Housewares & More,Decorative Accent - Home Accents,Asia Supplier Service Desk,16,4,3,0.75,0.9375,True
+427128,QUANZHOURUNYONGMAOYIYOUXIANGONGSI CA 91764,24.0,,CHINO LOCAL,800 N. Barrington Avenue,Ontario,CA,91764,APS AEOF,Furniture - Bedroom,Asia Supplier Service Desk,16,4,3,0.75,0.875,True
+440354,ZHIMAO STAR TECHNOLOGY LIMITED TN 38118(1),24.0,,OLIVE BRANCH LOCAL,4259 Air Trans Road,Memphis,TN,38118,Wayfair,Upholstery - Core,Supplier Service Desk,21,4,4,1.0,1.0,True
+440538,"Hangzhou Ruiwei Intelligent Home Technology Co., Ltd. NJ 08086",24.0,,CAMDEN,"301 Grove Rd, Suites#200,West Deptford,Thorofare",Thorofare,NJ,08086,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,11,4,3,0.75,1.0,True
+446200,AISUNG INC IL 60451,24.0,,MOKENA,"2301 Ellis Court New Lenox, IL 60451", Ellis Court New Lenox,IL,60451,APS AEOF,Accent Furniture,Asia Supplier Service Desk,18,4,3,0.75,0.9444,True
+458639,               WPPA2,24.0,,LEHIGH VALLEY LOCAL,3363 Gun Club Rd,Nazareth,PA,18064 ,APS K&D,Entertainment Furniture,Hannah Guan,19,4,3,0.75,0.8947,True
+460574,YXSUN COMPANY LTD IL 60502,24.0,,SOUTH CHICAGO,C/O 4275 Ferry Rd,Aurora,IL,60502,APS Decor,Storage & Org - Systems,Lavinia Zhang,18,4,4,1.0,1.0,True
+463929,"Hangzhou Meikaxi Technology Co.,LTd TX 77494",24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS AEOF,Upholstery - Core,Asia Supplier Service Desk,21,4,3,0.75,0.9048,True
+468539,Peachtree press inc_1 TX 77521,24.0,,BAYTOWN,1770 East Freeway Services Rd,Baytown,TX,77521,APS Wayfair Professional,Office,Asia Supplier Service Desk,16,4,3,0.75,0.875,True
+484103,AIVITUVIN INC GA 31326(3),24.0,,SAVANNAH,3300 Coastal Trade Center Parkway,Rincon,GA,31326,APS Pet,Pet,Regan Zou,8,4,4,1.0,1.0,True
+3574,Travel Chair,24.0,00:00:00,TACOMA,5709 34th Ave NW,Gig Harbor,WA,98335,Outdoor Furniture,Outdoor,Supplier Service Desk,4,3,3,1.0,1.0,True
+26762,Central Brass CA,24.0,00:00:00,SANTA FE SPRINGS,3325 S. Garfield Ave.,Commerce,CA,90040,Plumbing,Plumbing - Core,Madison MacDowell,5,3,3,1.0,1.0,True
+40547,Pacific Currents Inc. CA 91765,24.0,00:00:00,INDUSTRY,20538 E OAK MEADOW LN,DIAMOND BAR,CA,91765,Outdoor Structures,Outdoor Structures,Supplier Service Desk,15,3,3,1.0,0.8667,True
+108154,"FlySoar Trade Co., Ltd TX 77494",24.0,00:00:00,HOUSTON LOCAL,28119 KATY FWY,KATY ,TX,77494,APS,Lighting,Christal Ding,14,3,3,1.0,0.9286,True
+182554,Chintex Orential USA INC CA 91761,24.0,,CHINO LOCAL,13015 S kirkwood Rd,Ontario,CA,91761,Soft Home,Upholstery - Core,Alaina Phelan,7,3,3,1.0,1.0,True
+191719,Interlink Products International NJ 07036,24.0,00:00:00,LINDEN,1375 E LINDEN AVE,LINDEN,NJ,07036,Plumbing,Plumbing - Core,Madison MacDowell,19,3,3,1.0,0.9474,True
+221412,"Zhejiang Linya Co., Ltd TXJW",24.0,00:00:00,DALLAS LOCAL,321 W Centre Park Blvd #100,Desoto,TX,75115,APS Home Improvement,Wayfair,Danica Guo,23,3,3,1.0,0.9565,True
+224130,CA JW2,24.0,00:00:00,INDUSTRY,1589 E 9th St,Pomona,CA,91766,APS,Plumbing - Core,Yu Xie,8,3,3,1.0,1.0,True
+269278,Tigris OH 43615,24.0,13:00:00,TOLEDO LOCAL,2854 N Holland Sylvania Road,Toledo,OH,43615,Plumbing,Plumbing - Core,Maverick Schlosser,8,3,3,1.0,1.0,True
+270751,TANYA DECOR INC CA 91730,24.0,14:00:00,,10013 Eighth Street Unit K,Rancho Cucamonga,CA,91730,Wayfair,Lighting,Asia Supplier Service Desk,10,3,3,1.0,1.0,True
+286836,"Shenzhen Laiwo Trading Co., Ltd. IL 60431",24.0,,SOUTH CHICAGO,1600 Rock Creek Blvd,Joliet,IL,60431,APS,Pet,Stella Yin,8,3,3,1.0,0.875,True
+293152,Shenzhenshiweilukejiyouxiangongsi CA 92335 (3),24.0,,WEST RIALTO,8375 Sultana Ave Unit 2,Fontana,CA,92335,APS,Furniture - Bedroom,Stella Yin,9,3,3,1.0,1.0,True
+299570,Healthcareco ltd NJ 08901 ,24.0,,EAST BRUNSWICK,520 JERSEY AVE ,NEW BRUNSWICK,NJ,08901,APS Mattresses,Upholstery - Core,Sylvia Ding,8,3,3,1.0,1.0,True
+314813,Xiamenchaoshengmaoyiyouxiangongsi PA 18052,24.0,00:00:00,LEHIGH VALLEY LOCAL,3585 S Church St,Whitehall,PA,18052,Wayfair,Entertainment Furniture,Asia Supplier Service Desk,14,3,3,1.0,1.0,True
+315533,"Anji Yibo Furniture Co., Ltd TX 77493",24.0,00:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77493,APS,Furniture - Kitchen and Dining,Noemi Tang,13,3,3,1.0,0.9231,True
+332861,Ningbo Suntel Importing and Exporting NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS,Pet,Asia Supplier Service Desk,11,3,3,1.0,1.0,True
+344809,ARTICLE-ET TECHNOLOGY DEVELOPMENT INC CA 95304,24.0,,TRACY LOCAL,2795 Paradise Road,Tracy,CA,95304,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,10,3,3,1.0,0.9,True
+350767,Rossy Sprouts Inc TX 77494,24.0,00:00:00,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS Home Improvement,Lighting,Asia Supplier Service Desk,8,3,3,1.0,1.0,True
+361136,SHEN ZHEN SHI FENG QIAO MAO YI YOU XIAN GONG SI CA 90022,24.0,,SANTA FE SPRINGS,5650 Grace Pl,Commerce ,CA,90022,APS Upholstery,Upholstery - Niche,Asia Supplier Service Desk,5,3,3,1.0,1.0,True
+401272,Allied Plush lnc TX 75141,24.0,,DALLAS LOCAL,1200 W Wintergreen Rd,Hutchins,TX,75141,APS Home Improvement,Pet,Asia Supplier Service Desk,19,3,3,1.0,1.0,True
+401274,Allied Plush lnc IN 46143,24.0,,GREENWOOD LOCAL,831 N Graham Rd,Greenwood,IN,46143,APS Home Improvement,Pet,Asia Supplier Service Desk,25,3,3,1.0,1.0,True
+401347,Great Gamix Ltd NJ 08512,24.0,,PRINCETON,311 Cranbury Half Acre Rd,Cranbury,NJ,08512,APS Upholstery,Furniture - Home Office,Asia Supplier Service Desk,9,3,3,1.0,0.8889,True
+405004,"Hangzhou Skytech Outdoor Co., LTD NJ 08067",24.0,,CAMDEN,2 Gateway Blvd,Pedricktown,NJ,08067,APS Home Improvement,Outdoor Structures,Danica Guo,7,3,3,1.0,1.0,True
+408857,lijincheng canada T2C 4Z8,24.0,,CALGARY YYCA,150 to 9620 68th Street SE ,Calgary,AB,T2C 4Z8,Wayfair Professional,Storage & Org - Frequency,Andres Liu,14,3,3,1.0,1.0,True
+411781,"Changsha Lulang Information Technology Co., Ltd. CA 92337-8234",24.0,,,10850 Business Drive,Fontana,CA,92337-8234,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,10,3,3,1.0,1.0,True
+414516,"Anji Younike Furniture Co.,Ltd CAN ON L5L 6A6",24.0,,MISSISSAUGA YIBA,3600A Laird RD Unit10 Back Door,Mississauga,ON,L5L 6A6,APS K&D,Furniture - Kitchen and Dining,,27,3,3,1.0,0.963,True
+452865,JUSTMAE INC NJ 08554,24.0,,,839 Railroad Ave,Roebling,NJ,08554,APS AEOF,Furniture - Home Office,Fiona Jiang,3,3,3,1.0,1.0,True
+464772,WYD-CA06,24.0,,WEST RIALTO,3285 De Forest Cir,Jurupa Valley,CA,91752,APS Home Improvement,Storage & Org - Frequency,Danica Guo,10,3,3,1.0,0.9,True
+466279,"Zhongshan Chuanglai Lighting Technology Co., Ltd. TX 77494",24.0,,HOUSTON LOCAL,"28501 Hwy Blvd,",Katy,TX,77494,APS Home Improvement,Lighting,Asia Supplier Service Desk,10,3,3,1.0,1.0,True
+475179,[WPLA4],24.0,,WEST RIALTO,13083 Slover Ave,Fontana,CA,92337-7313,APS Bedroom,Furniture - Bedroom,Noemi Tang,20,3,3,1.0,0.95,True
+19104,EKKA International Co. LTD.,24.0,00:00:00,MCCOOK,5200 Thatcher Rd,Downers Grove,IL,60515,Storage & Org - Frequency,Storage & Org - Frequency,Bryn Bennett,3,2,2,1.0,1.0,True
+31331,SCHEER USA DISTRIBUTION,24.0,00:00:00,FORT LAUDERDALE,4800 Lyons Technology Pkwy,Coconut Creek,FL,33073,Kitchen & Small Electrics,Kitchen,Jake Han,7,2,2,1.0,1.0,True
+59310,Truker NJ 07072,24.0,,EAST BRUNSWICK,520 Jersey Ave,New Brunswick ,NJ,08901,APS,Upholstery - Core,Asia Supplier Service Desk,18,2,2,1.0,0.8889,True
+75782,BANGTON INC GA 30122,24.0,00:00:00,AUSTELL,850 Douglas Hills Rd,Lithia Springs,GA,30122,APS,Teen,Asia Supplier Service Desk,10,2,2,1.0,0.9,True
+105470,Spot Light Inc CA 92660,24.0,,ANAHEIM,781 Alderwood Dr,Newport Beach,CA,92660,Lighting,Lighting,Supplier Service Desk,4,2,2,1.0,1.0,True
+177561,MM CASA TX 30ESP,24.0,06:00:00,SPRING,30 Esplanade Blvd #100,Houston,TX,77060,APS,Outdoor,Janet Jiang,11,2,2,1.0,1.0,True
+198282,GWLinens CA 95050,24.0,,SAN JOSE,2080 Walsh Ave Ste A,Santa Clara,CA,95050,Tabletop,Tabletop,Isabella Keel,16,2,2,1.0,0.9375,True
+203540,西邮美西洛杉矶7仓,24.0,00:00:00,,13083 Slover Ave,Fontana,CA,92335,APS K&D,Furniture - Home Office,Stella Yin,10,2,2,1.0,1.0,True
+224126,NJ JW2,24.0,00:00:00,EAST BRUNSWICK,1605 Jersey Ave,North Brunswick,NJ,08902,APS,Plumbing - Vanities,Yu Xie,10,2,2,1.0,1.0,True
+236630,"Chengdu Cuihu Palace Wall Technology Co., Ltd. NJ4",24.0,,PRINCETON,311 Cranbury Half Acre Rd,Cranbury,NJ,08512,APS,Upholstery - Core,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+237544,MXY-CA-92337,24.0,,WEST RIALTO,12005 Cabernet Dr,Fontana,CA,92337,APS,Upholstery - Core,Asia Supplier Service Desk,7,2,2,1.0,0.8571,True
+241000,Circlelink Group NJ 08022,24.0,00:00:00,ROBBINSVILLE,1179 Florence Road,Mansfield Jersey,NJ,08022,APS,Furniture - Kitchen and Dining,Asia Supplier Service Desk,10,2,2,1.0,1.0,True
+245496,BATAMEX LLC FL 32216,24.0,,JACKSONVILLE,1859 Caravan Trail Road ,Jacksonville,FL,32216,WGS-Turkey,Decorative Accent - Wall Accents,Asia Supplier Service Desk,6,2,2,1.0,1.0,True
+245866,Hawk Crest Products,24.0,,POTTSVILLE,21 walnut drive,orwigsburg ,PA,17961,Plumbing,Plumbing - Vanities,Supplier Service Desk,13,2,2,1.0,1.0,True
+252543,GuCang CA-133,24.0,00:00:00,WEST RIALTO,14779 Bar Harbor Road,Fontana,CA,92336,APS Home Improvement,Outdoor Structures,Nicole Sun,7,2,2,1.0,0.8571,True
+254015,GC-NJ15,24.0,,CAMDEN,CO 100 Lawrence Blvd,Hainesport,NJ,08036,APS Outdoor,Outdoor Structures,Danica Guo,5,2,2,1.0,1.0,True
+255356,nanjinghangzhouwangluokejiyouxiangongsi NJ 08016,24.0,,ROBBINSVILLE,1950 River Road,Burlington,NJ,08016,APS Mattresses,Mattresses - Utility Bedding,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+268452,Tianjin heman kejiyouxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,23,2,2,1.0,1.0,True
+282258,JUXING furniture inc CA 91764,24.0,00:00:00,CHINO LOCAL,800 N Barrington Avenue,Ontario,CA,91764,APS,Wayfair,Asia Supplier Service Desk,12,2,2,1.0,1.0,True
+290889,XY-SOU-4,24.0,,HOUSTON LOCAL,14402 Fallbrook Drive,Houston ,TX,77429,APS,Furniture - Kitchen and Dining,Asia Supplier Service Desk,8,2,2,1.0,1.0,True
+292876,XHD-NJ08-US,24.0,,EAST BRUNSWICK,1202 Airport Road,North Brunswick ,NJ,08902,APS Home Improvement,Playroom,Evelyn Chen,6,2,2,1.0,1.0,True
+295251,NJ-KYT19,24.0,00:00:00,BAYTOWN,8790 Wallisville Rd,HOUSTON,TX,77029,APS,Furniture - Bedroom,Lydia Liu,8,2,2,1.0,1.0,True
+299227,Ever Grace CA 92335,24.0,00:00:00,WEST RIALTO,8300 Almeria Ave,Fontana,CA,92335,APS,Bedding,lance Zhou,14,2,2,1.0,1.0,True
+307646,ningbo dreamer trading co ltd CA 91710,24.0,,,5228 Edison Ave,Chino,CA,91710,APS,Furniture - Home Office,Asia Supplier Service Desk,3,2,2,1.0,1.0,True
+316866,Stellweilan Tessberg LLC NJ 08036,24.0,,CAMDEN,C O 100 Lawrence Blvd,Hainesport,NJ,08036,Storage & Org,Tabletop,Supplier Service Desk,3,2,2,1.0,1.0,True
+330224,Vego Garden Inc. NJ 07036,24.0,,LINDEN,1600 Lower Rd,Linden,NJ,07036,Decor,Outdoor Decor,Phoebe Leonard,15,2,2,1.0,1.0,True
+345222,HOLTEK Home LLC AL 31407,24.0,00:00:00,SAVANNAH,150 Portside Ct,Savannah,GA,31407,Outdoor Furniture,Upholstery - Core,Isha Singh,7,2,2,1.0,1.0,True
+348327,luoyangshuyijiajuyouxiangongsi NJ 07036,24.0,,LINDEN,700 Linden Logistics Way,Linden,NJ,07036,Wayfair,Storage & Org - Systems,Asia Supplier Service Desk,8,2,2,1.0,1.0,True
+349255,FLINT GARDEN INC GA 31326,24.0,,SAVANNAH,1001 Trade Center parkway,Rincon,GA,31326,APS Home Improvement,Lighting,Asia Supplier Service Desk,4,2,2,1.0,1.0,True
+349280,"Ningbo Xin Su Da Trading Co., Ltd. TX 77494",24.0,09:00:00,HOUSTON LOCAL,28501 Hwy Blvd ,Katy ,TX,77494,APS AEOF,Furniture - Home Office,Fiona Jiang,2,2,2,1.0,1.0,True
+352810,FSFYQN-BLL_NJ_US,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS AEOF,Furniture - Home Office,Nora Li,6,2,2,1.0,1.0,True
+352992,Nicetree Consultant Inc TX 77085,24.0,,SUGAR LAND,5810 W Fuqua St,Houston,TX,77085,Upholstery,Upholstery - Core,Kosi Obi,2,2,2,1.0,1.0,True
+353100,shenzhenshi linenmaoyi youxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS K&D,Furniture - Bedroom,Stella Yin,6,2,2,1.0,1.0,True
+354908,Lifelong Company CA 91761 (4),24.0,06:00:00,CHINO LOCAL,3510 E Francis St,Ontario ,CA,91761,APS Youth,Youth Bedroom,Asia Supplier Service Desk,3,2,2,1.0,1.0,True
+354913,Lifelong Company GA 31302,24.0,09:00:00,SAVANNAH,3001 Jimmy Deloach Parkway,Bloomingdale ,GA,31302,APS Youth,Storage & Org - Furniture Adj,Asia Supplier Service Desk,4,2,2,1.0,1.0,True
+356164,Yantai Aifengdianzishangwu Youxiangongsi WA 98439,24.0,,OLYMPIA,14801 Spring Street SW,Lakewood ,WA,98439 ,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,3,2,2,1.0,1.0,True
+358069,Minka/Metropolitan CA 92551,24.0,00:00:00,RIALTO LOCAL,16901 San Celeste St,Moreno Valley,CA,92551,Lighting,Lighting,Cheryl Lin,5,2,2,1.0,1.0,True
+364600,shenzhenshidouchikejiyouxiangongsi NJ 07064,24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,Decor,Seasonal Decor,Asia Supplier Service Desk,3,2,2,1.0,1.0,True
+366879,GC WEST 20,24.0,00:00:00,WEST RIALTO,C/O 11296 Harrel St,Jurupa Valley,CA,91752,APS AEOF,Furniture - Bedroom,Asia Supplier Service Desk,18,2,2,1.0,0.8889,True
+369844,"Shenzhen Gaohe Intelligent Furniture Co., Ltd. TN 38115",24.0,,OLIVE BRANCH LOCAL,"5625 Challenge Dr, suite 104",Memphis,TN,38115,Wayfair,Accent Furniture,Asia Supplier Service Desk,2,2,2,1.0,1.0,True
+370473,wuhanyilanshidianzishangwuyouxiangongsi CA 92337,24.0,,WEST RIALTO,15950 Boyle Avenue,Fontana,CA,92337,APS Upholstery,Furniture - Home Office,Asia Supplier Service Desk,9,2,2,1.0,0.8889,True
+399523,"Chengdu Aisenya E-commerce Co., Ltd CA 90670 (2)",24.0,,,10226 Palm Dr,Santa Fe Springs,CA,90670,APS K&D,Accent Furniture,Asia Supplier Service Desk,2,2,2,1.0,1.0,True
+401339,"Ningbo Yanpu Technology Co., Ltd GA 31308",24.0,,SAVANNAH,1119 Interstate Center Blvd,Ellabell,GA,31308,APS Bedroom,Storage & Org - Furniture Adj,Asia Supplier Service Desk,26,2,2,1.0,1.0,True
+401759,"VISION VORTEX CO.,LTD MD 21921",24.0,,NEW CASTLE,"1003 konica drive,elkton md 21921",Elkton,MD,21921,APS Outdoor,Outdoor,Qiwen Fan,11,2,2,1.0,0.9091,True
+402094,SUMIJ LTD CA 92571,24.0,,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS Bedroom,Recreation,Asia Supplier Service Desk,26,2,2,1.0,1.0,True
+402311,91330523323510646E CA 92335,24.0,,WEST RIALTO,​8300 Almeria Avenue,Fontana,CA,92335,APS K&D,Furniture - Kitchen and Dining,Asia Supplier Service Desk,12,2,2,1.0,1.0,True
+406497,Mary  Elisa Marketplace Inc. (Joyxeon) CA 92337,24.0,,WEST RIALTO,"11281 CITRUS AVE,, BUILDING2",Fontana,CA,92337,APS Housewares & More,Seasonal Decor,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+409962,FEEDING JOY LLC PA 18064,24.0,,LEHIGH VALLEY LOCAL,3363 Gun Club Rd,Nazareth,PA,18064,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,7,2,2,1.0,0.8571,True
+413852,shenzhenshixiangyukejiyouxianzerengongsi CA 91761,24.0,,CHINO LOCAL,2825 E Jurupa St dock 83-86,Ontario,CA,91761,Wayfair,Pet,Asia Supplier Service Desk,8,2,2,1.0,0.875,True
+414344,shenzhenshi linenmaoyi youxiangongsi CAN BC V6W 0A1,24.0,,VANCOUVER_LOCAL,"16111 Blundell Road, #102",Richmond,BC,V6W 0A1,APS K&D,Furniture - Bedroom,Stella Yin,9,2,2,1.0,0.8889,True
+414777,"Taizhou Yourun Trading Co., Ltd GA 30294",24.0,,ATLANTA LOCAL,14178 East Tanners Church Rd,Ellenwood,GA,30294,APS Housewares & More,Storage & Org - Furniture Adj,Asia Supplier Service Desk,3,2,2,1.0,1.0,True
+416411,"Kunming Faping International Trading Co., Ltd CA 91731",24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Home Improvement,Upholstery - Core,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+418836,Shenzhenshiliyuguojimaoyiyouxianzerengongsi AL 08022,24.0,,ROBBINSVILLE,1179 Florence Rd,Columbus,NJ,08022,APS Bedroom,Outdoor Structures,Asia Supplier Service Desk,9,2,2,1.0,0.8889,True
+422718,NJ2.,24.0,,SECAUCUS,140 Central Ave,Kearny,NJ,07032,APS K&D,Furniture - Kitchen and Dining,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+425978,shenzhenshipengchengfengmaoyiyouxiangongsi OH 43228,24.0,,COLUMBUS LOCAL,3640 Zane Trace Drive,Columbus,OH,43228,APS Upholstery,Accent Furniture,Asia Supplier Service Desk,8,2,2,1.0,1.0,True
+430050,Anji Xuanxian Commercial Trading Co Ltd CA 90220,24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Upholstery,Wayfair,Asia Supplier Service Desk,7,2,2,1.0,1.0,True
+430462,Direct Wicker GA 31407,24.0,,,425 Jimmy Deloach Parkway,Savannah,GA,31407,APS Outdoor,Wayfair,Amber Xiang,2,2,2,1.0,1.0,True
+432570,Living Source International CA 90703,24.0,,SANTA FE SPRINGS,16026 Manning Way,Cerritos,CA,90703,Outdoor Furniture,Entertainment Furniture,Isha Singh,3,2,2,1.0,1.0,True
+433532,hangzhou wentong crafts furniture manufacturing co CA 91752,24.0,,WEST RIALTO,"3285 De Forest Cir, Jurupa Valley, CA 91752",Jurupa Valley,CA,91752,APS Upholstery,Accent Furniture,Estrella Wang,18,2,2,1.0,1.0,True
+435362,"Jinbao Trade Import and Export Co., Limited CA 91761",24.0,,CHINO LOCAL,"1521 E Francis St,Unit B",Ontario,CA,91761,APS K&D,Furniture - Kitchen and Dining,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+437965,TXJW10,24.0,,DALLAS LOCAL,321 W Centre Park Blvd #100,Desoto,TX,75115,APS Home Improvement,Plumbing - Core,Yu Xie,4,2,2,1.0,1.0,True
+441684,"Hong Kong Qingkong Home Furnishing Co., Limited CA 91748",24.0,,INDUSTRY,18457 Railroad St,City of Industry,CA,91748,Soft Home,Rugs,Cecilia Jia,11,2,2,1.0,1.0,True
+451412,中山市科炬灯饰有限公司 CA 92337,24.0,,WEST RIALTO,11281 CITRUS AVE,FONTANA,CA,92337,APS Home Improvement,Lighting,Asia Supplier Service Desk,8,2,2,1.0,0.875,True
+460595,"Shenzhenshi Yiyibushe Technology Co., Ltd. GA 30168",24.0,,AUSTELL,"C/O 7915 White Road, Building 100",Austell,GA,30168,APS Home Improvement,Storage & Org - Furniture Adj,Asia Supplier Service Desk,16,2,2,1.0,0.875,True
+465332,"Shenzhen Aoqi Technology CO., Ltd CA 92337",24.0,,WEST RIALTO,13052 Jurupa Ave,Fontana,CA,92337,APS K&D,Outdoor,Hannah Guan,7,2,2,1.0,1.0,True
+467179,guangzhoushiwenqingdianzishangwuyouxiangongsi IL 60446,24.0,,SOUTH CHICAGO,"160 Southcreek Pky, Romeoville, IL 60446",Romeoville,IL,60446,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,5,2,2,1.0,1.0,True
+471588,  Y-CA-3,24.0,,CHINO LOCAL,5491 E Philadelphia St,Ontario,CA,91761,APS Outdoor,Outdoor,Melody Lu,5,2,2,1.0,1.0,True
+484142,"Wenzhou Maojia Trading Co., Ltd. PA 19030",24.0,,PHILADELPHIA,C/O 500 Ben Fairless Dr,Fairless Hills,PA,19030,Wayfair,Accent Furniture,Asia Supplier Service Desk,11,2,2,1.0,1.0,True
+493667,Yiimo IL 60451,24.0,,MOKENA,2301 Ellis Court Unit A,New Lenox,IL,60451,APS Bedroom,Outdoor,Asia Supplier Service Desk,8,2,2,1.0,0.875,True
+857,Preferred Nation,24.0,00:00:00,,821 E Francis St ,Ontario,CA,91761,Tabletop,Tabletop,Araj Shaikh,7,1,1,1.0,1.0,True
+2487,Chroma USA Inc,24.0,00:00:00,BRASELTON,116 Helen Highway,CLEVELAND,GA,30528,Kitchen & Small Electrics,Kitchen,Jake Han,2,1,1,1.0,1.0,True
+3017,Lone Star Darts & Billiards,24.0,00:00:00,ARLINGTON,2550 Gravel Dr,Fort Worth,TX,76118,Recreation,Recreation,Supplier Service Desk,1,1,1,1.0,1.0,True
+10827,Couture Dreams,24.0,00:00:00,LONG ISLAND,1630 N. Ocean Ave,Holtsville,NY,11742,Soft Home,Bedding,Supplier Service Desk,14,1,1,1.0,1.0,True
+17466,A Soft Idea,24.0,00:00:00,NORTH STRATFORD,67 Poland Street,Bridgeport,CT,06605,Soft Home,Bedding,Supplier Service Desk,2,1,1,1.0,1.0,True
+25319,Averen Inc.,24.0,00:00:00,ARCADIA,1612 Chico Ave,South El Monte,CA,91733,Plumbing,Plumbing - Core,Madison MacDowell,3,1,1,1.0,1.0,True
+25463,CAN_Bazz,24.0,00:00:00,SAINT LAURENT YULA,6000 Boulevard Thimens,St Laurent,QC,H4S 1S5,Lighting,Lighting,Supplier Service Desk,3,1,1,1.0,1.0,True
+28794,Kube Bath CA 90040,24.0,00:00:00,,5354 E Slauson Avenue,Commerce,CA,90040,Plumbing,Plumbing - Core,Supplier Service Desk,2,1,1,1.0,1.0,True
+31786,CAN_Provence Garden Decor,24.0,00:00:00,SCARBOROUGH,43 Riviera Drive,Markham,Ontario,L3R 5J6,Casegoods,Outdoor Decor,Supplier Service Desk,1,1,1,1.0,1.0,True
+49120,Memomad TX 77027,24.0,07:00:00,SUGAR LAND,12835 Jess Pirtle Blvd,Sugar Land,TX,77027,Casegoods,Furniture - Bedroom,Prisha Mark,1,1,1,1.0,1.0,True
+50771,Equator Advanced Appliances NC 27407,24.0,11:00:00,GREENSBORO LOCAL,2751 Patterson St,Greensboro,NC,27407,Appliances,Education,Bolu Ojuko,3,1,1,1.0,1.0,True
+58208,"Livi Decor, LLC CA 90650",24.0,00:00:00,SANTA FE SPRINGS,14767 Carmenita Road,Norwalk,CA,90650,Rugs,Rugs,Supplier Service Desk,4,1,1,1.0,1.0,True
+65272,Forme Millinery Inc dba Hat Boxes USA,24.0,00:00:00,EAST LOUISVILLE,1009 E Main St,Louisville,KY,40206,Decor,Decorative Accent - Home Accents,Supplier Service Desk,11,1,1,1.0,1.0,True
+68369,"Mr. Peanuts Premium Products, LLC",24.0,00:00:00,,1544 Fieldbrook Street,Henderson,NV,89052,Pet,Pet,Supplier Service Desk,1,1,1,1.0,1.0,True
+69371,Restaurantware,24.0,00:00:00,,2150 W 43rd St Unit B,Chicago,IL,60609,Tabletop,Tabletop,Rehaan Sardana,9,1,1,1.0,1.0,True
+73986,Stone Essentials,24.0,00:00:00,PROVIDENCE,592 Arnold Road,Coventry,RI,02816,Flooring,Flooring,Supplier Service Desk,7,1,1,1.0,1.0,True
+88001,Japi Pottery FL 32207,24.0,00:00:00,JACKSONVILLE,2300-2 Vinson Lane,Jacksonville,FL,32207,Decor,Outdoor Decor,Supplier Service Desk,2,1,1,1.0,1.0,True
+99703,Crosley CA 90810,24.0,07:00:00,CARSON,Webtrans Logistics INC,Carson,CA,90810,Casegoods,Outdoor,Libby Mahonski,12,1,1,1.0,1.0,True
+110038,chengduyanzhiguikejiyouxiangongsi CA4,24.0,,WEST RIALTO,11599 Arrow Route,Rancho Cucamonga,CA,91730,APS,Upholstery - Core,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+112232,MM CASA CA 92374,24.0,,WEST RIALTO,9180 Alabama St,Redlands,CA,92374,APS,Outdoor,Janet Jiang,9,1,1,1.0,0.8889,True
+115423,"Zhejiang Linya Co., Ltd CA 92337",24.0,,WEST RIALTO,13052 Jurupa Ave,Fontana,CA,92337,APS Home Improvement,Furniture - Kitchen and Dining,Danica Guo,2,1,1,1.0,1.0,True
+115762,Ningbo Qingyuejiatingyongpinyouxiangongsi GA 30071,24.0,23:05:00,,5202 Brook Hollow Pkwy,Norcross,GA,30071,APS Youth,Bath,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+127537,Shenzhen Zhichen Trading Co. LTD. IL 60431,24.0,,SOUTH CHICAGO,1600 Rock Creek Blvd,Joliet,IL,60431,APS K&D,Furniture - Bedroom,Stella Yin,2,1,1,1.0,1.0,True
+135532,SIHOO NJ 08817,24.0,00:00:00,,300 Cedar Lane,Edison,NJ,08817,APS,Furniture - Home Office,Fiona Jiang,1,1,1,1.0,1.0,True
+135726,Homebeez GA 30024,24.0,00:00:00,BRASELTON,398 Satellite Blvd,Suwannee,GA,30024,Upholstery,Upholstery - Core,Demi Wang,1,1,1,1.0,1.0,True
+148860,EPLO--- NJ 07094,24.0,00:00:00,SECAUCUS,35 henry St ,Secaucus,NJ,07094,APS,Plumbing - Core,Ida Li,11,1,1,1.0,1.0,True
+154688,Bright House Sales LLC GA 30019,24.0,,BRASELTON,2700 Braselton Hwy.,Dacula,GA,30019,Recreation,Recreation,Supplier Service Desk,7,1,1,1.0,1.0,True
+157630,CAN_Inspirer Canada Inc. QC H3E1A8,24.0,00:00:00,SAINT LAURENT YULA,760 CHEMIN DU GOLF,VERDUN,QC,H3E 1A8,CA Casegoods,Accent Furniture,Asia Supplier Service Desk,12,1,1,1.0,1.0,True
+175020,CAN_Gazebo Penguin QC,24.0,09:00:00,SAINT LAURENT YULA,4660 Hickmore St,ST LAURENT,QC,H4T 1K2,CA Housewares,Outdoor Structures,Yun Yau,1,1,1,1.0,1.0,True
+176493,Myris Factory LLC GA 30529,24.0,00:00:00,,189 Knowlton Way,Savannah,GA,31407,APS,Accent Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+186454,Eurus Home TX 75007,24.0,00:00:00,IRVING,1443 Wainwright Way,Carrollton,TX,75007,APS Home Improvement,Lighting,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+195848,Nicaragua Innovation Technology NJ 08901,24.0,,,780 Jersey Ave,New Brunswick,NJ,08901,APS,Plumbing - Vanities,Ida Li,2,1,1,1.0,1.0,True
+200073,"YUANJING ELECTRONIC TECHNOLOGY CO.,LIMITED VA23059",24.0,00:00:00,,10464 Cedar Ln suite 400,Glen Allen,VA,23059,APS,Furniture - Bedroom,Fiona Jiang,1,1,1,1.0,1.0,True
+200545,VIBRANTBATH CA 90058,24.0,00:00:00,LOS ANGELES,4900 Loma Vista Ave,VERNON,CA,90058,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+203887,PTY Custom Lighting NJ 07205,24.0,,,100 Hoffman Pl,Hillside,NJ,07205,Lighting,Lighting,Supplier Service Desk,1,1,1,1.0,1.0,True
+210823,chengduyanzhiguikejiyouxiangongsi CA5,24.0,00:00:00,CHINO LOCAL,1670 ETIWANDA AVE A,ONTARIO,CA,91761,APS,Upholstery - Core,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+214196,Sunveno USA Inc. CA 91761,24.0,00:00:00,CHINO LOCAL,4201 E Santa Ana St,Ontario,CA,91761,Tabletop,Storage & Org - Frequency,Riki Watanabe,14,1,1,1.0,0.9286,True
+214943,Chengdu Hangzhixing Gu cang US mid Warehouse 1,24.0,00:00:00,NILES,CO 901 Chase Ave,Elk Grove Village,IL,60007,APS,Furniture - Home Office,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+216268,"Honsit Furniture Co., Limited CA 92571",24.0,,RIALTO LOCAL,728 W Rider St Perris,Perris,CA,92571,Casegoods,Furniture - Home Office,Asia Supplier Service Desk,14,1,1,1.0,0.9286,True
+220945,Hooray Depot CA 91710,24.0,00:00:00,CHINO LOCAL,5125 Schaefer Ave,Chino,CA,91710,APS Home Improvement,Outdoor Decor,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+222265,CAN_Marks Impex Inc. ON L5C 1T9,24.0,00:00:00,TORONTO_LOCAL,3136 Mavis Road Unit#109,Misissauga,ON,L5C 1T9,Soft Home,Bedding,Supplier Service Desk,6,1,1,1.0,1.0,True
+222590,Hebeiqianchuanshangmaoyouxiangongsi WA 98188,24.0,00:00:00,,1165 Andover Park W,Tukwila,WA,98188,Decor,Lighting,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+222829,Shandongrushizhenchuan International Trade TX1,24.0,00:00:00,ARLINGTON,1113 West Oakdale Road,Grand Prairie,TX,75050,APS Youth,Upholstery - Niche,Asia Supplier Service Desk,9,1,1,1.0,1.0,True
+224521,Smart Big Mall Inc CA 91730,24.0,13:00:00,WEST RIALTO,9059 Hermosa Ave,RanchoCucamonga,CA,91730,Casegoods,Entertainment Furniture,Nora Li,5,1,1,1.0,1.0,True
+230579,MAJALIS FURNITURE INC CA 92337,24.0,,WEST RIALTO,10905 Beech Avenue,Fontana,CA,92337,APS,Entertainment Furniture,Asia Supplier Service Desk,9,1,1,1.0,0.8889,True
+233791,Guang Zhou Lan Hu Ke Ji You Xian Gong Si AT3,24.0,,BRASELTON,1380 Jesse Cronic Road,Braselton,GA,30517,APS Spa,Plumbing - Vanities,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+234697,Ningbo Qiangbang Outdoor Leisure Products GA 30096,24.0,,NORCROSS,3270 Summit Ridge Parkway Suite 110 ,Duluth,GA,30096,APS Outdoor,Outdoor,Amber Xiang,26,1,1,1.0,0.9231,True
+236033,"(CA)TIANJIN HELI SCIENCE AND TECHNOLOGY CO., LIMITED ON L6T 5S2",24.0,00:00:00,MISSISSAUGA YIBA,CO 5 Paget Rd,Brampton,ON,L6T 5S2,APS,Furniture - Bedroom,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+239956,Ningbo Linshibai jinchukou ltd CA 92571,24.0,00:00:00,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,APS Outdoor,Outdoor,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+244849,Tmekeeper INC. CA 92374,24.0,00:00:00,,2220 Almond Ave,Redlands,CA,92374,APS,Outdoor,Christal Ding,4,1,1,1.0,1.0,True
+249399,Comptree Inc CA 91730(4),24.0,00:00:00,WEST RIALTO,8595 Milliken Ave,Rancho Cucamonga,CA,91730,APS,Youth Bedroom,Hannah Guan,12,1,1,1.0,0.9167,True
+250183,P A 01,24.0,,,3585 S Church St,Whitehall,PA,18052,APS Other,Storage & Org - Frequency,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+253303,General Sherman International Inc. CA 92337(2),24.0,00:00:00,WEST RIALTO,13521 Santa Ana Ave,Fontana,CA,92337,APS,Accent Furniture,Hannah Guan,5,1,1,1.0,1.0,True
+253762,AB-CA02,24.0,00:00:00,WEST RIALTO,3900 Hammer Ave,Eastvale,CA,91752,APS Outdoor,Outdoor Structures,Danica Guo,1,1,1,1.0,1.0,True
+253801,Tigris MI 49548,24.0,13:30:00,GRAND RAPIDS,400 Mart Street SW,Wyoming,MI,49548,Plumbing,Plumbing - Core,Maverick Schlosser,15,1,1,1.0,1.0,True
+254014,GC-NJ-18/23.,24.0,00:00:00,ROBBINSVILLE,CO 1620 River Rd,Burlington,NJ,08016,APS Outdoor,Upholstery - Core,Danica Guo,8,1,1,1.0,1.0,True
+265732,shanghai wenxin dianzishangwu youxian NJ 08807,24.0,07:00:00,WOODBRIDGE LOCAL,1120 Route 22 E,Bridgewater,NJ,08807,APS,Lighting,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+266599,DesignLibro Inc CA 95376,24.0,,TRACY LOCAL,2900 N MacArthur Dr Suite 150,Tracy,CA,95376,Pet,Pet,Alyssa Haniff,16,1,1,1.0,1.0,True
+267609,USTX05,24.0,00:00:00,SUGAR LAND,16148 Fondren Road,Missouri ,TX,77489,APS K&D,Furniture - Kitchen and Dining,Noemi Tang,7,1,1,1.0,1.0,True
+267990,Yantai Aifengdianzishangwu Youxiangong NJ 08016(2),24.0,,,CO 1620 River Rd,Burlington,NJ,08016,APS,Storage & Org - Furniture Adj,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+275504,"AD ASTRA(Xiamen) E-Commerce Co.,LTD CA 92879",24.0,,WEST RIALTO,2571 Sampson Ave,Ontario,CA,92879,Wayfair,Lighting,Thomas Zhang,2,1,1,1.0,1.0,True
+279425,Mocoloo Decor Inc. CA 95688,24.0,,FAIRFIELD,4977 Allison Pkwy,Vacaville,CA,95688,Plumbing,Plumbing - Core,Asia Supplier Service Desk,20,1,1,1.0,0.95,True
+282431,EnitialLab CA 08902(2),24.0,00:00:00,EAST BRUNSWICK,1575 Jersey Ave,North Brunswick Township,NJ,08902,Casegoods,Storage & Org - Frequency,Joseph Hannigan,4,1,1,1.0,1.0,True
+282864,Potential NC 27410,24.0,,GREENSBORO LOCAL,4225 TUDOR LN ,GREENSBORO,NC,27410,APS Youth,Seasonal Decor,Asia Supplier Service Desk,7,1,1,1.0,1.0,True
+287750,"Shenzhen Asgard Technology Co., Ltd. TX 77449",24.0,,HOUSTON LOCAL,2244 North Mason Road,Katy,TX,77449,Wayfair,Outdoor,Asia Supplier Service Desk,14,1,1,1.0,1.0,True
+288312,Fuzhou Xingqixing Home Decoration Co PA 18052,24.0,,LEHIGH VALLEY LOCAL,3585 S. Church St.,Whitehall,PA,18052,Wayfair,Decorative Accent - Home Accents,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+288962,"Dongguan Runqiang E-commerce Co., Ltd. TX 77023",24.0,,SOUTH HOUSTON,5992 griggs rd,Houston,TX,77023,Wayfair,Lighting,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+292188,Kichae USA Inc. CA 95304,24.0,,TRACY LOCAL,2795 Paradise Road,Tracy,CA,95304,APS,Plumbing - Core,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+292747,Tianjin heman kejiyouxiangongsi CA 92335(2),24.0,00:00:00,,8375 Sultana Ave, Fontana,CA,92335,APS Bedroom,Unassigned,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+292890,Shen Zhen Shi Sen Bao Lu Ke Ji TX 77064,24.0,00:00:00,NORTH HOUSTON,STE200,Houston,TX,77064,APS Youth,Decorative Accent - Home Accents,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+298849,Hangzhou Mucheng International Trade NJ 07094,24.0,,SECAUCUS,915 Secaucus Rd,Secaucus ,NJ,07094,APS Other,Outdoor,Qiwen Fan,9,1,1,1.0,0.8889,True
+301115,Sofa Template Inc CA 91764,24.0,00:00:00,CHINO LOCAL,800 N Barrington Avenue ,Ontario,CA,91764,APS,Furniture - Bedroom,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+301135,CA9 GIGA,24.0,,CHINO LOCAL,800 N Barrington Avenue,Ontario,CA,91764,Casegoods,Upholstery - Core,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+303824,Zhaoqingshisenyunqichezuoyikejiyou CA 91702,24.0,00:00:00,ARCADIA,1035 n Todd ave,Azusa,CA,91702,APS,Furniture - Kitchen and Dining,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+307799,Yiwu Bohe Electronic Commerce Co. 08016 (2),24.0,,ROBBINSVILLE,2605 Rancocas Rd,Burlington ,NJ,08016,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+308483, Furniture Pros Logistics Solution,24.0,,SECAUCUS,50 Enterprise Ave. N,Secaucus,NJ,07094,Wayfair,Mattresses,Sylvia Ding,5,1,1,1.0,1.0,True
+308874,Cheerwing Trading Limited TX 75050,24.0,,ARLINGTON,1113 W Oakdale Road,Grand Prairie,TX,75050,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+310019,Nicaragua Innovation Technology Corpora NJ 08859,24.0,,EAST BRUNSWICK,99 CALLAHAN BLVD,PARLIN,NJ,08859,APS,Plumbing - Core,Ida Li,3,1,1,1.0,1.0,True
+310039,Mary  Elisa Marketplace Inc. (Joyxeon) CA 91761,24.0,,,"4705 Walker Ave, Ontario, CA 91762",Ontario,CA,91762,APS,Pet,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+310830,"Hangzhou Daxu Home Co.,LTD NJ 08505",24.0,00:00:00,ROBBINSVILLE,3280 US Highway 206,Bordentown,NJ,08505,APS,Upholstery - Core,Asia Supplier Service Desk,8,1,1,1.0,0.875,True
+312234,AtlasMattress Inc CA 91789 ,24.0,,,20300 Business Pkwy ,City of Industry,CA,91789,APS Mattresses,Mattresses,Sylvia Ding,2,1,1,1.0,1.0,True
+313422,chengduyanzhiguikejiyouxiangongsi CA8,24.0,00:00:00,WEST RIALTO,10721 Jasmine Street,Fontana,CA,92337,APS,Storage & Org - Systems,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+314713,Shenzhenshi Daman Shiye Youxian GA 31322,24.0,,SAVANNAH,301 CYPRESS MEADOW DR,Pooler,GA,31322,APS K&D,Furniture - Home Office,Stella Yin,6,1,1,1.0,1.0,True
+315594,Foshan MJL Intelligent Home Products Co. CA 91766 ,24.0,,INDUSTRY,1589 E Nine St  ,Pomona ,CA,91766 ,APS Home Improvement,Entertainment Furniture,Ricky Yu,3,1,1,1.0,1.0,True
+316828,Stellweilan Tessberg LLC IL 60538 ,24.0,00:00:00,SOUTH CHICAGO,900 Knell Rd ,Montgomery ,IL,60538,Storage & Org,Storage & Org - Frequency,Supplier Service Desk,3,1,1,1.0,1.0,True
+318935,Shanghai Shiyou International Trade Co. TX 77085 ,24.0,,SUGAR LAND,5880 west Fuqua Street ,Houston ,TX,77085,APS,Outdoor,Icey Wang,3,1,1,1.0,1.0,True
+319046,"Shenzhen Chunxin E-Commerce Co., Ltd. CA 91789",24.0,,,151 Marcellin Dr,City of Industry,CA,91789,APS K&D,Furniture - Kitchen and Dining,Hannah Guan,1,1,1,1.0,1.0,True
+319545,Convenience Concepts CA 90040,24.0,00:00:00,,6557 FLOTILLA STREET,Commerce,CA,90040,Casegoods,Furniture - Kitchen and Dining,Jaden Pickett,5,1,1,1.0,1.0,True
+321599, CAJW02 91766,24.0,00:00:00,INDUSTRY,1589 E Nine St ,Pomona ,CA,91766,APS Outdoor,Pet,Asia Supplier Service Desk,7,1,1,1.0,1.0,True
+321955,Zhejiang Huiguan Leisure Products TX 75141,24.0,,DALLAS LOCAL,1200 W Wintergreen Rd,Hutchins,TX,75141,APS Home Improvement,Outdoor Structures,Danica Guo,10,1,1,1.0,1.0,True
+323374,FSFYQN-TX-HNB,24.0,,HOUSTON LOCAL,28501 Hwy Blvd,Katy,TX,77494,APS AEOF,Entertainment Furniture,Nora Li,6,1,1,1.0,1.0,True
+325874,"VALUXHOME DISTRIBUTING INC., CA 91752 ",24.0,00:00:00,WEST RIALTO,3285 De Forest Cir ,Jurupa Valley,CA,91752,APS,Indoor Fireplaces,Fiona Jiang,1,1,1,1.0,1.0,True
+330217,SHENGZHOU YUYUAN TECHNOLOGY CO LTD CA 91789,24.0,,CAMDEN,CO 171 Marcellin Dr,City of Industry,CA,91789,APS,Appliances,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+334829,"Anji Guyou Furniture Co.,Ltd GA 31407 (2)",24.0,00:00:00,SAVANNAH,150 Portside Ct,Savannah,GA,31407 ,APS,Accent Furniture,Carl Li,8,1,1,1.0,1.0,True
+338755,Yiwu Bohe Electronic Commerce Co. LTD GA 30281,24.0,,ATLANTA LOCAL,475 EAGLES LANDING PKWY,stockbridge,GA,30281,APS Upholstery,Furniture - Home Office,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+340893,luoyangouzhijiaju co ltd TX 77067,24.0,00:00:00,SPRING,11142 Beltline Road,Houston,TX,77067,Wayfair,Storage & Org - Systems,Nora Yu,1,1,1,1.0,1.0,True
+343555,Tigris MA 01832,24.0,12:30:00,NORTH BILLERICA,20 Computer Drive, Haverhill,MA,01832,Plumbing,Plumbing - Core,Maverick Schlosser,1,1,1,1.0,1.0,True
+344394,Shenzhenshi Daman Shiye Youxiangongsi CA 92337 (2),24.0,,,11618 Mulberry Ave,Fontana,CA,92337,APS K&D,Furniture - Kitchen and Dining,Stella Yin,2,1,1,1.0,1.0,True
+349225,Cathy15,24.0,,CHINO LOCAL,4001 Greystone Dr,Ontario,CA,91761,APS Rugs,Rugs,Rainbow Wu,1,1,1,1.0,1.0,True
+349380,"Shenzhen Jiahengxin Technology Co., Ltd. CA 91764",24.0,,CHINO LOCAL,3030 inland empire blvd,Ontario,CA,91764,APS Home Improvement,Lighting,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+349451,eridanus DE 19713,24.0,,NEW CASTLE,825 Dawson Drive,Newark,DE,19713,APS Home Improvement,Plumbing - Core,Evelyn Chen,3,1,1,1.0,1.0,True
+349618,GC-CA20,24.0,00:00:00,WEST RIALTO,CO 11296 Harrel St,Jurupa Valley,CA,91752,APS Home Improvement,Upholstery - Core,Danica Guo,1,1,1,1.0,1.0,True
+350339,Ningboyuxudianzishangwuyouxiangongsi CA 91752 (2),24.0,,WEST RIALTO, 12400 E Philadelphia St, Eastvale ,CA,91752,APS AEOF,Entertainment Furniture,Ricky Yu,1,1,1,1.0,1.0,True
+351304,"Zhejiang Fuma Network Technology Co.,Ltd GA 31302",24.0,,,3001 Jimmy Deloach Parkway,Bloomingdale,GA,31302,APS K&D,Accent Furniture,Hannah Guan,1,1,1,1.0,1.0,True
+351844,Onesox LLC GA 30046,24.0,07:00:00,BRASELTON,975 old norcross rd,Lawrencville,GA,30046,APS AEOF,Entertainment Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+352454,Tmekeeper INC. CA 91761 (8),24.0,,CHINO LOCAL,4600 E Wall St,Ontario,CA,91761,APS Bedroom,Flooring,Christal Ding,16,1,1,1.0,1.0,True
+354899,Kunpeng Inc. CA7,24.0,00:00:00,WEST RIALTO,13521 Santa Ana Ave,Fontana ,CA,92337,APS Youth,Youth Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+354907,Lifelong Company CA 91761 (3),24.0,06:00:00,CHINO LOCAL,5140 E Santa Ana St,Ontario ,CA,91761,APS Youth,Furniture - Bedroom,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+355368,         CA10,24.0,,CHINO LOCAL,5140 E Santa Ana St,Ontario,CA,91761,APS,Youth Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+355372,       ATN1,24.0,,SAVANNAH,425 Jimmy Deloach Parkway,Savannah,GA,31407,APS,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+355572,                                 CA9,24.0,,CHINO LOCAL,800 N Barrington Avenue,Ontario ,CA,91764,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+356153,shenzhenshixingxuanchenmaoyiyouxiangongsi CA 91731,24.0,,ARCADIA, 4388 Shirle Avenue,El Monte,CA,91731,APS K&D,Youth Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+356524,Dong Guan Zhi  Shang Jia Ju You Xian Gong Si CA 91010,24.0,,ARCADIA,1760 evergreen st,Duarte,CA,91010,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+356716,shenzhenshixingxuanchenmaoyiyouxiang CA 91761(4),24.0,,CHINO LOCAL,3655 E Philadelphia Street,Ontario,CA,91761,APS K&D,Youth Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+356744,Cusp Barn inc NJ 08817,24.0,,WOODBRIDGE LOCAL,8 Taylor Road Suite 1,Edison,NJ,08817,APS Home Improvement,Entertainment Furniture,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+356930,"Shenzhen Yalei Trade Co.,Ltd CA 91731",24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Youth,Furniture - Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+357039,AMZURI PRODUCTIONS LLC CA 91731,24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Youth,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+357076,Patio Crafty Furn Inc CA 90220,24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Youth,Youth Bedroom,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+357100,"Shenzhen Hengtuoyuan Electronics Co., Ltd. CA 91789",24.0,,INDUSTRY,108-118 brea canyon road,city of industry,CA,91789,APS Youth,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+357934,Landskip Yard LLC CA 91764,24.0,,,800 N. Barrington Avenue,Ontario,CA,91764,APS Bedroom,Plumbing - Vanities,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+358775,Yantai Nanmudianzikeji Youxiangongsi IL 60517,24.0,,MCCOOK,"door#17,1433 Internationale Pkwy",Woodridge,IL,60517,APS Rugs,Storage & Org - Frequency,Rainbow Wu,3,1,1,1.0,1.0,True
+358895,"Xiangyang Chaolei Trading Co., Ltd. CA 92337-8200",24.0,,WEST RIALTO,10721 Jasmine Street,Fontana,CA,92337-8200,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+359319,shenzhenshixiuyekejiyouxiangongsi CA 90220,24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Youth,Plumbing - Vanities,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+359955,ZHINEO CHOU LLC PA 19030,24.0,,,500 Ben Fairless Dr,Fairless Hills,PA,19030,Rugs,Appliances,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+360369,Tigris WI 54911,24.0,12:30:00,OSHKOSH,3009 Zuehlke Dr,Appleton ,WI,54911,Plumbing,Plumbing - Core,Maverick Schlosser,4,1,1,1.0,1.0,True
+361126,jiujiakejihangzhouyouxianzerengongsi CA 91752,24.0,,WEST RIALTO,12300 Riverside Drive,Eastvale,CA,91752,Storage & Org - Frequency,Accent Furniture,Asia Supplier Service Desk,9,1,1,1.0,1.0,True
+366759,              CA5,24.0,,CHINO LOCAL,1670 ETIWANDA AVE.# A ,ONTARIO,CA,91761,APS AEOF,Furniture - Bedroom,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+366876,Jieyandong Tech Co.Ltd. CA 91761 (4),24.0,,CHINO LOCAL,3655 E Philadelphia Street,Ontario,CA,91761,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+369063,shenzhenshilebodadianzishangwuyouxiangongsi CA 91761,24.0,,CHINO LOCAL,5491 E Philadelphia St,Ontario,CA,91761,APS Home Improvement,Recreation,Asia Supplier Service Desk,10,1,1,1.0,0.9,True
+369442,"Hangzhou Yude Consulting Co., Ltd. TX 77494",24.0,,HAGERSTOWN,28501 Hwy Blvd,Katy,TX,77494,Outdoor Furniture,Outdoor,Asia Supplier Service Desk,7,1,1,1.0,0.8571,True
+369701,"ANJI MUFAN FURNITURE CO.,LTD CA 91761",24.0,,CHINO LOCAL,1670 ETIWANDA AVE. # B,ONTARIO,CA,91761,APS K&D,Upholstery - Core,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+372375,Zhejiang Paide Network Technology Co Ltd CA 91764,24.0,,,800 N. Barrington Avenue,Ontario,CA,91764,APS AEOF,Accent Furniture,Ricky Yu,1,1,1,1.0,1.0,True
+374176,            CA7,24.0,,WEST RIALTO,13521 Santa Ana Ave,Fontana,CA,92337,APS Home Improvement,Plumbing - Core,Evelyn Chen,2,1,1,1.0,1.0,True
+374998,"FUZHOU SANYANG TRADING CO.,LTD NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS AEOF,Furniture - Bedroom,Ivy Mao,3,1,1,1.0,1.0,True
+399420,Hai Ba CA,24.0,,,2182 Maple Privado,Ontario,CA,91761,Lighting,Lighting,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+399456,Tigris NC 28677,24.0,,LINCOLNTON,1840 Shelton Ave,Statesville ,NC,28677,Plumbing,Plumbing - Core,Maverick Schlosser,2,1,1,1.0,1.0,True
+399878,YQN_BLL_NJ_US,24.0,,LINDEN,500 Linden Logistics Way,Linden,NJ,07036,APS Outdoor,Outdoor Decor,Moti Mao,13,1,1,1.0,1.0,True
+399880,"Yiwu Binsai Import and Export Co., Ltd. CA 92337",24.0,,,10905 Beech Avenue,Fontana,CA,92337,APS Outdoor,Furniture - Bedroom,Amber Xiang,1,1,1,1.0,1.0,True
+401285,"Shenzhou Home Furnishing Co.,Limited CA 91761",24.0,,,1670 ETIWANDA AVE A ,ONTARIO,CA,91761,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+402653,zhaoqingshiyaogaomaoyiyouxiangongsi TX 77066,24.0,,,"11833 Cutten Road, Suite 300",Houston,TX,77066,APS Bedroom,Education,Iris Sang,1,1,1,1.0,1.0,True
+402815,WELLHOME INC CA 91761-4800,24.0,,CHINO LOCAL,2000C S. Grove Ave,Ontario,CA,91761-4800,APS Home Improvement,Lighting,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+403157,VIBRANTBATH CA 91730 ,24.0,,WEST RIALTO,9099  8th St,Rancho Cucamonga,CA,91730 ,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+403636,FEEDING JOY LLC CA 92337(2),24.0,,WEST RIALTO,13423 Santa Ana Avenue,Fontana,CA,92337,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,11,1,1,1.0,0.9091,True
+405387,Guangzhou Yingshun Information Technology Ltd CA 91764,24.0,,,800 N. Barrington Avenue,Ontario,CA,91764,APS AEOF,Lighting,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+406171,Onix Electronics LLC_1 CA 90058,24.0,,LOS ANGELES,6170 S Boyle Ave,Vernon,CA,90058,Outdoor Furniture,Lighting,Kate Schryver,1,1,1,1.0,1.0,True
+407321,"Huzhou Shenzhou Home Furnishing Co.,Ltd CA 91764",24.0,,CHINO LOCAL,800 N. Barrington Avenue,Ontario,CA,91764,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+407394,Home Variety CA 91761(2),24.0,,,3655 E Philadelphia Street,Ontario,CA,91761,APS Upholstery,Accent Furniture,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+407586,"Shenzhou Home Furnishing Co.,Limited CA 91761 (4)",24.0,,CHINO LOCAL,3655 E Philadelphia Street ,Ontario,CA,91761,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+407666,Home Variety CA 90220,24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Upholstery,Accent Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+407857,GG-CAN2-91761CA,24.0,,CHINO LOCAL,3655 E Philadelphia Street,Ontario,CA,91761,APS Housewares & More,Furniture - Home Office,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+407898,FLINT GARDEN INC CA 92337,24.0,,,10905 Beech Ave,Fontana,CA,92337,APS Home Improvement,Lighting,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+407930,"Shenzhou Home Furnishing Co.,Limited CA 90220",24.0,,,1714 S. Anderson Ave.,Compton,CA,90220,APS Upholstery,Accent Furniture,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+408386,"Shenzhen Jize Furniture Co., Ltd TX 77489",24.0,,,9419 S Sam Houston Pkwy W Ste 100,Missouri City,TX,77489,APS Bedroom,Indoor Fireplaces,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+408496,Lifelong Company NJ 08527,24.0,,ROBBINSVILLE,543 Monmouth Rd. ,Jackson Township,NJ,08527,APS Youth,Youth Bedroom,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+409054,Anji Xuanxian Commercial Trading CA 91730(3),24.0,,,11599 Arrow Route,Rancho Cucamonga,CA,91730,APS Upholstery,Accent Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+409061,Anji Xuanxian Commercial Trading CA 91761 (3),24.0,,CHINO LOCAL,3655 E Philadelphia Street,Ontario,CA,91761,APS Upholstery,Wayfair,Asia Supplier Service Desk,7,1,1,1.0,1.0,True
+410075,Nanjingyouchangkejiyouxiangongsi_1 CA 92324,24.0,,WEST RIALTO,2163 Riverside Ave,Colton,CA,92324,APS Home Improvement,Plumbing - Vanities,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+410561,fu qing shi hai long mao yi you xian gong si CA 92571,24.0,,RIALTO LOCAL,728 W Rider St,Perris,CA,92571,Wayfair,Accent Furniture,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+411185,ZHANGMINGFANG GA 30122,24.0,,AUSTELL,850 Douglas Hills Rd,Lithia Springs,GA,30122,APS Upholstery,Upholstery - Core,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+411807,NingboMandiDianzishangwuyouxiangongsi_1 ON L6Z 0J9,24.0,,TORONTO_LOCAL,10 Newkirk Court,Brampton,ON,L6Z 0J9,Wayfair,Outdoor,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+411954,"Binyun Precision Tools (Taizhou) Co., Ltd. GA 31308-3636",24.0,,COLUMBUS,1086 Oracal Parkway,Ellabell,GA,31308-3636,APS Upholstery,Flooring,Asia Supplier Service Desk,12,1,1,1.0,1.0,True
+413010,GujiaFurnitureLLC GAGI NJ5 08527,24.0,,ROBBINSVILLE,543 Monmouth Rd,Jackson Township ,NJ,08527,APS AEOF,Accent Furniture,Noemi Tang,2,1,1,1.0,1.0,True
+413958,"Changsha Lulang Information Technology Co., Ltd. CA 92337-8201",24.0,,WEST RIALTO,Slover Distribution Center 5,Fontana,CA,92337-8201,APS Bedroom,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+416315,quanzhoushi wobodianzishangwu CA 91731,24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Home Improvement,Storage & Org - Furniture Adj,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+416331,quanzhoushi wobodianzishangwu CA 92337-8200,24.0,,,10721 Jasmine Street,Fontana,CA,92337,APS Home Improvement,Entertainment Furniture,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+416533,"Yongkang Chengmi Trading Co., Ltd CA 91731",24.0,,,4388 Shirle Avenue,El Monte,CA,91731,APS Housewares & More,Entertainment Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+416751,"Guangzhou Xinmian E-commerce Co., Ltd GA 30122",24.0,,AUSTELL,850 Douglas Hills RdSuite 100,Lithia Springs,GA,30122,APS Housewares & More,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+418240,quanzhoushilipobaowangluokejiyouxiangongsi AL 43228,24.0,,COLUMBUS LOCAL,3640 Zane Trace Drive,Columbus,OH,43228,APS Upholstery,Furniture - Kitchen and Dining,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+420162,"Hengyang Senyou Technology Co., Ltd. TX  75050",24.0,,ARLINGTON,1113 West Oakdale Road, Grand Prairie,TX,75050,APS Bedroom,Furniture - Home Office,Asia Supplier Service Desk,7,1,1,1.0,0.8571,True
+420740,shenzhendefuxinnengyuankejiyouxiangongsi CA 91764,24.0,,CHINO LOCAL,800 N. Barrington Avenue,Ontario,CA,91764,APS Upholstery,Entertainment Furniture,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+421913,shen zhen shi jin hui feng jian cai CA 92337 (2),24.0,,WEST RIALTO,13521 Santa Ana Ave,Fontana,CA,92337,APS AEOF,Upholstery - Niche,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+422386,"Kunming Shanru International Trading Co., Ltd. CA 91764",24.0,,CHINO LOCAL,800 N. Barrington Avenue,Ontario,CA,91764,APS AEOF,Furniture - Home Office,Asia Supplier Service Desk,7,1,1,1.0,0.8571,True
+422481,"Quanzhou Walton Trading Co., Ltd CA 90220",24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS K&D,Furniture - Home Office,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+422494,"Cixi Mohai E-commerce Co., Ltd CA 92374",24.0,,WEST RIALTO,2220 Almond Ave,Redlands,CA,92374,APS Housewares & More,Accent Furniture,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+423890,"Taiyuan Tongle Yunguan Technology Co., Ltd CA 92337-8200",24.0,,WEST RIALTO,10721 Jasmine Street,Fontana,CA,92337-8200,APS Housewares & More,Storage & Org - Furniture Adj,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+424149,"Hengyang Senyou Technology Co., Ltd. CA 91764",24.0,,CHINO LOCAL,800 N. Barrington Avenue,Ontario,CA,91764,APS Bedroom,Youth Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+425270,SoftLiving LTD. GA 31308,24.0,,,1086 Oracal Parkway,Ellabell,GA,31308,APS Home Improvement,Entertainment Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+427932,"Guangzhou Xinmian E-commerce Co., Ltd WA 98424",24.0,,TACOMA,6500 26th Street E,Fife,WA,98424,APS Housewares & More,Upholstery - Niche,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+430855,Jiaying Business Inc MD 20701,24.0,,SOUTH BALTIMORE,"9060 Junction Drive,Annapolis Junction",Junction,MD,20701,APS Upholstery,Lighting,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+431554,Changshahuancaidianzishangwuyouxiangongsi NJ 07206,24.0,,WOODBRIDGE LOCAL,7 Slater Dr,Elizabeth,NJ,07206,APS AEOF,Entertainment Furniture,Supplier Service Desk,4,1,1,1.0,1.0,True
+431608,"Ningbo Zhenen Network Technology Co., Ltd CA 91731",24.0,,ARCADIA,4388 Shirle Avenue,El Monte,CA,91731,APS Pet,Accent Furniture,Asia Supplier Service Desk,8,1,1,1.0,1.0,True
+432200,YIGOBUY INC TX 77423,24.0,,HOUSTON LOCAL,2062 Woods Road,Brookshire,TX,77423,APS Upholstery,Furniture - Kitchen and Dining,Blair-Yaqing Gong,12,1,1,1.0,1.0,True
+433200,"Shijiazhuang New Cast Sun Trading Co., Ltd CA 91762",24.0,,CHINO LOCAL,2221 E. Remington Ave,Ontario,CA,91762,APS AEOF,Outdoor,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+433509,shanghai zhentu dianzi shangwu youxian gongsi CA 91761-5140,24.0,,CHINO LOCAL,5140 E Santa Ana St,Ontario,CA,91761-5140,APS Outdoor,Indoor Fireplaces,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+433814,ganzhouhoupukejifazhanyouxiangongsi CA 92337-7457,24.0,,WEST RIALTO,11281 Citrus Ave,Fontana,CA,92337-7457,APS Outdoor,Playroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+437993,Taizhou Jiayin jia ju ke ji you xian gong si CA 95304,24.0,,TRACY LOCAL,2795 Paradise Road Ste #140,Tracy,CA,95304,APS Home Improvement,Plumbing - Vanities,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+438209,"Ningbo Zhenen Network Technology Co., Ltd OH 43228",24.0,,COLUMBUS LOCAL,3640 Zane Trace Drive,Columbus,OH,43228,APS Pet,Furniture - Kitchen and Dining,Asia Supplier Service Desk,5,1,1,1.0,1.0,True
+438838,Mojia(HK) Holding Limited GA 31322,24.0,,SAVANNAH,301 CYPRESS MEADOW DR，Pooler,Pooler,GA,31322,Upholstery,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+448691,"Changzhou Jingrui Home Technology Co., Ltd. CA 90220",24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Home Improvement,Accent Furniture,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+450591,"Qixian Jiafan Trading Co., Ltd. TX 77053",24.0,,,"C/0 15012 S Post Oak Road,Building 1",Houston,TX,77053,APS Housewares & More,Education,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+450744,                 WPLA17,24.0,,,13423 Santa Ana Avenue,Fontana,CA,92337,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+450872,COVERONICS LIMITED CA 92324,24.0,,WEST RIALTO,2163 Riverside Ave,Colton,CA,92324,APS Home Improvement,Outdoor Structures,Danica Guo,2,1,1,1.0,1.0,True
+450911,(US)Shenzhenshi Hongwanxing KeJiYouXianGongSi CA 92337,24.0,,,10850 Business Dr,Fontana,CA,92337,APS AEOF,Accent Furniture,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+451740,美西W2仓,24.0,,WEST RIALTO,11310 Cantu Galleano Ranch Rd,Mira Loma,CA,91752,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,9,1,1,1.0,0.8889,True
+452533,"NINGBO GENERAL UNION CO.,LTD NJ 08067",24.0,,CAMDEN,2 Gateway Blvd,Pedricktown,NJ,08067,APS AEOF,Playroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+453884,RED GINGER 88 INC CA 91752,24.0,,WEST RIALTO,12400 E Philadelphia St,Eastvale,CA,91752,APS Decor,Storage & Org - Furniture Adj,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+454115,linn homelife Inc CA 90220,24.0,,CARSON,1714 S. Anderson Ave.,Compton,CA,90220,APS Home Improvement,Furniture - Bedroom,Asia Supplier Service Desk,3,1,1,1.0,1.0,True
+457319,"Shenzhen Aoqi Technology CO., Ltd NJ 07064",24.0,,SOUTH CARTERET,1001 W Middlesex Ave,Port Reading,NJ,07064,APS K&D,Outdoor Structures,Hannah Guan,5,1,1,1.0,1.0,True
+457620,"Xiamen Baiyiji Electronic Commerce Co., Ltd._1 NJ 08902",24.0,,EAST BRUNSWICK,1605 Jersey Ave,North Brunswick,NJ,08902,APS Home Improvement,Doors & Shutters,Aria Yao,4,1,1,1.0,1.0,True
+458162,BRUCE SHARK LLC NJ 08550,24.0,,PRINCETON,51 EVERETT DR STE B98,West Windsor,NJ,08550,APS Home Improvement,Storage & Org - Systems,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+460564,DingFar Company Ltd. KY 41048,24.0,,N.  KENTUCKY LOCAL,2125 Gateway Blvd,Hebron,KY,41048,APS Home Improvement,Plumbing - Core,Asia Supplier Service Desk,8,1,1,1.0,1.0,True
+460580,Chengdu Dingli Network Technology Co Ltd KY 41048,24.0,,N.  KENTUCKY LOCAL,2125 Gateway Blvd,Hebron,KY,41048,APS Home Improvement,Lighting,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+462056,"Zhongshan Suowei Network Technology Co., Ltd CA 93063",24.0,,BURBANK,4600 Industrial Street,Simi Valley,CA,93063,APS Home Improvement,Upholstery - Core,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+465485,shenzhenyigaokejiyouxiangongsi TX 77429,24.0,,HOUSTON LOCAL,14402 Fallbrook Dr Suite 290,Cypress,TX,77429,APS Wayfair Professional,Outdoor Decor,Asia Supplier Service Desk,7,1,1,1.0,1.0,True
+465803,COVERONICS LIMITED_1 ON L9E 2J3,24.0,,TORONTO_LOCAL,2100 Labrador Avenue,Milton,ON,L9E 2J3,APS Other,Outdoor Structures,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+466456,Westco Furniture HOU05,24.0,,HOUSTON LOCAL,14402 Fallbrook Drive,Cypress,TX,77429,Casegoods,Furniture - Kitchen and Dining,Zichu Wang,4,1,1,1.0,1.0,True
+466976,Cixi Dongyaodianzishangwuyouxiangongsi TX 77429,24.0,,HOUSTON LOCAL,14402 Fall brook Dr Suite 290,Cypress,TX,77429,APS AEOF,Appliances,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+467223,wu han shi xiao zhen wu mao yi you xian gong si CA 92316,24.0,,WEST RIALTO,11260 Cedar Ave,Bloomington,CA,92316,APS Rugs,Storage & Org - Systems,Supplier Service Desk,1,1,1,1.0,1.0,True
+471161,"Wenzhou Qingmu Xing Building Materials Co., Ltd CA 90703",24.0,,SANTA FE SPRINGS,16026 Manning Way,Cerritos,CA,90703,APS Housewares & More,Entertainment Furniture,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+471514,Living Source International CA 91789-5230,24.0,,INDUSTRY,C/O 171 Marcellin Dr,City of Industry,CA,91789-5230,Outdoor Furniture,Entertainment Furniture,Isha Singh,1,1,1,1.0,1.0,True
+473069,LALA  WONZ INC. CA 91730 (2),24.0,,WEST RIALTO,8595 Milliken Ave unit B-101,Rancho Cucamonga,CA,91730,APS Bedroom,Decorative Accent - Wall Accents,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+473094,WF546-GA01,24.0,,MARIETTA LOCAL,1361 Stonefield Ct,Alpharetta,GA,30004,APS Home Improvement,Outdoor,Janet Jiang,9,1,1,1.0,1.0,True
+474250,VECELO GA 30517,24.0,,BRASELTON,1380 Jesse Cronic Road,Braselton,GA,30517,APS Bedroom,Entertainment Furniture,Iris Sang,5,1,1,1.0,1.0,True
+474255,VECELO CA 91761-0010,24.0,,CHINO LOCAL,5140 E Santa Ana St,Ontario,CA,91761-0010,APS Bedroom,Youth Bedroom,Iris Sang,1,1,1,1.0,1.0,True
+477850,XY South HOU6,24.0,,,14415 Fallbrook Dr ,Cypress,TX,77429,APS AEOF,Furniture - Bedroom,Asia Supplier Service Desk,2,1,1,1.0,1.0,True
+479227,quan zhou tai yi wang luo ke ji you xian gong si CA 91731,24.0,,ARCADIA,4389 Shirle Avenue,El Monte,CA,91731,APS Decor,Upholstery - Core,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+480615,西邮美东7号仓,24.0,,ROBBINSVILLE,3280 US Highway 206,Bordentown,NJ,08505,APS K&D,Furniture - Bedroom,Asia Supplier Service Desk,1,1,1,1.0,1.0,True
+481719,MaxsaInnovations NJ 08065,24.0,,CAMDEN,"207 NJ-73, Palmyra, NJ 08065",Palmyra,NJ,08065,Lighting,Mattresses,Supplier Service Desk,4,1,1,1.0,1.0,True
+482770,Ningbo qiantu gongyinglianguanli youxiangongsi_1 NJ 08817,24.0,,WOODBRIDGE LOCAL," 18 Distribution Blvd, Edison NJ 08817",Edison,NJ,08817,APS AEOF,Entertainment Furniture,Supplier Service Desk,3,1,1,1.0,1.0,True
+484939,         LA10,24.0,,WEST RIALTO,9375 Alabama Street,Redlands,CA,92374,APS AEOF,Furniture - Kitchen and Dining,Asia Supplier Service Desk,6,1,1,1.0,1.0,True
+493562,Yiimo IL 62025,24.0,,SOUTH ST. LOUIS,28 Gateway Commerce Center Dr. W,Edwardsville,IL,62025,APS Bedroom,Furniture - Kitchen and Dining,Asia Supplier Service Desk,4,1,1,1.0,1.0,True
+495777,Mark Roberts CA 92705,24.0,,,1611 E SAINT ANDREW PL,SANTA ANA,CA,92705,PG Decor,Decorative Accent - Home Accents,Eleanor Norberg,1,1,1,1.0,1.0,True
+497109,Bey-Berk CA 91311,24.0,,,9145 Deering Ave,Chatsworth,CA,91311,Decor,Decorative Accent - Home Accents,Carly Baker,1,1,1,1.0,1.0,True
+498766,Tigris WI 54403,24.0,,WAUSAU,401 S 4th Street,Wausau,WI,54403,Plumbing,Plumbing - Core,Maverick Schlosser,1,1,1,1.0,1.0,True
