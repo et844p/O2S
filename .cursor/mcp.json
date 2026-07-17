@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "bigquery": {
+      "command": "/workspace/scripts/run-bigquery-mcp.sh",
+      "env": {
+        "BIGQUERY_PROJECT": "wf-gcp-us-ae-profit-prod",
+        "GOOGLE_APPLICATION_CREDENTIALS_FILE": "/workspace/.gcp/service-account.json"
+      }
+    }
+  }
+}
