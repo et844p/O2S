@@ -1,3 +1,22 @@
+-- Scheduled refresh: weekend shipping supplier analysis
+--
+-- Use this query in a BigQuery scheduled query to refresh the output table daily.
+-- Destination table (update dataset if needed for your write permissions):
+--   wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.weekend_shipping_supplier_analysis
+--   wf-gcp-us-ae-global-tnd-prod.tnd_adhoc.weekend_shipping_supplier_analysis
+--
+-- GBQ console setup:
+--   1. BigQuery → Scheduled queries → Create scheduled query
+--   2. Paste this entire file
+--   3. Set destination: speed_and_reliability.weekend_shipping_supplier_analysis
+--   4. Write preference: WRITE_TRUNCATE (or use CREATE OR REPLACE below)
+--   5. Schedule: daily (or your preferred cadence)
+
+CREATE OR REPLACE TABLE `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.weekend_shipping_supplier_analysis`
+PARTITION BY report_as_of_date
+CLUSTER BY supplier_id
+AS
+
 -- Weekend shipping supplier enablement analysis
 --
 -- Weekly buckets: week_minus_1 (most recent) through week_minus_6 (oldest).
@@ -6,8 +25,6 @@
 -- Weekend ship: inducted on Saturday or Sunday (induction_dow_adj IN 6, 7).
 -- Candidate (L6W): sp_lt = 24, >= 70% Fri/Sat weekend ship rate, IFR > 85%.
 -- Filter: suppliers with >= 500 ops in the last 6 weeks.
---
--- Day-of-week reference (order_dow / induction_dow_adj): ISO 8601, Monday = 1 … Sunday = 7.
 
 WITH params AS (
   SELECT
@@ -166,7 +183,6 @@ SELECT
   l.marketing_category,
   l.srm,
 
-  -- Week -1 (most recent) through week -6 (oldest)
   w.week_minus_1_start,
   w.week_minus_1_total_volume,
   w.week_minus_1_fri_sat_volume,
@@ -209,7 +225,6 @@ SELECT
   ROUND(w.week_minus_6_pct_fri_sat_shipped_sat_sun, 4) AS week_minus_6_pct_fri_sat_shipped_sat_sun,
   ROUND(w.week_minus_6_ifr, 4) AS week_minus_6_ifr,
 
-  -- Last 6 weeks rollup
   l.l6w_total_volume,
   l.l6w_fri_sat_volume,
   l.l6w_fri_sat_weekend_shipped_volume,
