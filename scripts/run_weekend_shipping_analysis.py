@@ -22,6 +22,12 @@ from gbq import query_df
 SQL_PATH = ROOT / "sql" / "weekend_shipping_supplier_analysis.sql"
 OUTPUT_DIR = ROOT / "output"
 
+COHORT_EXPORTS = {
+    "candidate": "weekend_shipping_candidates.csv",
+    "almost_ready": "weekend_shipping_almost_ready.csv",
+    "not_weekend_shipping": "weekend_shipping_not_shipping.csv",
+}
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -29,28 +35,33 @@ def main() -> None:
         "--output",
         type=Path,
         default=OUTPUT_DIR / "weekend_shipping_supplier_analysis.csv",
-        help="CSV path for supplier results",
+        help="CSV path for full supplier results",
     )
     parser.add_argument(
-        "--candidates-only",
-        action="store_true",
-        help="Only write suppliers flagged as weekend shipping candidates",
+        "--cohort",
+        choices=[*COHORT_EXPORTS.keys(), "all"],
+        default="all",
+        help="Export a single cohort or all suppliers",
     )
     args = parser.parse_args()
 
     df = query_df(SQL_PATH.read_text())
 
-    export_df = df
-    if args.candidates_only:
-        export_df = df[df["weekend_shipping_candidate"].fillna(False).astype(bool)]
+    if args.cohort == "all":
+        export_df = df
+        output_path = args.output
+    else:
+        export_df = df[df["weekend_shipping_cohort"] == args.cohort]
+        output_path = OUTPUT_DIR / COHORT_EXPORTS[args.cohort]
 
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    export_df.to_csv(args.output, index=False)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    export_df.to_csv(output_path, index=False)
 
-    candidates = int(df["weekend_shipping_candidate"].fillna(False).astype(bool).sum())
-    print(f"Wrote {len(export_df)} rows to {args.output}")
+    cohort_counts = df["weekend_shipping_cohort"].value_counts().to_dict()
+    print(f"Wrote {len(export_df)} rows to {output_path}")
     print(f"Suppliers with >= 500 L6W ops: {len(df):,}")
-    print(f"Weekend shipping candidates: {candidates}")
+    for cohort, count in sorted(cohort_counts.items()):
+        print(f"  {cohort}: {count:,}")
 
 
 if __name__ == "__main__":
