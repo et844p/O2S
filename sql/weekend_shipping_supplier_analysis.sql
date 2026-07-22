@@ -5,6 +5,8 @@
 -- Cohort: orders placed Friday or Saturday (order_dow IN 5, 6).
 -- Weekend ship: inducted on Saturday or Sunday (induction_dow_adj IN 6, 7).
 -- Candidate (L6W): sp_lt = 24, >= 70% Fri/Sat weekend ship rate, IFR > 85%.
+-- Almost ready: 24hr suppliers with 30-70% Fri/Sat weekend ship rate.
+-- Not weekend shipping: < 30% Fri/Sat weekend ship rate (with Fri/Sat volume).
 -- Filter: suppliers with >= 500 ops in the last 6 weeks.
 --
 -- Day-of-week reference (order_dow / induction_dow_adj): ISO 8601, Monday = 1 … Sunday = 7.
@@ -223,6 +225,37 @@ SELECT
       AND l.l6w_fri_sat_volume > 0,
     FALSE
   ) AS weekend_shipping_candidate,
+
+  COALESCE(
+    l.sp_lt = 24
+      AND l.l6w_pct_fri_sat_shipped_sat_sun >= 0.30
+      AND l.l6w_pct_fri_sat_shipped_sat_sun < 0.70
+      AND l.l6w_fri_sat_volume > 0,
+    FALSE
+  ) AS weekend_shipping_almost_ready,
+
+  COALESCE(
+    l.l6w_fri_sat_volume > 0
+      AND COALESCE(l.l6w_pct_fri_sat_shipped_sat_sun, 0) < 0.30,
+    FALSE
+  ) AS not_weekend_shipping,
+
+  CASE
+    WHEN l.sp_lt = 24
+      AND l.l6w_pct_fri_sat_shipped_sat_sun >= 0.70
+      AND l.l6w_ifr > 0.85
+      AND l.l6w_fri_sat_volume > 0
+      THEN 'candidate'
+    WHEN l.sp_lt = 24
+      AND l.l6w_pct_fri_sat_shipped_sat_sun >= 0.30
+      AND l.l6w_pct_fri_sat_shipped_sat_sun < 0.70
+      AND l.l6w_fri_sat_volume > 0
+      THEN 'almost_ready'
+    WHEN l.l6w_fri_sat_volume > 0
+      AND COALESCE(l.l6w_pct_fri_sat_shipped_sat_sun, 0) < 0.30
+      THEN 'not_weekend_shipping'
+    ELSE 'other'
+  END AS weekend_shipping_cohort,
 
 FROM supplier_l6w AS l
 CROSS JOIN params AS p
