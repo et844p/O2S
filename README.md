@@ -12,7 +12,11 @@ python scripts/pickup_pal_query.py typical_days --supplier "Polywood"
 
 See `docs/large_parcel/pickup_pal.md` for query rules and table references.
 
-### Slack bot
+### Cursor IDE (no Slack bot needed)
+
+Follow `docs/large_parcel/cursor_setup.md` — gcloud auth + ask Pickup Pal questions in Cursor Agent.
+
+### Slack bot (hosted — like n8n)
 
 ```bash
 export SLACK_BOT_TOKEN=xoxb-...

@@ -2,6 +2,16 @@
 
 Pickup Pal runs as a Slack Bolt app backed by BigQuery. Your friend can ask questions in a shared channel via `@Pickup Pal` or `/pickup-pal` without needing Cursor.
 
+> **Don't want to run Python locally?** This Slack bot must be **hosted** (Cloud Run) to work like n8n-bot. For querying inside Cursor only, see [cursor_setup.md](./cursor_setup.md) — no Slack bot required.
+
+## 0. Choose your path
+
+| Goal | What to do |
+|------|------------|
+| Ask questions **in Cursor** (just you) | Follow [cursor_setup.md](./cursor_setup.md) — gcloud + clone repo |
+| Ask questions **in Slack** (you + friend) | Complete this guide + deploy to Cloud Run (or run `python slack_app/app.py` locally while your laptop is on) |
+| Already use **n8n** | Build Slack → BigQuery → reply workflows in n8n instead |
+
 ## 1. Create the Slack app
 
 1. Go to [https://api.slack.com/apps](https://api.slack.com/apps) → **Create New App** → **From an app manifest**.
