@@ -24,6 +24,7 @@ SQL_ORDER = ROOT / "sql" / "flash_furniture_order_level.sql"
 OUT = ROOT / "output" / "flash_furniture"
 DOCS = ROOT / "docs" / "small_parcel"
 CHARTS = DOCS / "flash_furniture_charts"
+GITHUB_REPO = "https://github.com/et844p/O2S/blob/main"
 
 WAREHOUSE_LABEL = {
     ("Canton", "GA"): "Canton, GA",
@@ -218,44 +219,95 @@ def chart_weekend_gap(df: pd.DataFrame) -> None:
     plt.close(fig)
 
 
-def build_findings(df: pd.DataFrame) -> str:
-    main = df[df["warehouse"].isin(WAREHOUSE_LABEL.values())]
-    total_vol = main["ops"].nunique()
-    overall_ifr = main["on_time"].mean()
-    late_vol = main[main["on_time"] == 0]["ops"].nunique()
-    one_day_late = main[main["one_day_late"] == 1]["ops"].nunique()
+    return "Other"
+
+
+def _metrics(df: pd.DataFrame) -> dict:
+    main = df[df["warehouse"].isin(WAREHOUSE_LABEL.values())].copy()
+    main["late_bucket"] = main.apply(late_bucket, axis=1)
 
     wh = (
         main.groupby("warehouse", as_index=False)
         .agg(vol=("ops", "nunique"), ifr=("on_time", "mean"))
         .sort_values("vol", ascending=False)
     )
-
     recent = main[main["msbd_su"] >= main["msbd_su"].max() - pd.Timedelta(weeks=4)]
     recent_ifr = (
         recent.groupby("warehouse", as_index=False)
         .agg(vol=("ops", "nunique"), ifr=("on_time", "mean"))
         .sort_values("vol", ascending=False)
     )
+    one_day = (
+        main[main["one_day_late"] == 1]
+        .groupby("warehouse")["ops"]
+        .nunique()
+        .to_dict()
+    )
+    fri_sat = main[main["order_dow"].isin([5, 6])]
+    weekend_rate = (
+        fri_sat.groupby("warehouse")
+        .apply(
+            lambda g: (g["induction_dow_adj"].isin([6, 7])).sum() / len(g) if len(g) else 0,
+            include_groups=False,
+        )
+        .to_dict()
+    )
 
-    label_ok = main["o2label_1_adj"].mean()
-    label2i_1 = main["label2I_1_adj"].mean()
-    late_label2i_1 = main.loc[main["inducted_late"] == 1, "label2I_1_adj"].mean()
+    return {
+        "main": main,
+        "total_vol": main["ops"].nunique(),
+        "overall_ifr": main["on_time"].mean(),
+        "late_vol": main[main["on_time"] == 0]["ops"].nunique(),
+        "one_day_late": main[main["one_day_late"] == 1]["ops"].nunique(),
+        "wh": wh,
+        "recent_ifr": recent_ifr,
+        "one_day_by_wh": one_day,
+        "weekend_rate": weekend_rate,
+        "label_ok": main["o2label_1_adj"].mean(),
+        "label2i_1": main["label2I_1_adj"].mean(),
+        "late_label2i_0": main.loc[main["inducted_late"] == 1, "label2I_0_adj"].mean(),
+        "ontime_label2i_0": main.loc[main["on_time"] == 1, "label2I_0_adj"].mean(),
+        "dow_ifr": (
+            main.groupby(["warehouse", "order_dow_name"], as_index=False)
+            .agg(ifr=("on_time", "mean"))
+        ),
+    }
+
+
+def build_findings(df: pd.DataFrame) -> str:
+    m = _metrics(df)
+    total_vol = m["total_vol"]
+    overall_ifr = m["overall_ifr"]
+    late_vol = m["late_vol"]
+    one_day_late = m["one_day_late"]
+    wh = m["wh"]
+    recent_ifr = m["recent_ifr"]
+    label_ok = m["label_ok"]
+    label2i_1 = m["label2i_1"]
+    main = m["main"]
+
+    one_day_lines = " | ".join(
+        f"{wh_name}: {m['one_day_by_wh'].get(wh_name, 0):,}"
+        for wh_name in wh["warehouse"]
+    )
 
     lines = [
         "# Flash Furniture — Induction Performance Analysis",
         "",
         f"**Analysis period:** Past 3 months (MSBD timebase)  ",
         f"**Generated:** {pd.Timestamp.now().date().isoformat()}  ",
-        f"**Parent supplier:** Flash Furniture",
+        f"**Parent supplier:** Flash Furniture  ",
+        f"**Scope:** Dropship only (`fulfillment_type = 'DS'`)",
         "",
         "## Executive summary",
         "",
-        f"Flash Furniture moved **{total_vol:,}** small-parcel ops across three warehouses in the last 3 months at **{overall_ifr:.1%} network IFR** — well below the 85% target. **{late_vol:,} orders ({late_vol/total_vol:.1%})** missed supplier MSBD induction, with **{one_day_late:,}** of those only **1 day late**.",
+        f"Flash Furniture moved **{total_vol:,}** dropship small-parcel ops across three warehouses in the last 3 months at **{overall_ifr:.1%} network IFR** — well below the 85% target. **{late_vol:,} orders ({late_vol/total_vol:.1%})** missed supplier MSBD induction, with **{one_day_late:,}** of those only **1 day late**.",
         "",
-        "The primary issue is **not label creation** — labels are printed on time in >97% of orders. The gap is **carrier induction after label print**: only ~{:.0%} of orders are inducted within 1 day of label, and late orders average just {:.0%} same-day label-to-induction.".format(label2i_1, main.loc[main['inducted_late']==1,'label2I_0_adj'].mean()),
+        "The primary issue is **not label creation** — labels are printed on time in >97% of orders. The gap is **carrier induction after label print**: only ~{:.0%} of orders are inducted within 1 day of label, and late orders average just {:.0%} same-day label-to-induction.".format(
+            label2i_1, m["late_label2i_0"]
+        ),
         "",
-        "**Performance has deteriorated sharply in July 2026**, especially at Canton and Olive Branch (recent 4-week IFR in the 10–34% range vs ~60–75% earlier in the period).",
+        "**Performance has deteriorated sharply in July 2026**, especially at Canton and Olive Branch.",
         "",
         "## Warehouse performance (L3M)",
         "",
@@ -280,38 +332,30 @@ def build_findings(df: pd.DataFrame) -> str:
         "## Key themes — why volume is not inducting on time",
         "",
         "### 1. Label-to-induction gap (primary driver)",
-        "- Labels are created quickly: **{:.1%}** of orders have a label within 1 day of order.".format(label_ok),
-        "- Carrier induction lags: only **{:.1%}** inducted within 1 day of label (network-wide).".format(label2i_1),
-        "- For **late orders**, only **{:.1%}** get same-day label-to-induction vs **{:.1%}** for on-time orders.".format(
-            main.loc[main["inducted_late"] == 1, "label2I_0_adj"].mean(),
-            main.loc[main["on_time"] == 1, "label2I_0_adj"].mean(),
-        ),
+        f"- Labels are created quickly: **{label_ok:.1%}** of orders have a label within 1 day of order.",
+        f"- Carrier induction lags: only **{label2i_1:.1%}** inducted within 1 day of label (network-wide).",
+        f"- For **late orders**, only **{m['late_label2i_0']:.1%}** get same-day label-to-induction vs **{m['ontime_label2i_0']:.1%}** for on-time orders.",
         "- **Implication:** warehouse is largely printing labels on MSBD, but **FedEx pickup / first scan is delayed 1–2 days**.",
         "",
         "### 2. 1-day-late concentration",
-        "- The largest late bucket is **1 day past MSBD** (Canton: 2,703 | Olive Branch: 2,520 | Chino: 853).",
+        f"- The largest late bucket is **1 day past MSBD** ({one_day_lines}).",
         "- This is consistent with **next-day pickup failure** rather than multi-day warehouse processing delays.",
         "",
         "### 3. Olive Branch (MS) is the weakest site",
-        "- Lowest IFR at **49.1%** on 8,491 ops.",
-        "- Mon/Tue order placement IFR is **30–39%** — suggests start-of-week pickup cadence issues.",
+        f"- Lowest L3M IFR at **{wh.loc[wh['warehouse']=='Olive Branch, MS', 'ifr'].iloc[0]:.1%}**.",
+        "- Mon/Tue order placement IFR is weakest — suggests start-of-week pickup cadence issues.",
         "- Station: **OLIVE BRANCH LOCAL**.",
         "",
         "### 4. Canton (GA) volume leader with recent collapse",
-        "- Highest volume (**11,652 ops**) at **61.7%** IFR for the period.",
-        "- IFR dropped to **20–34%** in July 2026 weeks — needs immediate operational review.",
+        f"- Highest volume at **{int(wh.iloc[0]['vol']):,} ops**; July IFR well below L3M average.",
         "- Station: **MARIETTA LOCAL**.",
         "",
         "### 5. Weekend induction gap",
-        "- Fri/Sat placed orders are **not** getting weekend carrier induction at scale (~50–53% weekend induct rate).",
+        "- Fri/Sat placed orders are **not** getting weekend carrier induction at scale.",
         "- Weekend shipping enablement or Saturday pickup alignment could recover meaningful volume.",
         "",
         "### 6. Not a lead-time / cushion / capacity issue",
-        "- All sites on **24hr SP LT** with low cushion (0.25–1.09 days) and negligible capacity padding.",
-        "- O2S actual averages **1.9–2.1 days** vs **1.5 day** MSBD window — supplier is shipping close to deadline but missing carrier scan.",
-        "",
-        "### 7. Chino (CA) — smaller but similar pattern",
-        "- **2,437 ops** at **55.2%** IFR; same 1-day-late concentration.",
+        "- All sites on **24hr SP LT** with low cushion and negligible capacity padding.",
         "",
         "## Recommended discussion topics for Flash Furniture meeting",
         "",
@@ -334,10 +378,121 @@ def build_findings(df: pd.DataFrame) -> str:
         "",
         "## Data exports",
         "",
-        "- Full order-level: `output/flash_furniture/flash_furniture_orders_l3m.csv`",
-        "- Late orders only: `output/flash_furniture/flash_furniture_late_orders_l3m.csv`",
+        f"- Full order-level: [{GITHUB_REPO}/output/flash_furniture/flash_furniture_orders_l3m.csv]({GITHUB_REPO}/output/flash_furniture/flash_furniture_orders_l3m.csv)",
+        f"- Late orders only: [{GITHUB_REPO}/output/flash_furniture/flash_furniture_late_orders_l3m.csv]({GITHUB_REPO}/output/flash_furniture/flash_furniture_late_orders_l3m.csv)",
     ]
     return "\n".join(lines)
+
+
+def build_preread(df: pd.DataFrame) -> str:
+    m = _metrics(df)
+    total_vol = m["total_vol"]
+    overall_ifr = m["overall_ifr"]
+    late_vol = m["late_vol"]
+    one_day_late = m["one_day_late"]
+    wh = m["wh"]
+    recent_ifr = m["recent_ifr"]
+
+    wh_table = "\n".join(
+        f"| {r['warehouse']} | {int(r['vol']):,} | {r['ifr']:.1%} |"
+        for _, r in wh.iterrows()
+    )
+    recent_table = "\n".join(
+        f"| {r['warehouse']} | {int(r['vol']):,} | {r['ifr']:.1%} |"
+        for _, r in recent_ifr.iterrows()
+    )
+
+    charts = [
+        ("IFR by warehouse", "01_ifr_by_warehouse.png"),
+        ("Weekly IFR trend", "02_weekly_ifr_trend.png"),
+        ("Late bucket breakdown", "03_late_bucket_breakdown.png"),
+        ("Label vs induction timing", "04_label_vs_induction_timing.png"),
+        ("IFR by order day of week", "05_ifr_by_order_dow.png"),
+        ("Weekend induction gap", "06_weekend_induction_gap.png"),
+    ]
+    chart_blocks = []
+    for title, file in charts:
+        chart_blocks.extend([
+            f"### {title}",
+            "",
+            f"![{title}](flash_furniture_charts/{file})",
+            "",
+        ])
+
+    return f"""# Flash Furniture — Account Manager Pre-Read
+
+**Meeting:** Flash Furniture induction performance review  
+**Generated:** {pd.Timestamp.now().date().isoformat()}  
+**Scope:** Dropship only (`fulfillment_type = 'DS'`) · Past 3 months · MSBD timebase
+
+---
+
+## TL;DR for the AM
+
+Flash Furniture is **missing induction on ~{late_vol/total_vol:.0%} of dropship orders** ({late_vol:,} of {total_vol:,} ops). Network IFR is **{overall_ifr:.1%}** vs an 85% target.
+
+**This is not a labeling problem.** Labels are created within 1 day on **{m['label_ok']:.0%}** of orders. The gap is **carrier pickup / first scan**: only **{m['label2i_1']:.0%}** of orders are inducted within 1 day of label print. **{one_day_late:,}** late orders are only **1 day past MSBD** — pointing to missed next-day pickup, not multi-day warehouse delays.
+
+**July performance has deteriorated sharply** at Canton and Olive Branch. Olive Branch remains the weakest site overall.
+
+**Framing for the supplier:** *"Your warehouses are labeling on time — we need to align FedEx pickup and first-scan timing with MSBD."*
+
+---
+
+## Warehouse snapshot (L3M)
+
+| Warehouse | Volume | IFR |
+|-----------|-------:|----:|
+{wh_table}
+
+## Recent trend (last 4 weeks)
+
+| Warehouse | Volume | IFR |
+|-----------|-------:|----:|
+{recent_table}
+
+---
+
+## Key themes
+
+1. **Label-to-induction gap** — primary driver; late orders have **{m['late_label2i_0']:.1%}** same-day label→induction vs **{m['ontime_label2i_0']:.1%}** for on-time orders.
+2. **1-day-late concentration** — largest late bucket across all three sites.
+3. **Olive Branch (MS)** — weakest IFR; Mon/Tue order placement especially poor (OLIVE BRANCH LOCAL station).
+4. **Canton (GA)** — highest volume; July IFR collapse needs operational review (MARIETTA LOCAL station).
+5. **Weekend gap** — Fri/Sat placed orders not getting Sat/Sun induction at scale.
+6. **Not LT/cushion** — all on 24hr SP LT; this is pickup/induction, not policy.
+
+---
+
+## Questions to drive in the meeting
+
+1. What is the **FedEx pickup schedule** at each warehouse, and does it align with label cutoff?
+2. What **changed in July** (staffing, volume, carrier, cutoff)?
+3. Why is **Olive Branch Mon/Tue** underperforming?
+4. Can we enable **weekend pickup** or adjust processing for Fri/Sat orders?
+5. Will Flash commit to tracking **label-to-induction same day** weekly by site?
+
+---
+
+## Supporting charts
+
+{chr(10).join(chart_blocks)}
+
+---
+
+## Order-level data (linked)
+
+| File | Rows | Description |
+|------|-----:|-------------|
+| [All DS orders (L3M)]({GITHUB_REPO}/output/flash_furniture/flash_furniture_orders_l3m.csv) | {total_vol:,} | Full order-level export with induction, label, and routing fields |
+| [Late orders only]({GITHUB_REPO}/output/flash_furniture/flash_furniture_late_orders_l3m.csv) | {late_vol:,} | Orders that missed on-time induction — use for PO examples |
+
+**Full technical write-up:** [flash_furniture_induction_analysis.md](flash_furniture_induction_analysis.md)
+
+---
+
+*Note: Analysis excludes CastleGate (`fulfillment_type = 'CG'`) orders. Supplier-facing metrics should always use DS only.*
+"""
 
 
 def main() -> None:
@@ -371,6 +526,11 @@ def main() -> None:
     findings_path = DOCS / "flash_furniture_induction_analysis.md"
     findings_path.write_text(findings)
     print(f"Wrote {findings_path}")
+
+    preread = build_preread(df)
+    preread_path = DOCS / "flash_furniture_meeting_preread.md"
+    preread_path.write_text(preread)
+    print(f"Wrote {preread_path}")
 
 
 if __name__ == "__main__":

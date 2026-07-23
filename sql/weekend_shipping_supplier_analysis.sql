@@ -46,6 +46,7 @@ base_orders AS (
   CROSS JOIN params AS p
   WHERE o.order_complete_date >= DATE_SUB(p.report_as_of_date, INTERVAL 6 WEEK)
     AND o.order_complete_date < p.report_as_of_date
+    AND o.fulfillment_type = 'DS'
 ),
 
 weekend_cohort AS (

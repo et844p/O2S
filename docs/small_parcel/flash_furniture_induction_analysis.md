@@ -2,15 +2,16 @@
 
 **Analysis period:** Past 3 months (MSBD timebase)  
 **Generated:** 2026-07-23  
-**Parent supplier:** Flash Furniture
+**Parent supplier:** Flash Furniture  
+**Scope:** Dropship only (`fulfillment_type = 'DS'`)
 
 ## Executive summary
 
-Flash Furniture moved **22,580** small-parcel ops across three warehouses in the last 3 months at **56.3% network IFR** — well below the 85% target. **9,873 orders (43.7%)** missed supplier MSBD induction, with **6,076** of those only **1 day late**.
+Flash Furniture moved **22,580** dropship small-parcel ops across three warehouses in the last 3 months at **56.3% network IFR** — well below the 85% target. **9,873 orders (43.7%)** missed supplier MSBD induction, with **6,076** of those only **1 day late**.
 
 The primary issue is **not label creation** — labels are printed on time in >97% of orders. The gap is **carrier induction after label print**: only ~50% of orders are inducted within 1 day of label, and late orders average just 0% same-day label-to-induction.
 
-**Performance has deteriorated sharply in July 2026**, especially at Canton and Olive Branch (recent 4-week IFR in the 10–34% range vs ~60–75% earlier in the period).
+**Performance has deteriorated sharply in July 2026**, especially at Canton and Olive Branch.
 
 ## Warehouse performance (L3M)
 
@@ -37,29 +38,24 @@ The primary issue is **not label creation** — labels are printed on time in >9
 - **Implication:** warehouse is largely printing labels on MSBD, but **FedEx pickup / first scan is delayed 1–2 days**.
 
 ### 2. 1-day-late concentration
-- The largest late bucket is **1 day past MSBD** (Canton: 2,703 | Olive Branch: 2,520 | Chino: 853).
+- The largest late bucket is **1 day past MSBD** (Canton, GA: 2,703 | Olive Branch, MS: 2,520 | Chino, CA: 853).
 - This is consistent with **next-day pickup failure** rather than multi-day warehouse processing delays.
 
 ### 3. Olive Branch (MS) is the weakest site
-- Lowest IFR at **49.1%** on 8,491 ops.
-- Mon/Tue order placement IFR is **30–39%** — suggests start-of-week pickup cadence issues.
+- Lowest L3M IFR at **49.1%**.
+- Mon/Tue order placement IFR is weakest — suggests start-of-week pickup cadence issues.
 - Station: **OLIVE BRANCH LOCAL**.
 
 ### 4. Canton (GA) volume leader with recent collapse
-- Highest volume (**11,652 ops**) at **61.7%** IFR for the period.
-- IFR dropped to **20–34%** in July 2026 weeks — needs immediate operational review.
+- Highest volume at **11,652 ops**; July IFR well below L3M average.
 - Station: **MARIETTA LOCAL**.
 
 ### 5. Weekend induction gap
-- Fri/Sat placed orders are **not** getting weekend carrier induction at scale (~50–53% weekend induct rate).
+- Fri/Sat placed orders are **not** getting weekend carrier induction at scale.
 - Weekend shipping enablement or Saturday pickup alignment could recover meaningful volume.
 
 ### 6. Not a lead-time / cushion / capacity issue
-- All sites on **24hr SP LT** with low cushion (0.25–1.09 days) and negligible capacity padding.
-- O2S actual averages **1.9–2.1 days** vs **1.5 day** MSBD window — supplier is shipping close to deadline but missing carrier scan.
-
-### 7. Chino (CA) — smaller but similar pattern
-- **2,437 ops** at **55.2%** IFR; same 1-day-late concentration.
+- All sites on **24hr SP LT** with low cushion and negligible capacity padding.
 
 ## Recommended discussion topics for Flash Furniture meeting
 
@@ -82,5 +78,5 @@ The primary issue is **not label creation** — labels are printed on time in >9
 
 ## Data exports
 
-- Full order-level: `output/flash_furniture/flash_furniture_orders_l3m.csv`
-- Late orders only: `output/flash_furniture/flash_furniture_late_orders_l3m.csv`
+- Full order-level: [https://github.com/et844p/O2S/blob/main/output/flash_furniture/flash_furniture_orders_l3m.csv](https://github.com/et844p/O2S/blob/main/output/flash_furniture/flash_furniture_orders_l3m.csv)
+- Late orders only: [https://github.com/et844p/O2S/blob/main/output/flash_furniture/flash_furniture_late_orders_l3m.csv](https://github.com/et844p/O2S/blob/main/output/flash_furniture/flash_furniture_late_orders_l3m.csv)
