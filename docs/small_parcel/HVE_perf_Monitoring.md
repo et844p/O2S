@@ -16,6 +16,7 @@ Use this reference for natural-language data pull requests against the Small Par
 - Always use backticks for the table name.
 - Default timebase: `msbd_su` (Supplier Must Ship By Date) unless the user specifies otherwise.
 - Default category / speed captain filter: `sto`.
+- **Supplier queries:** filter `fulfillment_type = 'DS'` (dropship only; excludes CastleGate `CG`).
 - Boolean columns: `1` = Yes, `0` = No.
 - Use **distinct counts** when aggregating volume (e.g. `COUNT(DISTINCT ops)` or `COUNT(DISTINCT purchase_order_number)`).
 - Limit results to **10 rows** unless the user asks for more.
@@ -44,6 +45,7 @@ Use this reference for natural-language data pull requests against the Small Par
 | `postal_code` | STR | ZIP or postal code for the supplier location |
 | `summer26_target` | STR | Flag if supplier was on Summer 2026 target list (`1` or `0`) |
 | `summer26_cohorts` | STR | Summer 2026 grouping: Induction Fill Rate Target or Stated Speed target |
+| `fulfillment_type` | STR | Fulfillment path: `DS` = dropship (use for supplier analysis), `CG` = CastleGate |
 
 ### Lead time & capacity
 

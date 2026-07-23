@@ -58,8 +58,10 @@ SELECT
   assignedhub_notequal_actualhub_flag,
   destination_state,
   delivery_date,
+  fulfillment_type,
   delivery_rel,
 FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
 WHERE msbd_su >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 MONTH)
   AND parent_su_name = 'Flash Furniture'
+  AND fulfillment_type = 'DS'
 ORDER BY msbd_su DESC, supplier_id, ops

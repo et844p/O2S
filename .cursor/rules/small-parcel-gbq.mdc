@@ -15,6 +15,7 @@ When the user asks for Small Parcel (SP) metrics, data pulls, or performance fro
 
 - Timebase: `msbd_su` unless the user specifies otherwise
 - Category / captain filter: `sto`
+- **Supplier queries:** `fulfillment_type = 'DS'` (dropship only; excludes CastleGate `CG`)
 - Volume: `COUNT(DISTINCT ops)` (or distinct PO if user asks for PO-level)
 - Performance / IFR: `AVG(inducted_on_time_or_early)`
 - Boolean columns: 1 = Yes, 0 = No
