@@ -1,0 +1,42 @@
+---
+description: Query Large Parcel metrics from LP_dash_ET and OTR_Tracking_ET in BigQuery
+alwaysApply: true
+---
+
+# Large Parcel BigQuery pulls
+
+When the user asks for Large Parcel (LP) metrics, data pulls, or performance from LP monitoring:
+
+1. Read `docs/large_parcel/LP_dash_ET.md` for column definitions and business rules.
+2. Query only: `` `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.LP_dash_ET` ``
+3. For OTR pickup analysis, also use: `` `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.OTR_Tracking_ET` ``
+4. Use `from gbq import query_df` to run SQL.
+
+## Defaults
+
+- Timebase: `supplier_must_ship_by_date` unless the user specifies otherwise
+- Category / captain filter: `sto`
+- Volume: `COUNT(DISTINCT opid)` (or distinct PO if user asks for PO-level)
+- Induction performance / IFR: `AVG(inducted_on_time_or_early)`
+- RFPD on-time: `AVG(rfpd_early_ontime_SU_new)`
+- Boolean columns: 1 = Yes, 0 = No
+- Limit: 10 rows unless user asks for more
+
+## Routing-type pickup metrics
+
+- **Live Load Pooled**: use `rfpd_early_ontime_SU_new` for pickup readiness
+- **OTR**: join `OTR_Tracking_ET` on `ChildSuID` + `ponum`; use `pu_on_before_MSBD` / `pu_on_MSBD` for MSBD-day pickups; check `plannedtrucks` vs `executedtrucks` for truck loading
+- **Drop Pooled / other**: use `pu_withinSLA_new`
+
+## Formulas
+
+- Late Orders = Volume × (1 - IFR)
+- CTC = (% of Network Volume) × (Late Orders)
+- Truck Efficiency = executedtrucks / plannedtrucks
+
+## Do not
+
+- Query other tables unless the user explicitly asks
+- Use non-distinct counts for volume aggregation
+- Omit backticks around fully qualified table names
+- Sum `plannedtrucks` / `executedtrucks` without deduping by MSBD + warehouse

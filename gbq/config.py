@@ -15,3 +15,11 @@ DATASET_ALIASES = {
 # Small Parcel monitoring table.
 SP_TABLE = "HVE_perf_Monitoring"
 SP_TABLE_FQN = f"`{DATA_PROJECT}.{DATASET}.{SP_TABLE}`"
+
+# Large Parcel monitoring table.
+LP_TABLE = "LP_dash_ET"
+LP_TABLE_FQN = f"`{DATA_PROJECT}.{DATASET}.{LP_TABLE}`"
+
+# OTR pickup tracking (join to LP for OTR-routed suppliers).
+OTR_TRACKING_TABLE = "OTR_Tracking_ET"
+OTR_TRACKING_TABLE_FQN = f"`{DATA_PROJECT}.{DATASET}.{OTR_TRACKING_TABLE}`"
