@@ -50,6 +50,10 @@ python scripts/pickup_pal_query.py pickups_this_week --supplier "Fusion Furnitur
 python scripts/pickup_pal_query.py typical_days --supplier "Polywood"
 ```
 
+### Slack bot
+
+Users can ask the same questions in Slack via `@Pickup Pal` or `/pickup-pal`. See [slack_setup.md](./slack_setup.md).
+
 ## Extra pickup decision logic
 
 When a supplier requests an additional pickup:
