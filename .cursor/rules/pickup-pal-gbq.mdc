@@ -1,0 +1,47 @@
+---
+description: Pickup Pal — Large Parcel OTR pickup queries from OTR_Tracking_ET and FM_LP_FTL_Variance
+alwaysApply: false
+globs:
+  - docs/large_parcel/**
+  - sql/large_parcel/**
+  - scripts/pickup_pal_query.py
+---
+
+# Pickup Pal — Large Parcel BigQuery
+
+When the user asks about large parcel pickups, OTR lanes, supplier pickup schedules, or extra pickup volume:
+
+1. Read `docs/large_parcel/pickup_pal.md` and `docs/large_parcel/OTR_Tracking_ET.md`.
+2. Query `` `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.OTR_Tracking_ET` `` for PO-level data (do **not** rebuild this table).
+3. Query `` `wf-gcp-us-ae-global-tnd-prod.tnd_reporting.FM_LP_FTL_Variance` `` for planned/executed pickup schedules.
+4. Use `from gbq import query_df` or `python scripts/pickup_pal_query.py`.
+
+## Defaults
+
+- Supplier lookup: `LOWER(SuName) LIKE '%name%'` OR `LOWER(ParentSuName) LIKE '%name%'`
+- Open PO: `carrier_first_induction_date_time IS NULL`
+- Current week: `DATE_TRUNC(CURRENT_DATE(), WEEK(MONDAY))`
+- PO volume: `COUNT(DISTINCT full_ponum)`
+- `po_pu` defaults to 60 when null in source
+- Limit: 10 rows unless user asks for more
+
+## Query routing
+
+| Intent | SQL / script |
+|--------|--------------|
+| Extra pickup / enough volume? | `sql/large_parcel/extra_pickup_volume_check.sql` or `pickup_pal_query.py extra_pickup` |
+| Pickups this week | `sql/large_parcel/supplier_pickups_this_week.sql` or `pickup_pal_query.py pickups_this_week` |
+| Typical pickup days | `sql/large_parcel/typical_pickup_days.sql` or `pickup_pal_query.py typical_days` |
+
+## Extra pickup logic
+
+- `pickups_needed = open_po_count / po_pu`
+- Recommend extra pickup when `pickups_needed > planned_pickups_this_week` OR `open_po_count >= po_pu`
+- Always report open PO breakdown: not late yet vs already late
+
+## Do not
+
+- Rebuild `OTR_Tracking_ET` for ad-hoc questions
+- Use non-distinct PO counts
+- Query small-parcel `HVE_perf_Monitoring` for LP pickup questions
+- Omit backticks around fully qualified table names
