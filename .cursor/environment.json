@@ -1,0 +1,3 @@
+{
+  "install": "pip install -r requirements.txt && python scripts/validate_setup.py --skip-slack"
+}

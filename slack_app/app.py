@@ -10,9 +10,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+except ImportError:
+    pass
+
 _default_creds = ROOT / ".gcp" / "credentials.json"
 if _default_creds.exists():
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(_default_creds)
+    os.environ.setdefault("GOOGLE_APPLICATION_CREDENTIALS", str(_default_creds))
 
 from flask import Flask, jsonify, request
 from slack_bolt import App
