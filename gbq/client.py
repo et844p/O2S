@@ -19,7 +19,7 @@ def ensure_credentials(creds_path: Path | None = None) -> Path:
     """Write service-account JSON from env to disk if needed."""
     path = creds_path or _DEFAULT_CREDS_PATH
     if path.exists():
-        os.environ.setdefault("GOOGLE_APPLICATION_CREDENTIALS", str(path))
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(path)
         return path
 
     raw = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", "")
