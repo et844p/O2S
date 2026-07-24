@@ -1,5 +1,6 @@
--- Olive Branch OTR: MSBD vs pickup dates (last 4 weeks)
+-- Olive Branch OTR: MSBD vs pickup dates
 -- Warehouse: Flash Furniture MS 38654
+-- Period: 2026-06-21 to 2026-07-18 (MSBD timebase, excludes current week)
 
 SELECT
   supplier_must_ship_by_date AS msbd,
@@ -19,6 +20,6 @@ SELECT
   COUNTIF(rfpd_early_ontime_SU = 1) AS rfpd_on_msbd
 FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.OTR_Tracking_ET`
 WHERE SuName = 'Flash Furniture MS 38654'
-  AND supplier_must_ship_by_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 4 WEEK)
+  AND supplier_must_ship_by_date BETWEEN '2026-06-21' AND '2026-07-18'
 GROUP BY 1, 2
 ORDER BY msbd
