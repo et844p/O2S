@@ -16,7 +16,7 @@ When the user asks for Small Parcel (SP) metrics, data pulls, or performance fro
 - Timebase: `msbd_su` unless the user specifies otherwise
 - Category / captain filter: `sto`
 - **Supplier queries:** `fulfillment_type = 'DS'` (dropship only; excludes CastleGate `CG`)
-- Volume: `COUNT(DISTINCT ops)` (or distinct PO if user asks for PO-level)
+- Volume: `count(ops) as vol` per `.cursor/rules/sql-query-style.mdc` (use distinct counts only if the user asks)
 - Performance / IFR: `AVG(inducted_on_time_or_early)`
 - Boolean columns: 1 = Yes, 0 = No
 - Limit: 10 rows unless user asks for more
@@ -29,5 +29,5 @@ When the user asks for Small Parcel (SP) metrics, data pulls, or performance fro
 ## Do not
 
 - Query other tables unless the user explicitly asks
-- Use non-distinct counts for volume aggregation
+- Use `COUNT(DISTINCT …)` for volume unless the user explicitly asks for distinct counts (default is `count(ops)` per sql-query-style rule)
 - Omit backticks around the fully qualified table name
