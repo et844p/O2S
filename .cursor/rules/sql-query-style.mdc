@@ -1,0 +1,84 @@
+---
+description: User's preferred BigQuery SQL formatting and aggregation style for HVE_perf_Monitoring
+alwaysApply: true
+---
+
+# SQL query style (user preference)
+
+When the user asks for SQL queries — especially against `HVE_perf_Monitoring` — **mirror this format exactly** unless they specify otherwise.
+
+## Formatting
+
+- Use **lowercase** SQL keywords and functions: `select`, `count`, `sum`, `case when`, `group by`.
+- Use positional `group by 1, 2, 3, 4` when grouping on leading select columns.
+- Trailing commas in the select list are fine.
+- Always backtick the fully qualified table:
+  `` `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring` ``
+- Put filters inline in `WHERE` (e.g. `AND parent_suid = 291`). Do **not** use `DECLARE` parameters unless the user asks for a reusable script.
+
+## Volume
+
+- Default volume: `count(ops) as vol`
+- Do **not** use `COUNT(DISTINCT ops)` unless the user explicitly asks for distinct counts.
+
+## Percentages / rates
+
+Use `sum(case when … then 1 else 0 end) / count(ops)` — not `SAFE_DIVIDE`, `AVG()`, or `COUNT(DISTINCT IF(...))`.
+
+```sql
+sum(case when o2d_stated = 1 then 1 else 0 end) / count(ops) as pct_1_day_badge,
+sum(case when o2d_stated <= 2 then 1 else 0 end) / count(ops) as pct_2_day_badge,
+sum(case when o2d_stated <= 5 then 1 else 0 end) / count(ops) as pct_5_day_badge,
+```
+
+## Badging (stated O2D)
+
+| Alias | Definition |
+|-------|------------|
+| `pct_1_day_badge` | `o2d_stated = 1` |
+| `pct_2_day_badge` | `o2d_stated <= 2` (cumulative — includes 1-day) |
+| `pct_5_day_badge` | `o2d_stated <= 5` (fast-badged) |
+
+## Delivered-volume pulls
+
+- Timebase: `delivery_date` (not `msbd_su`) when the question is about **delivered** volume.
+- Month bucket: `DATE_TRUNC(delivery_date, MONTH) AS delivery_month`
+- Require `delivery_date IS NOT NULL`
+- Default lookback: `delivery_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 13 MONTH)` for MoM views
+
+## Dimensions to include
+
+When the query is supplier- or parent-scoped, include in `SELECT` and `GROUP BY`:
+
+- `fulfillment_type`
+- `parent_suid`
+- `parent_su_name`
+
+Split CG vs DS via `fulfillment_type` (do not derive from `su_name` unless the user asks).
+
+## Reference template
+
+```sql
+SELECT
+  DATE_TRUNC(delivery_date, MONTH) AS delivery_month,
+  fulfillment_type,
+  parent_suid,
+  parent_su_name,
+  count(ops) as vol,
+  sum(case when o2d_stated = 1 then 1 else 0 end) / count(ops) as pct_1_day_badge,
+  sum(case when o2d_stated <= 2 then 1 else 0 end) / count(ops) as pct_2_day_badge,
+  sum(case when o2d_stated <= 5 then 1 else 0 end) / count(ops) as pct_5_day_badge,
+FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
+WHERE delivery_date IS NOT NULL
+  AND delivery_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 13 MONTH)
+  AND parent_suid = 291
+GROUP BY 1, 2, 3, 4
+```
+
+## MoM volume change
+
+When the user asks for month-over-month **volume difference**, add a window on top of the grouped result — still keep the base aggregation in the user's style:
+
+```sql
+vol - lag(vol) OVER (PARTITION BY fulfillment_type, parent_suid ORDER BY delivery_month) AS mom_vol_change
+```
