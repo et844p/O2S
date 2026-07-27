@@ -1,4 +1,6 @@
 .gcp/
+.config/google-workspace-mcp/
+token.json
 __pycache__/
 *.pyc
 .env

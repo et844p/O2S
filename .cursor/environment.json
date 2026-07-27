@@ -1,0 +1,3 @@
+{
+  "install": "bash scripts/setup_google_drive.sh --install-only"
+}

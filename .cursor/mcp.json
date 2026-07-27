@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@dguido/google-workspace-mcp"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${env:GOOGLE_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${env:GOOGLE_CLIENT_SECRET}",
+        "GOOGLE_WORKSPACE_SERVICES": "drive,docs,sheets",
+        "GOOGLE_WORKSPACE_READ_ONLY": "false"
+      }
+    }
+  }
+}
