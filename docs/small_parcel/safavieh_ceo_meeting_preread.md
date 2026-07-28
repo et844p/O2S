@@ -116,6 +116,19 @@ Weekend shipping (+1.0 pp on top of policy) remains meaningful at **1,642** newl
 
 ---
 
+## Google Slides deck
+
+| Resource | Link |
+|----------|------|
+| **Download PPTX** (import to Google Slides) | [Safavieh_CEO_June_MSBD.pptx](https://github.com/et844p/O2S/raw/cursor/safavieh-ceo-preread-b7d6/output/safavieh/Safavieh_CEO_June_MSBD.pptx) |
+| **Import instructions** | [IMPORT_TO_GOOGLE_SLIDES.md](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/IMPORT_TO_GOOGLE_SLIDES.md) |
+
+**Quick import:** [Google Slides](https://slides.google.com) → File → Import slides → Upload the PPTX.
+
+Regenerate: `python scripts/create_safavieh_google_slides.py`
+
+---
+
 ## Data & files
 
 | Resource | Link |
