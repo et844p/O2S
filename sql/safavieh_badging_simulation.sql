@@ -1,12 +1,12 @@
 -- Safavieh parent-level fast-badge simulation
+-- Base: June 2026 MSBD (msbd_su BETWEEN '2026-06-01' AND '2026-06-30')
 -- Scenarios: current | policy (2pm + no cushion) | full (+ weekend shipping)
 --
--- Simulation rules (applied to each order, stacked):
---   1. If cushion > 0: subtract 1 day from o2d_stated (remove cushion padding)
---   2. If order placed before 2pm local AND not pre-cutoff (o2sumsbd > 0)
---      AND warehouse cutoff < 2pm (or null): subtract 1 day from o2d_stated
---   3. If Fri/Sat placed (order_dow 5,6) AND not inducted Sat/Sun
---      (induction_dow_adj not 6,7): subtract 1 day (weekend shipping enabled)
+-- Simulation rules (stacked):
+--   1. If cushion > 0: subtract 1 day from o2d_stated
+--   2. If order before 2pm local AND not pre-cutoff (o2sumsbd > 0)
+--      AND warehouse cutoff < 2pm (or null): subtract 1 day
+--   3. If Fri/Sat placed AND not inducted Sat/Sun: subtract 1 day
 --   4. Simulated fast badge = simulated o2d_stated <= 5
 
 WITH base AS (
@@ -27,7 +27,7 @@ WITH base AS (
     order_complete_date_time_local,
     inducted_on_time_or_early
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
-  WHERE msbd_su >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 MONTH)
+  WHERE msbd_su BETWEEN '2026-06-01' AND '2026-06-30'
     AND parent_su_name = 'Safavieh'
     AND fulfillment_type = 'DS'
     AND sto = 'Rugs'
@@ -77,7 +77,6 @@ scored AS (
   FROM base
 )
 
--- Parent rollup — all scenarios
 SELECT
   parent_su_name,
   COUNT(DISTINCT ops) AS volume,

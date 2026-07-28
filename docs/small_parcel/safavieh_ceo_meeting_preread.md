@@ -2,7 +2,8 @@
 
 **Meeting:** Safavieh CEO in-office (high-level partnership review)  
 **Generated:** 2026-07-28  
-**Scope:** Dropship only (`fulfillment_type = 'DS'`) · Rugs STO · Past 3 months · MSBD timebase
+**Base:** **June 2026 MSBD** (`msbd_su` 2026-06-01 – 2026-06-30)  
+**Scope:** Dropship only (`fulfillment_type = 'DS'`) · Rugs STO
 
 **Full package (doc + data + SQL):** [GitHub — Safavieh CEO branch](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6)
 
@@ -10,184 +11,108 @@
 
 ## TL;DR
 
-Safavieh is one of our largest rug suppliers (~**241k** dropship ops L3M across **11 US warehouses**). Today they carry **83.8% fast-badge coverage** (stated order-to-delivery ≤ 5 days) at the parent level, with **82.7% induction fill rate (IFR)**.
+Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US warehouses**, with **90.3% IFR** and **84.7% fast-badge coverage** that month.
 
-**Stacked policy simulation** — if Safavieh commits to **2:00 PM cutoff, zero cushion, and weekend shipping** network-wide:
+**Same-day induction before 2pm** (from `toolkit_hourly_performance`, Tue–Sat orders): **68.3%** parent-wide — but varies sharply by warehouse (**42%** Easton PA to **94%** Carlisle PA). This is the operational gap behind the 2pm cutoff conversation.
 
-| Scenario | Fast-badge % | Uplift vs today | Newly fast-badged orders |
-|----------|------------:|----------------:|-------------------------:|
-| Current | **83.8%** | — | — |
-| 2pm cutoff + no cushion | **84.7%** | +1.0 pp | 2,360 |
-| **+ Weekend shipping** | **85.9%** | **+2.1 pp** | **5,075** |
+**Stacked policy simulation on June volume:**
 
-Weekend shipping is the **larger incremental lever** on top of cutoff/cushion (+1.1 pp, ~2,715 additional orders). Safavieh currently ships only **46%** of Fri/Sat-placed orders on Sat/Sun L6W — classified as **almost ready** for weekend enablement (30–70% band), not yet at the 70%+ candidate threshold.
+| Scenario | Fast-badge % | Uplift vs June | Newly fast-badged |
+|----------|------------:|---------------:|------------------:|
+| June actual | **84.7%** | — | — |
+| 2pm cutoff + no cushion | **85.9%** | +1.2 pp | 862 |
+| **+ Weekend shipping** | **86.9%** | **+2.2 pp** | **1,642** |
 
-**Framing for the CEO:** *"Aligning cutoff, cushion, and weekend pickup is a ~2 pp badge opportunity — but converting that promise requires induction execution at every DC, especially NJ and TX."*
-
----
-
-## Parent-level snapshot (L3M)
-
-| Metric | Current | Policy only | Full sim (+ weekend) |
-|--------|--------:|------------:|---------------------:|
-| Volume (distinct ops) | 240,900 | 240,900 | 240,900 |
-| Fast-badge % | **83.8%** | **84.7%** | **85.9%** |
-| Induction Fill Rate | **82.7%** | 82.7% | 82.7% |
-
-**Simulation uplift decomposition**
-
-| Adjustment applied | Fast-badge % |
-|--------------------|-------------:|
-| Current | 83.8% |
-| Remove cushion only (−1 day when `cushion > 0`) | 84.3% |
-| 2pm cutoff only | 84.2% |
-| Policy (cushion + 2pm) | **84.7%** |
-| **+ Weekend shipping** | **85.9%** |
-
-- **0** orders lose fast-badge status under any scenario.
+**Framing for the CEO:** *"June showed strong IFR — the badge opportunity is aligning cutoff/cushion/weekend policy, but same-day induction before 2pm is only 68% network-wide. That's what customers experience."*
 
 ---
 
-## Badging simulation methodology
-
-Simulated stated speed is computed order-by-order, then rolled up at the **parent (`Safavieh`)** level. Adjustments stack:
-
-```
-sim_o2d_stated = o2d_stated
-  − 1  if cushion > 0 on the order
-  − 1  if order placed before 2:00 PM local
-         AND not pre-cutoff (o2sumsbd > 0)
-         AND warehouse cutoff < 2:00 PM (or null)
-  − 1  if Fri/Sat placed (order_dow 5 or 6)
-         AND not inducted Sat/Sun (induction_dow_adj not 6 or 7)
-
-sim_fast_badge = 1 if sim_o2d_stated ≤ 5, else 0
-```
-
-| Flag | Definition |
-|------|------------|
-| Pre-cutoff | `o2sumsbd = 0` — order before warehouse cutoff → same-day MSBD |
-| Weekend shipped | `induction_dow_adj IN (6, 7)` — inducted Saturday or Sunday |
-| Fri/Sat placed | `order_dow IN (5, 6)` |
-
-**Important:** This simulates **what the badge would say**, not whether Safavieh can actually deliver that speed. IFR and delivery reliability must move in parallel with policy changes.
-
----
-
-## Weekend shipping analysis
-
-### Parent L6W (last 6 weeks)
+## June MSBD parent snapshot
 
 | Metric | Value |
 |--------|------:|
-| Total volume | 109,019 ops |
-| Fri/Sat placed volume | 29,285 ops (**27%** of volume) |
-| Fri/Sat inducted Sat/Sun | 13,514 ops |
-| **% Fri/Sat shipped on weekend** | **46.1%** |
-
-**Cohort:** `almost_ready` (30–70% weekend ship rate). Not yet a weekend-shipping candidate (requires ≥70% + IFR >85%).
-
-### Why weekend shipping moves the badge
-
-Fri/Sat-placed orders that **do** ship on weekends average **4.7 days** stated O2D and **80.7%** fast-badge rate. Those that **don't** average **5.1 days** and **75.3%** fast-badge — a full day slower on MSBD window (`o2sumsbd` ~2.0 vs ~1.0).
-
-Under full simulation, **30,759** L3M orders (Fri/Sat placed, weekday inducted) would gain a 1-day stated-speed reduction if weekend shipping were enabled.
-
-### Weekend ship rate by site (L6W)
-
-| Location | Fri/Sat vol | % shipped Sat/Sun | Fri/Sat not weekend (opportunity) |
-|----------|------------:|------------------:|----------------------------------:|
-| Baytown, TX | 5,362 | 45.2% | 2,839 |
-| Whitestown, IN | 5,314 | 42.8% | 2,835 |
-| Lebanon, NJ | 3,519 | 45.9% | 1,824 |
-| Riverside, CA | 3,318 | 43.4% | 1,847 |
-| Savannah, GA | 2,779 | 48.4% | 1,418 |
-| Midway, GA | 2,343 | **54.8%** | 976 |
-| Patterson, CA | 2,298 | 43.5% | 1,262 |
-| Flemington, NJ | 1,865 | **58.1%** | 763 |
-| Easton, PA | 1,023 | 46.7% | 495 |
-| Port Wentworth, GA | 661 | **38.4%** | 385 |
-
-**Best weekend performers:** Flemington NJ (58%), Midway GA (55%). **Weakest:** Port Wentworth GA (38%) — also a site with midnight cutoff today.
-
-### Full simulation fast-badge by site (L6W)
-
-| Location | Current | Policy only | Full (+ weekend) |
-|----------|--------:|------------:|-----------------:|
-| Baytown, TX | 91.9% | 92.5% | **94.0%** |
-| Whitestown, IN | 90.3% | 91.1% | **91.7%** |
-| Port Wentworth, GA | 87.0% | 91.3% | **92.3%** |
-| Savannah, GA | 89.7% | 90.5% | **91.1%** |
-| Midway, GA | 89.9% | 90.6% | **91.5%** |
-| Flemington, NJ | 83.9% | 84.3% | **85.2%** |
-| Lebanon, NJ | 80.0% | 83.3% | **83.6%** |
-| Riverside, CA | 71.8% | 71.8% | **74.0%** |
-| Patterson, CA | 61.6% | 61.7% | **63.3%** |
+| Volume (distinct ops) | 73,253 |
+| Induction Fill Rate | **90.3%** |
+| Fast-badge % (`o2d_stated ≤ 5`) | **84.7%** |
+| Same-day induct before 2pm (toolkit) | **68.3%** |
+| Orders before 2pm (toolkit) | 23,237 |
 
 ---
 
-## Warehouse network (L3M)
+## Same-day induction before 2pm by warehouse
 
-All sites run **24-hour SP lead time**. Cutoff and cushion settings vary today:
+Source: `toolkit_hourly_performance` — `less_14_o2i_0` logic (orders placed Tue–Sat, hour ≤ 14 local, `o2i_0` same-day induction). June `order_complete_date`. Mas_SuID from supplier feed-level logic.
 
-| Location | Cutoff | Volume | IFR | Current fast | Policy sim | Full sim |
-|----------|--------|-------:|----:|-------------:|-----------:|---------:|
-| Whitestown, IN | 12:00 PM | 43,338 | 85.8% | 90.0% | 90.8% | — |
-| Baytown, TX | 2:00 PM | 43,064 | 80.2% | 90.8% | 91.1% | — |
-| Lebanon, NJ | 8:00 AM | 32,973 | **73.5%** | 80.5% | 83.3% | — |
-| Riverside, CA | 2:00 PM | 25,841 | 92.6% | 72.3% | 72.3% | — |
-| Savannah, GA | 1:00 PM | 21,437 | 81.8% | 89.6% | 90.3% | — |
-| Midway, GA | 11:00 AM | 17,811 | 86.4% | 88.6% | 89.4% | — |
-| Patterson, CA | 2:00 PM | 17,761 | 89.8% | 60.6% | 60.7% | — |
-| Flemington, NJ | 2:00 PM | 13,810 | 75.5% | 83.4% | 83.7% | — |
-| Easton, PA | Midnight* | 10,341 | 75.8% | 80.3% | 83.4% | — |
-| Port Wentworth, GA | Midnight* | 6,333 | 73.6% | 87.9% | 91.9% | — |
-| Carlisle, PA | 2:00 PM | 5,179 | 89.6% | 91.4% | 91.4% | — |
+| Location | June MSBD vol | IFR | Fast badge | **Same-day induct ≤2pm** | Orders ≤2pm | HVE `o2I_0_adj` |
+|----------|-------------:|----:|-----------:|-------------------------:|------------:|----------------:|
+| Carlisle, PA | 1,475 | 89.2% | 91.4% | **94.1%** | 1,001 | 31.0% |
+| Riverside, CA | 7,967 | 98.5% | 73.2% | **83.8%** | 5,190 | 33.4% |
+| Savannah, GA | 6,483 | 94.6% | 89.6% | **84.1%** | 4,201 | 27.8% |
+| Whitestown, IN | 13,757 | 92.7% | 90.6% | **73.3%** | 8,102 | 23.8% |
+| Patterson, CA | 5,271 | 92.7% | 64.0% | **73.0%** | 3,256 | 30.5% |
+| Baytown, TX | 12,824 | 89.2% | 91.3% | **65.6%** | 7,720 | 24.2% |
+| Midway, GA | 5,975 | 94.5% | 90.4% | **67.4%** | 3,818 | 21.4% |
+| Port Wentworth, GA | 1,665 | 90.5% | 86.8% | **50.8%** | 1,001 | 12.0% |
+| Lebanon, NJ | 9,377 | 82.1% | 80.8% | **50.1%** | 5,004 | 15.7% |
+| Flemington, NJ | 4,446 | 75.9% | 84.1% | **49.9%** | 2,333 | 18.8% |
+| Whitestown, IN (2nd site) | 866 | 99.1% | 87.5% | **45.7%** | 503 | 9.9% |
+| Easton, PA | 2,855 | 83.3% | 82.2% | **42.3%** | 1,380 | 11.3% |
+| Easton, PA (18042b) | 275 | 94.5% | 73.1% | **54.3%** | 150 | 13.8% |
 
-\* `00:00:00` cutoff — effectively no same-day processing window.
+**Note:** Toolkit `o2i_0` (business-day same-day induction) differs from HVE `o2I_0_adj` (8am-adjusted) — use toolkit column for the "before 2pm" operational view.
+
+**Weakest before-2pm induction:** Easton PA (42%), NJ sites (~50%), Port Wentworth GA (51%). **Strongest:** Carlisle PA (94%), Riverside CA (84%).
+
+---
+
+## Badging simulation (June MSBD)
+
+```
+sim_o2d_stated = o2d_stated
+  − 1  if cushion > 0
+  − 1  if order before 2:00 PM local AND not pre-cutoff (o2sumsbd > 0)
+         AND warehouse cutoff < 2:00 PM (or null)
+  − 1  if Fri/Sat placed AND not inducted Sat/Sun
+
+sim_fast_badge = sim_o2d_stated ≤ 5
+```
+
+| Adjustment | Fast-badge % |
+|------------|-------------:|
+| June actual | 84.7% |
+| Policy (cushion + 2pm) | **85.9%** |
+| + Weekend shipping | **86.9%** |
 
 ---
 
 ## Key themes for the CEO conversation
 
-### 1. Three levers, one package
+### 1. June IFR was strong — induction execution matters more than badge policy
 
-| Lever | Badge uplift (parent) | Operational ask |
-|-------|----------------------:|-------------------|
-| Zero cushion | +0.5 pp | Remove LT padding in system settings |
-| 2:00 PM cutoff everywhere | +0.5 pp | Extend processing window at early-cutoff sites |
-| Weekend shipping | +1.1 pp | Sat/Sun FedEx pickup at all DCs |
-| **Combined** | **+2.1 pp** | Full network speed alignment |
+90.3% IFR in June vs ~83% L3M suggests recent months dipped. NJ sites still weak in June: Flemington 75.9%, Lebanon 82.1%.
 
-### 2. Induction performance is still the binding constraint
+### 2. Same-day induction before 2pm is the operational proof point
 
-IFR at **82.7%** — ~18% of orders miss supplier MSBD induction. Weak sites: Lebanon NJ (73.5%), Port Wentworth GA (73.6%), Flemington NJ (75.5%), Baytown TX (80.2%). Weekend shipping and 2pm cutoff require **carrier pickup alignment**, not just policy changes.
+Policy says 2pm cutoff — but only **68%** of before-2pm orders get same-day induction network-wide. Committing to 2pm cutoff requires **FedEx pickup + warehouse processing** aligned to that window.
 
-### 3. Geography limits badge at CA nodes
+### 3. Badge policy stack adds ~2 pp on June volume
 
-Riverside and Patterson have strong IFR but ~60–72% fast badge due to transit distance. Policy/weekend changes help marginally (+2–3 pp at Riverside under full sim).
+Weekend shipping (+1.0 pp on top of policy) remains meaningful at **1,642** newly fast-badged orders in June alone.
 
----
+### 4. Site-specific stories
 
-## Proposed commitments (discussion framework)
-
-| Safavieh commits | Wayfair commits |
-|------------------|-----------------|
-| **2:00 PM cutoff** at every US warehouse | Update LT/cushion settings; confirm badge impact |
-| **Zero cushion** network-wide | Monitor IFR weekly during transition |
-| **Weekend shipping** — Sat/Sun induction for Fri/Sat orders at all DCs | Enable weekend-shipping flag when ≥70% rate sustained |
-| FedEx pickup aligned to 2pm + weekend windows | Escalation path for carrier issues |
-| Weekly IFR + weekend ship rate by DC | Share network speed targets and badge impact |
+- **Carlisle PA** — best before-2pm induction (94%); model site for cutoff alignment
+- **Easton PA** — midnight cutoff today, 42% before-2pm induction; biggest ops gap
+- **Riverside CA** — 84% before-2pm induction but only 73% fast badge (transit distance)
 
 ---
 
 ## Questions to drive in the meeting
 
-1. Will Safavieh **standardize 2:00 PM cutoff** across all US warehouses?
-2. Can they commit to **zero cushion** and **weekend shipping** network-wide?
-3. What FedEx **pickup schedule** exists today — is Sat/Sun pickup feasible at NJ and TX nodes?
-4. What is driving **NJ and TX IFR** — staffing, carrier timing, or volume?
-5. Which sites can reach **70% Fri/Sat weekend ship rate** first (Flemington, Midway already closest)?
+1. Can every DC match **Carlisle's 94%** same-day induction for orders before 2pm?
+2. Will Safavieh **standardize 2:00 PM cutoff** and **zero cushion** network-wide?
+3. Is **weekend shipping** feasible at NJ and PA nodes (currently ~40–50% before-2pm induction)?
+4. What **FedEx pickup schedule** runs at Easton, Lebanon, and Port Wentworth today?
 
 ---
 
@@ -196,22 +121,21 @@ Riverside and Patterson have strong IFR but ~60–72% fast badge due to transit 
 | Resource | Link |
 |----------|------|
 | **This pre-read** | [safavieh_ceo_meeting_preread.md](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/docs/small_parcel/safavieh_ceo_meeting_preread.md) |
-| **Badging scenario summary (CSV)** | [safavieh_badging_scenarios.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_badging_scenarios.csv) |
-| **Warehouse weekend + badging (CSV)** | [safavieh_warehouse_weekend_badging_l6w.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_warehouse_weekend_badging_l6w.csv) |
-| **Simulation SQL** | [safavieh_badging_simulation.sql](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/sql/safavieh_badging_simulation.sql) |
-| **HVE column reference** | [HVE_perf_Monitoring.md](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/docs/small_parcel/HVE_perf_Monitoring.md) |
-| **Weekend shipping methodology** | [weekend_shipping_supplier_analysis.md](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/docs/small_parcel/weekend_shipping_supplier_analysis.md) |
+| **June warehouse analysis (CSV)** | [safavieh_june_warehouse_analysis.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_warehouse_analysis.csv) |
+| **June badging scenarios (CSV)** | [safavieh_june_badging_scenarios.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_badging_scenarios.csv) |
+| **June warehouse + O2I SQL** | [safavieh_june_msbd_warehouse_analysis.sql](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/sql/safavieh_june_msbd_warehouse_analysis.sql) |
+| **June badging simulation SQL** | [safavieh_badging_simulation.sql](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/sql/safavieh_badging_simulation.sql) |
 | **Branch (all files)** | [cursor/safavieh-ceo-preread-b7d6](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6) |
 | **Pull request** | [PR #16](https://github.com/et844p/O2S/pull/16) |
 
-### Scenario summary (from CSV)
+### June scenario summary
 
 | Scenario | Volume | Fast-badge % | Newly fast |
 |----------|-------:|------------:|-----------:|
-| Current | 240,900 | 83.76% | — |
-| Policy (2pm + no cushion) | 240,900 | 84.74% | 2,360 |
-| Full (+ weekend shipping) | 240,900 | **85.87%** | **5,075** |
+| June actual | 73,253 | 84.67% | — |
+| Policy (2pm + no cushion) | 73,253 | 85.85% | 862 |
+| Full (+ weekend) | 73,253 | **86.91%** | **1,642** |
 
 ---
 
-*Note: Analysis excludes CastleGate (`fulfillment_type = 'CG'`). Badge simulation models stated speed only; actual delivery performance requires IFR and delivery reliability improvement in parallel.*
+*June MSBD base. Toolkit hourly performance for before-2pm same-day induction. Excludes CastleGate (`CG`). Badge simulation models stated speed only.*
