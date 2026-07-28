@@ -1,11 +1,13 @@
 -- Safavieh parent-level fast-badge simulation
--- Scenario: all warehouses ship same-day until 2pm, zero cushion
+-- Scenarios: current | policy (2pm + no cushion) | full (+ weekend shipping)
 --
--- Simulation rules (applied to each order):
+-- Simulation rules (applied to each order, stacked):
 --   1. If cushion > 0: subtract 1 day from o2d_stated (remove cushion padding)
 --   2. If order placed before 2pm local AND not pre-cutoff (o2sumsbd > 0)
 --      AND warehouse cutoff < 2pm (or null): subtract 1 day from o2d_stated
---   3. Simulated fast badge = simulated o2d_stated <= 5
+--   3. If Fri/Sat placed (order_dow 5,6) AND not inducted Sat/Sun
+--      (induction_dow_adj not 6,7): subtract 1 day (weekend shipping enabled)
+--   4. Simulated fast badge = simulated o2d_stated <= 5
 
 WITH base AS (
   SELECT
@@ -20,6 +22,8 @@ WITH base AS (
     o2d_stated,
     o2d_stated_5,
     o2sumsbd,
+    order_dow,
+    induction_dow_adj,
     order_complete_date_time_local,
     inducted_on_time_or_early
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
@@ -34,13 +38,19 @@ scored AS (
   SELECT
     *,
     CASE WHEN cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
-  CASE
+    CASE
       WHEN EXTRACT(HOUR FROM order_complete_date_time_local) < 14
         AND o2sumsbd > 0
         AND (cutoff IS NULL OR cutoff < TIME '14:00:00')
       THEN 1
       ELSE 0
     END AS adj_2pm,
+    CASE
+      WHEN order_dow IN (5, 6) AND induction_dow_adj NOT IN (6, 7)
+      THEN 1
+      ELSE 0
+    END AS adj_weekend,
+    o2d_stated AS sim_current,
     o2d_stated
       - CASE WHEN cushion > 0 THEN 1 ELSE 0 END
       - CASE
@@ -49,36 +59,36 @@ scored AS (
             AND (cutoff IS NULL OR cutoff < TIME '14:00:00')
           THEN 1
           ELSE 0
-        END AS sim_o2d_stated
+        END AS sim_policy,
+    o2d_stated
+      - CASE WHEN cushion > 0 THEN 1 ELSE 0 END
+      - CASE
+          WHEN EXTRACT(HOUR FROM order_complete_date_time_local) < 14
+            AND o2sumsbd > 0
+            AND (cutoff IS NULL OR cutoff < TIME '14:00:00')
+          THEN 1
+          ELSE 0
+        END
+      - CASE
+          WHEN order_dow IN (5, 6) AND induction_dow_adj NOT IN (6, 7)
+          THEN 1
+          ELSE 0
+        END AS sim_full
   FROM base
 )
 
--- Parent rollup
+-- Parent rollup — all scenarios
 SELECT
   parent_su_name,
   COUNT(DISTINCT ops) AS volume,
   AVG(o2d_stated_5) AS current_fast_badge_pct,
-  AVG(o2d_stated) AS current_avg_o2d_stated,
+  AVG(CASE WHEN sim_policy <= 5 THEN 1 ELSE 0 END) AS policy_fast_badge_pct,
+  AVG(CASE WHEN sim_full <= 5 THEN 1 ELSE 0 END) AS full_sim_fast_badge_pct,
   AVG(inducted_on_time_or_early) AS ifr,
-  AVG(CASE WHEN sim_o2d_stated <= 5 THEN 1 ELSE 0 END) AS sim_fast_badge_pct,
-  AVG(sim_o2d_stated) AS sim_avg_o2d_stated,
-  COUNT(DISTINCT CASE WHEN o2d_stated_5 = 0 AND sim_o2d_stated <= 5 THEN ops END) AS newly_fast_orders,
-  COUNT(DISTINCT CASE WHEN o2d_stated_5 = 1 AND sim_o2d_stated > 5 THEN ops END) AS lost_fast_orders
+  COUNT(DISTINCT CASE WHEN o2d_stated_5 = 0 AND sim_policy <= 5 THEN ops END) AS newly_fast_policy,
+  COUNT(DISTINCT CASE WHEN o2d_stated_5 = 0 AND sim_full <= 5 THEN ops END) AS newly_fast_full,
+  SUM(adj_cushion) AS orders_adj_cushion,
+  SUM(adj_2pm) AS orders_adj_2pm,
+  SUM(adj_weekend) AS orders_adj_weekend
 FROM scored
 GROUP BY parent_su_name
-
--- Warehouse rollup (uncomment to use instead of parent rollup)
-/*
-SELECT
-  city_name,
-  state_name,
-  ANY_VALUE(cutoff) AS cutoff,
-  MAX(cushion) AS max_cushion,
-  COUNT(DISTINCT ops) AS volume,
-  AVG(inducted_on_time_or_early) AS ifr,
-  AVG(o2d_stated_5) AS current_fast_badge_pct,
-  AVG(CASE WHEN sim_o2d_stated <= 5 THEN 1 ELSE 0 END) AS sim_fast_badge_pct
-FROM scored
-GROUP BY city_name, state_name
-ORDER BY volume DESC
-*/
