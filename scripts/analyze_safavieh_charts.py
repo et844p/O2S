@@ -164,9 +164,13 @@ def chart_weekend_incremental(scen: pd.DataFrame) -> None:
     full = scen.loc[scen["scenario"] == "policy_plus_weekend"].iloc[0]
     tiers = ["1-day", "2-day", "3-day", "Fast ≤5d"]
     cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
-    new_cols = ["newly_fast_1d", "newly_fast_2d", "newly_fast_3d", "newly_fast_5d"]
+    wknd_cols = ["wknd_incr_1d", "wknd_incr_2d", "wknd_incr_3d", "wknd_incr_5d"]
     uplifts = [full[c] - policy[c] for c in cols]
-    newly = [int(full[n] - policy[n]) for n in new_cols]
+    if all(c in full.index for c in wknd_cols):
+        newly = [int(full[c]) for c in wknd_cols]
+    else:
+        new_cols = ["newly_fast_1d", "newly_fast_2d", "newly_fast_3d", "newly_fast_5d"]
+        newly = [int(full[n] - policy[n]) for n in new_cols]
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     colors = [ORANGE, ORANGE, ACCENT, GRAY]

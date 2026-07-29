@@ -37,12 +37,10 @@ from gbq import query_df
 SQL_DIR = ROOT / "sql"
 OUT = ROOT / "output" / "safavieh"
 
-# Parent-level badging scenarios (all tiers + newly badged counts)
+# Parent-level badging scenarios (stated promise model; toolkit IsBeforeCutoff for cutoff extension)
 SQL_BADGING_SCENARIOS = """
 WITH base AS (
-  SELECT
-    ops, o2d_stated, cushion, o2sumsbd, cutoff,
-    order_complete_date_time_local, order_dow, induction_dow_adj
+  SELECT ops, o2d_stated, cushion, order_dow
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
   WHERE msbd_su BETWEEN '2026-06-01' AND '2026-06-30'
     AND parent_su_name = 'Safavieh'
@@ -50,13 +48,29 @@ WITH base AS (
     AND sto = 'Rugs'
     AND o2d_stated IS NOT NULL
 ),
+toolkit AS (
+  SELECT
+    CAST(opid AS INT64) AS ops,
+    MAX(IsBeforeCutoff) AS is_before_cutoff,
+    MAX(order_hour_supplier_local) AS order_hour_supplier_local
+  FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.toolkit_hourly_performance`
+  WHERE order_complete_date BETWEEN '2026-06-01' AND '2026-06-30'
+    AND ship_class_group = 'Small Parcel'
+    AND CAST(opid AS STRING) NOT LIKE '8%'
+  GROUP BY 1
+),
 scored AS (
-  SELECT *,
-    CASE WHEN cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
-    CASE WHEN EXTRACT(HOUR FROM order_complete_date_time_local) < 14
-      AND o2sumsbd > 0 AND (cutoff IS NULL OR cutoff < TIME '14:00:00') THEN 1 ELSE 0 END AS adj_2pm,
-    CASE WHEN order_dow IN (5,6) AND induction_dow_adj NOT IN (6,7) THEN 1 ELSE 0 END AS adj_weekend
-  FROM base
+  SELECT
+    b.ops,
+    b.o2d_stated,
+    CASE WHEN b.cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
+    CASE
+      WHEN t.is_before_cutoff = 0 AND t.order_hour_supplier_local <= 14 THEN 1
+      ELSE 0
+    END AS adj_2pm,
+    CASE WHEN b.order_dow IN (5, 6) THEN 1 ELSE 0 END AS adj_weekend
+  FROM base b
+  LEFT JOIN toolkit t ON b.ops = t.ops
 ),
 with_sim AS (
   SELECT *,
@@ -66,14 +80,16 @@ with_sim AS (
   FROM scored
 )
 SELECT scenario, volume, badge_1d_pct, badge_2d_pct, badge_3d_pct, badge_5d_fast_pct,
-  newly_fast_1d, newly_fast_2d, newly_fast_3d, newly_fast_5d
+  newly_fast_1d, newly_fast_2d, newly_fast_3d, newly_fast_5d,
+  wknd_incr_1d, wknd_incr_2d, wknd_incr_3d, wknd_incr_5d
 FROM (
   SELECT 'current' AS scenario, COUNT(DISTINCT ops) AS volume,
     ROUND(AVG(CASE WHEN sim_current <= 1 THEN 1 ELSE 0 END)*100, 2) AS badge_1d_pct,
     ROUND(AVG(CASE WHEN sim_current <= 2 THEN 1 ELSE 0 END)*100, 2) AS badge_2d_pct,
     ROUND(AVG(CASE WHEN sim_current <= 3 THEN 1 ELSE 0 END)*100, 2) AS badge_3d_pct,
     ROUND(AVG(CASE WHEN sim_current <= 5 THEN 1 ELSE 0 END)*100, 2) AS badge_5d_fast_pct,
-    0 AS newly_fast_1d, 0 AS newly_fast_2d, 0 AS newly_fast_3d, 0 AS newly_fast_5d
+    0 AS newly_fast_1d, 0 AS newly_fast_2d, 0 AS newly_fast_3d, 0 AS newly_fast_5d,
+    0 AS wknd_incr_1d, 0 AS wknd_incr_2d, 0 AS wknd_incr_3d, 0 AS wknd_incr_5d
   FROM with_sim
   UNION ALL
   SELECT 'policy_2pm_no_cushion', COUNT(DISTINCT ops),
@@ -84,7 +100,8 @@ FROM (
     COUNT(DISTINCT CASE WHEN sim_current > 1 AND sim_policy <= 1 THEN ops END),
     COUNT(DISTINCT CASE WHEN sim_current > 2 AND sim_policy <= 2 THEN ops END),
     COUNT(DISTINCT CASE WHEN sim_current > 3 AND sim_policy <= 3 THEN ops END),
-    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_policy <= 5 THEN ops END)
+    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_policy <= 5 THEN ops END),
+    0, 0, 0, 0
   FROM with_sim
   UNION ALL
   SELECT 'policy_plus_weekend', COUNT(DISTINCT ops),
@@ -95,7 +112,11 @@ FROM (
     COUNT(DISTINCT CASE WHEN sim_current > 1 AND sim_full <= 1 THEN ops END),
     COUNT(DISTINCT CASE WHEN sim_current > 2 AND sim_full <= 2 THEN ops END),
     COUNT(DISTINCT CASE WHEN sim_current > 3 AND sim_full <= 3 THEN ops END),
-    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_full <= 5 THEN ops END)
+    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_full <= 5 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_policy > 1 AND sim_full <= 1 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_policy > 2 AND sim_full <= 2 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_policy > 3 AND sim_full <= 3 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN ops END)
   FROM with_sim
 )
 ORDER BY CASE scenario WHEN 'current' THEN 1 WHEN 'policy_2pm_no_cushion' THEN 2 ELSE 3 END

@@ -1,14 +1,17 @@
 -- Safavieh parent-level badging simulation (1 / 2 / 3 / 5-day tiers)
 -- Base: June 2026 MSBD (msbd_su BETWEEN '2026-06-01' AND '2026-06-30')
--- Scenarios: current | policy (2pm + no cushion) | full (+ weekend shipping)
+-- Scenarios: current | policy (2pm + no cushion) | full (+ weekend stated promise)
 --
 -- Badge tiers: sim_o2d_stated <= N days (1-day, 2-day, 3-day, fast/5-day)
+-- Simulation models STATED speed (o2d_stated), not actual induction timing.
 --
 -- Simulation rules (stacked):
 --   1. If cushion > 0: subtract 1 day from o2d_stated
---   2. If order before 2pm local AND not pre-cutoff (o2sumsbd > 0)
---      AND warehouse cutoff < 2pm (or null): subtract 1 day
---   3. If Fri/Sat placed AND not inducted Sat/Sun: subtract 1 day
+--   2. If after current cutoff but before 2pm local:
+--        toolkit IsBeforeCutoff = 0 AND order_hour_supplier_local <= 14
+--      subtract 1 day (cutoff extension to 2pm)
+--   3. If Fri/Sat placed (HVE order_dow 5,6): subtract 1 day
+--      — stated weekend promise; NOT conditioned on actual induction day
 
 WITH base AS (
   SELECT
@@ -16,11 +19,7 @@ WITH base AS (
     parent_su_name,
     o2d_stated,
     cushion,
-    o2sumsbd,
     order_dow,
-    induction_dow_adj,
-    order_complete_date_time_local,
-    cutoff,
     inducted_on_time_or_early
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring`
   WHERE msbd_su BETWEEN '2026-06-01' AND '2026-06-30'
@@ -30,23 +29,35 @@ WITH base AS (
     AND o2d_stated IS NOT NULL
 ),
 
+toolkit AS (
+  SELECT
+    CAST(opid AS INT64) AS ops,
+    MAX(IsBeforeCutoff) AS is_before_cutoff,
+    MAX(order_hour_supplier_local) AS order_hour_supplier_local
+  FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.toolkit_hourly_performance`
+  WHERE order_complete_date BETWEEN '2026-06-01' AND '2026-06-30'
+    AND ship_class_group = 'Small Parcel'
+    AND CAST(opid AS STRING) NOT LIKE '8%'
+  GROUP BY 1
+),
+
 scored AS (
   SELECT
-    *,
-    CASE WHEN cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
+    b.*,
+    CASE WHEN b.cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
     CASE
-      WHEN EXTRACT(HOUR FROM order_complete_date_time_local) < 14
-        AND o2sumsbd > 0
-        AND (cutoff IS NULL OR cutoff < TIME '14:00:00')
+      WHEN t.is_before_cutoff = 0
+        AND t.order_hour_supplier_local <= 14
       THEN 1
       ELSE 0
     END AS adj_2pm,
     CASE
-      WHEN order_dow IN (5, 6) AND induction_dow_adj NOT IN (6, 7)
+      WHEN b.order_dow IN (5, 6)
       THEN 1
       ELSE 0
     END AS adj_weekend
-  FROM base
+  FROM base b
+  LEFT JOIN toolkit t ON b.ops = t.ops
 ),
 
 with_sim AS (
