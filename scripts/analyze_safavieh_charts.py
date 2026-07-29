@@ -80,7 +80,7 @@ def chart_before_2pm_induction(df: pd.DataFrame) -> None:
     ax.set_title("Safavieh — Before-2pm Same-Day Induction by Warehouse")
     ax.text(
         0.02, 0.02,
-        "Toolkit hourly · Tue–Sat · June 2026",
+        "Toolkit hourly · Mon–Fri (excl. Sun/Sat) · June 2026",
         transform=ax.transAxes,
         fontsize=9,
         color=GRAY,

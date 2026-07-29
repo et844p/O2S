@@ -59,7 +59,7 @@ weekdays AS (
     COUNT(CASE WHEN t.order_hour_supplier_local <= 14 THEN t.opid END) AS orders_before_2pm
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.toolkit_hourly_performance` t
   INNER JOIN safavieh_suppliers ss ON ss.supplier_id = t.supplierid
-  WHERE t.order_dow_supplier_local NOT IN (1, 7)
+  WHERE t.order_dow_supplier_local NOT IN (1, 7)  -- toolkit DOW: 1=Sun, 7=Sat → Mon–Fri only
     AND t.ship_class_group = 'Small Parcel'
     AND t.order_complete_date BETWEEN '2026-06-01' AND '2026-06-30'
     AND CAST(t.opid AS STRING) NOT LIKE '8%'

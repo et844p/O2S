@@ -13,7 +13,7 @@
 
 Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US warehouses**, with **90.3% IFR**.
 
-**Same-day induction before 2pm:** **68.3%** parent-wide (toolkit, Tue–Sat) — varies **42%** Easton PA to **94%** Carlisle PA.
+**Same-day induction before 2pm:** **68.3%** parent-wide (toolkit, Mon–Fri excl. Sun/Sat) — varies **42%** Easton PA to **94%** Carlisle PA.
 
 **Badging simulation on June volume** (sim `o2d_stated` after cushion / 2pm / weekend adjustments):
 
@@ -44,7 +44,7 @@ Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US wareh
 
 ## Same-day induction before 2pm by warehouse
 
-Source: `toolkit_hourly_performance` — `less_14_o2i_0` logic (orders placed Tue–Sat, hour ≤ 14 local, `o2i_0` same-day induction). June `order_complete_date`. Mas_SuID from supplier feed-level logic.
+Source: `toolkit_hourly_performance` — `less_14_o2i_0` logic (orders placed Mon–Fri, `order_dow_supplier_local` 1=Sun/7=Sat so `NOT IN (1,7)`; hour ≤ 14 local; `o2i_0` same-day induction). June `order_complete_date`. Mas_SuID from supplier feed-level logic.
 
 | Location | June MSBD vol | IFR | Fast badge | **Same-day induct ≤2pm** | Orders ≤2pm | HVE `o2I_0_adj` |
 |----------|-------------:|----:|-----------:|-------------------------:|------------:|----------------:|

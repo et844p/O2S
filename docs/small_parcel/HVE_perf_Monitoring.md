@@ -101,7 +101,7 @@ Use this reference for natural-language data pull requests against the Small Par
 |--------|------|-------------|
 | `order_complete_date` | DATE | Date the order was fully processed |
 | `order_complete_date_time_local` | DATETIME | Order placed date/time in supplier local time |
-| `order_dow` | INT | Day of week order was placed (1–7) |
+| `order_dow` | INT | Day of week order was placed (1–7, **ISO: Mon=1 … Sun=7**) |
 | `msbd_su_week` | DATE | Start of week for Supplier Must Ship By Date |
 | `msbd_su` | DATE | **Supplier Must Ship By Date. Default timebase for analysis** |
 | `msbd_cu` | DATE | Customer-facing Must Ship By Date |

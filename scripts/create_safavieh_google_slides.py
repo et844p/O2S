@@ -89,7 +89,7 @@ def _warehouse_table_slide(prs):
     _textbox(slide, Inches(0.4), Inches(0.25), Inches(12), Inches(0.6),
              "Same-day induction before 2pm by warehouse (June)", 22, True, NAVY)
     _textbox(slide, Inches(0.4), Inches(0.75), Inches(12), Inches(0.4),
-             "Toolkit hourly · Tue–Sat orders · order_hour ≤ 14 local · June 2026", 11, False, DARK)
+             "Toolkit hourly · Mon–Fri · order_hour ≤ 14 local · June 2026", 11, False, DARK)
 
     headers = ["Location", "Vol", "IFR", "Fast badge", "≤2pm same-day"]
     data = [

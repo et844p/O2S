@@ -5,6 +5,8 @@ Run full Safavieh June MSBD analysis — all BigQuery pulls and CSV exports.
 Data sources:
   - HVE_perf_Monitoring (IFR, badging, cutoff, cushion, o2d_stated)
   - toolkit_hourly_performance (before-2pm same-day induction / less_14_o2i_0)
+      DOW convention: order_dow_supplier_local 1=Sunday, 7=Saturday;
+      NOT IN (1,7) = Monday–Friday only
   - tbl_supplier + tbl_supplier_ext (Mas_SuID)
 
 Outputs (output/safavieh/):
