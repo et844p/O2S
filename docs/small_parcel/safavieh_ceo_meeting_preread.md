@@ -24,6 +24,19 @@ Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US wareh
 | **+ Weekend shipping** | **6.3%** | **26.4%** | **59.5%** | **86.9%** |
 | **Uplift (full vs June)** | **+5.8 pp** | **+17.1 pp** | **+17.0 pp** | **+2.2 pp** |
 
+**Weekend shipping — incremental only** (after 2pm + no cushion already applied):
+
+| Tier | +pp from weekend | Additional orders |
+|------|----------------:|------------------:|
+| 1-day | +1.3 pp | 917 |
+| 2-day | +2.5 pp | 1,680 |
+| **3-day** | **+3.8 pp** | **2,762** |
+| Fast (≤5d) | **+1.1 pp** | **782** |
+
+Why weekend looks small on **fast badge**: only **9,409** Fri/Sat orders were not inducted Sat/Sun (HVE `order_dow` 5–6, `induction_dow_adj` not 6/7). After policy, **79%** of those are already fast (≤5d). Shaving one more day only flips **782** orders from 6-day to 5-day; **1,140** remain >5d (need more than a 1-day reduction). **47%** of Fri/Sat volume already ships on the weekend — no sim adjustment for those.
+
+**Weekend is a stronger lever at 2- and 3-day badges** (+2.5 / +3.8 pp incremental), not at fast.
+
 **Newly badged orders (full simulation):** 4,260 (1-day) · 12,406 (2-day) · 12,479 (3-day) · 1,644 (fast).
 
 **Framing for the CEO:** *"Policy alignment is a big story at 2- and 3-day speed (+17 pp each) — not just fast badge. Same-day induction before 2pm at 68% is still the ops proof point."*
@@ -98,7 +111,7 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 | [04 — Badging tiers current vs sim](safavieh_charts/04_badging_tiers_current_vs_sim.png) | 1 / 2 / 3 / fast-day coverage — June vs full simulation |
 | [05 — Badging opportunity](safavieh_charts/05_badging_opportunity_uplift.png) | Uplift (pp) and newly badged orders by tier |
 | [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
-| [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
+| [08 — Weekend incremental by tier](safavieh_charts/08_weekend_incremental_by_tier.png) | Weekend-only uplift after policy (pp + orders) |
 
 Regenerate: `python scripts/analyze_safavieh_charts.py`
 

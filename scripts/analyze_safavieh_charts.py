@@ -156,6 +156,38 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def chart_weekend_incremental(scen: pd.DataFrame) -> None:
+    """Incremental pp from weekend only, after policy (2pm + no cushion)."""
+    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+        return
+    policy = scen.loc[scen["scenario"] == "policy_2pm_no_cushion"].iloc[0]
+    full = scen.loc[scen["scenario"] == "policy_plus_weekend"].iloc[0]
+    tiers = ["1-day", "2-day", "3-day", "Fast ≤5d"]
+    cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
+    new_cols = ["newly_fast_1d", "newly_fast_2d", "newly_fast_3d", "newly_fast_5d"]
+    uplifts = [full[c] - policy[c] for c in cols]
+    newly = [int(full[n] - policy[n]) for n in new_cols]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    colors = [ORANGE, ORANGE, ACCENT, GRAY]
+    ax1.bar(tiers, uplifts, color=colors)
+    ax1.set_ylabel("Incremental uplift (pp)")
+    ax1.set_title("Weekend shipping only — after 2pm + no cushion")
+    for i, v in enumerate(uplifts):
+        ax1.text(i, v + 0.15, f"+{v:.1f}", ha="center", fontweight="bold")
+
+    ax2.bar(tiers, newly, color=colors)
+    ax2.set_ylabel("Additional newly badged orders")
+    ax2.set_title("Orders gaining badge from weekend (incremental)")
+    for i, v in enumerate(newly):
+        ax2.text(i, v + 150, f"{v:,}", ha="center", fontsize=9)
+
+    fig.suptitle("Safavieh — Weekend shipping incremental impact (June MSBD)", fontsize=13)
+    fig.tight_layout()
+    fig.savefig(CHARTS / "08_weekend_incremental_by_tier.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
 def chart_badging_uplift(scen: pd.DataFrame) -> None:
     full = scen.loc[scen["scenario"] == "policy_plus_weekend"].iloc[0]
     current = scen.loc[scen["scenario"] == "current"].iloc[0]
@@ -238,6 +270,7 @@ def main() -> None:
     chart_before_2pm_induction(wh)
     chart_opportunity_gap(wh)
     chart_badging_tiers(scen)
+    chart_weekend_incremental(scen)
     chart_badging_uplift(scen)
     chart_volume_by_warehouse(wh)
 
