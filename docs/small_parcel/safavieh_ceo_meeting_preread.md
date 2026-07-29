@@ -88,6 +88,24 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 
 ---
 
+## Charts & visualizations
+
+| Chart | Description |
+|-------|-------------|
+| [01 — IFR by warehouse](safavieh_charts/01_ifr_by_warehouse.png) | June MSBD induction fill rate by site |
+| [02 — Before-2pm same-day induction](safavieh_charts/02_before_2pm_same_day_induction.png) | Toolkit hourly — operational gap by warehouse |
+| [03 — IFR vs before-2pm scatter](safavieh_charts/03_ifr_vs_before_2pm_scatter.png) | Sites with high IFR but low before-2pm induction |
+| [04 — Badging tiers current vs sim](safavieh_charts/04_badging_tiers_current_vs_sim.png) | 1 / 2 / 3 / fast-day coverage — June vs full simulation |
+| [05 — Badging opportunity](safavieh_charts/05_badging_opportunity_uplift.png) | Uplift (pp) and newly badged orders by tier |
+| [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
+| [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
+
+Regenerate: `python scripts/analyze_safavieh_charts.py`
+
+GitHub: [safavieh_charts folder](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6/docs/small_parcel/safavieh_charts)
+
+---
+
 ## Key themes for the CEO conversation
 
 ### 1. June IFR was strong — induction execution matters more than badge policy

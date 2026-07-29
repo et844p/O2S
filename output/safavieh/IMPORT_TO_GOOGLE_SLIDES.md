@@ -37,14 +37,17 @@ Enable these APIs on project `wf-gcp-us-ae-profit-prod`:
 
 Then re-run the script; it uploads and returns a shareable `docs.google.com` link.
 
-## Slide outline (10 slides)
+## Slide outline
 
-1. Title — Safavieh CEO In-Office
+1. Title
 2. Executive summary
 3. June MSBD parent snapshot
 4. Same-day induction before 2pm — ops gap
-5. Warehouse table (≤2pm same-day %)
-6. Fast-badge simulation scenarios
-7. Three policy levers
-8. Discussion questions
-9. Data & resources
+5. Warehouse table
+6. **Charts:** IFR · before-2pm induction · scatter · badging tiers · opportunity · 3-day by WH
+7. Badging simulation table (all tiers)
+8. Three policy levers
+9. Discussion questions
+10. Data & resources
+
+Charts: `docs/small_parcel/safavieh_charts/` — regenerate with `python scripts/analyze_safavieh_charts.py`

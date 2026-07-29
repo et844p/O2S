@@ -16,6 +16,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.util import Inches, Pt
 
 OUT_DIR = ROOT / "output" / "safavieh"
+CHARTS_DIR = ROOT / "docs" / "small_parcel" / "safavieh_charts"
 PPTX_PATH = OUT_DIR / "Safavieh_CEO_June_MSBD.pptx"
 CREDS_PATH = ROOT / ".gcp" / "credentials.json"
 
@@ -132,6 +133,14 @@ def _warehouse_table_slide(prs):
                     p.font.color.rgb = GREEN
 
 
+def _chart_slide(prs, image_path: Path, title: str) -> None:
+    if not image_path.exists():
+        return
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _textbox(slide, Inches(0.4), Inches(0.2), Inches(12), Inches(0.5), title, 20, True, NAVY)
+    slide.shapes.add_picture(str(image_path), Inches(0.35), Inches(0.75), width=Inches(12.6))
+
+
 def _scenario_slide(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     _textbox(slide, Inches(0.4), Inches(0.25), Inches(12), Inches(0.6),
@@ -222,6 +231,13 @@ def build_presentation() -> Path:
     )
 
     _warehouse_table_slide(prs)
+
+    _chart_slide(prs, CHARTS_DIR / "01_ifr_by_warehouse.png", "IFR by warehouse (June MSBD)")
+    _chart_slide(prs, CHARTS_DIR / "02_before_2pm_same_day_induction.png", "Same-day induction before 2pm — ops gap")
+    _chart_slide(prs, CHARTS_DIR / "03_ifr_vs_before_2pm_scatter.png", "IFR vs before-2pm induction opportunity")
+    _chart_slide(prs, CHARTS_DIR / "04_badging_tiers_current_vs_sim.png", "Badging coverage by speed tier")
+    _chart_slide(prs, CHARTS_DIR / "05_badging_opportunity_uplift.png", "Badging opportunity — uplift and newly badged orders")
+    _chart_slide(prs, CHARTS_DIR / "06_3d_badge_by_warehouse.png", "3-day badge by warehouse — current vs simulated")
 
     _scenario_slide(prs)
 
