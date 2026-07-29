@@ -252,3 +252,16 @@ HAVING volume > 0
 ORDER BY late_orders DESC
 LIMIT 10
 ```
+
+## Related: `toolkit_hourly_performance` day-of-week
+
+`order_dow_supplier_local` uses a **different** convention than HVE `order_dow`:
+
+| Value | Day |
+|------:|-----|
+| 1 | Sunday |
+| 2 | Monday |
+| … | … |
+| 7 | Saturday |
+
+`order_dow_supplier_local NOT IN (1, 7)` = **Monday–Friday** (excludes Sunday and Saturday).
