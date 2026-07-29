@@ -155,6 +155,11 @@ def main() -> None:
         SQL_DIR / "safavieh_badging_simulation.sql",
         OUT / "safavieh_june_badging_parent_sql.csv",
     )
+    run_query(
+        "supplier badging cohorts + before-2pm O2I",
+        SQL_DIR / "safavieh_june_supplier_badging_cohorts.sql",
+        OUT / "safavieh_june_supplier_badging_cohorts.csv",
+    )
     print("\nDone. Next steps:")
     print("  python scripts/analyze_safavieh_charts.py")
     print("  python scripts/create_safavieh_google_slides.py")
