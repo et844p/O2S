@@ -134,15 +134,17 @@ def _warehouse_table_slide(prs):
 
 def _scenario_slide(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    _textbox(slide, Inches(0.6), Inches(0.4), Inches(12), Inches(0.8),
-             "Fast-badge simulation (June MSBD)", 28, True, NAVY)
-    headers = ["Scenario", "Fast-badge %", "Uplift", "Newly fast"]
+    _textbox(slide, Inches(0.4), Inches(0.25), Inches(12), Inches(0.6),
+             "Badging simulation — all speed tiers (June MSBD)", 24, True, NAVY)
+    headers = ["Scenario", "1-day", "2-day", "3-day", "Fast ≤5d"]
     data = [
-        ("June actual", "84.7%", "—", "—"),
-        ("2pm cutoff + no cushion", "85.9%", "+1.2 pp", "862"),
-        ("+ Weekend shipping", "86.9%", "+2.2 pp", "1,642"),
+        ("June actual", "0.5%", "9.5%", "42.5%", "84.7%"),
+        ("2pm + no cushion", "5.1%", "24.1%", "55.7%", "85.8%"),
+        ("+ Weekend shipping", "6.3%", "26.4%", "59.5%", "86.9%"),
+        ("Uplift (full vs June)", "+5.8 pp", "+17.1 pp", "+17.0 pp", "+2.2 pp"),
     ]
-    tbl = slide.shapes.add_table(4, 4, Inches(1.0), Inches(1.6), Inches(10.5), Inches(2.0)).table
+    rows = len(data) + 1
+    tbl = slide.shapes.add_table(rows, 5, Inches(0.5), Inches(1.0), Inches(12.3), Inches(0.38 * rows)).table
     for j, h in enumerate(headers):
         c = tbl.rows[0].cells[j]
         c.text = h
@@ -151,16 +153,21 @@ def _scenario_slide(prs):
         for p in c.text_frame.paragraphs:
             p.font.bold = True
             p.font.color.rgb = WHITE
-            p.font.size = Pt(14)
+            p.font.size = Pt(12)
     for ri, row in enumerate(data, 1):
         for ci, val in enumerate(row):
             tbl.rows[ri].cells[ci].text = val
             for p in tbl.rows[ri].cells[ci].text_frame.paragraphs:
-                p.font.size = Pt(14)
-    _textbox(slide, Inches(1.0), Inches(4.0), Inches(10.5), Inches(2.5),
-             "Rules: remove cushion (−1 day) · extend cutoff to 2pm (−1 day if pre-cutoff eligible) · "
-             "weekend ship Fri/Sat not inducted Sat/Sun (−1 day). Fast badge = sim O2D ≤ 5 days.",
+                p.font.size = Pt(12)
+                if ri == 4 and ci > 0:
+                    p.font.color.rgb = GREEN
+    _textbox(slide, Inches(0.5), Inches(3.5), Inches(12), Inches(1.2),
+             "Newly badged (full sim): 4,260 · 1-day | 12,406 · 2-day | 12,479 · 3-day | 1,644 · fast",
              13, False, DARK)
+    _textbox(slide, Inches(0.5), Inches(4.5), Inches(12), Inches(2.0),
+             "Rules: remove cushion (−1d) · 2pm cutoff (−1d) · weekend ship (−1d). "
+             "Badge tier = sim O2D ≤ N days.",
+             12, False, DARK)
 
 
 def build_presentation() -> Path:
@@ -182,10 +189,10 @@ def build_presentation() -> Path:
         [
             "~73k dropship rug ops in June MSBD across 13 US warehouses",
             "90.3% induction fill rate (IFR) — strong month vs recent trend",
-            "84.7% fast-badge coverage (stated order-to-delivery ≤ 5 days)",
-            "68.3% same-day induction for orders placed before 2pm — network gap",
-            "Policy stack (2pm + no cushion + weekend) → 86.9% fast badge (+2.2 pp)",
-            "Framing: policy unlocks badge; same-day induction is what customers experience",
+            "Badging today: 0.5% 1-day · 9.5% 2-day · 42.5% 3-day · 84.7% fast",
+            "Full policy sim: 6.3% 1-day · 26.4% 2-day · 59.5% 3-day · 86.9% fast",
+            "+17 pp uplift at 2- and 3-day tiers — bigger than fast badge (+2 pp)",
+            "68.3% same-day induction before 2pm — operational proof point",
         ],
     )
 
@@ -222,11 +229,11 @@ def build_presentation() -> Path:
         prs,
         "Three policy levers",
         [
-            "Zero cushion — +0.5 pp fast badge · remove LT padding in system",
-            "2:00 PM cutoff everywhere — +0.5 pp · Easton & Port Wentworth biggest uplift",
-            "Weekend shipping — +1.0 pp on top · Fri/Sat orders inducted Sat/Sun",
-            "Combined June impact: 1,642 newly fast-badged orders",
-            "CA nodes (Riverside/Patterson): strong induction but transit limits badge",
+            "Zero cushion — lifts all tiers; largest at 2- and 3-day (+~14 pp)",
+            "2:00 PM cutoff everywhere — Easton & Port Wentworth biggest uplift",
+            "Weekend shipping — +4 pp at 3-day tier on top of policy",
+            "Combined: ~12.5k newly 2-day and 3-day badged orders in June",
+            "Fast badge (≤5d) only +2.2 pp — lead with 2/3-day story for CEO",
         ],
     )
 

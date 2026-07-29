@@ -11,19 +11,22 @@
 
 ## TL;DR
 
-Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US warehouses**, with **90.3% IFR** and **84.7% fast-badge coverage** that month.
+Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US warehouses**, with **90.3% IFR**.
 
-**Same-day induction before 2pm** (from `toolkit_hourly_performance`, Tue–Sat orders): **68.3%** parent-wide — but varies sharply by warehouse (**42%** Easton PA to **94%** Carlisle PA). This is the operational gap behind the 2pm cutoff conversation.
+**Same-day induction before 2pm:** **68.3%** parent-wide (toolkit, Tue–Sat) — varies **42%** Easton PA to **94%** Carlisle PA.
 
-**Stacked policy simulation on June volume:**
+**Badging simulation on June volume** (sim `o2d_stated` after cushion / 2pm / weekend adjustments):
 
-| Scenario | Fast-badge % | Uplift vs June | Newly fast-badged |
-|----------|------------:|---------------:|------------------:|
-| June actual | **84.7%** | — | — |
-| 2pm cutoff + no cushion | **85.9%** | +1.2 pp | 862 |
-| **+ Weekend shipping** | **86.9%** | **+2.2 pp** | **1,642** |
+| Scenario | 1-day | 2-day | 3-day | Fast (≤5d) |
+|----------|------:|------:|------:|-----------:|
+| June actual | **0.5%** | **9.5%** | **42.5%** | **84.7%** |
+| 2pm + no cushion | 5.1% | 24.1% | 55.7% | 85.8% |
+| **+ Weekend shipping** | **6.3%** | **26.4%** | **59.5%** | **86.9%** |
+| **Uplift (full vs June)** | **+5.8 pp** | **+17.1 pp** | **+17.0 pp** | **+2.2 pp** |
 
-**Framing for the CEO:** *"June showed strong IFR — the badge opportunity is aligning cutoff/cushion/weekend policy, but same-day induction before 2pm is only 68% network-wide. That's what customers experience."*
+**Newly badged orders (full simulation):** 4,260 (1-day) · 12,406 (2-day) · 12,479 (3-day) · 1,644 (fast).
+
+**Framing for the CEO:** *"Policy alignment is a big story at 2- and 3-day speed (+17 pp each) — not just fast badge. Same-day induction before 2pm at 68% is still the ops proof point."*
 
 ---
 
@@ -74,14 +77,14 @@ sim_o2d_stated = o2d_stated
          AND warehouse cutoff < 2:00 PM (or null)
   − 1  if Fri/Sat placed AND not inducted Sat/Sun
 
-sim_fast_badge = sim_o2d_stated ≤ 5
+sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 ```
 
-| Adjustment | Fast-badge % |
-|------------|-------------:|
-| June actual | 84.7% |
-| Policy (cushion + 2pm) | **85.9%** |
-| + Weekend shipping | **86.9%** |
+| Scenario | 1-day | 2-day | 3-day | Fast (≤5d) |
+|----------|------:|------:|------:|-----------:|
+| June actual | 0.5% | 9.5% | 42.5% | 84.7% |
+| Policy (cushion + 2pm) | 5.1% | 24.1% | 55.7% | 85.8% |
+| + Weekend shipping | **6.3%** | **26.4%** | **59.5%** | **86.9%** |
 
 ---
 
@@ -95,9 +98,9 @@ sim_fast_badge = sim_o2d_stated ≤ 5
 
 Policy says 2pm cutoff — but only **68%** of before-2pm orders get same-day induction network-wide. Committing to 2pm cutoff requires **FedEx pickup + warehouse processing** aligned to that window.
 
-### 3. Badge policy stack adds ~2 pp on June volume
+### 3. Badge policy stack — biggest lift at 2- and 3-day speed
 
-Weekend shipping (+1.0 pp on top of policy) remains meaningful at **1,642** newly fast-badged orders in June alone.
+Full simulation adds **+17 pp** at 2-day and 3-day badges (~12.4k newly badged orders each tier). Fast badge (≤5d) gains only **+2.2 pp** — the CEO conversation should cover the full speed ladder, not just fast.
 
 ### 4. Site-specific stories
 
@@ -141,13 +144,13 @@ Regenerate: `python scripts/create_safavieh_google_slides.py`
 | **Branch (all files)** | [cursor/safavieh-ceo-preread-b7d6](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6) |
 | **Pull request** | [PR #16](https://github.com/et844p/O2S/pull/16) |
 
-### June scenario summary
+### June scenario summary (all badge tiers)
 
-| Scenario | Volume | Fast-badge % | Newly fast |
-|----------|-------:|------------:|-----------:|
-| June actual | 73,253 | 84.67% | — |
-| Policy (2pm + no cushion) | 73,253 | 85.85% | 862 |
-| Full (+ weekend) | 73,253 | **86.91%** | **1,642** |
+| Scenario | 1-day | 2-day | 3-day | Fast (≤5d) | Newly 3-day | Newly fast |
+|----------|------:|------:|------:|-----------:|------------:|-----------:|
+| June actual | 0.52% | 9.46% | 42.46% | 84.67% | — | — |
+| Policy (2pm + no cushion) | 5.09% | 24.09% | 55.71% | 85.84% | 9,717 | 862 |
+| Full (+ weekend) | 6.34% | 26.38% | **59.48%** | **86.91%** | **12,479** | **1,644** |
 
 ---
 

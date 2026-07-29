@@ -1,4 +1,4 @@
-scenario,volume,fast_pct,newly_fast
-current,73253,84.67,0
-policy_2pm_no_cushion,73253,85.85,862
-policy_plus_weekend,73253,86.91,1642
+scenario,volume,badge_1d_pct,badge_2d_pct,badge_3d_pct,badge_5d_fast_pct,newly_fast_1d,newly_fast_2d,newly_fast_3d,newly_fast_5d
+current,73294,0.52,9.46,42.46,84.67,0,0,0,0
+policy_2pm_no_cushion,73294,5.09,24.09,55.71,85.84,3343,10726,9717,862
+policy_plus_weekend,73294,6.34,26.38,59.48,86.91,4260,12406,12479,1644
