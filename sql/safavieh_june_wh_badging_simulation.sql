@@ -40,7 +40,8 @@ scored AS (
     b.o2d_stated
       - CASE WHEN b.cushion > 0 THEN 1 ELSE 0 END
       - CASE
-          WHEN t.is_before_cutoff = 0
+          WHEN b.order_dow IN (1, 2, 3, 4, 5)
+            AND t.is_before_cutoff = 0
             AND t.order_hour_supplier_local <= 14
           THEN 1
           ELSE 0

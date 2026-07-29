@@ -1,4 +1,4 @@
 scenario,volume,badge_1d_pct,badge_2d_pct,badge_3d_pct,badge_5d_fast_pct,newly_fast_1d,newly_fast_2d,newly_fast_3d,newly_fast_5d,wknd_incr_1d,wknd_incr_2d,wknd_incr_3d,wknd_incr_5d
 current,73294,0.52,9.46,42.46,84.67,0,0,0,0,0,0,0,0
-policy_2pm_no_cushion,73294,4.28,21.89,53.31,85.75,2751,9109,7957,793,0,0,0,0
-policy_plus_weekend,73294,7.09,27.54,60.59,87.31,4812,13252,13290,1934,2061,4143,5333,1141
+policy_2pm_no_cushion,73294,4.28,21.62,52.82,85.62,2750,8912,7597,697,0,0,0,0
+policy_plus_weekend,73294,6.82,27.05,60.17,87.26,4615,12895,12984,1897,1865,3983,5387,1200

@@ -7,11 +7,11 @@
 --
 -- Simulation rules (stacked):
 --   1. If cushion > 0: subtract 1 day from o2d_stated
---   2. If after current cutoff but before 2pm local:
+--   2. Weekdays only (HVE order_dow 1–5, Mon–Fri): after current cutoff but before 2pm
 --        toolkit IsBeforeCutoff = 0 AND order_hour_supplier_local <= 14
 --      subtract 1 day (cutoff extension to 2pm)
---   3. If Fri/Sat placed (HVE order_dow 5,6): subtract 1 day
---      — stated weekend promise; NOT conditioned on actual induction day
+--   3. Fri/Sat placed (HVE order_dow 5,6) eligible for Sunday MSBD under weekend promise:
+--      subtract 1 day from stated speed (o2d_stated)
 
 WITH base AS (
   SELECT
@@ -46,7 +46,8 @@ scored AS (
     b.*,
     CASE WHEN b.cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
     CASE
-      WHEN t.is_before_cutoff = 0
+      WHEN b.order_dow IN (1, 2, 3, 4, 5)
+        AND t.is_before_cutoff = 0
         AND t.order_hour_supplier_local <= 14
       THEN 1
       ELSE 0

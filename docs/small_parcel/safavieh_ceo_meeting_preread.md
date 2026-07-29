@@ -5,7 +5,19 @@
 **Base:** **June 2026 MSBD** (`msbd_su` 2026-06-01 – 2026-06-30)  
 **Scope:** Dropship only (`fulfillment_type = 'DS'`) · Rugs STO
 
-**Full package (doc + data + SQL):** [GitHub — Safavieh CEO branch](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6)
+**Full package:** [GitHub branch `cursor/safavieh-ceo-preread-b7d6`](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6) · [PR #16](https://github.com/et844p/O2S/pull/16)
+
+### Where the updated files live
+
+| What | Path (repo) |
+|------|-------------|
+| **Pre-read (this doc)** | `docs/small_parcel/safavieh_ceo_meeting_preread.md` |
+| **Charts (PNG)** | `docs/small_parcel/safavieh_charts/` (`01`–`08`) |
+| **Slides (PPTX)** | `output/safavieh/Safavieh_CEO_June_MSBD.pptx` |
+| **Badging scenarios CSV** | `output/safavieh/safavieh_june_badging_scenarios.csv` |
+| **Warehouse analysis CSV** | `output/safavieh/safavieh_june_warehouse_analysis.csv` |
+| **Badging SQL** | `sql/safavieh_badging_simulation.sql` |
+| **Run all pulls** | `python scripts/run_safavieh_analysis.py` |
 
 ---
 
@@ -13,44 +25,35 @@
 
 Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US warehouses**, with **~90% IFR**.
 
-**Same-day induction before 2pm:** **68.3%** parent-wide (toolkit, Mon–Fri excl. Sun/Sat) — varies **42%** Easton PA to **94%** Carlisle PA. This is **actual ops** — the proof point for whether stated promises can be delivered.
+**Same-day induction before 2pm:** **68.3%** parent-wide (toolkit, Mon–Fri excl. Sun/Sat) — varies **42%** Easton PA to **94%** Carlisle PA.
 
-**Badging simulation on June volume** models **stated speed** (`o2d_stated`), not when orders actually induct. To promise faster, actual performance must align with what we state.
+**Badging simulation** answers: *if we change cutoff / cushion / weekend promise, how many orders would qualify for faster **website speed badges**?* It uses `o2d_stated` (promised delivery days shown to customers). It does **not** measure warehouse execution.
+
+**IFR and before-2pm induction** answer: *can Safavieh actually deliver what we would promise?* IFR = % inducted on/before MSBD. Before-2pm induction = % of morning orders that get same-day carrier induction. Use these for the **ops** side of the CEO conversation.
 
 | Scenario | 1-day | 2-day | 3-day | Fast (≤5d) |
 |----------|------:|------:|------:|-----------:|
 | June actual | **0.5%** | **9.5%** | **42.5%** | **84.7%** |
-| 2pm + no cushion | 4.3% | 21.9% | 53.3% | 85.8% |
-| **+ Weekend stated promise** | **7.1%** | **27.5%** | **60.6%** | **87.3%** |
-| **Uplift (full vs June)** | **+6.6 pp** | **+18.0 pp** | **+18.1 pp** | **+2.6 pp** |
+| 2pm + no cushion | 4.3% | 21.6% | 52.8% | 85.6% |
+| **+ Weekend (Sun MSBD promise)** | **6.8%** | **27.1%** | **60.2%** | **87.3%** |
+| **Uplift (full vs June)** | **+6.3 pp** | **+17.5 pp** | **+17.7 pp** | **+2.6 pp** |
 
-**Weekend shipping — incremental only** (after 2pm + no cushion already applied; **all Fri/Sat placed orders** get −1 day on stated promise):
+**Weekend — incremental only** (after 2pm + no cushion; Fri/Sat placed, Sunday MSBD promise → `o2d_stated − 1`):
 
 | Tier | +pp from weekend | Additional orders |
 |------|----------------:|------------------:|
-| 1-day | +2.8 pp | 2,061 |
-| 2-day | +5.7 pp | 4,143 |
-| **3-day** | **+7.3 pp** | **5,333** |
-| Fast (≤5d) | **+1.6 pp** | **1,141** |
+| 1-day | +2.5 pp | 1,865 |
+| 2-day | +5.4 pp | 3,983 |
+| **3-day** | **+7.4 pp** | **5,387** |
+| Fast (≤5d) | **+1.6 pp** | **1,200** |
 
-**Why weekend is a bigger lever now:** Previous logic only shaved stated speed when Fri/Sat orders were **not** inducted Sat/Sun (~9k orders). The correct framing is **stated promise**: we do not promise weekend speed today even though **~47% of Fri/Sat orders already ship Sat/Sun**. Promising it shaves 1 day of O2S for **all ~17.9k Fri/Sat-placed orders** — not just those that miss weekend induction.
+~47% of Fri/Sat orders already ship Sat/Sun but are **not promised** that speed today. Promising Sunday MSBD shaves 1 stated day for **all ~17.9k Fri/Sat-placed orders**.
 
-**Cutoff extension** uses `toolkit_hourly_performance.IsBeforeCutoff = 0` (after current cutoff) AND `order_hour_supplier_local ≤ 14` — **6,671 orders** get the −1 day shave (not `o2sumsbd`).
+**Cutoff extension** (weekdays only, Mon–Fri): `IsBeforeCutoff = 0` + hour ≤ 2pm — **5,557 orders** in June.
 
-**Newly badged orders (full simulation vs June):** 4,812 (1-day) · 13,252 (2-day) · 13,290 (3-day) · 1,934 (fast).
+**Newly badged orders (full simulation vs June):** 4,615 (1-day) · 12,895 (2-day) · 12,984 (3-day) · 1,897 (fast).
 
-**Framing for the CEO:** *"Badge simulation is about what we **state** to customers. Cushion removal + 2pm cutoff + weekend promise could add +18 pp at 2- and 3-day speed. Delivering that requires ops alignment — 68% same-day induction before 2pm today."*
-
----
-
-## Stated vs actual — two lenses
-
-| Lens | What it measures | June headline |
-|------|------------------|---------------|
-| **Stated (badging sim)** | `o2d_stated` after policy adjustments | Full sim: 60.6% 3-day · 87.3% fast |
-| **Actual (ops)** | Same-day induction before 2pm · IFR | 68.3% before-2pm induct · ~90% IFR |
-
-Speed badging is entirely on **stated** delivery speed. Weekend and cutoff changes are **promise** changes. IFR and before-2pm induction show whether Safavieh can **execute** those promises.
+**Framing for the CEO:** *"Policy changes could add ~+18 pp at 2- and 3-day badges on the website. Safavieh needs to prove they can induct before 2pm (68% today) and hit MSBD (90% IFR) to deliver that."*
 
 ---
 
@@ -99,9 +102,9 @@ Models **stated** `o2d_stated` only — not actual induction timing.
 ```
 sim_o2d_stated = o2d_stated
   − 1  if cushion > 0
-  − 1  if after current cutoff but before 2pm local
+  − 1  if weekday (Mon–Fri order_dow 1–5), after current cutoff, before 2pm
          (toolkit IsBeforeCutoff = 0 AND order_hour_supplier_local ≤ 14)
-  − 1  if Fri/Sat placed (HVE order_dow 5, 6) — all weekend-placed volume
+  − 1  if Fri/Sat placed (order_dow 5, 6) — Sunday MSBD weekend promise
 
 sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 ```
@@ -109,10 +112,10 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 | Scenario | 1-day | 2-day | 3-day | Fast (≤5d) |
 |----------|------:|------:|------:|-----------:|
 | June actual | 0.5% | 9.5% | 42.5% | 84.7% |
-| Policy (cushion + 2pm cutoff) | 4.3% | 21.9% | 53.3% | 85.8% |
-| + Weekend stated promise | **7.1%** | **27.5%** | **60.6%** | **87.3%** |
+| Policy (cushion + 2pm cutoff) | 4.3% | 21.6% | 52.8% | 85.6% |
+| + Weekend (Sun MSBD) | **6.8%** | **27.1%** | **60.2%** | **87.3%** |
 
-**Adjustment volumes (June):** cushion 20,341 · cutoff extension 6,671 · Fri/Sat stated weekend 17,881 (8,518 Fri + 9,363 Sat).
+**Adjustment volumes (June):** cushion 20,341 · weekday cutoff extension 5,557 · Fri/Sat Sun MSBD promise 17,881.
 
 ---
 
@@ -200,8 +203,8 @@ Regenerate: `python scripts/create_safavieh_google_slides.py`
 | Scenario | 1-day | 2-day | 3-day | Fast (≤5d) | Newly 3-day | Newly fast |
 |----------|------:|------:|------:|-----------:|------------:|-----------:|
 | June actual | 0.52% | 9.46% | 42.46% | 84.67% | — | — |
-| Policy (2pm + no cushion) | 4.28% | 21.89% | 53.31% | 85.75% | 7,957 | 793 |
-| Full (+ weekend stated) | 7.09% | 27.54% | **60.59%** | **87.31%** | **13,290** | **1,934** |
+| Policy (2pm + no cushion) | 4.28% | 21.62% | 52.82% | 85.62% | 7,597 | 697 |
+| Full (+ weekend Sun MSBD) | 6.82% | 27.05% | **60.17%** | **87.26%** | **12,984** | **1,897** |
 
 ---
 
