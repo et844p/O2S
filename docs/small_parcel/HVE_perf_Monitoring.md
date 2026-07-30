@@ -101,7 +101,7 @@ Use this reference for natural-language data pull requests against the Small Par
 |--------|------|-------------|
 | `order_complete_date` | DATE | Date the order was fully processed |
 | `order_complete_date_time_local` | DATETIME | Order placed date/time in supplier local time |
-| `order_dow` | INT | Day of week order was placed (1–7, **ISO: Mon=1 … Sun=7**) |
+| `order_dow` | INT | Day of week order was placed — **ISO 8601:** Monday = 1 … Sunday = 7 (not Sun = 1) |
 | `msbd_su_week` | DATE | Start of week for Supplier Must Ship By Date |
 | `msbd_su` | DATE | **Supplier Must Ship By Date. Default timebase for analysis** |
 | `msbd_cu` | DATE | Customer-facing Must Ship By Date |
@@ -110,7 +110,7 @@ Use this reference for natural-language data pull requests against the Small Par
 | `SU_FR` | INT | Supplier Fill Rate (1/0): ASN on or before `msbd_su` |
 | `induction_date_lidd` | DATE | Induction date of the order |
 | `induction_date_WCP_local` | DATE | Backup induction date |
-| `induction_dow_adj` | INT | Adjusted day of week for induction (holidays/weekends). **Not ISO:** Sunday = `1`, Saturday = `7` (same Sun–Sat numbering as `order_dow_supplier_local` in toolkit). Weekend induction = `IN (1, 7)`. Do not use ISO Mon=1 … Sun=7 for this column |
+| `induction_dow_adj` | INT | Adjusted induction day of week — **Sun–Sat:** Sunday = `1` … Saturday = `7`. Weekend = `IN (1, 7)` |
 | `carrier_first_induction_date_time` | DATETIME | Timestamp for carrier network induction scan |
 | `carrier_first_induction_WCP_local` | DATETIME | Backup induction scan timestamp |
 | `delivery_date` | DATE | Delivery date of the order |
@@ -255,23 +255,39 @@ LIMIT 10
 
 ## Day-of-week conventions (important)
 
-| Column | Convention |
-|--------|------------|
-| `order_dow` | **ISO 8601:** Monday = 1 … Sunday = 7 |
-| `induction_dow_adj` | **Sun–Sat:** Sunday = 1 … Saturday = 7 (weekend = `IN (1, 7)`) |
-| `order_dow_supplier_local` (toolkit) | **Sun–Sat:** Sunday = 1 … Saturday = 7 |
+### Sun–Sat (Sunday = 1 … Saturday = 7)
 
-Fri/Sat **placed** orders use HVE `order_dow` (ISO): Friday = 5, Saturday = 6.
-
-## Related: `toolkit_hourly_performance` day-of-week
-
-`order_dow_supplier_local` uses the **Sun–Sat** convention (same as `induction_dow_adj`), **not** ISO `order_dow`:
+Used by **`induction_dow_adj`** and toolkit **`order_dow_supplier_local`**:
 
 | Value | Day |
 |------:|-----|
 | 1 | Sunday |
 | 2 | Monday |
-| … | … |
+| 3 | Tuesday |
+| 4 | Wednesday |
+| 5 | Thursday |
+| 6 | Friday |
 | 7 | Saturday |
 
-`order_dow_supplier_local NOT IN (1, 7)` = **Monday–Friday** (excludes Sunday and Saturday).
+- Weekend induction: `induction_dow_adj IN (1, 7)`.
+- Weekdays (toolkit): `order_dow_supplier_local NOT IN (1, 7)` = Monday–Friday.
+
+### ISO 8601 (Monday = 1 … Sunday = 7)
+
+Used by HVE **`order_dow`** (day order was placed):
+
+| Value | Day |
+|------:|-----|
+| 1 | Monday |
+| 2 | Tuesday |
+| 3 | Wednesday |
+| 4 | Thursday |
+| 5 | Friday |
+| 6 | Saturday |
+| 7 | Sunday |
+
+Examples: Fri/Sat placed = `order_dow IN (5, 6)`; Sat/Sun placed = `order_dow IN (6, 7)`.
+
+## Related: `toolkit_hourly_performance` day-of-week
+
+`order_dow_supplier_local` follows the **Sun–Sat** table above (not ISO `order_dow`).

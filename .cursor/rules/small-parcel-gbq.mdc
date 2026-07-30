@@ -26,6 +26,25 @@ When the user asks for Small Parcel (SP) metrics, data pulls, or performance fro
 - Late Orders = Volume × (1 - IFR)
 - CTC = (% of Network Volume) × (Late Orders)
 
+## Day-of-week numbering (HVE)
+
+**Sun–Sat convention** (Sunday = 1 … Saturday = 7) applies to **`induction_dow_adj`** and toolkit **`order_dow_supplier_local`**:
+
+| Value | Day |
+|------:|-----|
+| 1 | Sunday |
+| 2 | Monday |
+| 3 | Tuesday |
+| 4 | Wednesday |
+| 5 | Thursday |
+| 6 | Friday |
+| 7 | Saturday |
+
+- Weekend induction: `induction_dow_adj IN (1, 7)` (Sunday or Saturday).
+- Weekdays (toolkit): `order_dow_supplier_local NOT IN (1, 7)` = Monday–Friday.
+
+**Exception — `order_dow` (order placed):** uses **ISO 8601** (Monday = 1 … Sunday = 7). Do not assume Sun = 1 for `order_dow`. Examples: Fri/Sat placed = `order_dow IN (5, 6)`; Sat/Sun placed = `order_dow IN (6, 7)`.
+
 ## Do not
 
 - Query other tables unless the user explicitly asks
