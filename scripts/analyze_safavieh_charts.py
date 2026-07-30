@@ -164,7 +164,7 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
 
 
 def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
-    """Stacked bars: current + cutoff-to-2pm lift + Fri/Sat −1 lift (after policy)."""
+    """Stacked bars: current + cutoff opportunity + weekend opportunity (full policy stack)."""
     if "policy_2pm_no_cushion" not in scen["scenario"].values:
         return
 
@@ -174,29 +174,37 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
     pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values.astype(float)
     full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
     cutoff_lift = pol - cur
-    weekend_lift = full - pol  # Fri/Sat −1 incremental after cutoff / no cushion
+    weekend_lift = full - pol
 
     x = np.arange(len(tiers))
-    width = 0.5
+    width = 0.55
     edge = {"edgecolor": "white", "linewidth": 1.2}
 
-    fig, ax = plt.subplots(figsize=(9, 6))
+    fig, ax = plt.subplots(figsize=(10, 6.5))
     ax.bar(x, cur, width, label="Current (June stated)", color=GRAY, **edge)
-    ax.bar(x, cutoff_lift, width, bottom=cur, label="+ Cutoff to 2pm / no cushion", color=ACCENT, **edge)
+    ax.bar(
+        x,
+        cutoff_lift,
+        width,
+        bottom=cur,
+        label="Cutoff opportunity (2pm / no cushion)",
+        color=ACCENT,
+        **edge,
+    )
     ax.bar(
         x,
         weekend_lift,
         width,
         bottom=cur + cutoff_lift,
-        label="+ Fri/Sat −1 o2d (Sun MSBD)",
+        label="Weekend opportunity (Fri/Sat −1 o2d)",
         color=ORANGE,
         **edge,
     )
 
     ax.set_ylabel("Badge coverage (%)")
     ax.set_title(
-        "Safavieh Network — Badge Coverage by Cohort (June MSBD)\n"
-        "Stacked: current + same-day cutoff lift + weekend stated promise"
+        "Safavieh Network — Cutoff + Weekend Badge Opportunity (stacked)\n"
+        "June MSBD · same-day cutoff lift then Sun MSBD promise on Fri/Sat placed"
     )
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
@@ -207,7 +215,7 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
         total = cur[i] + cutoff_lift[i] + weekend_lift[i]
         ax.text(
             x[i],
-            total + 2,
+            total + 1.5,
             f"{total:.1f}%",
             ha="center",
             va="bottom",
@@ -215,19 +223,122 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
             fontweight="bold",
             color=NAVY,
         )
+        if cutoff_lift[i] >= 1.0:
+            ax.text(
+                x[i],
+                cur[i] + cutoff_lift[i] / 2,
+                f"+{cutoff_lift[i]:.1f} pp",
+                ha="center",
+                va="center",
+                fontsize=9,
+                color="white",
+                fontweight="bold",
+            )
+        if weekend_lift[i] >= 0.8:
+            ax.text(
+                x[i],
+                cur[i] + cutoff_lift[i] + weekend_lift[i] / 2,
+                f"+{weekend_lift[i]:.1f} pp",
+                ha="center",
+                va="center",
+                fontsize=9,
+                color="white",
+                fontweight="bold",
+            )
 
     ax.legend(loc="upper left", framealpha=0.95)
     ax.text(
         0.99,
         0.02,
-        "Total = policy_plus_weekend · 73,294 ops · weekend slice is after cutoff policy",
+        "73,294 ops · weekend slice = incremental after cutoff policy",
         transform=ax.transAxes,
         ha="right",
         fontsize=9,
         color=GRAY,
     )
     fig.tight_layout()
-    fig.savefig(CHARTS / "13_network_cohort_current_and_lift.png", dpi=150, bbox_inches="tight")
+    out13 = CHARTS / "13_network_cohort_current_and_lift.png"
+    out24 = CHARTS / "24_cutoff_weekend_opportunity_stacked.png"
+    fig.savefig(out13, dpi=150, bbox_inches="tight")
+    fig.savefig(out24, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_stacked_opportunity_pp_only(scen: pd.DataFrame) -> None:
+    """Stacked pp-only: cutoff opportunity + weekend opportunity (no current base)."""
+    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+        return
+
+    tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
+    cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
+    cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values.astype(float)
+    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values.astype(float)
+    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
+    cutoff_lift = pol - cur
+    weekend_lift = full - pol
+    total_lift = full - cur
+
+    x = np.arange(len(tiers))
+    width = 0.55
+    edge = {"edgecolor": "white", "linewidth": 1.2}
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(x, cutoff_lift, width, label="Cutoff opportunity (2pm / no cushion)", color=ACCENT, **edge)
+    ax.bar(
+        x,
+        weekend_lift,
+        width,
+        bottom=cutoff_lift,
+        label="Weekend opportunity (Fri/Sat −1)",
+        color=ORANGE,
+        **edge,
+    )
+
+    ax.set_ylabel("Uplift (percentage points)")
+    ax.set_title(
+        "Safavieh Network — Cutoff + Weekend Opportunity (stacked pp)\n"
+        "Decomposition of full-policy uplift vs June stated"
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(tiers)
+    ax.set_ylim(0, max(total_lift.max() + 4, 20))
+
+    for i in range(len(tiers)):
+        ax.text(
+            x[i],
+            total_lift[i] + 0.4,
+            f"+{total_lift[i]:.1f} pp total",
+            ha="center",
+            fontsize=10,
+            fontweight="bold",
+            color=NAVY,
+        )
+        if cutoff_lift[i] >= 0.5:
+            ax.text(
+                x[i],
+                cutoff_lift[i] / 2,
+                f"+{cutoff_lift[i]:.1f}",
+                ha="center",
+                va="center",
+                fontsize=10,
+                color="white",
+                fontweight="bold",
+            )
+        if weekend_lift[i] >= 0.5:
+            ax.text(
+                x[i],
+                cutoff_lift[i] + weekend_lift[i] / 2,
+                f"+{weekend_lift[i]:.1f}",
+                ha="center",
+                va="center",
+                fontsize=10,
+                color="white",
+                fontweight="bold",
+            )
+
+    ax.legend(loc="upper left")
+    fig.tight_layout()
+    fig.savefig(CHARTS / "25_cutoff_weekend_opportunity_pp_stacked.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -712,6 +823,7 @@ def main() -> None:
     chart_opportunity_gap(wh)
     chart_badging_tiers(scen)
     chart_network_cohort_current_and_lifts(scen)
+    chart_stacked_opportunity_pp_only(scen)
     chart_network_current_vs_fri_sat_minus1(scen)
     chart_weekend_incremental(scen)
     account_df = None

@@ -120,6 +120,11 @@ def build_presentation() -> Path:
     )
 
     _chart_slide(prs, CHARTS_DIR / "04_badging_tiers_current_vs_sim.png", "Badging by speed tier — June vs full simulation")
+    _chart_slide(
+        prs,
+        CHARTS_DIR / "24_cutoff_weekend_opportunity_stacked.png",
+        "Cutoff + weekend badge opportunity (stacked)",
+    )
     _chart_slide(prs, CHARTS_DIR / "08_weekend_incremental_by_tier.png", "Sunday MSBD — Fri/Sat −1 o2d lift vs current stated")
 
     _body_bullets(

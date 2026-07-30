@@ -171,7 +171,8 @@ CSV: `output/safavieh/safavieh_june_supplier_badging_cohorts.csv`
 | [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
 | [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
 | [08 — Sunday MSBD lift](safavieh_charts/08_weekend_incremental_by_tier.png) | Fri/Sat −1 o2d lift vs current (pp + orders) |
-| [13 — Stacked cohort lifts](safavieh_charts/13_network_cohort_current_and_lift.png) | Current + cutoff-to-2pm + Fri/Sat −1 (stacked) |
+| [13 / 24 — Cutoff + weekend stacked](safavieh_charts/24_cutoff_weekend_opportunity_stacked.png) | Current + cutoff opportunity + weekend opportunity |
+| [25 — Opportunity pp only](safavieh_charts/25_cutoff_weekend_opportunity_pp_stacked.png) | Stacked pp uplift: cutoff + weekend |
 | [23 — Current vs Fri/Sat −1 only](safavieh_charts/23_network_current_vs_fri_sat_minus1.png) | Grouped: weekend promise vs current (not stacked) |
 | [20 — Weekend shipping %](safavieh_charts/20_fri_sat_weekend_shipping_by_wh.png) | Actual Sat/Sun induction (Fri/Sat placed) |
 | [21 — Account lift](safavieh_charts/21_account_sunday_msbd_lift.png) | Parent account Fri/Sat −1 lift by tier |

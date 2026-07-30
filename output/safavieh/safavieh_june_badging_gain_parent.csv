@@ -1,2 +1,2 @@
-level,vol,current_1d,current_2d,current_3d,current_fast,cutoff_gain_1d_pp,cutoff_gain_2d_pp,cutoff_gain_3d_pp,cutoff_gain_fast_pp,weekend_gain_1d_pp,weekend_gain_2d_pp,weekend_gain_3d_pp,weekend_gain_fast_pp,cutoff_new_1d,cutoff_new_2d,cutoff_new_3d,cutoff_new_fast,weekend_new_1d,weekend_new_2d,weekend_new_3d,weekend_new_fast
-parent,73294,0.52,9.46,42.46,84.67,3.75,12.16,10.37,0.95,2.54,5.43,7.35,1.64,2750,8912,7597,697,1865,3983,5387,1200
+level,vol,fri_sat_vol,current_1d,current_2d,current_3d,current_fast,fri_sat_minus1_1d,fri_sat_minus1_2d,fri_sat_minus1_3d,fri_sat_minus1_fast,lift_1d_pp,lift_2d_pp,lift_3d_pp,lift_fast_pp,new_1d,new_2d,new_3d,new_fast
+parent,73294,17881,0.52,9.46,42.46,84.67,2.29,13.2,51.45,86.56,1.76,3.74,9.0,1.89,1291,2743,6595,1388
