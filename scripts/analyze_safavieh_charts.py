@@ -18,6 +18,8 @@ CHARTS = ROOT / "docs" / "small_parcel" / "safavieh_charts"
 WH_CSV = OUT / "safavieh_june_warehouse_analysis.csv"
 SCEN_CSV = OUT / "safavieh_june_badging_scenarios.csv"
 WH_SIM_CSV = OUT / "safavieh_june_wh_badging_sim.csv"
+GAIN_CSV = OUT / "safavieh_june_badging_gain_by_warehouse.csv"
+GAIN_VW_CSV = OUT / "safavieh_june_badging_gain_volume_weighted.csv"
 
 NAVY = "#1a365d"
 ACCENT = "#2e86ab"
@@ -263,6 +265,144 @@ def chart_volume_by_warehouse(df: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def _load_gain_volume_weighted() -> pd.DataFrame:
+    if GAIN_VW_CSV.exists():
+        df = pd.read_csv(GAIN_VW_CSV)
+    else:
+        from scripts.enrich_safavieh_gain_volume_weighted import enrich_gain_table
+
+        df = enrich_gain_table()
+        df.to_csv(GAIN_VW_CSV, index=False)
+    df = df[df["vol"] >= 200].copy()
+    df["warehouse"] = df["city_name"].str.strip() + ", " + df["state_name"]
+    return df.sort_values("vol", ascending=True)
+
+
+def chart_wh_pp_vs_network_contribution_3d(df: pd.DataFrame) -> None:
+    """Warehouse 3-day pp gain vs contribution to parent account pp (volume-weighted)."""
+    sub = df.sort_values("vol", ascending=True)
+    y = np.arange(len(sub))
+    h = 0.35
+
+    fig, ax = plt.subplots(figsize=(11, 7))
+    wh_pp = sub["weekend_gain_3d_pp"].values
+    net_pp = sub["network_contrib_weekend_3d_pp"].values
+    cutoff_wh = sub["cutoff_gain_3d_pp"].values
+    cutoff_net = sub["network_contrib_cutoff_3d_pp"].values
+
+    ax.barh(y - h / 2, cutoff_wh, h, label="Cutoff: warehouse pp gain", color=GRAY, alpha=0.85)
+    ax.barh(y + h / 2, cutoff_net, h, label="Cutoff: parent account pp", color=ACCENT, alpha=0.9)
+
+    ax.set_yticks(y)
+    ax.set_yticklabels(sub["warehouse"], fontsize=9)
+    ax.set_xlabel("Percentage points (3-day badge)")
+    ax.set_title(
+        "Safavieh — 3-Day Badge: Warehouse Gain vs Parent Account Contribution\n"
+        "(parent pp = newly badged orders ÷ network volume)"
+    )
+    ax.legend(loc="lower right", fontsize=9)
+
+    for i, (w, n, vol_pct) in enumerate(
+        zip(cutoff_wh, cutoff_net, sub["pct_network_vol"])
+    ):
+        if w > 1:
+            ax.text(w + 0.3, i - h / 2, f"+{w:.1f} wh", va="center", fontsize=7, color=GRAY)
+        ax.text(n + 0.15, i + h / 2, f"+{n:.2f} net ({vol_pct:.0f}% vol)", va="center", fontsize=7)
+
+    fig.tight_layout()
+    fig.savefig(CHARTS / "09_3d_cutoff_wh_vs_network_pp.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(11, 7))
+    ax.barh(y - h / 2, wh_pp, h, label="Weekend: warehouse pp gain", color=ORANGE, alpha=0.85)
+    ax.barh(y + h / 2, net_pp, h, label="Weekend: parent account pp", color=GREEN, alpha=0.9)
+    ax.set_yticks(y)
+    ax.set_yticklabels(sub["warehouse"], fontsize=9)
+    ax.set_xlabel("Percentage points (3-day badge)")
+    ax.set_title(
+        "Safavieh — 3-Day Badge: Weekend Warehouse Gain vs Parent Account Contribution"
+    )
+    ax.legend(loc="lower right", fontsize=9)
+    for i, (w, n, vol_pct) in enumerate(zip(wh_pp, net_pp, sub["pct_network_vol"])):
+        if w > 2:
+            ax.text(w + 0.3, i - h / 2, f"+{w:.1f} wh", va="center", fontsize=7, color=ORANGE)
+        ax.text(n + 0.15, i + h / 2, f"+{n:.2f} net ({vol_pct:.0f}% vol)", va="center", fontsize=7)
+    fig.tight_layout()
+    fig.savefig(CHARTS / "10_3d_weekend_wh_vs_network_pp.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_network_contrib_stacked_3d(df: pd.DataFrame) -> None:
+    """Stacked bar: each warehouse's slice of parent +7.4pp weekend 3-day uplift."""
+    sub = df.sort_values("network_contrib_weekend_3d_pp", ascending=True)
+    contrib = sub["network_contrib_weekend_3d_pp"]
+    total = contrib.sum()
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    colors = plt.cm.Blues(np.linspace(0.35, 0.9, len(sub)))
+    left = 0.0
+    for _, row in sub.iterrows():
+        v = row["network_contrib_weekend_3d_pp"]
+        if v < 0.05:
+            continue
+        ax.barh(0, v, left=left, height=0.5, color=colors[sub.index.get_loc(row.name)])
+        if v >= 0.25:
+            ax.text(
+                left + v / 2,
+                0,
+                f"{row['warehouse'].split(',')[0]}\n+{v:.2f}pp",
+                ha="center",
+                va="center",
+                fontsize=8,
+                color="white",
+                fontweight="bold",
+            )
+        left += v
+
+    ax.set_xlim(0, total + 0.5)
+    ax.set_yticks([])
+    ax.set_xlabel("Parent account 3-day badge uplift from weekend (pp)")
+    ax.set_title(
+        f"Safavieh parent — weekend 3-day gain decomposed by warehouse "
+        f"(total +{total:.2f} pp · {int(sub['weekend_new_3d'].sum()):,} orders)"
+    )
+    ax.axvline(total, color=NAVY, linestyle="--", alpha=0.5)
+    fig.tight_layout()
+    fig.savefig(CHARTS / "11_parent_weekend_3d_contrib_by_wh.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_gain_volume_scatter(df: pd.DataFrame) -> None:
+    """Warehouse pp gain vs % network volume — bubble size = newly badged orders."""
+    sub = df[df["vol"] >= 500].copy()
+    fig, ax = plt.subplots(figsize=(9, 7))
+
+    x = sub["pct_network_vol"]
+    y_cut = sub["cutoff_gain_3d_pp"]
+    y_wk = sub["weekend_gain_3d_pp"]
+    s_cut = sub["cutoff_new_3d"] / 15
+    s_wk = sub["weekend_new_3d"] / 15
+
+    ax.scatter(x, y_cut, s=s_cut, c=ACCENT, alpha=0.65, edgecolors="white", label="Cutoff policy")
+    ax.scatter(x, y_wk, s=s_wk, c=ORANGE, alpha=0.65, edgecolors="white", label="Weekend")
+    for _, row in sub.iterrows():
+        ax.annotate(
+            row["warehouse"].replace(", ", "\n"),
+            (row["pct_network_vol"], max(row["cutoff_gain_3d_pp"], row["weekend_gain_3d_pp"])),
+            fontsize=7,
+            ha="center",
+            xytext=(0, 8),
+            textcoords="offset points",
+        )
+    ax.set_xlabel("% of Safavieh June MSBD volume at this warehouse")
+    ax.set_ylabel("Warehouse-level 3-day badge pp gain")
+    ax.set_title("Safavieh — 3-Day Gain vs Warehouse Volume Share\n(bubble size = newly badged orders)")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(CHARTS / "12_3d_gain_vs_volume_share.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
     plt.style.use("seaborn-v0_8-whitegrid")
@@ -280,6 +420,15 @@ def main() -> None:
 
     if WH_SIM_CSV.exists():
         chart_3d_badge_by_warehouse(pd.read_csv(WH_SIM_CSV))
+
+    if GAIN_CSV.exists():
+        from scripts.enrich_safavieh_gain_volume_weighted import enrich_gain_table
+
+        gain_vw = enrich_gain_table()
+        gain_vw.to_csv(GAIN_VW_CSV, index=False)
+        chart_wh_pp_vs_network_contribution_3d(gain_vw)
+        chart_network_contrib_stacked_3d(gain_vw)
+        chart_gain_volume_scatter(gain_vw)
 
     print(f"Charts saved to {CHARTS}")
     for p in sorted(CHARTS.glob("*.png")):
