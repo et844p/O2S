@@ -164,7 +164,75 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
 
 
 def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
-    """Grouped bars: current stated vs Fri/Sat −1 o2d (Sunday MSBD promise)."""
+    """Stacked bars: current + cutoff-to-2pm lift + Fri/Sat −1 lift (after policy)."""
+    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+        return
+
+    tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
+    cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
+    cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values.astype(float)
+    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values.astype(float)
+    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
+    cutoff_lift = pol - cur
+    weekend_lift = full - pol  # Fri/Sat −1 incremental after cutoff / no cushion
+
+    x = np.arange(len(tiers))
+    width = 0.5
+    edge = {"edgecolor": "white", "linewidth": 1.2}
+
+    fig, ax = plt.subplots(figsize=(9, 6))
+    ax.bar(x, cur, width, label="Current (June stated)", color=GRAY, **edge)
+    ax.bar(x, cutoff_lift, width, bottom=cur, label="+ Cutoff to 2pm / no cushion", color=ACCENT, **edge)
+    ax.bar(
+        x,
+        weekend_lift,
+        width,
+        bottom=cur + cutoff_lift,
+        label="+ Fri/Sat −1 o2d (Sun MSBD)",
+        color=ORANGE,
+        **edge,
+    )
+
+    ax.set_ylabel("Badge coverage (%)")
+    ax.set_title(
+        "Safavieh Network — Badge Coverage by Cohort (June MSBD)\n"
+        "Stacked: current + same-day cutoff lift + weekend stated promise"
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(tiers)
+    ax.set_ylim(0, 100)
+    ax.set_xlim(-0.6, len(tiers) - 0.4)
+
+    for i in range(len(tiers)):
+        total = cur[i] + cutoff_lift[i] + weekend_lift[i]
+        ax.text(
+            x[i],
+            total + 2,
+            f"{total:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=11,
+            fontweight="bold",
+            color=NAVY,
+        )
+
+    ax.legend(loc="upper left", framealpha=0.95)
+    ax.text(
+        0.99,
+        0.02,
+        "Total = policy_plus_weekend · 73,294 ops · weekend slice is after cutoff policy",
+        transform=ax.transAxes,
+        ha="right",
+        fontsize=9,
+        color=GRAY,
+    )
+    fig.tight_layout()
+    fig.savefig(CHARTS / "13_network_cohort_current_and_lift.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_network_current_vs_fri_sat_minus1(scen: pd.DataFrame) -> None:
+    """Grouped bars: current stated vs Fri/Sat −1 only (parallel policy, not stacked)."""
     if "fri_sat_o2d_minus1" not in scen["scenario"].values:
         return
 
@@ -178,12 +246,12 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
     width = 0.35
     fig, ax = plt.subplots(figsize=(9, 6))
     b1 = ax.bar(x - width / 2, cur, width, label="Current (June stated)", color=GRAY)
-    b2 = ax.bar(x + width / 2, fri, width, label="Fri/Sat −1 o2d", color=ORANGE)
+    b2 = ax.bar(x + width / 2, fri, width, label="Fri/Sat −1 o2d only", color=ORANGE)
 
     ax.set_ylabel("Badge coverage (%)")
     ax.set_title(
-        "Safavieh Network — Current vs Sunday MSBD Promise (Fri/Sat −1 o2d)\n"
-        "June MSBD · all orders · Fri/Sat placed only get −1 stated day"
+        "Safavieh Network — Current vs Fri/Sat −1 o2d (standalone)\n"
+        "Not stacked with cutoff — weekend promise vs current stated"
     )
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
@@ -197,7 +265,7 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
                     fontsize=10, color=GREEN, fontweight="bold")
     ax.legend(loc="upper left")
     fig.tight_layout()
-    fig.savefig(CHARTS / "13_network_cohort_current_and_lift.png", dpi=150, bbox_inches="tight")
+    fig.savefig(CHARTS / "23_network_current_vs_fri_sat_minus1.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -644,6 +712,7 @@ def main() -> None:
     chart_opportunity_gap(wh)
     chart_badging_tiers(scen)
     chart_network_cohort_current_and_lifts(scen)
+    chart_network_current_vs_fri_sat_minus1(scen)
     chart_weekend_incremental(scen)
     account_df = None
     lift_df = pd.read_csv(FRI_SAT_LIFT_CSV) if FRI_SAT_LIFT_CSV.exists() else None

@@ -139,6 +139,24 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 
 CSV: `output/safavieh/safavieh_june_fri_sat_badging_lift.csv`
 
+### Sunday MSBD badge lift by supplier (Fri/Sat −1 o2d vs current)
+
+| Supplier ID | Name | June vol | Fri/Sat vol | Current 3d | After Fri/Sat −1 | **Lift 3d (pp)** | **New 3d** |
+|-------------|------|--------:|------------:|-----------:|-----------------:|----------------:|-----------:|
+| 93132 | Safavieh IN46075 | 13,770 | 3,587 | 56.5% | 64.0% | **+7.5** | 1,027 |
+| 223799 | Safavieh Texas | 12,825 | 3,322 | 40.7% | 51.0% | **+10.3** | 1,314 |
+| 19770 | Safavieh NJ 08809 | 9,385 | 1,967 | 45.1% | 53.1% | **+7.9** | 744 |
+| 59119 | Safavieh CA 92518 | 7,967 | 1,937 | 34.6% | 41.1% | **+6.5** | 521 |
+| 34809 | Safavieh GA31407 B | 6,484 | 1,581 | 34.6% | 46.1% | **+11.6** | 749 |
+| 125267 | Safavieh GA 31320 | 5,975 | 1,623 | 30.8% | 45.5% | **+14.8** | 882 |
+| 287737 | Safavieh CA 95363 | 5,272 | 1,219 | 36.5% | 42.1% | **+5.6** | 293 |
+| 26803 | Safavieh NJ 08822 | 4,447 | 1,107 | 49.3% | 58.9% | **+9.5** | 423 |
+| 10114 | Safavieh PA 18042a | 2,857 | 650 | 43.5% | 53.3% | **+9.8** | 281 |
+| 51684 | Safavieh GA31407 C | 1,664 | 320 | 15.8% | 23.3% | **+7.5** | 125 |
+| 358410 | Safavieh PA 17015 | 1,475 | 332 | 65.6% | 75.7% | **+10.1** | 149 |
+
+CSV: `output/safavieh/safavieh_june_supplier_badging_cohorts.csv`
+
 ---
 
 ## Charts & visualizations
@@ -153,7 +171,8 @@ CSV: `output/safavieh/safavieh_june_fri_sat_badging_lift.csv`
 | [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
 | [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
 | [08 — Sunday MSBD lift](safavieh_charts/08_weekend_incremental_by_tier.png) | Fri/Sat −1 o2d lift vs current (pp + orders) |
-| [13 — Current vs Fri/Sat −1](safavieh_charts/13_network_cohort_current_and_lift.png) | Network badge coverage by tier |
+| [13 — Stacked cohort lifts](safavieh_charts/13_network_cohort_current_and_lift.png) | Current + cutoff-to-2pm + Fri/Sat −1 (stacked) |
+| [23 — Current vs Fri/Sat −1 only](safavieh_charts/23_network_current_vs_fri_sat_minus1.png) | Grouped: weekend promise vs current (not stacked) |
 | [20 — Weekend shipping %](safavieh_charts/20_fri_sat_weekend_shipping_by_wh.png) | Actual Sat/Sun induction (Fri/Sat placed) |
 | [21 — Account lift](safavieh_charts/21_account_sunday_msbd_lift.png) | Parent account Fri/Sat −1 lift by tier |
 | [22 — Warehouse lift](safavieh_charts/22_warehouse_sunday_msbd_lift.png) | Warehouse Fri/Sat −1 lift by tier |
