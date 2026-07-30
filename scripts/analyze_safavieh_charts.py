@@ -158,6 +158,68 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
+    """Network totals: current badge % + pp lift from cutoff and weekend per cohort."""
+    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+        return
+
+    tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
+    cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
+    cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values
+    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values
+    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values
+    cutoff_lift = pol - cur
+    weekend_lift = full - pol
+
+    x = np.arange(len(tiers))
+    width = 0.25
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    b_cur = ax.bar(x - width, cur, width, label="Current (June)", color=GRAY)
+    b_cut = ax.bar(x, cutoff_lift, width, label="Lift from cutoff to 2pm", color=ACCENT)
+    b_wk = ax.bar(x + width, weekend_lift, width, label="Lift from weekend", color=ORANGE)
+
+    ax.set_ylabel("Badge coverage (%)")
+    ax.set_title(
+        "Safavieh Network — Current Badging & Gain by Cohort (June MSBD)\n"
+        "Cutoff = zero cushion + 2pm weekdays · Weekend incremental after cutoff"
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(tiers)
+    ymax = max(float(np.max(cur)), float(np.max(cutoff_lift + weekend_lift))) + 12
+    ax.set_ylim(0, min(100, ymax))
+
+    for bars, fmt in [(b_cur, "{:.1f}%"), (b_cut, "+{:.1f}"), (b_wk, "+{:.1f}")]:
+        for bar in bars:
+            h = bar.get_height()
+            if h < 0.15:
+                continue
+            label = fmt.format(h)
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                h + 0.4,
+                label,
+                ha="center",
+                va="bottom",
+                fontsize=9,
+                fontweight="bold",
+            )
+
+    ax.legend(loc="upper left")
+    ax.text(
+        0.99,
+        0.02,
+        "Lift bars = percentage-point gain on network volume (73,294 ops)",
+        transform=ax.transAxes,
+        ha="right",
+        fontsize=9,
+        color=GRAY,
+    )
+    fig.tight_layout()
+    fig.savefig(CHARTS / "13_network_cohort_current_and_lift.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
 def chart_weekend_incremental(scen: pd.DataFrame) -> None:
     """Incremental pp from weekend only, after policy (2pm + no cushion)."""
     if "policy_2pm_no_cushion" not in scen["scenario"].values:
@@ -414,6 +476,7 @@ def main() -> None:
     chart_before_2pm_induction(wh)
     chart_opportunity_gap(wh)
     chart_badging_tiers(scen)
+    chart_network_cohort_current_and_lifts(scen)
     chart_weekend_incremental(scen)
     chart_badging_uplift(scen)
     chart_volume_by_warehouse(wh)
