@@ -20,6 +20,7 @@ SCEN_CSV = OUT / "safavieh_june_badging_scenarios.csv"
 WH_SIM_CSV = OUT / "safavieh_june_wh_badging_sim.csv"
 GAIN_CSV = OUT / "safavieh_june_badging_gain_by_warehouse.csv"
 GAIN_VW_CSV = OUT / "safavieh_june_badging_gain_volume_weighted.csv"
+FRI_SAT_SUN_CSV = OUT / "safavieh_june_fri_sat_sunday_induction_by_wh.csv"
 
 NAVY = "#1a365d"
 ACCENT = "#2e86ab"
@@ -468,6 +469,48 @@ def chart_gain_volume_scatter(df: pd.DataFrame) -> None:
     plt.close(fig)
 
 
+def chart_fri_sat_sunday_induction_by_wh(df: pd.DataFrame) -> None:
+    """Fri/Sat placed orders inducting on Sunday — % and count by warehouse."""
+    df = df.copy()
+    df["warehouse"] = df["city_name"].str.strip() + ", " + df["state_name"]
+    df = df.sort_values("pct_fri_sat_induct_sunday", ascending=True)
+    pct = df["pct_fri_sat_induct_sunday"] * 100
+    n_sun = df["fri_sat_induct_sunday"]
+    fri_sat = df["fri_sat_vol"]
+
+    fig, ax = plt.subplots(figsize=(10, 7))
+    colors = [
+        GREEN if p >= 0.25 else ORANGE if p >= 0.15 else RED
+        for p in pct
+    ]
+    bars = ax.barh(df["warehouse"], pct, color=colors, height=0.72)
+    ax.axvline(
+        pct.mean(),
+        color=NAVY,
+        linestyle="--",
+        linewidth=1.2,
+        label=f"Network avg ({pct.mean():.0f}%)",
+    )
+    ax.set_xlabel("% of Fri/Sat-placed orders inducted on Sunday")
+    ax.set_title(
+        "Safavieh — Fri/Sat Orders Inducting on Sunday by Warehouse\n"
+        "June 2026 MSBD · calendar Sunday induction date"
+    )
+    ax.set_xlim(0, max(pct.max() + 8, 35))
+    for bar, p, ns, fs in zip(bars, pct, n_sun, fri_sat):
+        ax.text(
+            bar.get_width() + 0.8,
+            bar.get_y() + bar.get_height() / 2,
+            f"{p:.0f}%  ({int(ns):,} / {int(fs):,})",
+            va="center",
+            fontsize=9,
+        )
+    ax.legend(loc="lower right")
+    fig.tight_layout()
+    fig.savefig(CHARTS / "14_fri_sat_sunday_induction_by_wh.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     CHARTS.mkdir(parents=True, exist_ok=True)
     plt.style.use("seaborn-v0_8-whitegrid")
@@ -495,6 +538,16 @@ def main() -> None:
         chart_wh_pp_vs_network_contribution_3d(gain_vw)
         chart_network_contrib_stacked_3d(gain_vw)
         chart_gain_volume_scatter(gain_vw)
+
+    if FRI_SAT_SUN_CSV.exists():
+        chart_fri_sat_sunday_induction_by_wh(pd.read_csv(FRI_SAT_SUN_CSV))
+    elif (ROOT / "sql/safavieh_june_fri_sat_sunday_induction_by_wh.sql").exists():
+        from gbq import query_df
+
+        sql = (ROOT / "sql/safavieh_june_fri_sat_sunday_induction_by_wh.sql").read_text()
+        fri_sat = query_df(sql)
+        fri_sat.to_csv(FRI_SAT_SUN_CSV, index=False)
+        chart_fri_sat_sunday_induction_by_wh(fri_sat)
 
     print(f"Charts saved to {CHARTS}")
     for p in sorted(CHARTS.glob("*.png")):
