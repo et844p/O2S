@@ -69,6 +69,7 @@ scored AS (
 
 warehouse AS (
   SELECT
+    'warehouse' AS level,
     city_name,
     state_name,
     COUNT(DISTINCT ops) AS vol,
@@ -107,9 +108,47 @@ warehouse AS (
     COUNT(DISTINCT CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN ops END) AS weekend_new_fast
   FROM scored
   GROUP BY city_name, state_name
+),
+
+account AS (
+  SELECT
+    'account' AS level,
+    'Safavieh (parent)' AS city_name,
+    CAST(NULL AS STRING) AS state_name,
+    COUNT(DISTINCT ops) AS vol,
+    ROUND(AVG(CASE WHEN sim_current <= 1 THEN 1 ELSE 0 END) * 100, 2) AS current_1d_pct,
+    ROUND(AVG(CASE WHEN sim_current <= 2 THEN 1 ELSE 0 END) * 100, 2) AS current_2d_pct,
+    ROUND(AVG(CASE WHEN sim_current <= 3 THEN 1 ELSE 0 END) * 100, 2) AS current_3d_pct,
+    ROUND(AVG(CASE WHEN sim_current <= 5 THEN 1 ELSE 0 END) * 100, 2) AS current_fast_pct,
+    ROUND((AVG(CASE WHEN sim_policy <= 1 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_current <= 1 THEN 1 ELSE 0 END)) * 100, 2) AS cutoff_gain_1d_pp,
+    ROUND((AVG(CASE WHEN sim_policy <= 2 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_current <= 2 THEN 1 ELSE 0 END)) * 100, 2) AS cutoff_gain_2d_pp,
+    ROUND((AVG(CASE WHEN sim_policy <= 3 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_current <= 3 THEN 1 ELSE 0 END)) * 100, 2) AS cutoff_gain_3d_pp,
+    ROUND((AVG(CASE WHEN sim_policy <= 5 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_current <= 5 THEN 1 ELSE 0 END)) * 100, 2) AS cutoff_gain_fast_pp,
+    ROUND((AVG(CASE WHEN sim_full <= 1 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_policy <= 1 THEN 1 ELSE 0 END)) * 100, 2) AS weekend_gain_1d_pp,
+    ROUND((AVG(CASE WHEN sim_full <= 2 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_policy <= 2 THEN 1 ELSE 0 END)) * 100, 2) AS weekend_gain_2d_pp,
+    ROUND((AVG(CASE WHEN sim_full <= 3 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_policy <= 3 THEN 1 ELSE 0 END)) * 100, 2) AS weekend_gain_3d_pp,
+    ROUND((AVG(CASE WHEN sim_full <= 5 THEN 1 ELSE 0 END)
+      - AVG(CASE WHEN sim_policy <= 5 THEN 1 ELSE 0 END)) * 100, 2) AS weekend_gain_fast_pp,
+    COUNT(DISTINCT CASE WHEN sim_current > 1 AND sim_policy <= 1 THEN ops END) AS cutoff_new_1d,
+    COUNT(DISTINCT CASE WHEN sim_current > 2 AND sim_policy <= 2 THEN ops END) AS cutoff_new_2d,
+    COUNT(DISTINCT CASE WHEN sim_current > 3 AND sim_policy <= 3 THEN ops END) AS cutoff_new_3d,
+    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_policy <= 5 THEN ops END) AS cutoff_new_fast,
+    COUNT(DISTINCT CASE WHEN sim_policy > 1 AND sim_full <= 1 THEN ops END) AS weekend_new_1d,
+    COUNT(DISTINCT CASE WHEN sim_policy > 2 AND sim_full <= 2 THEN ops END) AS weekend_new_2d,
+    COUNT(DISTINCT CASE WHEN sim_policy > 3 AND sim_full <= 3 THEN ops END) AS weekend_new_3d,
+    COUNT(DISTINCT CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN ops END) AS weekend_new_fast
+  FROM scored
 )
 
 SELECT
+  level,
   city_name,
   state_name,
   vol,
@@ -134,4 +173,31 @@ SELECT
   weekend_new_3d,
   weekend_new_fast
 FROM warehouse
-ORDER BY vol DESC
+UNION ALL
+SELECT
+  level,
+  city_name,
+  state_name,
+  vol,
+  current_1d_pct,
+  current_2d_pct,
+  current_3d_pct,
+  current_fast_pct,
+  cutoff_gain_1d_pp,
+  cutoff_gain_2d_pp,
+  cutoff_gain_3d_pp,
+  cutoff_gain_fast_pp,
+  weekend_gain_1d_pp,
+  weekend_gain_2d_pp,
+  weekend_gain_3d_pp,
+  weekend_gain_fast_pp,
+  cutoff_new_1d,
+  cutoff_new_2d,
+  cutoff_new_3d,
+  cutoff_new_fast,
+  weekend_new_1d,
+  weekend_new_2d,
+  weekend_new_3d,
+  weekend_new_fast
+FROM account
+ORDER BY CASE level WHEN 'account' THEN 0 ELSE 1 END, vol DESC

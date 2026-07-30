@@ -18,7 +18,14 @@ NETWORK_VOL_FALLBACK = 73294
 
 
 def enrich_gain_table(network_vol: int | None = None) -> pd.DataFrame:
-    df = pd.read_csv(GAIN_CSV)
+    raw = pd.read_csv(GAIN_CSV)
+    if "level" in raw.columns:
+        df = raw[raw["level"] == "warehouse"].copy()
+        account = raw[raw["level"] == "account"]
+        if len(account):
+            account.to_csv(OUT / "safavieh_june_badging_gain_account.csv", index=False)
+    else:
+        df = raw.copy()
     if network_vol is None:
         if SCEN_CSV.exists():
             scen = pd.read_csv(SCEN_CSV)

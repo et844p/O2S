@@ -170,6 +170,11 @@ def main() -> None:
         SQL_DIR / "safavieh_june_fri_sat_sunday_induction_by_wh.sql",
         OUT / "safavieh_june_fri_sat_sunday_induction_by_wh.csv",
     )
+    run_query(
+        "Fri/Sat weekend shipping % by warehouse",
+        SQL_DIR / "safavieh_june_fri_sat_weekend_shipping_by_wh.sql",
+        OUT / "safavieh_june_fri_sat_weekend_shipping_by_wh.csv",
+    )
     print("\nDone. Next steps:")
     print("  python scripts/analyze_safavieh_charts.py")
     print("  python scripts/create_safavieh_google_slides.py")
