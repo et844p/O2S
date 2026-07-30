@@ -159,84 +159,60 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
 
 
 def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
-    """Network totals: stacked current + cutoff lift + weekend lift per cohort."""
+    """One stacked bar per cohort: current (base) + cutoff lift + weekend lift."""
     if "policy_2pm_no_cushion" not in scen["scenario"].values:
         return
 
     tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
     cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
-    cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values
-    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values
-    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values
+    cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values.astype(float)
+    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values.astype(float)
+    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
     cutoff_lift = pol - cur
     weekend_lift = full - pol
 
     x = np.arange(len(tiers))
-    width = 0.55
-    fig, ax = plt.subplots(figsize=(10, 6))
+    width = 0.5
+    edge = {"edgecolor": "white", "linewidth": 1.2}
 
-    b_cur = ax.bar(x, cur, width, label="Current (June)", color=GRAY)
-    b_cut = ax.bar(x, cutoff_lift, width, bottom=cur, label="Lift from cutoff to 2pm", color=ACCENT)
-    b_wk = ax.bar(
+    fig, ax = plt.subplots(figsize=(9, 6))
+    ax.bar(x, cur, width, label="Current (June)", color=GRAY, **edge)
+    ax.bar(x, cutoff_lift, width, bottom=cur, label="+ Cutoff to 2pm", color=ACCENT, **edge)
+    ax.bar(
         x,
         weekend_lift,
         width,
         bottom=cur + cutoff_lift,
-        label="Lift from weekend",
+        label="+ Weekend",
         color=ORANGE,
+        **edge,
     )
 
     ax.set_ylabel("Badge coverage (%)")
-    ax.set_title(
-        "Safavieh Network — Current Badging & Gain by Cohort (June MSBD)\n"
-        "Stacked: current + cutoff lift + weekend lift (pp)"
-    )
+    ax.set_title("Safavieh Network — Badge Coverage by Cohort (June MSBD)")
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
     ax.set_ylim(0, 100)
+    ax.set_xlim(-0.6, len(tiers) - 0.4)
 
     for i in range(len(tiers)):
         total = cur[i] + cutoff_lift[i] + weekend_lift[i]
-        ax.text(x[i], total + 1.5, f"{total:.1f}%", ha="center", fontsize=10, fontweight="bold")
-        if cutoff_lift[i] >= 1.5:
-            ax.text(
-                x[i],
-                cur[i] + cutoff_lift[i] / 2,
-                f"+{cutoff_lift[i]:.1f}",
-                ha="center",
-                va="center",
-                fontsize=8,
-                color="white",
-                fontweight="bold",
-            )
-        if weekend_lift[i] >= 1.5:
-            ax.text(
-                x[i],
-                cur[i] + cutoff_lift[i] + weekend_lift[i] / 2,
-                f"+{weekend_lift[i]:.1f}",
-                ha="center",
-                va="center",
-                fontsize=8,
-                color="white",
-                fontweight="bold",
-            )
-        if cur[i] >= 2:
-            ax.text(
-                x[i],
-                cur[i] / 2,
-                f"{cur[i]:.1f}%",
-                ha="center",
-                va="center",
-                fontsize=8,
-                color="white",
-                fontweight="bold",
-            )
+        ax.text(
+            x[i],
+            total + 2,
+            f"{total:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=11,
+            fontweight="bold",
+            color=NAVY,
+        )
 
-    ax.legend(loc="upper left")
+    ax.legend(loc="upper left", framealpha=0.95)
     ax.text(
         0.99,
         0.02,
-        "June MSBD · 73,294 ops · cutoff = zero cushion + 2pm weekdays",
+        "Each bar = current + cutoff lift + weekend lift · 73,294 ops",
         transform=ax.transAxes,
         ha="right",
         fontsize=9,
