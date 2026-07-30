@@ -1,13 +1,14 @@
-city_name,state_name,fri_sat_vol,fri_sat_induct_sunday,pct_fri_sat_induct_sunday
-WHITESTOWN,IN,3696,1031,0.279
-Baytown,TX,3459,1016,0.2937
-Lebanon,NJ,2024,560,0.2767
-Riverside,CA,1977,470,0.2377
-Midway,GA,1668,362,0.217
-Savannah,GA,1617,459,0.2839
-Patterson,CA,1267,137,0.1081
-Flemington,NJ,1149,109,0.0949
-Easton,PA,719,98,0.1363
-Carlisle,PA,345,0,0.0
-Port Wentworth,GA,343,63,0.1837
-Whitestown,IN,192,41,0.2135
+supplier_id,su_name,city_name,state_name,fri_sat_vol,fri_sat_induct_sunday,pct_fri_sat_induct_sunday
+93132,Safavieh IN46075,WHITESTOWN,IN,3696,1031,0.279
+223799,Safavieh Texas,Baytown,TX,3459,1016,0.2937
+19770,Safavieh NJ 08809,Lebanon,NJ,2024,560,0.2767
+59119,Safavieh CA 92518,Riverside,CA,1977,470,0.2377
+125267,Safavieh GA 31320,Midway,GA,1668,362,0.217
+34809,Safavieh GA31407 B,Savannah,GA,1617,459,0.2839
+287737,Safavieh CA 95363,Patterson,CA,1267,137,0.1081
+26803,Safavieh NJ 08822,Flemington,NJ,1149,109,0.0949
+10114,Safavieh PA 18042a,Easton,PA,666,98,0.1471
+358410,Safavieh PA 17015,Carlisle,PA,345,0,0.0
+51684,Safavieh GA31407 C,Port Wentworth,GA,343,63,0.1837
+412459,Safavieh IN 46075,Whitestown,IN,192,41,0.2135
+14697,Safavieh PA 18042b,Easton,PA,53,0,0.0

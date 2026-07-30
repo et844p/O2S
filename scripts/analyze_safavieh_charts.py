@@ -472,38 +472,45 @@ def chart_gain_volume_scatter(df: pd.DataFrame) -> None:
 def chart_fri_sat_sunday_induction_by_wh(df: pd.DataFrame) -> None:
     """Fri/Sat placed orders inducting on Sunday — % and count by warehouse."""
     df = df.copy()
-    df["warehouse"] = df["city_name"].str.strip() + ", " + df["state_name"]
-    df = df.sort_values("pct_fri_sat_induct_sunday", ascending=True)
+    df["label"] = df.apply(
+        lambda r: (
+            f"{int(r['supplier_id'])} · {r['su_name']} · "
+            f"{str(r['city_name']).strip()}, {r['state_name']}"
+        ),
+        axis=1,
+    )
+    df = df.sort_values("fri_sat_vol", ascending=True)
     pct = df["pct_fri_sat_induct_sunday"] * 100
     n_sun = df["fri_sat_induct_sunday"]
     fri_sat = df["fri_sat_vol"]
 
-    fig, ax = plt.subplots(figsize=(10, 7))
+    fig, ax = plt.subplots(figsize=(11, 7))
     colors = [
         GREEN if p >= 0.25 else ORANGE if p >= 0.15 else RED
         for p in pct
     ]
-    bars = ax.barh(df["warehouse"], pct, color=colors, height=0.72)
+    bars = ax.barh(df["label"], pct, color=colors, height=0.72)
     ax.axvline(
-        pct.mean(),
+        (df["pct_fri_sat_induct_sunday"] * 100).mean(),
         color=NAVY,
         linestyle="--",
         linewidth=1.2,
-        label=f"Network avg ({pct.mean():.0f}%)",
+        label=f"Network avg ({(df['pct_fri_sat_induct_sunday'] * 100).mean():.0f}%)",
     )
     ax.set_xlabel("% of Fri/Sat-placed orders inducted on Sunday")
     ax.set_title(
         "Safavieh — Fri/Sat Orders Inducting on Sunday by Warehouse\n"
-        "June 2026 MSBD · calendar Sunday induction date"
+        "June 2026 MSBD · supplier ID · site name · location"
     )
     ax.set_xlim(0, max(pct.max() + 8, 35))
+    ax.tick_params(axis="y", labelsize=8)
     for bar, p, ns, fs in zip(bars, pct, n_sun, fri_sat):
         ax.text(
             bar.get_width() + 0.8,
             bar.get_y() + bar.get_height() / 2,
             f"{p:.0f}%  ({int(ns):,} / {int(fs):,})",
             va="center",
-            fontsize=9,
+            fontsize=8,
         )
     ax.legend(loc="lower right")
     fig.tight_layout()
