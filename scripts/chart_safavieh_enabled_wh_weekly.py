@@ -59,7 +59,7 @@ def chart_weekly_sunday_trend(df: pd.DataFrame) -> None:
             ax.set_title(f"{sid} · {name} (no data)")
             continue
 
-        pct = sub["pct_sun_induct"] * 100
+        pct = sub["pct_sun_adj1"] * 100
         ax.plot(sub["week_start"], pct, marker="o", color=ACCENT, linewidth=2, markersize=5)
         ax.fill_between(sub["week_start"], pct, alpha=0.12, color=ACCENT)
 
@@ -81,8 +81,8 @@ def chart_weekly_sunday_trend(df: pd.DataFrame) -> None:
 
         post = sub[sub["post_enable_week"] == 1]
         pre = sub[sub["post_enable_week"] == 0]
-        pre_avg = pre["pct_sun_induct"].mean() * 100 if len(pre) else 0
-        post_avg = post["pct_sun_induct"].mean() * 100 if len(post) else 0
+        pre_avg = pre["pct_sun_adj1"].mean() * 100 if len(pre) else 0
+        post_avg = post["pct_sun_adj1"].mean() * 100 if len(post) else 0
         delta = post_avg - pre_avg
         trend = "▼ worsened" if delta < -2 else ("▲ improved" if delta > 2 else "≈ flat")
 
@@ -98,7 +98,7 @@ def chart_weekly_sunday_trend(df: pd.DataFrame) -> None:
             if row["fri_sat_vol"] < 80:
                 ax.annotate(
                     "low n",
-                    (row["week_start"], row["pct_sun_induct"] * 100),
+                    (row["week_start"], row["pct_sun_adj1"] * 100),
                     fontsize=6,
                     color=GRAY,
                     ha="center",
@@ -109,7 +109,7 @@ def chart_weekly_sunday_trend(df: pd.DataFrame) -> None:
     for ax in axes[2:]:
         ax.tick_params(axis="x", rotation=35)
     fig.suptitle(
-        "Safavieh enabled weekend WHs — % Fri/Sat orders inducted on Sunday (week over week)\n"
+        "Safavieh enabled weekend WHs — % Fri/Sat orders inducted on Sunday (induction_dow_adj=1)\n"
         "Sunday-start weeks · dashed = L6W avg before Jul 7 enablement",
         fontsize=12,
         y=1.02,
@@ -131,7 +131,7 @@ def chart_weekly_weekend_trend(df: pd.DataFrame) -> None:
 
     for ax, (sid, name) in zip(axes, WAREHOUSES):
         sub = df[df["supplier_id"] == sid].sort_values("week_start")
-        pct = sub["pct_weekend_induct"] * 100
+        pct = sub["pct_weekend_adj17"] * 100
         ax.plot(sub["week_start"], pct, marker="o", color=NAVY, linewidth=2, markersize=5)
         l6w = sub["l6w_pre_pct_weekend"].iloc[0]
         if pd.notna(l6w):
@@ -139,15 +139,15 @@ def chart_weekly_weekend_trend(df: pd.DataFrame) -> None:
                        label=f"L6W pre-enable ({l6w*100:.0f}%)")
         ax.axhline(70, color=GREEN, linestyle=":", linewidth=1, alpha=0.7, label="70% enable threshold")
         ax.axvline(enable_week, color=RED, linestyle="-", linewidth=1.5, alpha=0.85)
-        post_avg = sub[sub["post_enable_week"] == 1]["pct_weekend_induct"].mean() * 100
-        pre_avg = sub[sub["post_enable_week"] == 0]["pct_weekend_induct"].mean() * 100
+        post_avg = sub[sub["post_enable_week"] == 1]["pct_weekend_adj17"].mean() * 100
+        pre_avg = sub[sub["post_enable_week"] == 0]["pct_weekend_adj17"].mean() * 100
         ax.set_title(f"{sid} · {name}\nWeekend Sat+Sun: pre {pre_avg:.0f}% → post {post_avg:.0f}%", fontsize=10)
         ax.set_ylabel("% Fri/Sat inducted Sat/Sun")
         ax.set_ylim(0, 85)
         ax.legend(loc="upper right", fontsize=7)
 
     fig.suptitle(
-        "Safavieh enabled WHs — % Fri/Sat inducted Sat or Sun (enablement metric)",
+        "Safavieh enabled WHs — % Fri/Sat inducted Sat/Sun (induction_dow_adj 7 or 1)",
         fontsize=12,
         y=1.02,
     )

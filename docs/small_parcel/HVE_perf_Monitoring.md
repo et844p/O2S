@@ -110,7 +110,7 @@ Use this reference for natural-language data pull requests against the Small Par
 | `SU_FR` | INT | Supplier Fill Rate (1/0): ASN on or before `msbd_su` |
 | `induction_date_lidd` | DATE | Induction date of the order |
 | `induction_date_WCP_local` | DATE | Backup induction date |
-| `induction_dow_adj` | INT | Adjusted day of week for induction (holidays/weekends) |
+| `induction_dow_adj` | INT | Adjusted day of week for induction (holidays/weekends). **Not ISO:** Sunday = `1`, Saturday = `7` (same Sun–Sat numbering as `order_dow_supplier_local` in toolkit). Weekend induction = `IN (1, 7)`. Do not use ISO Mon=1 … Sun=7 for this column |
 | `carrier_first_induction_date_time` | DATETIME | Timestamp for carrier network induction scan |
 | `carrier_first_induction_WCP_local` | DATETIME | Backup induction scan timestamp |
 | `delivery_date` | DATE | Delivery date of the order |
@@ -253,9 +253,19 @@ ORDER BY late_orders DESC
 LIMIT 10
 ```
 
+## Day-of-week conventions (important)
+
+| Column | Convention |
+|--------|------------|
+| `order_dow` | **ISO 8601:** Monday = 1 … Sunday = 7 |
+| `induction_dow_adj` | **Sun–Sat:** Sunday = 1 … Saturday = 7 (weekend = `IN (1, 7)`) |
+| `order_dow_supplier_local` (toolkit) | **Sun–Sat:** Sunday = 1 … Saturday = 7 |
+
+Fri/Sat **placed** orders use HVE `order_dow` (ISO): Friday = 5, Saturday = 6.
+
 ## Related: `toolkit_hourly_performance` day-of-week
 
-`order_dow_supplier_local` uses a **different** convention than HVE `order_dow`:
+`order_dow_supplier_local` uses the **Sun–Sat** convention (same as `induction_dow_adj`), **not** ISO `order_dow`:
 
 | Value | Day |
 |------:|-----|

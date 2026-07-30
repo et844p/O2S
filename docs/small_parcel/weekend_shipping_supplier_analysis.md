@@ -2,7 +2,7 @@
 
 Generated: 2026-07-17
 
-Analysis window: last 6 weeks. Weekend ship = Fri/Sat placed orders inducted on Saturday or Sunday (`induction_dow_adj` 6 or 7).
+Analysis window: last 6 weeks. Weekend ship = Fri/Sat placed orders inducted on Saturday or Sunday (`induction_dow_adj` 1 or 7 — Sunday = 1, Saturday = 7).
 
 Rows: 648
 

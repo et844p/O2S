@@ -1,17 +1,17 @@
-period,supplier_id,su_name,week_start,fri_sat_vol,sun_adj7_vol,weekend_adj67_vol,pct_sun_adj7,pct_weekend_adj67
-post_enable_weekly,34809,Safavieh GA31407 B,2026-07-05,422,0,224,0.0,0.5308
-post_enable_weekly,34809,Safavieh GA31407 B,2026-07-12,413,1,196,0.0024,0.4746
-post_enable_weekly,34809,Safavieh GA31407 B,2026-07-19,795,0,462,0.0,0.5811
-pre_enable,34809,Safavieh GA31407 B,,2019,1,933,0.0005,0.4621
-post_enable_weekly,59119,Safavieh CA 92518,2026-07-05,512,1,248,0.002,0.4844
-post_enable_weekly,59119,Safavieh CA 92518,2026-07-12,480,2,256,0.0042,0.5333
-post_enable_weekly,59119,Safavieh CA 92518,2026-07-19,745,0,363,0.0,0.4872
-pre_enable,59119,Safavieh CA 92518,,2564,3,1075,0.0012,0.4193
-post_enable_weekly,93132,Safavieh IN46075,2026-07-05,761,1,396,0.0013,0.5204
-post_enable_weekly,93132,Safavieh IN46075,2026-07-12,697,0,340,0.0,0.4878
-post_enable_weekly,93132,Safavieh IN46075,2026-07-19,1424,1,653,0.0007,0.4586
-pre_enable,93132,Safavieh IN46075,,4397,2,1779,0.0005,0.4046
-post_enable_weekly,223799,Safavieh Texas,2026-07-05,855,0,464,0.0,0.5427
-post_enable_weekly,223799,Safavieh Texas,2026-07-12,806,1,415,0.0012,0.5149
-post_enable_weekly,223799,Safavieh Texas,2026-07-19,1386,1,707,0.0007,0.5101
-pre_enable,223799,Safavieh Texas,,4263,128,1877,0.03,0.4403
+period,supplier_id,su_name,week_start,fri_sat_vol,sun_adj1_vol,sat_adj7_vol,weekend_adj17_vol,pct_sun_adj1,pct_weekend_adj17
+post_enable_weekly,34809,Safavieh GA31407 B,2026-07-05,422,95,0,95,0.2251,0.2251
+post_enable_weekly,34809,Safavieh GA31407 B,2026-07-12,413,115,1,116,0.2785,0.2809
+post_enable_weekly,34809,Safavieh GA31407 B,2026-07-19,795,8,0,8,0.0101,0.0101
+pre_enable,34809,Safavieh GA31407 B,,2019,346,1,347,0.1714,0.1719
+post_enable_weekly,59119,Safavieh CA 92518,2026-07-05,512,127,1,128,0.248,0.25
+post_enable_weekly,59119,Safavieh CA 92518,2026-07-12,480,116,2,118,0.2417,0.2458
+post_enable_weekly,59119,Safavieh CA 92518,2026-07-19,745,2,0,2,0.0027,0.0027
+pre_enable,59119,Safavieh CA 92518,,2564,452,3,455,0.1763,0.1775
+post_enable_weekly,93132,Safavieh IN46075,2026-07-05,761,217,1,218,0.2852,0.2865
+post_enable_weekly,93132,Safavieh IN46075,2026-07-12,697,196,0,196,0.2812,0.2812
+post_enable_weekly,93132,Safavieh IN46075,2026-07-19,1424,86,1,87,0.0604,0.0611
+pre_enable,93132,Safavieh IN46075,,4397,1184,2,1186,0.2693,0.2697
+post_enable_weekly,223799,Safavieh Texas,2026-07-05,855,190,0,190,0.2222,0.2222
+post_enable_weekly,223799,Safavieh Texas,2026-07-12,806,221,1,222,0.2742,0.2754
+post_enable_weekly,223799,Safavieh Texas,2026-07-19,1386,88,1,89,0.0635,0.0642
+pre_enable,223799,Safavieh Texas,,4263,803,128,931,0.1884,0.2184

@@ -57,15 +57,15 @@ def chart_pre_post_comparison(df: pd.DataFrame) -> None:
         post_sub = post[post["supplier_id"] == sid].sort_values("week_start")
         post_sub["week_start"] = pd.to_datetime(post_sub["week_start"])
 
-        pre_sun = p["pct_sun_adj7"] * 100
-        pre_wk = p["pct_weekend_adj67"] * 100
-        post_sun = post_sub["pct_sun_adj7"].mean() * 100 if len(post_sub) else 0
-        post_wk = post_sub["pct_weekend_adj67"].mean() * 100 if len(post_sub) else 0
+        pre_sun = p["pct_sun_adj1"] * 100
+        pre_wk = p["pct_weekend_adj17"] * 100
+        post_sun = post_sub["pct_sun_adj1"].mean() * 100 if len(post_sub) else 0
+        post_wk = post_sub["pct_weekend_adj17"].mean() * 100 if len(post_sub) else 0
 
         x = [0, 1]
         width = 0.35
-        ax.bar(x[0] - width / 2, pre_sun, width, label="Sun adj=7", color=ORANGE)
-        ax.bar(x[0] + width / 2, pre_wk, width, label="Weekend adj 6–7", color=ACCENT)
+        ax.bar(x[0] - width / 2, pre_sun, width, label="Sun adj=1", color=ORANGE)
+        ax.bar(x[0] + width / 2, pre_wk, width, label="Weekend adj 1+7", color=ACCENT)
         ax.bar(x[1] - width / 2, post_sun, width, color=ORANGE, alpha=0.85)
         ax.bar(x[1] + width / 2, post_wk, width, color=ACCENT, alpha=0.85)
 
@@ -79,8 +79,8 @@ def chart_pre_post_comparison(df: pd.DataFrame) -> None:
         ax.set_ylim(0, max(55, pre_wk + 10, post_wk + 10))
         ax.set_title(
             f"{sid} · {name}\n"
-            f"Pre: n={int(p['fri_sat_vol']):,} · Sun adj7={int(p['sun_adj7_vol']):,} · "
-            f"Wknd={int(p['weekend_adj67_vol']):,}",
+            f"Pre: n={int(p['fri_sat_vol']):,} · Sun adj1={int(p['sun_adj1_vol']):,} · "
+            f"Wknd={int(p['weekend_adj17_vol']):,}",
             fontsize=9,
         )
 
@@ -88,7 +88,7 @@ def chart_pre_post_comparison(df: pd.DataFrame) -> None:
     fig.legend(handles, labels, loc="upper center", ncol=2, bbox_to_anchor=(0.5, 1.02))
     fig.suptitle(
         "Safavieh enabled WHs — induction_dow_adj metrics (Fri/Sat placed)\n"
-        "Sun = induction_dow_adj 7 · Weekend = induction_dow_adj 6 or 7",
+        "Sun = induction_dow_adj 1 · Sat = 7 · Weekend = induction_dow_adj 1 or 7",
         fontsize=12,
         y=1.06,
     )
@@ -114,24 +114,24 @@ def chart_post_weekly_with_pre_line(df: pd.DataFrame) -> None:
 
         ax.plot(
             sub["week_start"],
-            sub["pct_sun_adj7"] * 100,
+            sub["pct_sun_adj1"] * 100,
             marker="o",
             color=ORANGE,
             linewidth=2,
-            label="Sun adj=7 (weekly)",
+            label="Sun adj=1 (weekly)",
         )
         ax.plot(
             sub["week_start"],
-            sub["pct_weekend_adj67"] * 100,
+            sub["pct_weekend_adj17"] * 100,
             marker="s",
             color=ACCENT,
             linewidth=2,
-            label="Weekend adj 6–7 (weekly)",
+            label="Weekend adj 1+7 (weekly)",
         )
-        ax.axhline(p["pct_sun_adj7"] * 100, color=ORANGE, linestyle="--", alpha=0.7,
-                   label=f"Pre Sun ref ({p['pct_sun_adj7']*100:.1f}%)")
-        ax.axhline(p["pct_weekend_adj67"] * 100, color=ACCENT, linestyle="--", alpha=0.7,
-                   label=f"Pre wknd ref ({p['pct_weekend_adj67']*100:.1f}%)")
+        ax.axhline(p["pct_sun_adj1"] * 100, color=ORANGE, linestyle="--", alpha=0.7,
+                   label=f"Pre Sun ref ({p['pct_sun_adj1']*100:.1f}%)")
+        ax.axhline(p["pct_weekend_adj17"] * 100, color=ACCENT, linestyle="--", alpha=0.7,
+                   label=f"Pre wknd ref ({p['pct_weekend_adj17']*100:.1f}%)")
         ax.axvline(pd.Timestamp("2026-07-06"), color=RED, linewidth=1.2, alpha=0.8)
         ax.set_title(f"{sid} · {name}", fontsize=10)
         ax.set_ylabel("% of Fri/Sat orders")
@@ -154,12 +154,12 @@ def chart_network_pre_post_bars(df: pd.DataFrame) -> None:
     pre = df[df["period"] == "pre_enable"]
     post = df[df["period"] == "post_enable_weekly"]
 
-    pre_sun = pre["sun_adj7_vol"].sum() / pre["fri_sat_vol"].sum() * 100
-    pre_wk = pre["weekend_adj67_vol"].sum() / pre["fri_sat_vol"].sum() * 100
-    post_sun = post["sun_adj7_vol"].sum() / post["fri_sat_vol"].sum() * 100
-    post_wk = post["weekend_adj67_vol"].sum() / post["fri_sat_vol"].sum() * 100
+    pre_sun = pre["sun_adj1_vol"].sum() / pre["fri_sat_vol"].sum() * 100
+    pre_wk = pre["weekend_adj17_vol"].sum() / pre["fri_sat_vol"].sum() * 100
+    post_sun = post["sun_adj1_vol"].sum() / post["fri_sat_vol"].sum() * 100
+    post_wk = post["weekend_adj17_vol"].sum() / post["fri_sat_vol"].sum() * 100
 
-    tiers = ["Sun adj=7", "Weekend adj 6–7"]
+    tiers = ["Sun adj=1", "Weekend adj 1+7"]
     pre_vals = [pre_sun, pre_wk]
     post_vals = [post_sun, post_wk]
 
@@ -192,23 +192,23 @@ def main() -> None:
     print(f"Saved {csv_path}")
 
     pre = df[df["period"] == "pre_enable"]
-    print("\n=== PRE 5/31–7/4 (induction_dow_adj) ===")
+    print("\n=== PRE 5/31–7/4 (induction_dow_adj: Sun=1, Sat=7) ===")
     print(
         pre[
             [
                 "supplier_id",
                 "su_name",
                 "fri_sat_vol",
-                "sun_adj7_vol",
-                "weekend_adj67_vol",
-                "pct_sun_adj7",
-                "pct_weekend_adj67",
+                "sun_adj1_vol",
+                "weekend_adj17_vol",
+                "pct_sun_adj1",
+                "pct_weekend_adj17",
             ]
         ].to_string(index=False)
     )
-    net_pre_sun = pre["sun_adj7_vol"].sum() / pre["fri_sat_vol"].sum() * 100
-    net_pre_wk = pre["weekend_adj67_vol"].sum() / pre["fri_sat_vol"].sum() * 100
-    print(f"Network combined: Sun adj7={net_pre_sun:.2f}%  Weekend adj67={net_pre_wk:.2f}%")
+    net_pre_sun = pre["sun_adj1_vol"].sum() / pre["fri_sat_vol"].sum() * 100
+    net_pre_wk = pre["weekend_adj17_vol"].sum() / pre["fri_sat_vol"].sum() * 100
+    print(f"Network combined: Sun adj1={net_pre_sun:.2f}%  Weekend adj17={net_pre_wk:.2f}%")
 
     chart_pre_post_comparison(df)
     chart_post_weekly_with_pre_line(df)

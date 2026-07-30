@@ -1,9 +1,9 @@
 -- Enabled Safavieh warehouses — pre/post enable Sunday & weekend induction (induction_dow_adj)
--- Pre-enable window: order_complete_date 2026-05-31 through 2026-07-04 (user lookback)
+-- Pre-enable window: order_complete_date 2026-05-31 through 2026-07-04
 -- Post-enable: order_complete_date >= 2026-07-07
 -- Fri/Sat placed: order_dow IN (5, 6)
--- Sunday: induction_dow_adj = 7 (ISO Mon=1 … Sun=7)
--- Weekend Sat/Sun: induction_dow_adj IN (6, 7)
+-- induction_dow_adj: Sunday = 1, Saturday = 7
+-- Weekend Sat/Sun: induction_dow_adj IN (1, 7)
 
 WITH enabled_wh AS (
   SELECT supplier_id, su_name
@@ -39,18 +39,19 @@ pre_enable AS (
     supplier_id,
     su_name,
     COUNT(DISTINCT ops) AS fri_sat_vol,
-    COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END) AS sun_adj7_vol,
-    COUNT(DISTINCT CASE WHEN induction_dow_adj IN (6, 7) THEN ops END) AS weekend_adj67_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END) AS sun_adj1_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END) AS sat_adj7_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj IN (1, 7) THEN ops END) AS weekend_adj17_vol,
     ROUND(
-      COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END)
+      COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END)
       / COUNT(DISTINCT ops),
       4
-    ) AS pct_sun_adj7,
+    ) AS pct_sun_adj1,
     ROUND(
-      COUNT(DISTINCT CASE WHEN induction_dow_adj IN (6, 7) THEN ops END)
+      COUNT(DISTINCT CASE WHEN induction_dow_adj IN (1, 7) THEN ops END)
       / COUNT(DISTINCT ops),
       4
-    ) AS pct_weekend_adj67
+    ) AS pct_weekend_adj17
   FROM base
   WHERE order_complete_date BETWEEN '2026-05-31' AND '2026-07-04'
   GROUP BY supplier_id, su_name
@@ -62,18 +63,19 @@ weekly_post AS (
     su_name,
     week_start,
     COUNT(DISTINCT ops) AS fri_sat_vol,
-    COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END) AS sun_adj7_vol,
-    COUNT(DISTINCT CASE WHEN induction_dow_adj IN (6, 7) THEN ops END) AS weekend_adj67_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END) AS sun_adj1_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END) AS sat_adj7_vol,
+    COUNT(DISTINCT CASE WHEN induction_dow_adj IN (1, 7) THEN ops END) AS weekend_adj17_vol,
     ROUND(
-      COUNT(DISTINCT CASE WHEN induction_dow_adj = 7 THEN ops END)
+      COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END)
       / COUNT(DISTINCT ops),
       4
-    ) AS pct_sun_adj7,
+    ) AS pct_sun_adj1,
     ROUND(
-      COUNT(DISTINCT CASE WHEN induction_dow_adj IN (6, 7) THEN ops END)
+      COUNT(DISTINCT CASE WHEN induction_dow_adj IN (1, 7) THEN ops END)
       / COUNT(DISTINCT ops),
       4
-    ) AS pct_weekend_adj67
+    ) AS pct_weekend_adj17
   FROM base
   WHERE order_complete_date >= '2026-07-07'
   GROUP BY supplier_id, su_name, week_start
@@ -85,10 +87,11 @@ SELECT
   su_name,
   CAST(NULL AS DATE) AS week_start,
   fri_sat_vol,
-  sun_adj7_vol,
-  weekend_adj67_vol,
-  pct_sun_adj7,
-  pct_weekend_adj67
+  sun_adj1_vol,
+  sat_adj7_vol,
+  weekend_adj17_vol,
+  pct_sun_adj1,
+  pct_weekend_adj17
 FROM pre_enable
 UNION ALL
 SELECT
@@ -97,9 +100,10 @@ SELECT
   su_name,
   week_start,
   fri_sat_vol,
-  sun_adj7_vol,
-  weekend_adj67_vol,
-  pct_sun_adj7,
-  pct_weekend_adj67
+  sun_adj1_vol,
+  sat_adj7_vol,
+  weekend_adj17_vol,
+  pct_sun_adj1,
+  pct_weekend_adj17
 FROM weekly_post
 ORDER BY supplier_id, period, week_start

@@ -3,13 +3,13 @@
 -- Weekly buckets: week_minus_1 (most recent) through week_minus_6 (oldest).
 -- Weeks are Sunday-starting, anchored to CURRENT_DATE().
 -- Cohort: orders placed Friday or Saturday (order_dow IN 5, 6).
--- Weekend ship: inducted on Saturday or Sunday (induction_dow_adj IN 6, 7).
+-- Weekend ship: inducted on Saturday or Sunday (induction_dow_adj IN 1, 7; Sun=1, Sat=7).
 -- Candidate (L6W): sp_lt = 24, >= 70% Fri/Sat weekend ship rate, IFR > 85%.
 -- Almost ready: 24hr suppliers with 30-70% Fri/Sat weekend ship rate.
 -- Not weekend shipping: < 30% Fri/Sat weekend ship rate (with Fri/Sat volume).
 -- Filter: suppliers with >= 500 ops in the last 6 weeks.
 --
--- Day-of-week reference (order_dow / induction_dow_adj): ISO 8601, Monday = 1 … Sunday = 7.
+-- order_dow: ISO 8601 (Mon=1 … Sun=7). induction_dow_adj: Sun=1 … Sat=7.
 
 WITH params AS (
   SELECT
@@ -54,7 +54,7 @@ weekend_cohort AS (
     *,
     week_offset + 1 AS week_minus,
     order_dow IN (5, 6) AS is_fri_sat_placed,
-    induction_dow_adj IN (6, 7) AS shipped_on_weekend,
+    induction_dow_adj IN (1, 7) AS shipped_on_weekend,
   FROM base_orders
   WHERE week_offset BETWEEN 0 AND 5
 ),

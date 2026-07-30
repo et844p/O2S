@@ -1,6 +1,5 @@
--- Safavieh June MSBD — Fri/Sat placed orders inducting on Sunday by warehouse (supplier site)
--- Fri/Sat placed: HVE order_dow 5 (Fri), 6 (Sat)
--- Sunday induction: induction_date_lidd on calendar Sunday (BigQuery DAYOFWEEK = 1)
+-- Safavieh June MSBD — Fri/Sat placed orders inducting on Sunday by warehouse
+-- induction_dow_adj: Sunday = 1, Saturday = 7
 
 SELECT
   supplier_id,
@@ -8,11 +7,9 @@ SELECT
   TRIM(city_name) AS city_name,
   state_name,
   COUNT(DISTINCT ops) AS fri_sat_vol,
-  COUNT(DISTINCT CASE
-    WHEN EXTRACT(DAYOFWEEK FROM induction_date_lidd) = 1 THEN ops
-  END) AS fri_sat_induct_sunday,
+  COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END) AS fri_sat_induct_sunday,
   ROUND(
-    COUNT(DISTINCT CASE WHEN EXTRACT(DAYOFWEEK FROM induction_date_lidd) = 1 THEN ops END)
+    COUNT(DISTINCT CASE WHEN induction_dow_adj = 1 THEN ops END)
     / COUNT(DISTINCT ops),
     4
   ) AS pct_fri_sat_induct_sunday
