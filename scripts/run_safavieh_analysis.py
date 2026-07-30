@@ -63,6 +63,7 @@ scored AS (
   SELECT
     b.ops,
     b.o2d_stated,
+    b.order_dow,
     CASE WHEN b.cushion > 0 THEN 1 ELSE 0 END AS adj_cushion,
     CASE
       WHEN b.order_dow IN (1, 2, 3, 4, 5)
@@ -77,7 +78,8 @@ with_sim AS (
   SELECT *,
     o2d_stated AS sim_current,
     o2d_stated - adj_cushion - adj_2pm AS sim_policy,
-    o2d_stated - adj_cushion - adj_2pm - adj_weekend AS sim_full
+    o2d_stated - CASE WHEN order_dow IN (5, 6) THEN 1 ELSE 0 END AS sim_fri_sat_minus1,
+    o2d_stated - adj_cushion - adj_2pm - CASE WHEN order_dow IN (5, 6) THEN 1 ELSE 0 END AS sim_full
   FROM scored
 )
 SELECT scenario, volume, badge_1d_pct, badge_2d_pct, badge_3d_pct, badge_5d_fast_pct,
@@ -105,6 +107,21 @@ FROM (
     0, 0, 0, 0
   FROM with_sim
   UNION ALL
+  SELECT 'fri_sat_o2d_minus1', COUNT(DISTINCT ops),
+    ROUND(AVG(CASE WHEN sim_fri_sat_minus1 <= 1 THEN 1 ELSE 0 END)*100, 2),
+    ROUND(AVG(CASE WHEN sim_fri_sat_minus1 <= 2 THEN 1 ELSE 0 END)*100, 2),
+    ROUND(AVG(CASE WHEN sim_fri_sat_minus1 <= 3 THEN 1 ELSE 0 END)*100, 2),
+    ROUND(AVG(CASE WHEN sim_fri_sat_minus1 <= 5 THEN 1 ELSE 0 END)*100, 2),
+    COUNT(DISTINCT CASE WHEN sim_current > 1 AND sim_fri_sat_minus1 <= 1 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 2 AND sim_fri_sat_minus1 <= 2 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 3 AND sim_fri_sat_minus1 <= 3 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_fri_sat_minus1 <= 5 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 1 AND sim_fri_sat_minus1 <= 1 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 2 AND sim_fri_sat_minus1 <= 2 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 3 AND sim_fri_sat_minus1 <= 3 THEN ops END),
+    COUNT(DISTINCT CASE WHEN sim_current > 5 AND sim_fri_sat_minus1 <= 5 THEN ops END)
+  FROM with_sim
+  UNION ALL
   SELECT 'policy_plus_weekend', COUNT(DISTINCT ops),
     ROUND(AVG(CASE WHEN sim_full <= 1 THEN 1 ELSE 0 END)*100, 2),
     ROUND(AVG(CASE WHEN sim_full <= 2 THEN 1 ELSE 0 END)*100, 2),
@@ -120,7 +137,11 @@ FROM (
     COUNT(DISTINCT CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN ops END)
   FROM with_sim
 )
-ORDER BY CASE scenario WHEN 'current' THEN 1 WHEN 'policy_2pm_no_cushion' THEN 2 ELSE 3 END
+ORDER BY CASE scenario
+  WHEN 'current' THEN 1
+  WHEN 'policy_2pm_no_cushion' THEN 2
+  WHEN 'fri_sat_o2d_minus1' THEN 3
+  ELSE 4 END
 """
 
 
@@ -171,7 +192,17 @@ def main() -> None:
         OUT / "safavieh_june_fri_sat_sunday_induction_by_wh.csv",
     )
     run_query(
-        "Fri/Sat weekend shipping % by warehouse",
+        "Fri/Sat o2d minus1 badging lift",
+        SQL_DIR / "safavieh_june_fri_sat_badging_lift.sql",
+        OUT / "safavieh_june_fri_sat_badging_lift.csv",
+    )
+    run_query(
+        "L6W MSBD weekend shipping by warehouse",
+        SQL_DIR / "safavieh_l6w_msbd_weekend_shipping_by_wh.sql",
+        OUT / "safavieh_l6w_msbd_weekend_shipping_by_wh.csv",
+    )
+    run_query(
+        "Fri/Sat weekend shipping % by warehouse (June MSBD)",
         SQL_DIR / "safavieh_june_fri_sat_weekend_shipping_by_wh.sql",
         OUT / "safavieh_june_fri_sat_weekend_shipping_by_wh.csv",
     )

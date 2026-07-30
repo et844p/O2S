@@ -22,6 +22,8 @@ GAIN_CSV = OUT / "safavieh_june_badging_gain_by_warehouse.csv"
 GAIN_VW_CSV = OUT / "safavieh_june_badging_gain_volume_weighted.csv"
 FRI_SAT_SUN_CSV = OUT / "safavieh_june_fri_sat_sunday_induction_by_wh.csv"
 FRI_SAT_WKND_CSV = OUT / "safavieh_june_fri_sat_weekend_shipping_by_wh.csv"
+FRI_SAT_LIFT_CSV = OUT / "safavieh_june_fri_sat_badging_lift.csv"
+L6W_WKND_CSV = OUT / "safavieh_l6w_msbd_weekend_shipping_by_wh.csv"
 GAIN_ACCOUNT_CSV = OUT / "safavieh_june_badging_gain_account.csv"
 
 NAVY = "#1a365d"
@@ -162,85 +164,53 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
 
 
 def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
-    """One stacked bar per cohort: current (base) + cutoff lift + weekend lift."""
-    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+    """Grouped bars: current stated vs Fri/Sat −1 o2d (Sunday MSBD promise)."""
+    if "fri_sat_o2d_minus1" not in scen["scenario"].values:
         return
 
     tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
     cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
     cur = scen.loc[scen["scenario"] == "current", cols].iloc[0].values.astype(float)
-    pol = scen.loc[scen["scenario"] == "policy_2pm_no_cushion", cols].iloc[0].values.astype(float)
-    full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
-    cutoff_lift = pol - cur
-    weekend_lift = full - pol
+    fri = scen.loc[scen["scenario"] == "fri_sat_o2d_minus1", cols].iloc[0].values.astype(float)
+    lift = fri - cur
 
     x = np.arange(len(tiers))
-    width = 0.5
-    edge = {"edgecolor": "white", "linewidth": 1.2}
-
+    width = 0.35
     fig, ax = plt.subplots(figsize=(9, 6))
-    ax.bar(x, cur, width, label="Current (June)", color=GRAY, **edge)
-    ax.bar(x, cutoff_lift, width, bottom=cur, label="+ Cutoff to 2pm", color=ACCENT, **edge)
-    ax.bar(
-        x,
-        weekend_lift,
-        width,
-        bottom=cur + cutoff_lift,
-        label="+ Sunday MSBD (Fri/Sat)",
-        color=ORANGE,
-        **edge,
-    )
+    b1 = ax.bar(x - width / 2, cur, width, label="Current (June stated)", color=GRAY)
+    b2 = ax.bar(x + width / 2, fri, width, label="Fri/Sat −1 o2d", color=ORANGE)
 
     ax.set_ylabel("Badge coverage (%)")
-    ax.set_title("Safavieh Network — Badge Coverage by Cohort (June MSBD)")
+    ax.set_title(
+        "Safavieh Network — Current vs Sunday MSBD Promise (Fri/Sat −1 o2d)\n"
+        "June MSBD · all orders · Fri/Sat placed only get −1 stated day"
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
     ax.set_ylim(0, 100)
-    ax.set_xlim(-0.6, len(tiers) - 0.4)
-
-    for i in range(len(tiers)):
-        total = cur[i] + cutoff_lift[i] + weekend_lift[i]
-        ax.text(
-            x[i],
-            total + 2,
-            f"{total:.1f}%",
-            ha="center",
-            va="bottom",
-            fontsize=11,
-            fontweight="bold",
-            color=NAVY,
-        )
-
-    ax.legend(loc="upper left", framealpha=0.95)
-    ax.text(
-        0.99,
-        0.02,
-        "Each bar = current + cutoff lift + Sunday MSBD lift (Fri/Sat) · 73,294 ops",
-        transform=ax.transAxes,
-        ha="right",
-        fontsize=9,
-        color=GRAY,
-    )
+    for bars in (b1, b2):
+        for bar in bars:
+            h = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width() / 2, h + 1, f"{h:.1f}%", ha="center", fontsize=9)
+    for i, l in enumerate(lift):
+        ax.annotate(f"+{l:.1f} pp", xy=(i, max(cur[i], fri[i]) + 6), ha="center",
+                    fontsize=10, color=GREEN, fontweight="bold")
+    ax.legend(loc="upper left")
     fig.tight_layout()
     fig.savefig(CHARTS / "13_network_cohort_current_and_lift.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
 def chart_weekend_incremental(scen: pd.DataFrame) -> None:
-    """Incremental pp from weekend only, after policy (2pm + no cushion)."""
-    if "policy_2pm_no_cushion" not in scen["scenario"].values:
+    """Fri/Sat −1 o2d vs current stated badges."""
+    if "fri_sat_o2d_minus1" not in scen["scenario"].values:
         return
-    policy = scen.loc[scen["scenario"] == "policy_2pm_no_cushion"].iloc[0]
-    full = scen.loc[scen["scenario"] == "policy_plus_weekend"].iloc[0]
+    current = scen.loc[scen["scenario"] == "current"].iloc[0]
+    fri = scen.loc[scen["scenario"] == "fri_sat_o2d_minus1"].iloc[0]
     tiers = ["1-day", "2-day", "3-day", "Fast ≤5d"]
     cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
-    wknd_cols = ["wknd_incr_1d", "wknd_incr_2d", "wknd_incr_3d", "wknd_incr_5d"]
-    uplifts = [full[c] - policy[c] for c in cols]
-    if all(c in full.index for c in wknd_cols):
-        newly = [int(full[c]) for c in wknd_cols]
-    else:
-        new_cols = ["newly_fast_1d", "newly_fast_2d", "newly_fast_3d", "newly_fast_5d"]
-        newly = [int(full[n] - policy[n]) for n in new_cols]
+    uplifts = [fri[c] - current[c] for c in cols]
+    newly = [int(fri[f"newly_fast_{t}"]) for t in ["1d", "2d", "3d", "5d"]]
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     colors = [ORANGE, ORANGE, ACCENT, GRAY]
@@ -523,9 +493,15 @@ def chart_fri_sat_sunday_induction_by_wh(df: pd.DataFrame) -> None:
     plt.close(fig)
 
 
-def chart_fri_sat_weekend_shipping_by_wh(df: pd.DataFrame) -> None:
-    """Fri/Sat placed — % inducted Sat or Sun (induction_dow_adj 1 or 7)."""
-    df = df.copy()
+def chart_fri_sat_weekend_shipping_by_wh(june_df: pd.DataFrame, l6w_df: pd.DataFrame | None = None) -> None:
+    """Fri/Sat placed — % inducted Sat/Sun (induction_dow_adj 1 or 7)."""
+    df = june_df.copy()
+    if l6w_df is not None and len(l6w_df):
+        l6w = l6w_df[["supplier_id", "pct_fri_sat_weekend_ship"]].rename(
+            columns={"pct_fri_sat_weekend_ship": "pct_l6w"}
+        )
+        df = df.merge(l6w, on="supplier_id", how="left")
+
     df["label"] = df.apply(
         lambda r: (
             f"{int(r['supplier_id'])} · {r['su_name']} · "
@@ -534,80 +510,56 @@ def chart_fri_sat_weekend_shipping_by_wh(df: pd.DataFrame) -> None:
         axis=1,
     )
     df = df.sort_values("fri_sat_vol", ascending=True)
-    pct = df["pct_fri_sat_weekend_ship"] * 100
-    n_wk = df["fri_sat_induct_weekend"]
-    fri_sat = df["fri_sat_vol"]
+    pct_june = df["pct_fri_sat_weekend_ship"] * 100
 
     fig, ax = plt.subplots(figsize=(11, 7))
-    colors = [
-        GREEN if p >= 45 else ORANGE if p >= 25 else RED
-        for p in pct
-    ]
-    bars = ax.barh(df["label"], pct, color=colors, height=0.72)
-    net_avg = (df["pct_fri_sat_weekend_ship"] * 100).mean()
-    ax.axvline(
-        net_avg,
-        color=NAVY,
-        linestyle="--",
-        linewidth=1.2,
-        label=f"Network avg ({net_avg:.0f}%)",
-    )
-    ax.axvline(70, color=GREEN, linestyle=":", linewidth=1, alpha=0.65, label="70% enable threshold")
-    ax.set_xlabel("% of Fri/Sat-placed orders inducted Sat or Sun (induction_dow_adj 1 or 7)")
+    y = np.arange(len(df))
+    h = 0.35
+    ax.barh(y - h / 2, pct_june, h, label="June MSBD", color=ACCENT)
+    if "pct_l6w" in df.columns:
+        pct_l6w = df["pct_l6w"].fillna(0) * 100
+        ax.barh(y + h / 2, pct_l6w, h, label="L6W MSBD", color=NAVY, alpha=0.85)
+    net_june = pct_june.mean()
+    ax.axvline(net_june, color=ORANGE, linestyle="--", linewidth=1.2,
+               label=f"June avg ({net_june:.0f}%)")
+    ax.axvline(70, color=GREEN, linestyle=":", linewidth=1, alpha=0.65, label="70% threshold")
+    ax.set_yticks(y)
+    ax.set_yticklabels(df["label"], fontsize=8)
+    ax.set_xlabel("% Fri/Sat placed inducted Sat/Sun (induction_dow_adj 1 or 7)")
     ax.set_title(
         "Safavieh — Weekend Shipping % by Warehouse (Fri/Sat placed)\n"
-        "June 2026 MSBD · Sun=1, Sat=7"
+        "Correct DOW: Sun=1, Sat=7 · BQ weekend table ~50% used old adj IN (6,7) until refresh"
     )
-    ax.set_xlim(0, max(pct.max() + 10, 75))
-    ax.tick_params(axis="y", labelsize=8)
-    for bar, p, nw, fs in zip(bars, pct, n_wk, fri_sat):
-        ax.text(
-            bar.get_width() + 0.8,
-            bar.get_y() + bar.get_height() / 2,
-            f"{p:.0f}%  ({int(nw):,} / {int(fs):,})",
-            va="center",
-            fontsize=8,
-        )
-    ax.legend(loc="lower right")
+    ax.set_xlim(0, max(pct_june.max() + 12, 45))
+    for i, row in df.iterrows():
+        idx = df.index.get_loc(i)
+        ax.text(pct_june.iloc[idx] + 0.8, idx - h / 2,
+                f"{pct_june.iloc[idx]:.0f}% ({int(row['fri_sat_induct_weekend']):,}/{int(row['fri_sat_vol']):,})",
+                va="center", fontsize=7)
+    ax.legend(loc="lower right", fontsize=8)
     fig.tight_layout()
     fig.savefig(CHARTS / "20_fri_sat_weekend_shipping_by_wh.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
-def chart_account_sunday_msbd_lift(scen: pd.DataFrame, account: pd.DataFrame | None = None) -> None:
-    """Parent account — incremental pp from Sunday MSBD promise (Fri/Sat placed)."""
-    if "policy_2pm_no_cushion" not in scen["scenario"].values:
-        return
-    policy = scen.loc[scen["scenario"] == "policy_2pm_no_cushion"].iloc[0]
-    full = scen.loc[scen["scenario"] == "policy_plus_weekend"].iloc[0]
-    tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
-    cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
-    wknd_cols = ["wknd_incr_1d", "wknd_incr_2d", "wknd_incr_3d", "wknd_incr_5d"]
-    uplifts = [full[c] - policy[c] for c in cols]
-    if all(c in full.index for c in wknd_cols):
-        newly = [int(full[c]) for c in wknd_cols]
+def chart_account_sunday_msbd_lift(scen: pd.DataFrame, lift_df: pd.DataFrame | None = None) -> None:
+    """Parent account — Fri/Sat −1 o2d vs current stated badges."""
+    if lift_df is not None and len(lift_df):
+        row = lift_df[lift_df["level"] == "account"].iloc[0]
+        tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
+        uplifts = [row["lift_1d_pp"], row["lift_2d_pp"], row["lift_3d_pp"], row["lift_fast_pp"]]
+        newly = [int(row["new_1d"]), int(row["new_2d"]), int(row["new_3d"]), int(row["new_fast"])]
+        fri_sat_vol = int(row["fri_sat_vol"])
+    elif "fri_sat_o2d_minus1" in scen["scenario"].values:
+        current = scen.loc[scen["scenario"] == "current"].iloc[0]
+        fri = scen.loc[scen["scenario"] == "fri_sat_o2d_minus1"].iloc[0]
+        tiers = ["1-day", "2-day", "3-day", "Fast (≤5d)"]
+        cols = ["badge_1d_pct", "badge_2d_pct", "badge_3d_pct", "badge_5d_fast_pct"]
+        uplifts = [fri[c] - current[c] for c in cols]
+        newly = [int(fri[f"newly_fast_{t}"]) for t in ["1d", "2d", "3d", "5d"]]
+        fri_sat_vol = None
     else:
-        newly = [
-            int(full["newly_fast_1d"] - policy["newly_fast_1d"]),
-            int(full["newly_fast_2d"] - policy["newly_fast_2d"]),
-            int(full["newly_fast_3d"] - policy["newly_fast_3d"]),
-            int(full["newly_fast_5d"] - policy["newly_fast_5d"]),
-        ]
-
-    if account is not None and len(account):
-        row = account.iloc[0]
-        uplifts = [
-            row["weekend_gain_1d_pp"],
-            row["weekend_gain_2d_pp"],
-            row["weekend_gain_3d_pp"],
-            row["weekend_gain_fast_pp"],
-        ]
-        newly = [
-            int(row["weekend_new_1d"]),
-            int(row["weekend_new_2d"]),
-            int(row["weekend_new_3d"]),
-            int(row["weekend_new_fast"]),
-        ]
+        return
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     colors = [ORANGE, ORANGE, ACCENT, GRAY]
@@ -624,7 +576,8 @@ def chart_account_sunday_msbd_lift(scen: pd.DataFrame, account: pd.DataFrame | N
         ax2.text(i, v + 120, f"{v:,}", ha="center", fontsize=9)
 
     fig.suptitle(
-        "Safavieh parent account — Sunday MSBD lift (Fri/Sat placed · June MSBD · stated o2d_stated)",
+        "Safavieh parent — Fri/Sat placed: subtract 1 from o2d_stated vs current"
+        + (f" · {fri_sat_vol:,} Fri/Sat orders" if fri_sat_vol else ""),
         fontsize=12,
         y=1.02,
     )
@@ -633,18 +586,24 @@ def chart_account_sunday_msbd_lift(scen: pd.DataFrame, account: pd.DataFrame | N
     plt.close(fig)
 
 
-def chart_warehouse_sunday_msbd_lift(gain: pd.DataFrame) -> None:
-    """Warehouse-level Sunday MSBD lift (pp) by badge tier."""
-    wh = gain[gain["vol"] >= 200].copy()
-    wh["warehouse"] = wh["city_name"].str.strip() + ", " + wh["state_name"]
+def chart_warehouse_sunday_msbd_lift(gain: pd.DataFrame, lift_df: pd.DataFrame | None = None) -> None:
+    """Warehouse-level Fri/Sat −1 o2d lift (pp) by badge tier."""
+    if lift_df is not None and len(lift_df):
+        wh = lift_df[lift_df["level"] == "warehouse"].copy()
+        wh = wh[wh["vol"] >= 200]
+        wh["warehouse"] = wh["city_name"].str.strip() + ", " + wh["state_name"].fillna("")
+        cols = ["lift_1d_pp", "lift_2d_pp", "lift_3d_pp", "lift_fast_pp"]
+    else:
+        wh = gain[gain["vol"] >= 200].copy()
+        wh["warehouse"] = wh["city_name"].str.strip() + ", " + wh["state_name"]
+        cols = [
+            "weekend_gain_1d_pp",
+            "weekend_gain_2d_pp",
+            "weekend_gain_3d_pp",
+            "weekend_gain_fast_pp",
+        ]
     wh = wh.sort_values("vol", ascending=True)
     tiers = ["1-day", "2-day", "3-day", "Fast ≤5d"]
-    cols = [
-        "weekend_gain_1d_pp",
-        "weekend_gain_2d_pp",
-        "weekend_gain_3d_pp",
-        "weekend_gain_fast_pp",
-    ]
     tier_colors = [ORANGE, ORANGE, ACCENT, GRAY]
 
     y = np.arange(len(wh))
@@ -662,10 +621,10 @@ def chart_warehouse_sunday_msbd_lift(gain: pd.DataFrame) -> None:
 
     ax.set_yticks(y)
     ax.set_yticklabels(wh["warehouse"], fontsize=9)
-    ax.set_xlabel("Sunday MSBD lift (pp) — incremental after cutoff policy")
+    ax.set_xlabel("Fri/Sat −1 o2d lift (pp) vs current stated")
     ax.set_title(
-        "Safavieh — Sunday MSBD Badge Lift by Warehouse (Fri/Sat placed)\n"
-        "June MSBD · stated speed simulation"
+        "Safavieh — Badge Lift by Warehouse (Fri/Sat placed −1 o2d_stated)\n"
+        "June MSBD · vs current stated speed"
     )
     ax.legend(loc="lower right", fontsize=8, ncol=2)
     fig.tight_layout()
@@ -687,9 +646,8 @@ def main() -> None:
     chart_network_cohort_current_and_lifts(scen)
     chart_weekend_incremental(scen)
     account_df = None
-    if GAIN_ACCOUNT_CSV.exists():
-        account_df = pd.read_csv(GAIN_ACCOUNT_CSV)
-    chart_account_sunday_msbd_lift(scen, account_df)
+    lift_df = pd.read_csv(FRI_SAT_LIFT_CSV) if FRI_SAT_LIFT_CSV.exists() else None
+    chart_account_sunday_msbd_lift(scen, lift_df)
     chart_badging_uplift(scen)
     chart_volume_by_warehouse(wh)
 
@@ -701,7 +659,7 @@ def main() -> None:
 
         gain_vw = enrich_gain_table()
         gain_vw.to_csv(GAIN_VW_CSV, index=False)
-        chart_warehouse_sunday_msbd_lift(gain_vw)
+        chart_warehouse_sunday_msbd_lift(gain_vw, lift_df)
         chart_wh_pp_vs_network_contribution_3d(gain_vw)
         chart_network_contrib_stacked_3d(gain_vw)
         chart_gain_volume_scatter(gain_vw)
@@ -716,15 +674,16 @@ def main() -> None:
         fri_sat.to_csv(FRI_SAT_SUN_CSV, index=False)
         chart_fri_sat_sunday_induction_by_wh(fri_sat)
 
+    l6w_wknd = pd.read_csv(L6W_WKND_CSV) if L6W_WKND_CSV.exists() else None
     if FRI_SAT_WKND_CSV.exists():
-        chart_fri_sat_weekend_shipping_by_wh(pd.read_csv(FRI_SAT_WKND_CSV))
+        chart_fri_sat_weekend_shipping_by_wh(pd.read_csv(FRI_SAT_WKND_CSV), l6w_wknd)
     elif (ROOT / "sql/safavieh_june_fri_sat_weekend_shipping_by_wh.sql").exists():
         from gbq import query_df
 
         sql = (ROOT / "sql/safavieh_june_fri_sat_weekend_shipping_by_wh.sql").read_text()
         fri_wk = query_df(sql)
         fri_wk.to_csv(FRI_SAT_WKND_CSV, index=False)
-        chart_fri_sat_weekend_shipping_by_wh(fri_wk)
+        chart_fri_sat_weekend_shipping_by_wh(fri_wk, None)
 
     print(f"Charts saved to {CHARTS}")
     for p in sorted(CHARTS.glob("*.png")):
