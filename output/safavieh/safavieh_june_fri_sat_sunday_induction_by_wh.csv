@@ -1,0 +1,14 @@
+supplier_id,su_name,city_name,state_name,fri_sat_vol,fri_sat_induct_sunday,pct_fri_sat_induct_sunday
+93132,Safavieh IN46075,WHITESTOWN,IN,3696,1202,0.3252
+223799,Safavieh Texas,Baytown,TX,3459,1008,0.2914
+19770,Safavieh NJ 08809,Lebanon,NJ,2024,563,0.2782
+59119,Safavieh CA 92518,Riverside,CA,1977,549,0.2777
+125267,Safavieh GA 31320,Midway,GA,1668,363,0.2176
+34809,Safavieh GA31407 B,Savannah,GA,1617,459,0.2839
+287737,Safavieh CA 95363,Patterson,CA,1267,253,0.1997
+26803,Safavieh NJ 08822,Flemington,NJ,1149,251,0.2185
+10114,Safavieh PA 18042a,Easton,PA,666,98,0.1471
+358410,Safavieh PA 17015,Carlisle,PA,345,0,0.0
+51684,Safavieh GA31407 C,Port Wentworth,GA,343,65,0.1895
+412459,Safavieh IN 46075,Whitestown,IN,192,42,0.2188
+14697,Safavieh PA 18042b,Easton,PA,53,0,0.0

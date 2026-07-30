@@ -1,0 +1,4 @@
+scenario,volume,fast_pct,newly_fast
+current,240900,83.76,0
+policy_plus_weekend,240900,85.87,5075
+policy_2pm_no_cushion,240900,84.74,2360
