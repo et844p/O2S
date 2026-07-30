@@ -223,6 +223,17 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
             fontweight="bold",
             color=NAVY,
         )
+        if cur[i] >= 3.0:
+            ax.text(
+                x[i],
+                cur[i] / 2,
+                f"{cur[i]:.1f}%",
+                ha="center",
+                va="center",
+                fontsize=9,
+                color="white",
+                fontweight="bold",
+            )
         if cutoff_lift[i] >= 1.0:
             ax.text(
                 x[i],
@@ -265,7 +276,7 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
 
 
 def chart_stacked_opportunity_pp_only(scen: pd.DataFrame) -> None:
-    """Stacked pp-only: cutoff opportunity + weekend opportunity (no current base)."""
+    """Stacked: current (base) + cutoff opportunity + weekend opportunity."""
     if "policy_2pm_no_cushion" not in scen["scenario"].values:
         return
 
@@ -276,62 +287,84 @@ def chart_stacked_opportunity_pp_only(scen: pd.DataFrame) -> None:
     full = scen.loc[scen["scenario"] == "policy_plus_weekend", cols].iloc[0].values.astype(float)
     cutoff_lift = pol - cur
     weekend_lift = full - pol
-    total_lift = full - cur
 
     x = np.arange(len(tiers))
     width = 0.55
     edge = {"edgecolor": "white", "linewidth": 1.2}
 
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(x, cutoff_lift, width, label="Cutoff opportunity (2pm / no cushion)", color=ACCENT, **edge)
+    fig, ax = plt.subplots(figsize=(10, 6.5))
+    ax.bar(x, cur, width, label="Current (June stated)", color=GRAY, **edge)
+    ax.bar(
+        x,
+        cutoff_lift,
+        width,
+        bottom=cur,
+        label="Cutoff opportunity (2pm / no cushion)",
+        color=ACCENT,
+        **edge,
+    )
     ax.bar(
         x,
         weekend_lift,
         width,
-        bottom=cutoff_lift,
+        bottom=cur + cutoff_lift,
         label="Weekend opportunity (Fri/Sat −1)",
         color=ORANGE,
         **edge,
     )
 
-    ax.set_ylabel("Uplift (percentage points)")
+    ax.set_ylabel("Badge coverage (%)")
     ax.set_title(
-        "Safavieh Network — Cutoff + Weekend Opportunity (stacked pp)\n"
-        "Decomposition of full-policy uplift vs June stated"
+        "Safavieh Network — Current + Cutoff + Weekend Opportunity (stacked)\n"
+        "June MSBD · current stated below, opportunities stacked above"
     )
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
-    ax.set_ylim(0, max(total_lift.max() + 4, 20))
+    ax.set_ylim(0, 100)
+    ax.set_xlim(-0.6, len(tiers) - 0.4)
 
     for i in range(len(tiers)):
+        total = cur[i] + cutoff_lift[i] + weekend_lift[i]
         ax.text(
             x[i],
-            total_lift[i] + 0.4,
-            f"+{total_lift[i]:.1f} pp total",
+            total + 1.5,
+            f"{total:.1f}%",
             ha="center",
-            fontsize=10,
+            va="bottom",
+            fontsize=11,
             fontweight="bold",
             color=NAVY,
         )
+        if cur[i] >= 1.0:
+            ax.text(
+                x[i],
+                cur[i] / 2,
+                f"{cur[i]:.1f}%",
+                ha="center",
+                va="center",
+                fontsize=9,
+                color="white",
+                fontweight="bold",
+            )
         if cutoff_lift[i] >= 0.5:
             ax.text(
                 x[i],
-                cutoff_lift[i] / 2,
-                f"+{cutoff_lift[i]:.1f}",
+                cur[i] + cutoff_lift[i] / 2,
+                f"+{cutoff_lift[i]:.1f} pp",
                 ha="center",
                 va="center",
-                fontsize=10,
+                fontsize=9,
                 color="white",
                 fontweight="bold",
             )
         if weekend_lift[i] >= 0.5:
             ax.text(
                 x[i],
-                cutoff_lift[i] + weekend_lift[i] / 2,
-                f"+{weekend_lift[i]:.1f}",
+                cur[i] + cutoff_lift[i] + weekend_lift[i] / 2,
+                f"+{weekend_lift[i]:.1f} pp",
                 ha="center",
                 va="center",
-                fontsize=10,
+                fontsize=9,
                 color="white",
                 fontweight="bold",
             )
