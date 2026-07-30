@@ -159,7 +159,7 @@ def chart_badging_tiers(scen: pd.DataFrame) -> None:
 
 
 def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
-    """Network totals: current badge % + pp lift from cutoff and weekend per cohort."""
+    """Network totals: stacked current + cutoff lift + weekend lift per cohort."""
     if "policy_2pm_no_cushion" not in scen["scenario"].values:
         return
 
@@ -172,36 +172,63 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
     weekend_lift = full - pol
 
     x = np.arange(len(tiers))
-    width = 0.25
+    width = 0.55
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    b_cur = ax.bar(x - width, cur, width, label="Current (June)", color=GRAY)
-    b_cut = ax.bar(x, cutoff_lift, width, label="Lift from cutoff to 2pm", color=ACCENT)
-    b_wk = ax.bar(x + width, weekend_lift, width, label="Lift from weekend", color=ORANGE)
+    b_cur = ax.bar(x, cur, width, label="Current (June)", color=GRAY)
+    b_cut = ax.bar(x, cutoff_lift, width, bottom=cur, label="Lift from cutoff to 2pm", color=ACCENT)
+    b_wk = ax.bar(
+        x,
+        weekend_lift,
+        width,
+        bottom=cur + cutoff_lift,
+        label="Lift from weekend",
+        color=ORANGE,
+    )
 
     ax.set_ylabel("Badge coverage (%)")
     ax.set_title(
         "Safavieh Network — Current Badging & Gain by Cohort (June MSBD)\n"
-        "Cutoff = zero cushion + 2pm weekdays · Weekend incremental after cutoff"
+        "Stacked: current + cutoff lift + weekend lift (pp)"
     )
     ax.set_xticks(x)
     ax.set_xticklabels(tiers)
-    ymax = max(float(np.max(cur)), float(np.max(cutoff_lift + weekend_lift))) + 12
-    ax.set_ylim(0, min(100, ymax))
+    ax.set_ylim(0, 100)
 
-    for bars, fmt in [(b_cur, "{:.1f}%"), (b_cut, "+{:.1f}"), (b_wk, "+{:.1f}")]:
-        for bar in bars:
-            h = bar.get_height()
-            if h < 0.15:
-                continue
-            label = fmt.format(h)
+    for i in range(len(tiers)):
+        total = cur[i] + cutoff_lift[i] + weekend_lift[i]
+        ax.text(x[i], total + 1.5, f"{total:.1f}%", ha="center", fontsize=10, fontweight="bold")
+        if cutoff_lift[i] >= 1.5:
             ax.text(
-                bar.get_x() + bar.get_width() / 2,
-                h + 0.4,
-                label,
+                x[i],
+                cur[i] + cutoff_lift[i] / 2,
+                f"+{cutoff_lift[i]:.1f}",
                 ha="center",
-                va="bottom",
-                fontsize=9,
+                va="center",
+                fontsize=8,
+                color="white",
+                fontweight="bold",
+            )
+        if weekend_lift[i] >= 1.5:
+            ax.text(
+                x[i],
+                cur[i] + cutoff_lift[i] + weekend_lift[i] / 2,
+                f"+{weekend_lift[i]:.1f}",
+                ha="center",
+                va="center",
+                fontsize=8,
+                color="white",
+                fontweight="bold",
+            )
+        if cur[i] >= 2:
+            ax.text(
+                x[i],
+                cur[i] / 2,
+                f"{cur[i]:.1f}%",
+                ha="center",
+                va="center",
+                fontsize=8,
+                color="white",
                 fontweight="bold",
             )
 
@@ -209,7 +236,7 @@ def chart_network_cohort_current_and_lifts(scen: pd.DataFrame) -> None:
     ax.text(
         0.99,
         0.02,
-        "Lift bars = percentage-point gain on network volume (73,294 ops)",
+        "June MSBD · 73,294 ops · cutoff = zero cushion + 2pm weekdays",
         transform=ax.transAxes,
         ha="right",
         fontsize=9,
