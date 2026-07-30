@@ -112,25 +112,24 @@ def build_presentation() -> Path:
         "Key takeaways",
         [
             "90% IFR in June — strong month; 68.3% same-day induction before 2pm (Mon–Fri)",
-            "Full policy: 6.8% 1-day · 27.1% 2-day · 60.2% 3-day (badge simulation on o2d_stated)",
-            "Weekend Sun MSBD: Fri/Sat placed (~17.9k) → o2d_stated −1 · +7.4 pp at 3-day after policy",
+            "Fri/Sat −1 o2d (Sun MSBD): +9.0 pp at 3-day · 6,595 newly badged orders vs current stated",
+            "Full policy stack: 6.8% 1-day · 27.1% 2-day · 60.2% 3-day (includes cutoff + Fri/Sat −1)",
             "Cutoff extension: weekdays only (Mon–Fri), after cutoff before 2pm — 5,557 orders",
             "Ops check: 68.3% same-day induct before 2pm · ~90% IFR — can they deliver faster badges?",
         ],
     )
 
     _chart_slide(prs, CHARTS_DIR / "04_badging_tiers_current_vs_sim.png", "Badging by speed tier — June vs full simulation")
-    _chart_slide(prs, CHARTS_DIR / "08_weekend_incremental_by_tier.png", "Weekend shipping — incremental uplift by tier (after 2pm + no cushion)")
+    _chart_slide(prs, CHARTS_DIR / "08_weekend_incremental_by_tier.png", "Sunday MSBD — Fri/Sat −1 o2d lift vs current stated")
 
     _body_bullets(
         prs,
         "Weekend shipping — Sunday MSBD promise",
         [
-            "Fri/Sat placed eligible for Sunday MSBD → shave 1 day from o2d_stated (website badge)",
-            "Not based on whether they actually inducted Sat/Sun — this is the promise change",
-            "~17,881 Fri/Sat orders in June · incremental +5,387 at 3-day after cutoff/cushion",
-            "47% already ship Sat/Sun but are not promised that speed on the site today",
-            "Weekend incremental: +2.5 pp 1-day · +5.4 pp 2-day · +7.4 pp 3-day · +1.6 pp fast",
+            "Fri/Sat placed → o2d_stated − 1 vs current stated (17,881 orders in June)",
+            "Lift vs current: +1.8 pp 1-day · +3.7 pp 2-day · +9.0 pp 3-day · +1.9 pp fast",
+            "6,595 additional 3-day badges · 1,388 additional fast badges",
+            "~33% of Fri/Sat orders induct Sat/Sun in June (execution; separate from stated lift)",
         ],
     )
 
@@ -147,7 +146,7 @@ def build_presentation() -> Path:
         "Questions for Safavieh",
         [
             "Prioritize 2pm + no cushion first — drives most 2- and 3-day badge lift",
-            "Weekend stated promise affects all Fri/Sat volume — +5,387 orders at 3-day tier",
+            "Weekend stated promise: +9.0 pp at 3-day · 6,595 newly badged orders (Fri/Sat −1 vs current)",
             "Can NJ/PA sites improve before-2pm induction (42–50% vs 94% Carlisle)?",
             "FedEx pickup schedule vs proposed 2pm window at each DC?",
         ],

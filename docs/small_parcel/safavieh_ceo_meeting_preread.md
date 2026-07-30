@@ -35,19 +35,19 @@ Safavieh shipped **~73k** dropship rug ops in **June MSBD** across **13 US wareh
 |----------|------:|------:|------:|-----------:|
 | June actual | **0.5%** | **9.5%** | **42.5%** | **84.7%** |
 | 2pm + no cushion | 4.3% | 21.6% | 52.8% | 85.6% |
-| **+ Weekend (Sun MSBD promise)** | **6.8%** | **27.1%** | **60.2%** | **87.3%** |
-| **Uplift (full vs June)** | **+6.3 pp** | **+17.5 pp** | **+17.7 pp** | **+2.6 pp** |
+| **Fri/Sat −1 o2d** (Sun MSBD promise) | **2.3%** | **13.2%** | **51.5%** | **86.6%** |
+| Full stack (policy + Fri/Sat −1) | 6.8% | 27.1% | 60.2% | 87.3% |
 
-**Weekend — incremental only** (after 2pm + no cushion; Fri/Sat placed, Sunday MSBD promise → `o2d_stated − 1`):
+**Sunday MSBD badge lift** — all June orders; **Fri/Sat placed** (`order_dow` 5–6) → **`o2d_stated − 1`** vs **current stated** (not incremental after cutoff):
 
-| Tier | +pp from weekend | Additional orders |
-|------|----------------:|------------------:|
-| 1-day | +2.5 pp | 1,865 |
-| 2-day | +5.4 pp | 3,983 |
-| **3-day** | **+7.4 pp** | **5,387** |
-| Fast (≤5d) | **+1.6 pp** | **1,200** |
+| Tier | Current | After Fri/Sat −1 | **Lift (pp)** | **New orders** |
+|------|--------:|-----------------:|--------------:|---------------:|
+| 1-day | 0.5% | 2.3% | **+1.8 pp** | 1,291 |
+| 2-day | 9.5% | 13.2% | **+3.7 pp** | 2,743 |
+| **3-day** | **42.5%** | **51.5%** | **+9.0 pp** | **6,595** |
+| Fast (≤5d) | 84.7% | 86.6% | **+1.9 pp** | 1,388 |
 
-~47% of Fri/Sat orders already ship Sat/Sun but are **not promised** that speed today. Promising Sunday MSBD shaves 1 stated day for **all ~17.9k Fri/Sat-placed orders**.
+**17,881** Fri/Sat-placed orders in June (of 73,294 total). Weekend shipping execution (~33% induct Sat/Sun in June with correct `induction_dow_adj`) is separate from this **stated-speed** lift.
 
 **Cutoff extension** (weekdays only, Mon–Fri): `IsBeforeCutoff = 0` + hour ≤ 2pm — **5,557 orders** in June.
 
@@ -113,9 +113,31 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 |----------|------:|------:|------:|-----------:|
 | June actual | 0.5% | 9.5% | 42.5% | 84.7% |
 | Policy (cushion + 2pm cutoff) | 4.3% | 21.6% | 52.8% | 85.6% |
-| + Weekend (Sun MSBD) | **6.8%** | **27.1%** | **60.2%** | **87.3%** |
+| **Fri/Sat −1 o2d** (vs current) | **2.3%** | **13.2%** | **51.5%** | **86.6%** |
+| Full stack (+ Fri/Sat −1 after policy) | **6.8%** | **27.1%** | **60.2%** | **87.3%** |
 
-**Adjustment volumes (June):** cushion 20,341 · weekday cutoff extension 5,557 · Fri/Sat Sun MSBD promise 17,881.
+**Fri/Sat −1 lift (vs current stated):** +1.8 / +3.7 / **+9.0** / +1.9 pp · **6,595** new 3-day orders.
+
+**Adjustment volumes (June):** cushion 20,341 · weekday cutoff extension 5,557 · Fri/Sat placed (eligible for −1) 17,881.
+
+### Sunday MSBD badge lift by warehouse (Fri/Sat −1 o2d vs current)
+
+| Location | June vol | Fri/Sat vol | Current 3d | After Fri/Sat −1 | **Lift 3d (pp)** | **New 3d** |
+|----------|--------:|------------:|-----------:|-----------------:|----------------:|-----------:|
+| Whitestown, IN | 13,770 | 3,587 | 56.5% | 64.0% | **+7.5** | 1,027 |
+| Baytown, TX | 12,825 | 3,322 | 40.7% | 51.0% | **+10.3** | 1,314 |
+| Lebanon, NJ | 9,385 | 1,967 | 45.1% | 53.1% | **+7.9** | 744 |
+| Riverside, CA | 7,967 | 1,937 | 34.6% | 41.1% | **+6.5** | 521 |
+| Savannah, GA | 6,484 | 1,581 | 34.6% | 46.1% | **+11.6** | 749 |
+| Midway, GA | 5,975 | 1,623 | 30.8% | 45.5% | **+14.8** | 882 |
+| Patterson, CA | 5,272 | 1,219 | 36.5% | 42.1% | **+5.6** | 293 |
+| Flemington, NJ | 4,447 | 1,107 | 49.3% | 58.9% | **+9.5** | 423 |
+| Easton, PA | 3,132 | 700 | 41.1% | 50.8% | **+9.7** | 304 |
+| Port Wentworth, GA | 1,664 | 320 | 15.8% | 23.3% | **+7.5** | 125 |
+| Carlisle, PA | 1,475 | 332 | 65.6% | 75.7% | **+10.1** | 149 |
+| Whitestown, IN (2nd) | 867 | 179 | 46.5% | 53.3% | **+6.8** | 59 |
+
+CSV: `output/safavieh/safavieh_june_fri_sat_badging_lift.csv`
 
 ---
 
@@ -130,7 +152,11 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 | [05 — Badging opportunity](safavieh_charts/05_badging_opportunity_uplift.png) | Uplift (pp) and newly badged orders by tier |
 | [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
 | [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
-| [08 — Weekend incremental by tier](safavieh_charts/08_weekend_incremental_by_tier.png) | Weekend-only uplift after policy (pp + orders) |
+| [08 — Sunday MSBD lift](safavieh_charts/08_weekend_incremental_by_tier.png) | Fri/Sat −1 o2d lift vs current (pp + orders) |
+| [13 — Current vs Fri/Sat −1](safavieh_charts/13_network_cohort_current_and_lift.png) | Network badge coverage by tier |
+| [20 — Weekend shipping %](safavieh_charts/20_fri_sat_weekend_shipping_by_wh.png) | Actual Sat/Sun induction (Fri/Sat placed) |
+| [21 — Account lift](safavieh_charts/21_account_sunday_msbd_lift.png) | Parent account Fri/Sat −1 lift by tier |
+| [22 — Warehouse lift](safavieh_charts/22_warehouse_sunday_msbd_lift.png) | Warehouse Fri/Sat −1 lift by tier |
 
 Regenerate: `python scripts/analyze_safavieh_charts.py`
 
@@ -154,7 +180,7 @@ Full simulation adds **+18 pp** at 2-day and 3-day badges (~13.3k newly badged o
 
 ### 4. Weekend is a stated-promise lever on all Fri/Sat volume
 
-~47% of Fri/Sat orders already ship Sat/Sun but are not promised that speed. Stating weekend shipping shaves 1 day for **all ~17.9k** Fri/Sat-placed orders — **+7.3 pp at 3-day** incremental after cutoff/cushion policy.
+Promising Sunday MSBD (**Fri/Sat −1 o2d**) adds **+9.0 pp at 3-day** vs current stated (**6,595** newly badged orders). ~33% of Fri/Sat orders already induct Sat/Sun in June (execution); the lift above is **website stated speed**, not induction performance.
 
 ### 5. Site-specific stories
 
@@ -193,6 +219,8 @@ Regenerate: `python scripts/create_safavieh_google_slides.py`
 | **This pre-read** | [safavieh_ceo_meeting_preread.md](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/docs/small_parcel/safavieh_ceo_meeting_preread.md) |
 | **June warehouse analysis (CSV)** | [safavieh_june_warehouse_analysis.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_warehouse_analysis.csv) |
 | **June badging scenarios (CSV)** | [safavieh_june_badging_scenarios.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_badging_scenarios.csv) |
+| **Fri/Sat −1 badging lift (CSV)** | [safavieh_june_fri_sat_badging_lift.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_fri_sat_badging_lift.csv) |
+| **Badging gain by warehouse (CSV)** | [safavieh_june_badging_gain_by_warehouse.csv](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/output/safavieh/safavieh_june_badging_gain_by_warehouse.csv) |
 | **June warehouse + O2I SQL** | [safavieh_june_msbd_warehouse_analysis.sql](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/sql/safavieh_june_msbd_warehouse_analysis.sql) |
 | **June badging simulation SQL** | [safavieh_badging_simulation.sql](https://github.com/et844p/O2S/blob/cursor/safavieh-ceo-preread-b7d6/sql/safavieh_badging_simulation.sql) |
 | **Branch (all files)** | [cursor/safavieh-ceo-preread-b7d6](https://github.com/et844p/O2S/tree/cursor/safavieh-ceo-preread-b7d6) |
@@ -204,7 +232,10 @@ Regenerate: `python scripts/create_safavieh_google_slides.py`
 |----------|------:|------:|------:|-----------:|------------:|-----------:|
 | June actual | 0.52% | 9.46% | 42.46% | 84.67% | — | — |
 | Policy (2pm + no cushion) | 4.28% | 21.62% | 52.82% | 85.62% | 7,597 | 697 |
-| Full (+ weekend Sun MSBD) | 6.82% | 27.05% | **60.17%** | **87.26%** | **12,984** | **1,897** |
+| **Fri/Sat −1 o2d** (vs current) | 2.29% | 13.20% | **51.45%** | **86.56%** | **6,595** | **1,388** |
+| Full stack (+ policy + Fri/Sat −1) | 6.82% | 27.05% | 60.17% | 87.26% | 12,984 | 1,897 |
+
+**Fri/Sat −1 lift (pp vs current):** +1.76 · +3.74 · **+9.0** · +1.89
 
 ---
 
