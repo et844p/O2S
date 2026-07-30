@@ -118,6 +118,17 @@ sim_badge_Nd = sim_o2d_stated ≤ N  (1-day, 2-day, 3-day, or fast ≤ 5)
 
 **Fri/Sat −1 lift (vs current stated):** +1.8 / +3.7 / **+9.0** / +1.9 pp · **6,595** new 3-day orders.
 
+**Stacked chart (13 / 24 / 25) decomposition** — three layers to the full 60.2% 3-day stack:
+
+| Layer | 3-day slice | Meaning |
+|-------|------------:|---------|
+| Current (June stated) | 42.5% | `o2d_stated` as-is |
+| Weekend opportunity | **+9.0 pp** | Fri/Sat −1 o2d vs **current** (same as chart 08) |
+| Cutoff additional | +8.7 pp | Cushion + 2pm cutoff beyond the weekend-only path |
+| **Full stack top** | **60.2%** | Policy + Fri/Sat −1 applied together |
+
+The old +7.4 pp weekend slice was *incremental after cutoff policy only* (`sim_policy` → `sim_full`); that is a different lever than the standalone +9.0 pp weekend lift.
+
 **Adjustment volumes (June):** cushion 20,341 · weekday cutoff extension 5,557 · Fri/Sat placed (eligible for −1) 17,881.
 
 ### Sunday MSBD badge lift by warehouse (Fri/Sat −1 o2d vs current)
@@ -171,8 +182,8 @@ CSV: `output/safavieh/safavieh_june_supplier_badging_cohorts.csv`
 | [06 — 3-day badge by warehouse](safavieh_charts/06_3d_badge_by_warehouse.png) | Warehouse-level 3-day badge opportunity |
 | [07 — Volume by warehouse](safavieh_charts/07_volume_by_warehouse.png) | June MSBD volume distribution |
 | [08 — Sunday MSBD lift](safavieh_charts/08_weekend_incremental_by_tier.png) | Fri/Sat −1 o2d lift vs current (pp + orders) |
-| [13 / 24 — Cutoff + weekend stacked](safavieh_charts/24_cutoff_weekend_opportunity_stacked.png) | Current + cutoff opportunity + weekend opportunity |
-| [25 — Opportunity pp only](safavieh_charts/25_cutoff_weekend_opportunity_pp_stacked.png) | Stacked pp uplift: cutoff + weekend |
+| [13 / 24 — Weekend + cutoff stacked](safavieh_charts/24_cutoff_weekend_opportunity_stacked.png) | Current + weekend (+9 pp) + cutoff additional → full stack |
+| [25 — Opportunity pp only](safavieh_charts/25_cutoff_weekend_opportunity_pp_stacked.png) | Stacked pp: weekend Fri/Sat −1 vs current, then cutoff additional |
 | [23 — Current vs Fri/Sat −1 only](safavieh_charts/23_network_current_vs_fri_sat_minus1.png) | Grouped: weekend promise vs current (not stacked) |
 | [20 — Weekend shipping %](safavieh_charts/20_fri_sat_weekend_shipping_by_wh.png) | Actual Sat/Sun induction (Fri/Sat placed) |
 | [21 — Account lift](safavieh_charts/21_account_sunday_msbd_lift.png) | Parent account Fri/Sat −1 lift by tier |

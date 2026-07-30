@@ -1,7 +1,9 @@
 -- Safavieh June MSBD — order-level badging simulation (stacked chart source)
--- Matches stacked chart: current + cutoff opportunity + weekend opportunity
--- sim_policy = o2d_stated − cushion − weekday 2pm cutoff extension
--- sim_full   = sim_policy − Fri/Sat weekend (−1 o2d for order_dow 5–6)
+-- Stacked chart layers (mutually exclusive slices to full policy+weekend stack):
+--   current → weekend (Fri/Sat −1 vs current, +9 pp at 3d) → cutoff additional (+8.7 pp) → full stack
+-- sim_fri_sat_minus1 = o2d_stated − Fri/Sat weekend adj only
+-- sim_policy         = o2d_stated − cushion − weekday 2pm cutoff extension
+-- sim_full           = sim_policy − Fri/Sat weekend adj (full stack)
 
 WITH base AS (
   SELECT
@@ -71,7 +73,8 @@ scored AS (
           THEN 1
           ELSE 0
         END
-      - CASE WHEN b.order_dow IN (5, 6) THEN 1 ELSE 0 END AS sim_full
+      - CASE WHEN b.order_dow IN (5, 6) THEN 1 ELSE 0 END AS sim_full,
+    b.o2d_stated - CASE WHEN b.order_dow IN (5, 6) THEN 1 ELSE 0 END AS sim_fri_sat_minus1
   FROM base b
   LEFT JOIN toolkit t ON b.ops = t.ops
 )
@@ -95,6 +98,7 @@ SELECT
   adj_2pm_cutoff,
   adj_weekend,
   sim_current,
+  sim_fri_sat_minus1,
   sim_policy,
   sim_full,
   inducted_on_time_or_early,
@@ -113,14 +117,23 @@ SELECT
   CASE WHEN sim_full <= 2 THEN 1 ELSE 0 END AS badge_full_2d,
   CASE WHEN sim_full <= 3 THEN 1 ELSE 0 END AS badge_full_3d,
   CASE WHEN sim_full <= 5 THEN 1 ELSE 0 END AS badge_full_fast,
-  -- incremental lifts (stacked chart slices)
+  -- stacked chart slices (exclusive, sum with current to full stack %)
+  CASE WHEN sim_current > 1 AND sim_fri_sat_minus1 <= 1 THEN 1 ELSE 0 END AS new_from_weekend_vs_current_1d,
+  CASE WHEN sim_current > 2 AND sim_fri_sat_minus1 <= 2 THEN 1 ELSE 0 END AS new_from_weekend_vs_current_2d,
+  CASE WHEN sim_current > 3 AND sim_fri_sat_minus1 <= 3 THEN 1 ELSE 0 END AS new_from_weekend_vs_current_3d,
+  CASE WHEN sim_current > 5 AND sim_fri_sat_minus1 <= 5 THEN 1 ELSE 0 END AS new_from_weekend_vs_current_fast,
+  CASE WHEN sim_current > 1 AND sim_full <= 1 AND sim_fri_sat_minus1 > 1 THEN 1 ELSE 0 END AS new_from_cutoff_additional_1d,
+  CASE WHEN sim_current > 2 AND sim_full <= 2 AND sim_fri_sat_minus1 > 2 THEN 1 ELSE 0 END AS new_from_cutoff_additional_2d,
+  CASE WHEN sim_current > 3 AND sim_full <= 3 AND sim_fri_sat_minus1 > 3 THEN 1 ELSE 0 END AS new_from_cutoff_additional_3d,
+  CASE WHEN sim_current > 5 AND sim_full <= 5 AND sim_fri_sat_minus1 > 5 THEN 1 ELSE 0 END AS new_from_cutoff_additional_fast,
+  -- legacy: cutoff-only then weekend-incremental (old stacked chart decomposition)
   CASE WHEN sim_current > 1 AND sim_policy <= 1 THEN 1 ELSE 0 END AS new_from_cutoff_1d,
   CASE WHEN sim_current > 2 AND sim_policy <= 2 THEN 1 ELSE 0 END AS new_from_cutoff_2d,
   CASE WHEN sim_current > 3 AND sim_policy <= 3 THEN 1 ELSE 0 END AS new_from_cutoff_3d,
   CASE WHEN sim_current > 5 AND sim_policy <= 5 THEN 1 ELSE 0 END AS new_from_cutoff_fast,
-  CASE WHEN sim_policy > 1 AND sim_full <= 1 THEN 1 ELSE 0 END AS new_from_weekend_1d,
-  CASE WHEN sim_policy > 2 AND sim_full <= 2 THEN 1 ELSE 0 END AS new_from_weekend_2d,
-  CASE WHEN sim_policy > 3 AND sim_full <= 3 THEN 1 ELSE 0 END AS new_from_weekend_3d,
-  CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN 1 ELSE 0 END AS new_from_weekend_fast
+  CASE WHEN sim_policy > 1 AND sim_full <= 1 THEN 1 ELSE 0 END AS new_from_weekend_after_policy_1d,
+  CASE WHEN sim_policy > 2 AND sim_full <= 2 THEN 1 ELSE 0 END AS new_from_weekend_after_policy_2d,
+  CASE WHEN sim_policy > 3 AND sim_full <= 3 THEN 1 ELSE 0 END AS new_from_weekend_after_policy_3d,
+  CASE WHEN sim_policy > 5 AND sim_full <= 5 THEN 1 ELSE 0 END AS new_from_weekend_after_policy_fast
 FROM scored
 ORDER BY supplier_id, ops
