@@ -1,0 +1,19 @@
+warehouse,attribution,volume,pct_of_total,pct_of_late
+SV2 (conveyables),On time,18068,0.9743313201035375,37.95798319327731
+SV2 (conveyables),"FedEx: label on time, inducted next day",225,0.012133304572907679,0.4726890756302521
+SV2 (conveyables),"FedEx: label on time, inducted 2+ days",63,0.0033973252804141503,0.1323529411764706
+SV2 (conveyables),WH: label after 2pm MSBD,188,0.010138050043140638,0.3949579831932773
+SV2 (conveyables),"FedEx: label on time, same-day induct but late MSBD",0,0.0,0.0
+SV2 (conveyables),Other late,0,0.0,0.0
+SV3 (non-conveyables),On time,4824,0.7612434906106991,3.1883674818241903
+SV3 (non-conveyables),"FedEx: label on time, inducted next day",1055,0.16648256272684236,0.6972901520158625
+SV3 (non-conveyables),"FedEx: label on time, inducted 2+ days",326,0.05144390089947925,0.21546596166556511
+SV3 (non-conveyables),WH: label after 2pm MSBD,132,0.020830045762979327,0.08724388631857237
+SV3 (non-conveyables),"FedEx: label on time, same-day induct but late MSBD",0,0.0,0.0
+SV3 (non-conveyables),Other late,0,0.0,0.0
+Network,On time,22892,0.9200594831397452,11.50930115635998
+Network,"FedEx: label on time, inducted next day",1280,0.051444877617459105,0.6435394670688789
+Network,"FedEx: label on time, inducted 2+ days",389,0.015634419838430932,0.19557566616390146
+Network,WH: label after 2pm MSBD,320,0.012861219404364776,0.16088486676721972
+Network,"FedEx: label on time, same-day induct but late MSBD",0,0.0,0.0
+Network,Other late,0,0.0,0.0

@@ -24,7 +24,7 @@ SQL_ORDER = ROOT / "sql" / "flash_furniture_order_level.sql"
 OUT = ROOT / "output" / "flash_furniture"
 DOCS = ROOT / "docs" / "small_parcel"
 CHARTS = DOCS / "flash_furniture_charts"
-GITHUB_REPO = "https://github.com/et844p/O2S/blob/main"
+GITHUB_REPO = "https://github.com/et844p_wayfair/O2S/blob/main"
 
 WAREHOUSE_LABEL = {
     ("Canton", "GA"): "Canton, GA",
