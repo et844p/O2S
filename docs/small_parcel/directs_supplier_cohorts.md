@@ -2,7 +2,7 @@
 
 Generated: 2026-08-10
 
-Classifies dropship (`fulfillment_type = 'DS'`) suppliers by how they show up on direct-eligible induction patterns.
+Classifies dropship (`fulfillment_type = 'DS'`) suppliers by intentional directs vs ghost warehouses vs neither.
 
 ## Lookbacks
 
@@ -11,77 +11,55 @@ Classifies dropship (`fulfillment_type = 'DS'`) suppliers by how they show up on
 | `pdd_10w` | `promised_delivery_end_range_date_at_order` | 10 weeks | 50 ops |
 | `msbd_2w` | `msbd_su` | 2 weeks | 20 ops |
 
-## Direct-eligible definition
+## Potential direct (distance only)
 
-An order is **direct-eligible** when all of:
+An order is a **potential direct** when all of:
 
-1. `assignedhub_notequal_actualhub_flag = 1` (excludes missing actual hub cases from eligibility)
-2. `distance_assignedhub_customer >= 400` (use the distance column, not only the flag)
-3. `distance_assignedhub_actualhub >= 200` (use the distance column)
+1. `assignedhub_notequal_actualhub_flag = 1`
+2. `distance_assignedhub_customer >= 400`
+3. `distance_assignedhub_actualhub >= 200`
 
-**Do not use `distance_assignedhub_actualhub_200_plus` alone** — it is unreliable (e.g. SAVANNAH hub id 314 vs Savannah id 291 at ~9 miles still gets the flag).
+Use the **raw distance columns**, not `distance_assignedhub_actualhub_200_plus` (unreliable for near-hub ID mismatches).
 
-Orders with no `actual_induction_hub_id` are **not** eligible; their volume is reported as `missing_actual_hub_vol`.
-
-### Local inductor gate
-
-If **≥80%** of volume with an actual hub is within 200 miles of the assigned hub (`pct_within_200_of_assigned`), the supplier is classified as `no_directs`. Residual far scans are not treated as building directs (e.g. JLA Home GA 31407 - SV2).
+Potential directs are then split using induction timing / hub patterns.
 
 ## True directs vs ghost warehouses
 
-Flagged directs are split using two signals:
-
 | Signal | Rule |
 |--------|------|
-| **Batched / same-time true direct** | 2+ direct-eligible ops at the same supplier + actual hub + induction day |
-| **Ghost hub** | Actual hub is far from assigned (≥200 mi on ≥80% of that hub’s volume), present in ≥50% of supplier weeks (min 2), and ≥10% of supplier volume |
+| **Batched potential** | 2+ potential-direct ops at same supplier + actual hub + induction day |
+| **Ghost hub** | Far hub in ≥50% of weeks (min 2) and ≥10% of supplier volume |
+| **Direct-building hub** | Recurring (≥2 weeks) batched far hub at **1–10%** of supplier volume |
+| **True directs** | Batched potential at direct-building hubs only |
 
-Ghost hubs take priority: if a supplier has them, they land in `ghost_warehouses_no_directs` even if residual far volume remains.
+Intentional directing should stay under ~**10%** of supplier volume. If `true_direct_share >= 10%`, classify as ghost-scale. Scattered far scans under 1% per hub (e.g. network noise) do not count as building directs.
 
 ## Cohorts
 
 | Cohort | Meaning |
 |--------|---------|
-| `consistently_builds_directs` | Batched true directs in every week (or all-but-one when ≥4 weeks) |
-| `sometimes_builds_directs` | Batched true directs in some weeks, not nearly all |
-| `ghost_warehouses_no_directs` | Persistent far hubs look like directs but behave like unregistered warehouses |
-| `no_directs` | No batched true directs and no ghost-hub pattern |
+| `consistently_builds_directs` | True directs in every week (or all-but-one when ≥4 weeks) |
+| `sometimes_builds_directs` | True directs in some weeks only |
+| `ghost_warehouses_no_directs` | Persistent ≥10% far hubs, or true-direct share ≥10% |
+| `no_directs` | No intentional direct-building hubs |
 
 ### Calibration examples
 
 | Supplier | Expected | Result (`pdd_10w`) |
 |----------|----------|--------------------|
-| Edecor Center Inc._1 NJ 08110 | Ghost warehouses (South Dallas / Diamond Bar), not intentional directs | `ghost_warehouses_no_directs` |
-| Nathan James NV 89434 | Sometimes builds directs (e.g. FL batches, not every week) | `sometimes_builds_directs` |
-| JLA Home GA 31407 - SV2 | Not directs — inducts within ~200mi of assigned hub (Savannah) | `no_directs` |
+| Edecor Center Inc._1 NJ 08110 | Ghost (South Dallas / Diamond Bar) | `ghost_warehouses_no_directs` |
+| Nathan James NV 89434 | Sometimes (e.g. Orlando batches, limited share) | `sometimes_builds_directs` |
+| JLA Home GA 31407 - SV2 | Not directs — far scans are scatter, not a 1–10% recurring hub | `no_directs` |
 
 ## Results summary
 
-### 10-week promised delivery (`pdd_10w`)
-
-| Cohort | Suppliers | Volume | Direct-eligible | True direct | Ghost hub vol | Missing actual hub |
-|--------|-----------|--------|-----------------|-------------|---------------|--------------------|
-| sometimes_builds_directs | 6,484 | 2,478,150 | 476,135 | 279,249 | 0 | 70,847 |
-| consistently_builds_directs | 2,745 | 3,813,991 | 1,821,980 | 1,626,197 | 0 | 54,571 |
-| ghost_warehouses_no_directs | 1,963 | 799,818 | 417,187 | 190,081 | 258,399 | 10,918 |
-| no_directs | 1,538 | 338,122 | 7,480 | 0 | 0 | 88,787 |
-
-### 2-week MSBD (`msbd_2w`)
-
-| Cohort | Suppliers | Volume | Direct-eligible | True direct | Ghost hub vol | Missing actual hub |
-|--------|-----------|--------|-----------------|-------------|---------------|--------------------|
-| consistently_builds_directs | 3,906 | 834,738 | 351,796 | 335,467 | 0 | 26,432 |
-| no_directs | 2,886 | 320,886 | 1,964 | 0 | 0 | 36,928 |
-| ghost_warehouses_no_directs | 1,572 | 201,523 | 101,137 | 49,756 | 74,421 | 5,930 |
-| sometimes_builds_directs | 1,073 | 278,423 | 74,166 | 70,143 | 0 | 9,411 |
-
-Short-window “consistent” means both weeks with volume had batched true directs; with only two weeks that bar is easier to clear than over 10 weeks.
+Updated on each run via `output/directs/directs_supplier_cohorts_summary.csv`.
 
 ## How to run
 
 ```bash
 python3 scripts/run_directs_supplier_cohorts.py
-python3 scripts/run_directs_supplier_cohorts.py --window pdd_10w --cohort ghost_warehouses_no_directs
+python3 scripts/run_directs_supplier_cohorts.py --window pdd_10w --cohort sometimes_builds_directs
 ```
 
 ## Outputs
@@ -92,12 +70,4 @@ python3 scripts/run_directs_supplier_cohorts.py --window pdd_10w --cohort ghost_
 | `output/directs/directs_supplier_cohorts_summary.csv` | Cohort counts / volumes |
 | `output/directs/pdd_10w_*.csv` / `msbd_2w_*.csv` | Per-window cohort slices |
 
-Useful columns: `true_direct_vol`, `weeks_with_true_direct`, `true_direct_by_week`, `top_true_direct_hubs`, `ghost_hubs`, `ghost_share`, `within_200_vol`, `pct_within_200_of_assigned`, `missing_actual_hub_vol`, `avg_gain_on_direct_eligible`, distances, IFR, SRM.
-
-## Notes / caveats
-
-- Ghost priority means a supplier with both persistent unregistered far hubs **and** intermittent true directs is labeled ghost-only.
-- `distance_assignedhub_actualhub_200_plus` is not trusted; eligibility uses the raw distance columns.
-- Suppliers with ≥80% of actual-hub volume within 200mi of assigned are forced to `no_directs`.
-- Distributed far volume across many hubs each under 10% share will not trigger ghost and may land in sometimes/consistent instead (unless the local-inductor gate applies).
-- Large `no_directs` rows with high `missing_actual_hub_vol` (e.g. FBA / virtual WHs) are visibility gaps, not proof of local-only induction.
+Useful columns: `potential_direct_vol`, `potential_direct_share`, `true_direct_vol`, `true_direct_share`, `weeks_with_true_direct`, `true_direct_by_week`, `top_true_direct_hubs`, `ghost_hubs`, `within_200_vol`, `pct_within_200_of_assigned`, `missing_actual_hub_vol`.

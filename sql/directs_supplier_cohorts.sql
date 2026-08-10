@@ -1,32 +1,26 @@
 -- Directs supplier cohort analysis
 --
 -- Classifies DS suppliers into:
---   consistently_builds_directs  — batched true directs in (nearly) every week
---   sometimes_builds_directs     — batched true directs in some weeks only
+--   consistently_builds_directs  — intentional directs in (nearly) every week
+--   sometimes_builds_directs     — intentional directs in some weeks only
 --   ghost_warehouses_no_directs  — persistent far hubs look like directs but are
 --                                  unregistered warehouses (not intentional directs)
---   no_directs                   — neither true directs nor ghost-warehouse pattern
+--   no_directs                   — neither intentional directs nor ghost-warehouse pattern
 --
--- Direct-eligible order:
+-- Potential direct (distance conditions only — then refine with induction timing):
 --   assignedhub_notequal_actualhub_flag = 1
 --   AND distance_assignedhub_customer >= 400
 --   AND distance_assignedhub_actualhub >= 200
--- NOTE: Do NOT use distance_assignedhub_actualhub_200_plus — that flag is unreliable
--- (fires on near-hub pairs like SAVANNAH id 314 vs Savannah id 291 at ~9 miles).
--- Orders missing an actual induction hub are excluded from eligibility and reported
--- separately as missing_actual_hub_vol.
+-- NOTE: Do NOT use distance_assignedhub_actualhub_200_plus — unreliable
+-- (e.g. SAVANNAH id 314 vs Savannah id 291 at ~9 miles).
 --
--- Local inductor gate:
---   If >=80% of volume with an actual hub is within 200mi of assigned hub, classify
---   as no_directs (residual far scans are not treated as building directs).
---
--- Batched / "same time" true-direct signal:
---   2+ direct-eligible ops at the same supplier + actual hub + induction day.
---
--- Ghost hub:
---   Far from assigned hub (>=200mi on >=80% of that hub's volume),
---   present in >=50% of supplier weeks (min 2), and >=10% of supplier volume.
--- Ghost classification takes priority over true-direct cohorts.
+-- Induction timing / hub pattern:
+--   Batched potential = 2+ potential-direct ops at same supplier + actual hub + day.
+--   Ghost hub = far hub present in >=50% of weeks (min 2) and >=10% of supplier volume.
+--   Direct-building hub = recurring (>=2 weeks) batched far hub at 1–10% of supplier
+--     volume (intentional directs are limited share; >=10% hub share is ghost-scale).
+--   True directs = batched potential directs at direct-building hubs only.
+--   If true_direct_share >= 10%, treat as ghost-scale (not intentional directing).
 --
 -- Two lookback windows (unioned with lookback_window column):
 --   pdd_10w  — last 10 weeks by promised_delivery_end_range_date_at_order
@@ -105,7 +99,7 @@ base AS (
         AND COALESCE(o.distance_assignedhub_customer, 0) >= 400
         AND COALESCE(o.distance_assignedhub_actualhub, 0) >= 200 THEN 1
       ELSE 0
-    END AS is_direct_eligible,
+    END AS is_potential_direct,
     CASE
       WHEN o.assignedhub_notequal_actualhub_flag = 1
         AND COALESCE(o.distance_assignedhub_actualhub, 0) >= 200 THEN 1
@@ -137,10 +131,10 @@ hub_day AS (
     supplier_id,
     actual_induction_hub_name,
     ind_day,
-    COUNT(DISTINCT IF(is_direct_eligible = 1, ops, NULL)) AS direct_on_day
+    COUNT(DISTINCT IF(is_potential_direct = 1, ops, NULL)) AS potential_on_day
   FROM base
   WHERE missing_actual_hub = 0
-    AND is_direct_eligible = 1
+    AND is_potential_direct = 1
     AND actual_induction_hub_name IS NOT NULL
   GROUP BY 1, 2, 3, 4
 ),
@@ -149,10 +143,10 @@ base_enriched AS (
   SELECT
     b.*,
     CASE
-      WHEN b.is_direct_eligible = 1
-        AND COALESCE(hd.direct_on_day, 0) >= 2 THEN 1
+      WHEN b.is_potential_direct = 1
+        AND COALESCE(hd.potential_on_day, 0) >= 2 THEN 1
       ELSE 0
-    END AS is_batched_direct
+    END AS is_batched_potential
   FROM base AS b
   LEFT JOIN hub_day AS hd
     ON b.lookback_window = hd.lookback_window
@@ -167,8 +161,8 @@ supplier_week AS (
     supplier_id,
     week_start,
     COUNT(DISTINCT ops) AS week_vol,
-    COUNT(DISTINCT IF(is_direct_eligible = 1, ops, NULL)) AS week_direct_eligible_vol,
-    COUNT(DISTINCT IF(is_batched_direct = 1, ops, NULL)) AS week_batched_direct_vol,
+    COUNT(DISTINCT IF(is_potential_direct = 1, ops, NULL)) AS week_potential_direct_vol,
+    COUNT(DISTINCT IF(is_batched_potential = 1, ops, NULL)) AS week_batched_potential_vol,
     COUNT(DISTINCT IF(missing_actual_hub = 1, ops, NULL)) AS week_missing_actual_hub_vol
   FROM base_enriched
   GROUP BY 1, 2, 3
@@ -182,8 +176,9 @@ hub_agg AS (
     actual_induction_hub_state,
     COUNT(DISTINCT week_start) AS weeks_present,
     COUNT(DISTINCT ops) AS hub_vol,
-    COUNT(DISTINCT IF(is_direct_eligible = 1, ops, NULL)) AS hub_direct_vol,
-    COUNT(DISTINCT IF(is_batched_direct = 1, ops, NULL)) AS hub_batched_direct_vol,
+    COUNT(DISTINCT IF(is_potential_direct = 1, ops, NULL)) AS hub_potential_vol,
+    COUNT(DISTINCT IF(is_batched_potential = 1, ops, NULL)) AS hub_batched_vol,
+    COUNT(DISTINCT IF(is_batched_potential = 1, week_start, NULL)) AS weeks_with_batched,
     AVG(CASE WHEN is_far_hub_induction = 1 THEN 1 ELSE 0 END) AS pct_far
   FROM base_enriched
   WHERE missing_actual_hub = 0
@@ -211,8 +206,8 @@ supplier_meta AS (
     ANY_VALUE(assigned_station_zip) AS assigned_station_zip,
     COUNT(DISTINCT ops) AS total_vol,
     COUNT(DISTINCT week_start) AS weeks_with_vol,
-    COUNT(DISTINCT IF(is_direct_eligible = 1, ops, NULL)) AS direct_eligible_vol,
-    COUNT(DISTINCT IF(is_batched_direct = 1, ops, NULL)) AS batched_direct_vol,
+    COUNT(DISTINCT IF(is_potential_direct = 1, ops, NULL)) AS potential_direct_vol,
+    COUNT(DISTINCT IF(is_batched_potential = 1, ops, NULL)) AS batched_potential_vol,
     COUNT(DISTINCT IF(missing_actual_hub = 1, ops, NULL)) AS missing_actual_hub_vol,
     COUNT(DISTINCT IF(assignedhub_notequal_actualhub_flag = 1, ops, NULL)) AS hub_mismatch_vol,
     COUNT(DISTINCT IF(assignedstate_notequal_actualstate_flag = 1, ops, NULL)) AS state_mismatch_vol,
@@ -220,7 +215,7 @@ supplier_meta AS (
     COUNT(DISTINCT IF(missing_actual_hub = 0, ops, NULL)) AS vol_with_actual_hub,
     COUNT(DISTINCT IF(within_200_of_assigned = 1, ops, NULL)) AS within_200_vol,
     AVG(direct_gain) AS avg_direct_gain,
-    AVG(IF(is_direct_eligible = 1, direct_gain, NULL)) AS avg_gain_on_direct_eligible,
+    AVG(IF(is_potential_direct = 1, direct_gain, NULL)) AS avg_gain_on_potential_direct,
     AVG(distance_assignedhub_customer) AS avg_dist_assignedhub_customer,
     AVG(distance_actualhub_customer) AS avg_dist_actualhub_customer,
     AVG(distance_assignedhub_actualhub) AS avg_dist_assignedhub_actualhub,
@@ -236,8 +231,8 @@ ghost_hubs AS (
     h.actual_induction_hub_name,
     h.actual_induction_hub_state,
     h.hub_vol,
-    h.hub_direct_vol,
-    h.hub_batched_direct_vol,
+    h.hub_potential_vol,
+    h.hub_batched_vol,
     h.weeks_present,
     SAFE_DIVIDE(h.hub_vol, m.total_vol) AS hub_share
   FROM hub_agg AS h
@@ -257,8 +252,8 @@ ghost_supplier AS (
     supplier_id,
     COUNT(*) AS n_ghost_hubs,
     SUM(hub_vol) AS ghost_hub_vol,
-    SUM(hub_direct_vol) AS ghost_direct_vol,
-    SUM(hub_batched_direct_vol) AS ghost_batched_direct_vol,
+    SUM(hub_potential_vol) AS ghost_potential_vol,
+    SUM(hub_batched_vol) AS ghost_batched_vol,
     STRING_AGG(
       CONCAT(
         actual_induction_hub_name,
@@ -273,6 +268,30 @@ ghost_supplier AS (
   GROUP BY 1, 2
 ),
 
+-- Intentional direct-building hubs: same-time batches, recurring, limited share (1–10%)
+direct_hubs AS (
+  SELECT
+    h.lookback_window,
+    h.supplier_id,
+    h.actual_induction_hub_name,
+    h.actual_induction_hub_state,
+    h.hub_batched_vol,
+    h.weeks_with_batched,
+    SAFE_DIVIDE(h.hub_batched_vol, m.total_vol) AS hub_share
+  FROM hub_agg AS h
+  JOIN supplier_meta AS m
+    USING (lookback_window, supplier_id)
+  LEFT JOIN ghost_hubs AS g
+    ON h.lookback_window = g.lookback_window
+   AND h.supplier_id = g.supplier_id
+   AND h.actual_induction_hub_name = g.actual_induction_hub_name
+  WHERE g.actual_induction_hub_name IS NULL
+    AND h.pct_far >= 0.8
+    AND h.weeks_with_batched >= 2
+    AND SAFE_DIVIDE(h.hub_batched_vol, m.total_vol) >= 0.01
+    AND SAFE_DIVIDE(h.hub_batched_vol, m.total_vol) < 0.10
+),
+
 true_direct_week AS (
   SELECT
     b.lookback_window,
@@ -283,12 +302,11 @@ true_direct_week AS (
   FROM base_enriched AS b
   JOIN supplier_week AS sw
     USING (lookback_window, supplier_id, week_start)
-  LEFT JOIN ghost_hubs AS g
-    ON b.lookback_window = g.lookback_window
-   AND b.supplier_id = g.supplier_id
-   AND b.actual_induction_hub_name = g.actual_induction_hub_name
-  WHERE b.is_batched_direct = 1
-    AND g.actual_induction_hub_name IS NULL
+  JOIN direct_hubs AS d
+    ON b.lookback_window = d.lookback_window
+   AND b.supplier_id = d.supplier_id
+   AND b.actual_induction_hub_name = d.actual_induction_hub_name
+  WHERE b.is_batched_potential = 1
   GROUP BY 1, 2, 3
 ),
 
@@ -309,31 +327,19 @@ true_direct_supplier AS (
 
 top_true_direct_hubs AS (
   SELECT
-    b.lookback_window,
-    b.supplier_id,
+    lookback_window,
+    supplier_id,
     STRING_AGG(
-      hub_label, '; ' ORDER BY hub_vol DESC LIMIT 5
-    ) AS top_true_direct_hubs
-  FROM (
-    SELECT
-      b.lookback_window,
-      b.supplier_id,
       CONCAT(
-        b.actual_induction_hub_name,
-        ' (', b.actual_induction_hub_state, ') ',
-        CAST(COUNT(DISTINCT b.ops) AS STRING)
-      ) AS hub_label,
-      COUNT(DISTINCT b.ops) AS hub_vol
-    FROM base_enriched AS b
-    LEFT JOIN ghost_hubs AS g
-      ON b.lookback_window = g.lookback_window
-     AND b.supplier_id = g.supplier_id
-     AND b.actual_induction_hub_name = g.actual_induction_hub_name
-    WHERE b.is_batched_direct = 1
-      AND g.actual_induction_hub_name IS NULL
-      AND b.actual_induction_hub_name IS NOT NULL
-    GROUP BY 1, 2, b.actual_induction_hub_name, b.actual_induction_hub_state
-  ) AS b
+        actual_induction_hub_name,
+        ' (', actual_induction_hub_state, ') ',
+        CAST(ROUND(100 * hub_share) AS STRING), '%'
+      ),
+      '; '
+      ORDER BY hub_batched_vol DESC
+      LIMIT 5
+    ) AS top_true_direct_hubs
+  FROM direct_hubs
   GROUP BY 1, 2
 ),
 
@@ -357,10 +363,11 @@ classified AS (
     m.assigned_station_zip,
     m.total_vol,
     m.weeks_with_vol,
-    m.direct_eligible_vol,
-    SAFE_DIVIDE(m.direct_eligible_vol, m.total_vol) AS direct_eligible_share,
-    m.batched_direct_vol,
+    m.potential_direct_vol,
+    SAFE_DIVIDE(m.potential_direct_vol, m.total_vol) AS potential_direct_share,
+    m.batched_potential_vol,
     COALESCE(t.true_direct_vol, 0) AS true_direct_vol,
+    SAFE_DIVIDE(COALESCE(t.true_direct_vol, 0), m.total_vol) AS true_direct_share,
     COALESCE(t.weeks_with_true_direct, 0) AS weeks_with_true_direct,
     SAFE_DIVIDE(COALESCE(t.weeks_with_true_direct, 0), m.weeks_with_vol) AS pct_weeks_with_true_direct,
     t.true_direct_by_week,
@@ -368,7 +375,7 @@ classified AS (
     COALESCE(g.n_ghost_hubs, 0) AS n_ghost_hubs,
     COALESCE(g.ghost_hub_vol, 0) AS ghost_hub_vol,
     SAFE_DIVIDE(COALESCE(g.ghost_hub_vol, 0), m.total_vol) AS ghost_share,
-    COALESCE(g.ghost_direct_vol, 0) AS ghost_direct_vol,
+    COALESCE(g.ghost_potential_vol, 0) AS ghost_potential_vol,
     g.ghost_hubs,
     m.missing_actual_hub_vol,
     SAFE_DIVIDE(m.missing_actual_hub_vol, m.total_vol) AS missing_actual_hub_share,
@@ -378,22 +385,22 @@ classified AS (
     m.within_200_vol,
     SAFE_DIVIDE(m.within_200_vol, m.vol_with_actual_hub) AS pct_within_200_of_assigned,
     m.avg_direct_gain,
-    m.avg_gain_on_direct_eligible,
+    m.avg_gain_on_potential_direct,
     m.avg_dist_assignedhub_customer,
     m.avg_dist_actualhub_customer,
     m.avg_dist_assignedhub_actualhub,
     m.ifr,
     CASE
       WHEN COALESCE(g.ghost_hub_vol, 0) > 0 THEN 'ghost_warehouses_no_directs'
-      -- Local inductors: majority of volume within 200mi of assigned hub
-      WHEN SAFE_DIVIDE(m.within_200_vol, m.vol_with_actual_hub) >= 0.80 THEN 'no_directs'
+      -- Intentional directs should stay under ~10% of supplier volume
+      WHEN SAFE_DIVIDE(COALESCE(t.true_direct_vol, 0), m.total_vol) >= 0.10
+        THEN 'ghost_warehouses_no_directs'
       WHEN COALESCE(t.weeks_with_true_direct, 0) >= m.weeks_with_vol
         OR (
           m.weeks_with_vol >= 4
           AND COALESCE(t.weeks_with_true_direct, 0) >= m.weeks_with_vol - 1
         )
         OR (
-          -- Short window: both weeks with true directs = consistent
           m.lookback_weeks <= 2
           AND m.weeks_with_vol >= 2
           AND COALESCE(t.weeks_with_true_direct, 0) = m.weeks_with_vol

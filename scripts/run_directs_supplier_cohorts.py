@@ -51,7 +51,7 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "direct_cohort": cohort,
                     "suppliers": len(cdf),
                     "total_vol": int(cdf["total_vol"].sum()),
-                    "direct_eligible_vol": int(cdf["direct_eligible_vol"].sum()),
+                    "potential_direct_vol": int(cdf["potential_direct_vol"].sum()),
                     "true_direct_vol": int(cdf["true_direct_vol"].sum()),
                     "ghost_hub_vol": int(cdf["ghost_hub_vol"].sum()),
                     "missing_actual_hub_vol": int(cdf["missing_actual_hub_vol"].sum()),
@@ -115,10 +115,12 @@ def main() -> None:
             "su_name",
             "direct_cohort",
             "total_vol",
+            "potential_direct_vol",
             "true_direct_vol",
+            "true_direct_share",
             "weeks_with_true_direct",
             "weeks_with_vol",
-            "pct_within_200_of_assigned",
+            "top_true_direct_hubs",
             "ghost_hubs",
         ]
     ]
