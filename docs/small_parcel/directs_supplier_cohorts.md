@@ -16,10 +16,16 @@ Classifies dropship (`fulfillment_type = 'DS'`) suppliers by how they show up on
 An order is **direct-eligible** when all of:
 
 1. `assignedhub_notequal_actualhub_flag = 1` (excludes missing actual hub cases from eligibility)
-2. `distance_assignedhub_customer_400_plus = 1`
-3. `distance_assignedhub_actualhub_200_plus = 1`
+2. `distance_assignedhub_customer >= 400` (use the distance column, not only the flag)
+3. `distance_assignedhub_actualhub >= 200` (use the distance column)
 
-Orders with no `actual_induction_hub_id` are **not** eligible; their volume is reported as `missing_actual_hub_vol` (about **3.0%** of pdd_10w volume).
+**Do not use `distance_assignedhub_actualhub_200_plus` alone** — it is unreliable (e.g. SAVANNAH hub id 314 vs Savannah id 291 at ~9 miles still gets the flag).
+
+Orders with no `actual_induction_hub_id` are **not** eligible; their volume is reported as `missing_actual_hub_vol`.
+
+### Local inductor gate
+
+If **≥80%** of volume with an actual hub is within 200 miles of the assigned hub (`pct_within_200_of_assigned`), the supplier is classified as `no_directs`. Residual far scans are not treated as building directs (e.g. JLA Home GA 31407 - SV2).
 
 ## True directs vs ghost warehouses
 
@@ -45,8 +51,9 @@ Ghost hubs take priority: if a supplier has them, they land in `ghost_warehouses
 
 | Supplier | Expected | Result (`pdd_10w`) |
 |----------|----------|--------------------|
-| Edecor Center Inc._1 NJ 08110 | Ghost warehouses (South Dallas / Diamond Bar), not intentional directs | `ghost_warehouses_no_directs` — South Dallas Rsf (TX) 21%; Diamond Bar Rsf (CA) 16% |
-| Nathan James NV 89434 | Sometimes builds directs (e.g. FL batches, not every week) | `sometimes_builds_directs` — true directs in 9/11 weeks |
+| Edecor Center Inc._1 NJ 08110 | Ghost warehouses (South Dallas / Diamond Bar), not intentional directs | `ghost_warehouses_no_directs` |
+| Nathan James NV 89434 | Sometimes builds directs (e.g. FL batches, not every week) | `sometimes_builds_directs` |
+| JLA Home GA 31407 - SV2 | Not directs — inducts within ~200mi of assigned hub (Savannah) | `no_directs` |
 
 ## Results summary
 
@@ -85,10 +92,12 @@ python3 scripts/run_directs_supplier_cohorts.py --window pdd_10w --cohort ghost_
 | `output/directs/directs_supplier_cohorts_summary.csv` | Cohort counts / volumes |
 | `output/directs/pdd_10w_*.csv` / `msbd_2w_*.csv` | Per-window cohort slices |
 
-Useful columns: `true_direct_vol`, `weeks_with_true_direct`, `true_direct_by_week`, `top_true_direct_hubs`, `ghost_hubs`, `ghost_share`, `missing_actual_hub_vol`, `avg_gain_on_direct_eligible`, distances, IFR, SRM.
+Useful columns: `true_direct_vol`, `weeks_with_true_direct`, `true_direct_by_week`, `top_true_direct_hubs`, `ghost_hubs`, `ghost_share`, `within_200_vol`, `pct_within_200_of_assigned`, `missing_actual_hub_vol`, `avg_gain_on_direct_eligible`, distances, IFR, SRM.
 
 ## Notes / caveats
 
 - Ghost priority means a supplier with both persistent unregistered far hubs **and** intermittent true directs is labeled ghost-only.
-- Distributed far volume across many hubs each under 10% share will not trigger ghost and may land in sometimes/consistent instead.
+- `distance_assignedhub_actualhub_200_plus` is not trusted; eligibility uses the raw distance columns.
+- Suppliers with ≥80% of actual-hub volume within 200mi of assigned are forced to `no_directs`.
+- Distributed far volume across many hubs each under 10% share will not trigger ghost and may land in sometimes/consistent instead (unless the local-inductor gate applies).
 - Large `no_directs` rows with high `missing_actual_hub_vol` (e.g. FBA / virtual WHs) are visibility gaps, not proof of local-only induction.

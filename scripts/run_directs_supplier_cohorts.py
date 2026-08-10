@@ -105,7 +105,7 @@ def main() -> None:
     # Known calibration examples
     examples = df[
         df["su_name"].astype(str).str.contains(
-            "Edecor Center Inc._1 NJ 08110|Nathan James NV 89434",
+            "Edecor Center Inc._1 NJ 08110|Nathan James NV 89434|JLA Home GA 31407 - SV2",
             regex=True,
             na=False,
         )
@@ -118,6 +118,7 @@ def main() -> None:
             "true_direct_vol",
             "weeks_with_true_direct",
             "weeks_with_vol",
+            "pct_within_200_of_assigned",
             "ghost_hubs",
         ]
     ]

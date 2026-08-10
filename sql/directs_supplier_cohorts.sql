@@ -7,12 +7,18 @@
 --                                  unregistered warehouses (not intentional directs)
 --   no_directs                   — neither true directs nor ghost-warehouse pattern
 --
--- Direct-eligible order (user flags):
+-- Direct-eligible order:
 --   assignedhub_notequal_actualhub_flag = 1
---   AND distance_assignedhub_customer_400_plus = 1
---   AND distance_assignedhub_actualhub_200_plus = 1
+--   AND distance_assignedhub_customer >= 400
+--   AND distance_assignedhub_actualhub >= 200
+-- NOTE: Do NOT use distance_assignedhub_actualhub_200_plus — that flag is unreliable
+-- (fires on near-hub pairs like SAVANNAH id 314 vs Savannah id 291 at ~9 miles).
 -- Orders missing an actual induction hub are excluded from eligibility and reported
 -- separately as missing_actual_hub_vol.
+--
+-- Local inductor gate:
+--   If >=80% of volume with an actual hub is within 200mi of assigned hub, classify
+--   as no_directs (residual far scans are not treated as building directs).
 --
 -- Batched / "same time" true-direct signal:
 --   2+ direct-eligible ops at the same supplier + actual hub + induction day.
@@ -96,15 +102,21 @@ base AS (
     END AS missing_actual_hub,
     CASE
       WHEN o.assignedhub_notequal_actualhub_flag = 1
-        AND o.distance_assignedhub_customer_400_plus = 1
-        AND o.distance_assignedhub_actualhub_200_plus = 1 THEN 1
+        AND COALESCE(o.distance_assignedhub_customer, 0) >= 400
+        AND COALESCE(o.distance_assignedhub_actualhub, 0) >= 200 THEN 1
       ELSE 0
     END AS is_direct_eligible,
     CASE
       WHEN o.assignedhub_notequal_actualhub_flag = 1
         AND COALESCE(o.distance_assignedhub_actualhub, 0) >= 200 THEN 1
       ELSE 0
-    END AS is_far_hub_induction
+    END AS is_far_hub_induction,
+    CASE
+      WHEN o.actual_induction_hub_id IS NOT NULL
+        AND TRIM(CAST(o.actual_induction_hub_id AS STRING)) != ''
+        AND COALESCE(o.distance_assignedhub_actualhub, 0) < 200 THEN 1
+      ELSE 0
+    END AS within_200_of_assigned
   FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring` AS o
   CROSS JOIN windows AS w
   WHERE o.fulfillment_type = 'DS'
@@ -205,6 +217,8 @@ supplier_meta AS (
     COUNT(DISTINCT IF(assignedhub_notequal_actualhub_flag = 1, ops, NULL)) AS hub_mismatch_vol,
     COUNT(DISTINCT IF(assignedstate_notequal_actualstate_flag = 1, ops, NULL)) AS state_mismatch_vol,
     COUNT(DISTINCT IF(is_far_hub_induction = 1, ops, NULL)) AS far_hub_vol,
+    COUNT(DISTINCT IF(missing_actual_hub = 0, ops, NULL)) AS vol_with_actual_hub,
+    COUNT(DISTINCT IF(within_200_of_assigned = 1, ops, NULL)) AS within_200_vol,
     AVG(direct_gain) AS avg_direct_gain,
     AVG(IF(is_direct_eligible = 1, direct_gain, NULL)) AS avg_gain_on_direct_eligible,
     AVG(distance_assignedhub_customer) AS avg_dist_assignedhub_customer,
@@ -361,6 +375,8 @@ classified AS (
     m.hub_mismatch_vol,
     m.state_mismatch_vol,
     m.far_hub_vol,
+    m.within_200_vol,
+    SAFE_DIVIDE(m.within_200_vol, m.vol_with_actual_hub) AS pct_within_200_of_assigned,
     m.avg_direct_gain,
     m.avg_gain_on_direct_eligible,
     m.avg_dist_assignedhub_customer,
@@ -369,6 +385,8 @@ classified AS (
     m.ifr,
     CASE
       WHEN COALESCE(g.ghost_hub_vol, 0) > 0 THEN 'ghost_warehouses_no_directs'
+      -- Local inductors: majority of volume within 200mi of assigned hub
+      WHEN SAFE_DIVIDE(m.within_200_vol, m.vol_with_actual_hub) >= 0.80 THEN 'no_directs'
       WHEN COALESCE(t.weeks_with_true_direct, 0) >= m.weeks_with_vol
         OR (
           m.weeks_with_vol >= 4
