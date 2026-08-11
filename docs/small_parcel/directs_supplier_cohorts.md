@@ -26,7 +26,7 @@ Priority order (first match wins):
 | Bucket | Rule |
 |--------|------|
 | **Misshipping** | Parent has another warehouse in the induction state |
-| **Ghost warehouse** | Persistent far hub (≥10% supplier vol, most weeks) with **scattered** induction timing (avg &lt; 2 candidate ops per induction day) |
+| **Ghost warehouse** | Persistent far hub (≥10% supplier vol, most weeks) where parent has **no** warehouse in that state (day-in/day-out undeclared location) |
 | **Jumbo** | `direct_gain < 0.4` (null treated as &lt; 0.4) |
 | **Direct** | Everything else (`direct_gain >= 0.4`) |
 
@@ -36,7 +36,7 @@ candidate_vol = direct + jumbo + ghost + misshipping
 
 `candidate_partition_ok` is true when that identity holds.
 
-No separate “grouped candidate” filter — batching is only used to distinguish ghost (scattered timing) from other far hubs.
+No separate “grouped candidate” filter.
 
 ## Supplier cohorts (priority order)
 

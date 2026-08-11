@@ -8,9 +8,9 @@
 --
 --   2) Partition every candidate into exactly one bucket (priority order):
 --        misshipping     — parent has another WH in the induction state
---        ghost_warehouse — persistent far hub (>=10% supplier vol, most weeks)
---                          with scattered induction timing (avg <2 candidate
---                          ops/day at that hub — not batchy)
+--        ghost_warehouse — persistent far hub (>=10% supplier vol, most weeks,
+--                          no parent WH in that state). Typically day-in/day-out
+--                          shipping from an undeclared location.
 --        jumbo           — direct_gain < 0.4 (null treated as < 0.4)
 --        direct          — everything else (gain >= 0.4, not misshipping/ghost)
 --
@@ -228,7 +228,8 @@ ghost_hubs AS (
     h.hub_vol,
     h.hub_candidate_vol,
     SAFE_DIVIDE(h.hub_vol, m.total_vol) AS hub_share,
-    SAFE_DIVIDE(h.hub_candidate_vol, h.candidate_ind_days) AS avg_candidate_ops_per_day
+    SAFE_DIVIDE(h.hub_candidate_vol, NULLIF(h.candidate_ind_days, 0)) AS avg_candidate_ops_per_day,
+    h.candidate_ind_days
   FROM hub_agg AS h
   JOIN supplier_meta AS m
     USING (lookback_window, supplier_id)
@@ -237,8 +238,6 @@ ghost_hubs AS (
     AND h.pct_far >= 0.8
     AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
     AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
-    -- Scattered timing: average < 2 candidate ops per induction day
-    AND SAFE_DIVIDE(h.hub_candidate_vol, h.candidate_ind_days) < 2
 ),
 
 order_classified AS (

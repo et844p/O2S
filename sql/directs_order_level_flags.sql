@@ -6,8 +6,7 @@
 --               AND distance_assignedhub_actualhub >= 200
 --   Partition (priority):
 --     misshipping     — parent has another WH in the induction state
---     ghost_warehouse — persistent far hub (>=10% vol, most weeks) with
---                       scattered induction timing (avg <2 candidate ops/day)
+--     ghost_warehouse — persistent far hub (>=10% vol, most weeks, no parent WH)
 --     jumbo           — direct_gain < 0.4 (null treated as < 0.4)
 --     direct          — else (gain >= 0.4)
 --
@@ -177,7 +176,6 @@ ghost_hubs AS (
     AND h.pct_far >= 0.8
     AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
     AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
-    AND SAFE_DIVIDE(h.hub_candidate_vol, h.candidate_ind_days) < 2
 ),
 
 order_flagged AS (
