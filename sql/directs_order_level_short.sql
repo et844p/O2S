@@ -1,7 +1,6 @@
--- Short order-level directs flags (DS only, last 10w by PDD)
+-- Short order-level directs flags (DS, last 10w by PDD)
 -- candidate_bucket: misshipping | ghost_warehouse | jumbo | direct | non_candidate
---
--- Optional: add AND supplier_id = 12345 in `base`
+-- Uncomment a WHERE at the bottom to filter.
 
 WITH
 base AS (
@@ -60,43 +59,39 @@ parent_states AS (
 enriched AS (
   SELECT
     b.*,
-    CASE
-      WHEN ps.warehouse_state IS NOT NULL
-        AND b.actual_induction_hub_state IS NOT NULL
-        AND b.actual_induction_hub_state != b.own_state THEN 1
-      ELSE 0
-    END AS is_sibling_state
+    IF(
+      ps.warehouse_state IS NOT NULL
+      AND b.actual_induction_hub_state IS NOT NULL
+      AND b.actual_induction_hub_state != b.own_state,
+      1, 0
+    ) AS is_sibling_state
   FROM base AS b
   LEFT JOIN parent_states AS ps
     ON b.parent_suid = ps.parent_suid
    AND b.actual_induction_hub_state = ps.warehouse_state
 ),
 
-supplier_weeks AS (
-  SELECT supplier_id, COUNT(DISTINCT week_start) AS weeks_with_vol
+supplier_meta AS (
+  SELECT
+    supplier_id,
+    COUNT(DISTINCT ops) AS total_vol,
+    COUNT(DISTINCT week_start) AS weeks_with_vol
   FROM enriched
   GROUP BY 1
 ),
 
 ghost_hubs AS (
-  SELECT
-    e.supplier_id,
-    e.actual_induction_hub_name
+  SELECT e.supplier_id, e.actual_induction_hub_name
   FROM enriched AS e
-  JOIN supplier_weeks AS w USING (supplier_id)
+  JOIN supplier_meta AS m USING (supplier_id)
   WHERE e.is_candidate = 1
     AND e.actual_induction_hub_name IS NOT NULL
     AND e.is_sibling_state = 0
-  GROUP BY e.supplier_id, e.actual_induction_hub_name, w.weeks_with_vol
-  HAVING COUNT(DISTINCT e.ops)
-         / NULLIF(
-             (SELECT COUNT(DISTINCT ops) FROM enriched e2 WHERE e2.supplier_id = e.supplier_id),
-             0
-           ) >= 0.10
-     AND COUNT(DISTINCT e.week_start) >= GREATEST(2, CAST(CEIL(0.5 * w.weeks_with_vol) AS INT64))
-     AND AVG(CASE
-           WHEN e.distance_assignedhub_actualhub >= 200 THEN 1 ELSE 0
-         END) >= 0.8
+  GROUP BY e.supplier_id, e.actual_induction_hub_name, m.total_vol, m.weeks_with_vol
+  HAVING SAFE_DIVIDE(COUNT(DISTINCT e.ops), m.total_vol) >= 0.10
+     AND COUNT(DISTINCT e.week_start)
+         >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
+     AND AVG(IF(e.distance_assignedhub_actualhub >= 200, 1, 0)) >= 0.8
 )
 
 SELECT
@@ -112,6 +107,6 @@ FROM enriched AS e
 LEFT JOIN ghost_hubs AS g
   ON e.supplier_id = g.supplier_id
  AND e.actual_induction_hub_name = g.actual_induction_hub_name
--- WHERE e.supplier_id = 12345   -- optional
--- WHERE e.is_candidate = 1      -- candidates only
+-- WHERE e.supplier_id = 12345
+-- WHERE e.is_candidate = 1
 ORDER BY e.supplier_id, e.promised_delivery_end_range_date_at_order DESC, e.ops
