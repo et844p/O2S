@@ -54,6 +54,28 @@ Uses **parent warehouse states** (distinct `state_name` of all DS SUIDs under `p
 python3 scripts/run_directs_supplier_cohorts.py
 ```
 
+## Order-level flags + IFR / delivery_rel rollup
+
+Separate query tags every ops, then rolls up supplier counts/% with IFR (`inducted_on_time_or_early`) and `delivery_rel` split by:
+
+- direct candidate vs non-candidate
+- within candidates: actually direct / ghost / non-compliant / other
+
+| Artifact | Link |
+|----------|------|
+| Shared SQL (rollup default) | `sql/directs_order_flags_supplier_perf.sql` |
+| Order-level SQL | `sql/directs_order_level_flags.sql` |
+| Runner | `scripts/run_directs_order_flags_perf.py` |
+| Supplier rollup CSV | `output/directs/directs_supplier_perf_by_flag.csv` |
+
+```bash
+# Supplier rollup (counts, %, IFR, delivery_rel by flag)
+python3 scripts/run_directs_order_flags_perf.py
+
+# Order-level flags (optionally filter one SUID)
+python3 scripts/run_directs_order_flags_perf.py --order-level --supplier-id 34657
+```
+
 ## Outputs
 
 | File | Contents |
@@ -61,5 +83,6 @@ python3 scripts/run_directs_supplier_cohorts.py
 | `output/directs/directs_supplier_cohorts.csv` | Full supplier × window |
 | `output/directs/directs_supplier_cohorts_summary.csv` | Cohort counts |
 | `output/directs/pdd_10w_*.csv` / `msbd_2w_*.csv` | Per-cohort slices |
+| `output/directs/directs_supplier_perf_by_flag.csv` | IFR / delivery_rel by candidate bucket |
 
 Key columns: `parent_warehouse_states`, `candidate_vol`, `actually_direct_vol`, `top_actually_direct_hubs`, `ghost_hubs`, `noncompliant_hubs`, `noncompliant_candidate_vol`, `direct_cohort`.
