@@ -41,6 +41,15 @@ def _write_csv(df: pd.DataFrame, path: Path) -> None:
     df.to_csv(path, index=False)
 
 
+def _weighted_avg(series_val: pd.Series, series_wt: pd.Series) -> float | None:
+    mask = series_val.notna() & series_wt.notna() & (series_wt > 0)
+    if not mask.any():
+        return None
+    w = series_wt[mask].astype(float)
+    v = series_val[mask].astype(float)
+    return float((v * w).sum() / w.sum())
+
+
 def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for window, wdf in df.groupby("lookback_window", sort=False):
@@ -54,9 +63,44 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "total_vol": int(cdf["total_vol"].sum()),
                     "candidate_vol": int(cdf["candidate_vol"].sum()),
                     "actually_direct_vol": int(cdf["actually_direct_vol"].sum()),
-                    "ghost_hub_vol": int(cdf["ghost_hub_vol"].sum()),
+                    "jumbo_vol": int(cdf["jumbo_vol"].sum()),
+                    "ghost_candidate_vol": int(cdf["ghost_candidate_vol"].sum()),
                     "noncompliant_candidate_vol": int(
                         cdf["noncompliant_candidate_vol"].sum()
+                    ),
+                    "relief_vol": int(cdf["relief_vol"].sum()),
+                    "candidate_partition_ok": bool(cdf["candidate_partition_ok"].all()),
+                    "ifr": _weighted_avg(cdf["ifr"], cdf["total_vol"]),
+                    "delivery_rel": _weighted_avg(cdf["delivery_rel"], cdf["total_vol"]),
+                    "ifr_candidate": _weighted_avg(
+                        cdf["ifr_candidate"], cdf["candidate_vol"]
+                    ),
+                    "delivery_rel_candidate": _weighted_avg(
+                        cdf["delivery_rel_candidate"], cdf["candidate_vol"]
+                    ),
+                    "ifr_actually_direct": _weighted_avg(
+                        cdf["ifr_actually_direct"], cdf["actually_direct_vol"]
+                    ),
+                    "delivery_rel_actually_direct": _weighted_avg(
+                        cdf["delivery_rel_actually_direct"],
+                        cdf["actually_direct_vol"],
+                    ),
+                    "ifr_jumbo": _weighted_avg(cdf["ifr_jumbo"], cdf["jumbo_vol"]),
+                    "delivery_rel_jumbo": _weighted_avg(
+                        cdf["delivery_rel_jumbo"], cdf["jumbo_vol"]
+                    ),
+                    "ifr_ghost": _weighted_avg(
+                        cdf["ifr_ghost"], cdf["ghost_candidate_vol"]
+                    ),
+                    "delivery_rel_ghost": _weighted_avg(
+                        cdf["delivery_rel_ghost"], cdf["ghost_candidate_vol"]
+                    ),
+                    "ifr_non_compliant": _weighted_avg(
+                        cdf["ifr_non_compliant"], cdf["noncompliant_candidate_vol"]
+                    ),
+                    "delivery_rel_non_compliant": _weighted_avg(
+                        cdf["delivery_rel_non_compliant"],
+                        cdf["noncompliant_candidate_vol"],
                     ),
                     "missing_actual_hub_vol": int(cdf["missing_actual_hub_vol"].sum()),
                 }
@@ -123,7 +167,14 @@ def main() -> None:
             "candidate_vol",
             "actually_direct_vol",
             "jumbo_vol",
+            "ghost_candidate_vol",
             "noncompliant_candidate_vol",
+            "relief_vol",
+            "candidate_partition_ok",
+            "ifr",
+            "delivery_rel",
+            "ifr_candidate",
+            "delivery_rel_candidate",
             "top_actually_direct_hubs",
             "noncompliant_hubs",
             "ghost_hubs",

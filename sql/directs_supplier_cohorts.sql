@@ -1,20 +1,18 @@
 -- Directs supplier cohort analysis
 --
 -- Flow:
---   1) Direct CANDIDATE = distance conditions (400 / 200)
---   2) Split candidates using parent warehouse states + induction timing:
---        non_compliant       — ANY candidate in a state where parent HAS another WH
---        ghost_warehouse     — persistent far hub (>=10% vol) where parent has NO WH
---        not_candidate       — relief / FedEx constrained-hub pull (>=10% grouped share, not ghost)
---        actually_direct     — grouped far batches, <10% of supplier vol, gain >= 0.4
---                              (no minimum % share — shared direct trailers can be small for one SU)
---        jumbo               — same pattern as actually_direct but gain < 0.4 / null
---        other_candidate     — remaining candidates
+--   1) DISTANCE CANDIDATE = distance conditions (400 / 200)
+--   2) Relief / FedEx (>=10% grouped alternate, not ghost) exits candidates
+--   3) Final CANDIDATE partitions exhaustively into:
+--        actually_direct + jumbo + ghost_warehouse + non_compliant
+--      (use raw distances; do NOT trust distance_assignedhub_actualhub_200_plus)
 --
--- Candidate (use raw distances; do NOT trust distance_assignedhub_actualhub_200_plus):
---   assignedhub_notequal_actualhub_flag = 1
---   AND distance_assignedhub_customer >= 400
---   AND distance_assignedhub_actualhub >= 200
+--   non_compliant       — ANY candidate in a state where parent HAS another WH
+--   ghost_warehouse     — persistent far hub (>=10% vol) where parent has NO WH
+--   relief              — large grouped alternate hub (>=10% grouped share, not ghost)
+--   actually_direct     — grouped far batches, <10% of supplier vol, gain >= 0.4
+--                         (no minimum % share — shared direct trailers can be small for one SU)
+--   jumbo               — remaining final candidates (gain < 0.4 pattern + residual)
 --
 -- Parent warehouse states = distinct state_name of all DS SUIDs under parent_suid.
 -- Grouped = 2+ candidate ops at same supplier + actual hub + induction day.
@@ -102,6 +100,7 @@ base AS (
     o.ops,
     o.direct_gain,
     o.inducted_on_time_or_early,
+    o.delivery_rel,
     o.distance_assignedhub_customer,
     o.distance_actualhub_customer,
     o.distance_assignedhub_actualhub,
@@ -238,7 +237,7 @@ supplier_meta AS (
     ANY_VALUE(assigned_station_zip) AS assigned_station_zip,
     COUNT(DISTINCT ops) AS total_vol,
     COUNT(DISTINCT week_start) AS weeks_with_vol,
-    COUNT(DISTINCT IF(is_candidate = 1, ops, NULL)) AS candidate_vol,
+    COUNT(DISTINCT IF(is_candidate = 1, ops, NULL)) AS distance_candidate_vol,
     COUNT(DISTINCT IF(is_grouped = 1, ops, NULL)) AS grouped_candidate_vol,
     COUNT(DISTINCT IF(missing_actual_hub = 1, ops, NULL)) AS missing_actual_hub_vol,
     COUNT(DISTINCT IF(assignedhub_notequal_actualhub_flag = 1, ops, NULL)) AS hub_mismatch_vol,
@@ -246,12 +245,11 @@ supplier_meta AS (
     COUNT(DISTINCT IF(is_far_hub_induction = 1, ops, NULL)) AS far_hub_vol,
     COUNT(DISTINCT IF(missing_actual_hub = 0, ops, NULL)) AS vol_with_actual_hub,
     COUNT(DISTINCT IF(within_200_of_assigned = 1, ops, NULL)) AS within_200_vol,
-    AVG(direct_gain) AS avg_direct_gain,
-    AVG(IF(is_candidate = 1, direct_gain, NULL)) AS avg_gain_on_candidate,
     AVG(distance_assignedhub_customer) AS avg_dist_assignedhub_customer,
     AVG(distance_actualhub_customer) AS avg_dist_actualhub_customer,
     AVG(distance_assignedhub_actualhub) AS avg_dist_assignedhub_actualhub,
-    AVG(inducted_on_time_or_early) AS ifr
+    AVG(inducted_on_time_or_early) AS ifr,
+    AVG(delivery_rel) AS delivery_rel
   FROM base_enriched
   GROUP BY lookback_window, timebase, lookback_weeks, supplier_id
 ),
@@ -315,13 +313,95 @@ direct_hubs AS (
   SELECT * FROM hub_bucketed WHERE hub_bucket = 'actually_direct'
 ),
 
+-- Order-level exclusive buckets (final candidate excludes relief)
+order_classified AS (
+  SELECT
+    b.*,
+    COALESCE(h.hub_bucket, 'not_candidate') AS hub_bucket,
+    CASE
+      WHEN b.is_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 1
+      ELSE 0
+    END AS is_relief,
+    CASE
+      WHEN b.is_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 1
+      ELSE 0
+    END AS is_final_candidate,
+    CASE
+      WHEN b.is_candidate = 0 THEN 'non_candidate'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 'relief'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 'ghost_warehouse'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND b.is_grouped = 1
+        AND b.direct_gain >= 0.4 THEN 'actually_direct'
+      WHEN b.is_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 'jumbo'
+      ELSE 'non_candidate'
+    END AS candidate_bucket
+  FROM base_enriched AS b
+  LEFT JOIN hub_bucketed AS h
+    ON b.lookback_window = h.lookback_window
+   AND b.supplier_id = h.supplier_id
+   AND b.actual_induction_hub_name = h.actual_induction_hub_name
+),
+
+supplier_buckets AS (
+  SELECT
+    lookback_window,
+    supplier_id,
+    COUNT(DISTINCT IF(is_final_candidate = 1, ops, NULL)) AS candidate_vol,
+    COUNT(DISTINCT IF(is_relief = 1, ops, NULL)) AS relief_vol,
+    COUNT(DISTINCT IF(candidate_bucket = 'actually_direct', ops, NULL)) AS actually_direct_vol,
+    COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL)) AS jumbo_vol,
+    COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL)) AS ghost_candidate_vol,
+    COUNT(DISTINCT IF(candidate_bucket = 'non_compliant', ops, NULL)) AS noncompliant_candidate_vol,
+    COUNT(DISTINCT IF(
+      is_final_candidate = 1
+      AND hub_bucket = 'other_candidate',
+      ops,
+      NULL
+    )) AS other_candidate_vol,
+    AVG(IF(is_final_candidate = 1, direct_gain, NULL)) AS avg_gain_on_candidate,
+    AVG(IF(candidate_bucket = 'actually_direct', inducted_on_time_or_early, NULL)) AS ifr_actually_direct,
+    AVG(IF(candidate_bucket = 'actually_direct', delivery_rel, NULL)) AS delivery_rel_actually_direct,
+    AVG(IF(candidate_bucket = 'jumbo', inducted_on_time_or_early, NULL)) AS ifr_jumbo,
+    AVG(IF(candidate_bucket = 'jumbo', delivery_rel, NULL)) AS delivery_rel_jumbo,
+    AVG(IF(candidate_bucket = 'ghost_warehouse', inducted_on_time_or_early, NULL)) AS ifr_ghost,
+    AVG(IF(candidate_bucket = 'ghost_warehouse', delivery_rel, NULL)) AS delivery_rel_ghost,
+    AVG(IF(candidate_bucket = 'non_compliant', inducted_on_time_or_early, NULL)) AS ifr_non_compliant,
+    AVG(IF(candidate_bucket = 'non_compliant', delivery_rel, NULL)) AS delivery_rel_non_compliant,
+    AVG(IF(is_final_candidate = 1, inducted_on_time_or_early, NULL)) AS ifr_candidate,
+    AVG(IF(is_final_candidate = 1, delivery_rel, NULL)) AS delivery_rel_candidate,
+    AVG(IF(is_relief = 1, inducted_on_time_or_early, NULL)) AS ifr_relief,
+    AVG(IF(is_relief = 1, delivery_rel, NULL)) AS delivery_rel_relief,
+    (
+      COUNT(DISTINCT IF(candidate_bucket = 'actually_direct', ops, NULL))
+      + COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL))
+      + COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL))
+      + COUNT(DISTINCT IF(candidate_bucket = 'non_compliant', ops, NULL))
+    ) AS candidate_bucket_sum,
+    (
+      COUNT(DISTINCT IF(is_final_candidate = 1, ops, NULL))
+      = (
+        COUNT(DISTINCT IF(candidate_bucket = 'actually_direct', ops, NULL))
+        + COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL))
+        + COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL))
+        + COUNT(DISTINCT IF(candidate_bucket = 'non_compliant', ops, NULL))
+      )
+    ) AS candidate_partition_ok
+  FROM order_classified
+  GROUP BY 1, 2
+),
+
 ghost_supplier AS (
   SELECT
     lookback_window,
     supplier_id,
     COUNT(*) AS n_ghost_hubs,
     SUM(hub_vol) AS ghost_hub_vol,
-    SUM(hub_candidate_vol) AS ghost_candidate_vol,
+    SUM(hub_candidate_vol) AS ghost_hub_candidate_vol,
     STRING_AGG(
       CONCAT(
         actual_induction_hub_name, ' (', actual_induction_hub_state, ') ',
@@ -338,7 +418,7 @@ noncompliant_supplier AS (
     lookback_window,
     supplier_id,
     COUNT(*) AS n_noncompliant_hubs,
-    SUM(hub_candidate_vol) AS noncompliant_candidate_vol,
+    SUM(hub_candidate_vol) AS noncompliant_hub_candidate_vol,
     STRING_AGG(
       CONCAT(
         actual_induction_hub_name, ' (', actual_induction_hub_state, ') ',
@@ -356,7 +436,7 @@ true_direct_week AS (
     b.supplier_id,
     b.week_start,
     COUNT(DISTINCT IF(b.direct_gain >= 0.4, b.ops, NULL)) AS actually_direct_vol,
-    COUNT(DISTINCT IF(NOT (b.direct_gain >= 0.4), b.ops, NULL)) AS jumbo_vol
+    COUNT(DISTINCT IF(NOT (b.direct_gain >= 0.4), b.ops, NULL)) AS patterned_jumbo_vol
   FROM base_enriched AS b
   JOIN direct_hubs AS d
     ON b.lookback_window = d.lookback_window
@@ -370,8 +450,8 @@ true_direct_supplier AS (
   SELECT
     lookback_window,
     supplier_id,
-    SUM(actually_direct_vol) AS actually_direct_vol,
-    SUM(jumbo_vol) AS jumbo_vol,
+    SUM(actually_direct_vol) AS actually_direct_vol_weekly,
+    SUM(patterned_jumbo_vol) AS patterned_jumbo_vol,
     COUNTIF(actually_direct_vol >= 1) AS weeks_with_actually_direct,
     STRING_AGG(
       CONCAT(CAST(week_start AS STRING), ': ', CAST(actually_direct_vol AS STRING)),
@@ -418,13 +498,16 @@ classified AS (
     m.assigned_station_zip,
     m.total_vol,
     m.weeks_with_vol,
-    m.candidate_vol,
-    SAFE_DIVIDE(m.candidate_vol, m.total_vol) AS candidate_share,
+    m.distance_candidate_vol,
+    COALESCE(sb.relief_vol, 0) AS relief_vol,
+    COALESCE(sb.candidate_vol, 0) AS candidate_vol,
+    SAFE_DIVIDE(COALESCE(sb.candidate_vol, 0), m.total_vol) AS candidate_share,
     m.grouped_candidate_vol,
-    COALESCE(t.actually_direct_vol, 0) AS actually_direct_vol,
-    SAFE_DIVIDE(COALESCE(t.actually_direct_vol, 0), m.total_vol) AS actually_direct_share,
-    COALESCE(t.jumbo_vol, 0) AS jumbo_vol,
-    SAFE_DIVIDE(COALESCE(t.jumbo_vol, 0), m.total_vol) AS jumbo_share,
+    COALESCE(sb.actually_direct_vol, 0) AS actually_direct_vol,
+    SAFE_DIVIDE(COALESCE(sb.actually_direct_vol, 0), m.total_vol) AS actually_direct_share,
+    COALESCE(sb.jumbo_vol, 0) AS jumbo_vol,
+    SAFE_DIVIDE(COALESCE(sb.jumbo_vol, 0), m.total_vol) AS jumbo_share,
+    COALESCE(sb.other_candidate_vol, 0) AS other_candidate_vol,
     COALESCE(t.weeks_with_actually_direct, 0) AS weeks_with_actually_direct,
     SAFE_DIVIDE(COALESCE(t.weeks_with_actually_direct, 0), m.weeks_with_vol) AS pct_weeks_with_actually_direct,
     t.actually_direct_by_week,
@@ -432,11 +515,11 @@ classified AS (
     COALESCE(g.n_ghost_hubs, 0) AS n_ghost_hubs,
     COALESCE(g.ghost_hub_vol, 0) AS ghost_hub_vol,
     SAFE_DIVIDE(COALESCE(g.ghost_hub_vol, 0), m.total_vol) AS ghost_share,
-    COALESCE(g.ghost_candidate_vol, 0) AS ghost_candidate_vol,
+    COALESCE(sb.ghost_candidate_vol, 0) AS ghost_candidate_vol,
     g.ghost_hubs,
     COALESCE(nc.n_noncompliant_hubs, 0) AS n_noncompliant_hubs,
-    COALESCE(nc.noncompliant_candidate_vol, 0) AS noncompliant_candidate_vol,
-    SAFE_DIVIDE(COALESCE(nc.noncompliant_candidate_vol, 0), m.total_vol) AS noncompliant_share,
+    COALESCE(sb.noncompliant_candidate_vol, 0) AS noncompliant_candidate_vol,
+    SAFE_DIVIDE(COALESCE(sb.noncompliant_candidate_vol, 0), m.total_vol) AS noncompliant_share,
     nc.noncompliant_hubs,
     m.missing_actual_hub_vol,
     SAFE_DIVIDE(m.missing_actual_hub_vol, m.total_vol) AS missing_actual_hub_share,
@@ -445,15 +528,29 @@ classified AS (
     m.far_hub_vol,
     m.within_200_vol,
     SAFE_DIVIDE(m.within_200_vol, m.vol_with_actual_hub) AS pct_within_200_of_assigned,
-    m.avg_direct_gain,
-    m.avg_gain_on_candidate,
+    sb.avg_gain_on_candidate,
     m.avg_dist_assignedhub_customer,
     m.avg_dist_actualhub_customer,
     m.avg_dist_assignedhub_actualhub,
     m.ifr,
+    m.delivery_rel,
+    sb.ifr_candidate,
+    sb.delivery_rel_candidate,
+    sb.ifr_actually_direct,
+    sb.delivery_rel_actually_direct,
+    sb.ifr_jumbo,
+    sb.delivery_rel_jumbo,
+    sb.ifr_ghost,
+    sb.delivery_rel_ghost,
+    sb.ifr_non_compliant,
+    sb.delivery_rel_non_compliant,
+    sb.ifr_relief,
+    sb.delivery_rel_relief,
+    COALESCE(sb.candidate_bucket_sum, 0) AS candidate_bucket_sum,
+    COALESCE(sb.candidate_partition_ok, TRUE) AS candidate_partition_ok,
     CASE
       WHEN COALESCE(g.ghost_hub_vol, 0) > 0 THEN 'ghost_warehouses'
-      WHEN SAFE_DIVIDE(COALESCE(t.actually_direct_vol, 0), m.total_vol) >= 0.10
+      WHEN SAFE_DIVIDE(COALESCE(sb.actually_direct_vol, 0), m.total_vol) >= 0.10
         THEN 'ghost_warehouses'
       WHEN COALESCE(t.weeks_with_actually_direct, 0) >= m.weeks_with_vol
         OR (
@@ -467,13 +564,15 @@ classified AS (
         )
         THEN 'consistently_builds_directs'
       WHEN COALESCE(t.weeks_with_actually_direct, 0) >= 1 THEN 'sometimes_builds_directs'
-      WHEN SAFE_DIVIDE(COALESCE(nc.noncompliant_candidate_vol, 0), m.total_vol) >= 0.01
+      WHEN SAFE_DIVIDE(COALESCE(sb.noncompliant_candidate_vol, 0), m.total_vol) >= 0.01
         THEN 'non_compliant_shipping'
       ELSE 'no_directs'
     END AS direct_cohort
   FROM supplier_meta AS m
   LEFT JOIN parent_state_list AS p
     USING (lookback_window, parent_suid)
+  LEFT JOIN supplier_buckets AS sb
+    USING (lookback_window, supplier_id)
   LEFT JOIN ghost_supplier AS g
     USING (lookback_window, supplier_id)
   LEFT JOIN noncompliant_supplier AS nc

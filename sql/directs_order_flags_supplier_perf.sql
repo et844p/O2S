@@ -1,15 +1,16 @@
 -- Directs order-level flags + supplier performance rollup
 --
 -- Same classification rules as directs_supplier_cohorts.sql:
---   CANDIDATE = assignedhub != actualhub
+--   DISTANCE CANDIDATE = assignedhub != actualhub
 --               AND distance_assignedhub_customer >= 400
 --               AND distance_assignedhub_actualhub >= 200
---   Then split candidates via parent warehouse states + induction grouping:
---     non_compliant / ghost_warehouse / actually_direct / jumbo / other_candidate
+--   Relief / FedEx (>=10% grouped alternate, not ghost) exits candidates.
+--   Final CANDIDATE partitions exhaustively into:
+--     actually_direct + jumbo + ghost_warehouse + non_compliant
 --   Sibling-state candidates are always non_compliant.
 --   Actually direct: grouped far batches, <10% supplier vol, no minimum share, gain >= 0.4.
---   Jumbo: same pattern with gain < 0.4 / null.
---   Large grouped alternate hubs (>=10% grouped) that are not ghost = relief/FedEx → non_candidate.
+--   Jumbo: remaining final candidates that are not ghost/non_compliant/actually_direct
+--          (direct-pattern gain < 0.4, plus residual ungrouped / short-recurrence / other hubs).
 --
 -- Default window: last 10 weeks by promised_delivery_end_range_date_at_order.
 -- Change `windows` CTE to switch timebase/length.
@@ -221,6 +222,7 @@ hub_bucketed AS (
 ),
 
 -- Order-level flagged rows
+-- Distance candidate is renamed conceptually; final is_direct_candidate excludes relief.
 order_flagged AS (
   SELECT
     b.lookback_window,
@@ -262,18 +264,30 @@ order_flagged AS (
     b.missing_actual_hub,
     b.is_sibling_state,
     b.is_grouped,
-    b.is_direct_candidate,
+    b.is_direct_candidate AS is_distance_candidate,
     COALESCE(h.hub_bucket, 'not_candidate') AS hub_bucket,
     CASE
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 1
+      ELSE 0
+    END AS is_relief,
+    -- Final candidate = distance candidate minus relief
+    CASE
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 1
+      ELSE 0
+    END AS is_direct_candidate,
+    CASE
       WHEN b.is_direct_candidate = 0 THEN 'non_candidate'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 'relief'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 'ghost_warehouse'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
         AND b.is_grouped = 1
         AND b.direct_gain >= 0.4 THEN 'actually_direct'
-      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1 THEN 'jumbo'
-      WHEN b.is_direct_candidate = 1 THEN 'other_candidate'
+      -- Jumbo = remaining final candidates (gain < 0.4 pattern + residual)
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 'jumbo'
       ELSE 'non_candidate'
     END AS candidate_bucket,
     CASE
@@ -295,20 +309,27 @@ order_flagged AS (
     END AS is_actually_direct,
     CASE
       WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1
-        AND NOT (b.direct_gain >= 0.4) THEN 1
-      ELSE 0
-    END AS is_jumbo,
-    CASE
-      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate'
         AND NOT (
-          COALESCE(h.hub_bucket, 'not_candidate') IN ('ghost_warehouse', 'non_compliant')
+          COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse'
+          OR COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant'
           OR (
             COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
             AND b.is_grouped = 1
+            AND b.direct_gain >= 0.4
           )
         ) THEN 1
+      ELSE 0
+    END AS is_jumbo,
+    -- Residual subset of jumbo (for diagnostics; still counted in jumbo_vol)
+    CASE
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') NOT IN (
+          'not_candidate', 'ghost_warehouse', 'non_compliant', 'actually_direct'
+        ) THEN 1
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND NOT (b.is_grouped = 1) THEN 1
       ELSE 0
     END AS is_other_candidate
   FROM base_enriched AS b
@@ -324,6 +345,8 @@ order_flagged AS (
 -- =====================================================================
 -- SUPPLIER ROLLUP
 -- Swap this block for `SELECT * FROM order_flagged` to get order-level.
+-- Partition identity (must hold):
+--   candidate_vol = actually_direct_vol + jumbo_vol + ghost_warehouse_vol + non_compliant_vol
 -- =====================================================================
 SELECT
   lookback_window,
@@ -346,7 +369,9 @@ SELECT
   AVG(inducted_on_time_or_early) AS ifr_all,
   AVG(delivery_rel) AS delivery_rel_all,
 
-  -- Candidate vs non-candidate
+  -- Distance vs relief vs final candidate
+  COUNT(DISTINCT IF(is_distance_candidate = 1, ops, NULL)) AS distance_candidate_vol,
+  COUNT(DISTINCT IF(is_relief = 1, ops, NULL)) AS relief_vol,
   COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL)) AS candidate_vol,
   COUNT(DISTINCT IF(is_direct_candidate = 0, ops, NULL)) AS non_candidate_vol,
   SAFE_DIVIDE(
@@ -358,6 +383,8 @@ SELECT
   AVG(IF(is_direct_candidate = 0, inducted_on_time_or_early, NULL)) AS ifr_non_candidate,
   AVG(IF(is_direct_candidate = 1, delivery_rel, NULL)) AS delivery_rel_candidate,
   AVG(IF(is_direct_candidate = 0, delivery_rel, NULL)) AS delivery_rel_non_candidate,
+  AVG(IF(is_relief = 1, inducted_on_time_or_early, NULL)) AS ifr_relief,
+  AVG(IF(is_relief = 1, delivery_rel, NULL)) AS delivery_rel_relief,
 
   -- Within candidates: actually direct (gain >= 0.4)
   COUNT(DISTINCT IF(is_actually_direct = 1, ops, NULL)) AS actually_direct_vol,
@@ -373,7 +400,7 @@ SELECT
   AVG(IF(is_actually_direct = 1, delivery_rel, NULL)) AS delivery_rel_actually_direct,
   AVG(IF(is_actually_direct = 1, direct_gain, NULL)) AS avg_gain_actually_direct,
 
-  -- Within candidates: jumbo (direct pattern but gain < 0.4 or null)
+  -- Within candidates: jumbo (gain < 0.4 pattern + residual)
   COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)) AS jumbo_vol,
   SAFE_DIVIDE(
     COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)),
@@ -413,14 +440,27 @@ SELECT
   AVG(IF(is_non_compliant = 1, inducted_on_time_or_early, NULL)) AS ifr_non_compliant,
   AVG(IF(is_non_compliant = 1, delivery_rel, NULL)) AS delivery_rel_non_compliant,
 
-  -- Within candidates: other (candidate but not classified into the three)
+  -- Residual subset of jumbo (diagnostics only)
   COUNT(DISTINCT IF(is_other_candidate = 1, ops, NULL)) AS other_candidate_vol,
-  SAFE_DIVIDE(
-    COUNT(DISTINCT IF(is_other_candidate = 1, ops, NULL)),
-    COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL))
-  ) AS pct_of_candidates_other,
   AVG(IF(is_other_candidate = 1, inducted_on_time_or_early, NULL)) AS ifr_other_candidate,
-  AVG(IF(is_other_candidate = 1, delivery_rel, NULL)) AS delivery_rel_other_candidate
+  AVG(IF(is_other_candidate = 1, delivery_rel, NULL)) AS delivery_rel_other_candidate,
+
+  -- Partition check: AD + jumbo + ghost + NC must equal candidate_vol
+  (
+    COUNT(DISTINCT IF(is_actually_direct = 1, ops, NULL))
+    + COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL))
+    + COUNT(DISTINCT IF(is_ghost_warehouse = 1, ops, NULL))
+    + COUNT(DISTINCT IF(is_non_compliant = 1, ops, NULL))
+  ) AS candidate_bucket_sum,
+  (
+    COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL))
+    = (
+      COUNT(DISTINCT IF(is_actually_direct = 1, ops, NULL))
+      + COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL))
+      + COUNT(DISTINCT IF(is_ghost_warehouse = 1, ops, NULL))
+      + COUNT(DISTINCT IF(is_non_compliant = 1, ops, NULL))
+    )
+  ) AS candidate_partition_ok
 
 FROM order_flagged
 GROUP BY lookback_window, timebase, supplier_id
