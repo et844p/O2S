@@ -31,7 +31,6 @@
 | misshipping | 17.0% | 86.8% | 17.2% | 74.0% | 23.8% |
 
 ## Meeting takeaways
-## Meeting takeaways
 
 1. **Jumbo** is the weakest IFR bucket at **83.2%** (-5.9 pp vs network) and weak del rel (**77.5%**).
 2. **Misshipping** has the worst delivery_rel among candidate buckets (**74.0%**, -11.5 pp) — sibling-state shipping is hurting reliability more than IFR.
