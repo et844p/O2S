@@ -26,7 +26,7 @@ COHORT_EXPORTS = {
     "consistently_builds_directs": "consistently_builds_directs.csv",
     "sometimes_builds_directs": "sometimes_builds_directs.csv",
     "ghost_warehouses": "ghost_warehouses.csv",
-    "non_compliant_shipping": "non_compliant_shipping.csv",
+    "misshipping": "misshipping.csv",
     "no_directs": "no_directs.csv",
 }
 
@@ -62,13 +62,10 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "suppliers": len(cdf),
                     "total_vol": int(cdf["total_vol"].sum()),
                     "candidate_vol": int(cdf["candidate_vol"].sum()),
-                    "actually_direct_vol": int(cdf["actually_direct_vol"].sum()),
+                    "direct_vol": int(cdf["direct_vol"].sum()),
                     "jumbo_vol": int(cdf["jumbo_vol"].sum()),
-                    "ghost_candidate_vol": int(cdf["ghost_candidate_vol"].sum()),
-                    "noncompliant_candidate_vol": int(
-                        cdf["noncompliant_candidate_vol"].sum()
-                    ),
-                    "relief_vol": int(cdf["relief_vol"].sum()),
+                    "ghost_vol": int(cdf["ghost_vol"].sum()),
+                    "misshipping_vol": int(cdf["misshipping_vol"].sum()),
                     "candidate_partition_ok": bool(cdf["candidate_partition_ok"].all()),
                     "ifr": _weighted_avg(cdf["ifr"], cdf["total_vol"]),
                     "delivery_rel": _weighted_avg(cdf["delivery_rel"], cdf["total_vol"]),
@@ -78,29 +75,23 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "delivery_rel_candidate": _weighted_avg(
                         cdf["delivery_rel_candidate"], cdf["candidate_vol"]
                     ),
-                    "ifr_actually_direct": _weighted_avg(
-                        cdf["ifr_actually_direct"], cdf["actually_direct_vol"]
-                    ),
-                    "delivery_rel_actually_direct": _weighted_avg(
-                        cdf["delivery_rel_actually_direct"],
-                        cdf["actually_direct_vol"],
+                    "ifr_direct": _weighted_avg(cdf["ifr_direct"], cdf["direct_vol"]),
+                    "delivery_rel_direct": _weighted_avg(
+                        cdf["delivery_rel_direct"], cdf["direct_vol"]
                     ),
                     "ifr_jumbo": _weighted_avg(cdf["ifr_jumbo"], cdf["jumbo_vol"]),
                     "delivery_rel_jumbo": _weighted_avg(
                         cdf["delivery_rel_jumbo"], cdf["jumbo_vol"]
                     ),
-                    "ifr_ghost": _weighted_avg(
-                        cdf["ifr_ghost"], cdf["ghost_candidate_vol"]
-                    ),
+                    "ifr_ghost": _weighted_avg(cdf["ifr_ghost"], cdf["ghost_vol"]),
                     "delivery_rel_ghost": _weighted_avg(
-                        cdf["delivery_rel_ghost"], cdf["ghost_candidate_vol"]
+                        cdf["delivery_rel_ghost"], cdf["ghost_vol"]
                     ),
-                    "ifr_non_compliant": _weighted_avg(
-                        cdf["ifr_non_compliant"], cdf["noncompliant_candidate_vol"]
+                    "ifr_misshipping": _weighted_avg(
+                        cdf["ifr_misshipping"], cdf["misshipping_vol"]
                     ),
-                    "delivery_rel_non_compliant": _weighted_avg(
-                        cdf["delivery_rel_non_compliant"],
-                        cdf["noncompliant_candidate_vol"],
+                    "delivery_rel_misshipping": _weighted_avg(
+                        cdf["delivery_rel_misshipping"], cdf["misshipping_vol"]
                     ),
                     "missing_actual_hub_vol": int(cdf["missing_actual_hub_vol"].sum()),
                 }
@@ -165,18 +156,17 @@ def main() -> None:
             "parent_warehouse_states",
             "total_vol",
             "candidate_vol",
-            "actually_direct_vol",
+            "direct_vol",
             "jumbo_vol",
-            "ghost_candidate_vol",
-            "noncompliant_candidate_vol",
-            "relief_vol",
+            "ghost_vol",
+            "misshipping_vol",
             "candidate_partition_ok",
             "ifr",
             "delivery_rel",
             "ifr_candidate",
             "delivery_rel_candidate",
-            "top_actually_direct_hubs",
-            "noncompliant_hubs",
+            "top_direct_hubs",
+            "misshipping_hubs",
             "ghost_hubs",
         ]
     ]
@@ -193,8 +183,12 @@ def main() -> None:
     )
 
     # Remove obsolete cohort files from prior schema
-    for stale in args.output_dir.glob("*_ghost_warehouses_no_directs.csv"):
-        stale.unlink(missing_ok=True)
+    for stale_pattern in (
+        "*_ghost_warehouses_no_directs.csv",
+        "*_non_compliant_shipping.csv",
+    ):
+        for stale in args.output_dir.glob(stale_pattern):
+            stale.unlink(missing_ok=True)
 
     for window in windows:
         wdf = df[df["lookback_window"] == window]

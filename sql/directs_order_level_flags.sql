@@ -1,19 +1,17 @@
 -- Directs order-level flags + supplier performance rollup
 --
--- Same classification rules as directs_supplier_cohorts.sql:
---   DISTANCE CANDIDATE = assignedhub != actualhub
+-- Same rules as directs_supplier_cohorts.sql:
+--   CANDIDATE = wrong hub
 --               AND distance_assignedhub_customer >= 400
 --               AND distance_assignedhub_actualhub >= 200
---   Relief / FedEx (>=10% grouped alternate, not ghost) exits candidates.
---   Final CANDIDATE partitions exhaustively into:
---     actually_direct + jumbo + ghost_warehouse + non_compliant
---   Sibling-state candidates are always non_compliant.
---   Actually direct: grouped far batches, <10% supplier vol, no minimum share, gain >= 0.4.
---   Jumbo: remaining final candidates that are not ghost/non_compliant/actually_direct
---          (direct-pattern gain < 0.4, plus residual ungrouped / short-recurrence / other hubs).
+--   Partition (priority):
+--     misshipping     — parent has another WH in the induction state
+--     ghost_warehouse — persistent far hub (>=10% vol, most weeks) with
+--                       scattered induction timing (avg <2 candidate ops/day)
+--     jumbo           — direct_gain < 0.4 (null treated as < 0.4)
+--     direct          — else (gain >= 0.4)
 --
 -- Default window: last 10 weeks by promised_delivery_end_range_date_at_order.
--- Change `windows` CTE to switch timebase/length.
 --
 -- Final SELECT is the SUPPLIER ROLLUP (counts, %, IFR, delivery_rel).
 -- For order-level rows, replace the final SELECT with:
@@ -122,27 +120,9 @@ base AS (
     AND o.promised_delivery_end_range_date_at_order < w.window_end
 ),
 
-hub_day AS (
-  SELECT
-    lookback_window,
-    supplier_id,
-    actual_induction_hub_name,
-    ind_day,
-    COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL)) AS candidate_on_day
-  FROM base
-  WHERE missing_actual_hub = 0
-    AND is_direct_candidate = 1
-    AND actual_induction_hub_name IS NOT NULL
-  GROUP BY 1, 2, 3, 4
-),
-
 base_enriched AS (
   SELECT
     b.*,
-    CASE
-      WHEN b.is_direct_candidate = 1 AND COALESCE(hd.candidate_on_day, 0) >= 2 THEN 1
-      ELSE 0
-    END AS is_grouped,
     CASE
       WHEN ps.warehouse_state IS NOT NULL
         AND b.actual_induction_hub_state IS NOT NULL
@@ -150,11 +130,6 @@ base_enriched AS (
       ELSE 0
     END AS is_sibling_state
   FROM base AS b
-  LEFT JOIN hub_day AS hd
-    ON b.lookback_window = hd.lookback_window
-   AND b.supplier_id = hd.supplier_id
-   AND b.actual_induction_hub_name = hd.actual_induction_hub_name
-   AND b.ind_day = hd.ind_day
   LEFT JOIN parent_states AS ps
     ON b.lookback_window = ps.lookback_window
    AND b.parent_suid = ps.parent_suid
@@ -172,7 +147,6 @@ supplier_meta AS (
 ),
 
 hub_agg AS (
-  -- Grain: supplier × hub name only (not state) to avoid join fanout.
   SELECT
     lookback_window,
     supplier_id,
@@ -181,9 +155,8 @@ hub_agg AS (
     MAX(is_sibling_state) AS is_sibling_state,
     COUNT(DISTINCT ops) AS hub_vol,
     COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL)) AS hub_candidate_vol,
-    COUNT(DISTINCT IF(is_grouped = 1, ops, NULL)) AS hub_grouped_vol,
     COUNT(DISTINCT IF(is_direct_candidate = 1, week_start, NULL)) AS weeks_with_candidate,
-    COUNT(DISTINCT IF(is_grouped = 1, week_start, NULL)) AS weeks_with_grouped,
+    COUNT(DISTINCT IF(is_direct_candidate = 1, ind_day, NULL)) AS candidate_ind_days,
     AVG(CASE WHEN is_far_hub_induction = 1 THEN 1 ELSE 0 END) AS pct_far
   FROM base_enriched
   WHERE missing_actual_hub = 0
@@ -191,39 +164,22 @@ hub_agg AS (
   GROUP BY 1, 2, 3
 ),
 
-hub_bucketed AS (
+ghost_hubs AS (
   SELECT
     h.lookback_window,
     h.supplier_id,
-    h.actual_induction_hub_name,
-    h.actual_induction_hub_state,
-    CASE
-      WHEN h.is_sibling_state = 0
-        AND h.pct_far >= 0.8
-        AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-        AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
-        THEN 'ghost_warehouse'
-      WHEN h.is_sibling_state = 1
-        AND h.hub_candidate_vol > 0
-        THEN 'non_compliant'
-      WHEN h.is_sibling_state = 0
-        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) >= 0.10
-        THEN 'not_candidate'
-      WHEN h.hub_grouped_vol > 0
-        AND h.weeks_with_grouped >= 2
-        AND h.pct_far >= 0.8
-        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) < 0.10
-        THEN 'actually_direct'
-      WHEN h.hub_candidate_vol > 0 THEN 'other_candidate'
-      ELSE 'not_candidate'
-    END AS hub_bucket
+    h.actual_induction_hub_name
   FROM hub_agg AS h
   JOIN supplier_meta AS m
     USING (lookback_window, supplier_id)
+  WHERE h.is_sibling_state = 0
+    AND h.hub_candidate_vol > 0
+    AND h.pct_far >= 0.8
+    AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
+    AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
+    AND SAFE_DIVIDE(h.hub_candidate_vol, h.candidate_ind_days) < 2
 ),
 
--- Order-level flagged rows
--- Distance candidate is renamed conceptually; final is_direct_candidate excludes relief.
 order_flagged AS (
   SELECT
     b.lookback_window,
@@ -264,80 +220,43 @@ order_flagged AS (
     b.delivery_rel,
     b.missing_actual_hub,
     b.is_sibling_state,
-    b.is_grouped,
-    b.is_direct_candidate AS is_distance_candidate,
-    COALESCE(h.hub_bucket, 'not_candidate') AS hub_bucket,
-    CASE
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 1
-      ELSE 0
-    END AS is_relief,
-    -- Final candidate = distance candidate minus relief
-    CASE
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 1
-      ELSE 0
-    END AS is_direct_candidate,
+    b.is_direct_candidate,
     CASE
       WHEN b.is_direct_candidate = 0 THEN 'non_candidate'
-      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'not_candidate' THEN 'relief'
-      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 'ghost_warehouse'
-      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
-      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1
-        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 'actually_direct'
-      -- Jumbo = remaining final candidates (gain < 0.4 / null pattern + residual)
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 'jumbo'
-      ELSE 'non_candidate'
+      WHEN b.is_sibling_state = 1 THEN 'misshipping'
+      WHEN g.actual_induction_hub_name IS NOT NULL THEN 'ghost_warehouse'
+      WHEN COALESCE(b.direct_gain, 0) < 0.4 THEN 'jumbo'
+      ELSE 'direct'
     END AS candidate_bucket,
     CASE
+      WHEN b.is_direct_candidate = 1 AND b.is_sibling_state = 1 THEN 1
+      ELSE 0
+    END AS is_misshipping,
+    CASE
       WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 1
+        AND b.is_sibling_state = 0
+        AND g.actual_induction_hub_name IS NOT NULL THEN 1
       ELSE 0
     END AS is_ghost_warehouse,
     CASE
       WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 1
-      ELSE 0
-    END AS is_non_compliant,
-    CASE
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1
-        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 1
-      ELSE 0
-    END AS is_actually_direct,
-    CASE
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate'
-        AND NOT (
-          COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse'
-          OR COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant'
-          OR (
-            COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-            AND b.is_grouped = 1
-            AND COALESCE(b.direct_gain, 0) >= 0.4
-          )
-        ) THEN 1
+        AND b.is_sibling_state = 0
+        AND g.actual_induction_hub_name IS NULL
+        AND COALESCE(b.direct_gain, 0) < 0.4 THEN 1
       ELSE 0
     END AS is_jumbo,
-    -- Residual subset of jumbo (for diagnostics; still counted in jumbo_vol)
     CASE
       WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') NOT IN (
-          'not_candidate', 'ghost_warehouse', 'non_compliant', 'actually_direct'
-        ) THEN 1
-      WHEN b.is_direct_candidate = 1
-        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND NOT (b.is_grouped = 1) THEN 1
+        AND b.is_sibling_state = 0
+        AND g.actual_induction_hub_name IS NULL
+        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 1
       ELSE 0
-    END AS is_other_candidate
+    END AS is_direct
   FROM base_enriched AS b
-  LEFT JOIN hub_bucketed AS h
-    ON b.lookback_window = h.lookback_window
-   AND b.supplier_id = h.supplier_id
-   AND b.actual_induction_hub_name = h.actual_induction_hub_name
+  LEFT JOIN ghost_hubs AS g
+    ON b.lookback_window = g.lookback_window
+   AND b.supplier_id = g.supplier_id
+   AND b.actual_induction_hub_name = g.actual_induction_hub_name
   LEFT JOIN parent_state_list AS p
     ON b.lookback_window = p.lookback_window
    AND b.parent_suid = p.parent_suid
