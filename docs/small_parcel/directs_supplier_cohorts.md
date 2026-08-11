@@ -1,8 +1,8 @@
 # Directs Supplier Cohorts
 
-Generated: 2026-08-10
+Generated: 2026-08-11
 
-Classifies dropship (`fulfillment_type = 'DS'`) suppliers by intentional directs vs ghost warehouses vs neither.
+Classifies dropship (`fulfillment_type = 'DS'`) suppliers by splitting **direct candidates** into actually direct vs ghost warehouse vs non-compliant shipping.
 
 ## Lookbacks
 
@@ -11,63 +11,55 @@ Classifies dropship (`fulfillment_type = 'DS'`) suppliers by intentional directs
 | `pdd_10w` | `promised_delivery_end_range_date_at_order` | 10 weeks | 50 ops |
 | `msbd_2w` | `msbd_su` | 2 weeks | 20 ops |
 
-## Potential direct (distance only)
+## Step 1 — Direct candidate
 
-An order is a **potential direct** when all of:
+Distance conditions only (raw columns; do **not** trust `distance_assignedhub_actualhub_200_plus`):
 
 1. `assignedhub_notequal_actualhub_flag = 1`
 2. `distance_assignedhub_customer >= 400`
 3. `distance_assignedhub_actualhub >= 200`
 
-Use the **raw distance columns**, not `distance_assignedhub_actualhub_200_plus` (unreliable for near-hub ID mismatches).
+## Step 2 — Split candidates
 
-Potential directs are then split using induction timing / hub patterns.
+Uses **parent warehouse states** (distinct `state_name` of all DS SUIDs under `parent_suid`) and **induction timing** (grouped = 2+ candidate ops at same actual hub + day).
 
-## True directs vs ghost warehouses
-
-| Signal | Rule |
+| Bucket | Rule |
 |--------|------|
-| **Batched potential** | 2+ potential-direct ops at same supplier + actual hub + induction day |
-| **Ghost hub** | Far hub in ≥50% of weeks (min 2) and ≥10% of supplier volume |
-| **Direct-building hub** | Recurring (≥2 weeks) batched far hub at **1–10%** of supplier volume |
-| **True directs** | Batched potential at direct-building hubs only |
+| **Actually direct** | Grouped batches at a far hub, recurring (≥2 weeks), **1–10%** of supplier vol; not systematic sibling cross-ship |
+| **Ghost warehouse** | Far hub ≥10% of supplier vol, most weeks, and parent has **no** warehouse in that induction state |
+| **Non-compliant** | Candidate in a state where parent **has** another warehouse (sibling) — systematic (most weeks) or sporadic / weakly grouped misships |
 
-Intentional directing should stay under ~**10%** of supplier volume. If `true_direct_share >= 10%`, classify as ghost-scale. Scattered far scans under 1% per hub (e.g. network noise) do not count as building directs.
-
-## Cohorts
+## Supplier cohorts (priority order)
 
 | Cohort | Meaning |
 |--------|---------|
-| `consistently_builds_directs` | True directs in every week (or all-but-one when ≥4 weeks) |
-| `sometimes_builds_directs` | True directs in some weeks only |
-| `ghost_warehouses_no_directs` | Persistent ≥10% far hubs, or true-direct share ≥10% |
-| `no_directs` | No intentional direct-building hubs |
+| `ghost_warehouses` | Persistent unregistered far hubs (or actually-direct share ≥10%) |
+| `consistently_builds_directs` | Actually-direct weeks nearly every week |
+| `sometimes_builds_directs` | Actually-direct in some weeks |
+| `non_compliant_shipping` | Sibling-state candidates only (no material actually-direct) |
+| `no_directs` | No material candidate split into the above |
 
-### Calibration examples
+## Calibration (`pdd_10w`)
 
-| Supplier | Expected | Result (`pdd_10w`) |
-|----------|----------|--------------------|
-| Edecor Center Inc._1 NJ 08110 | Ghost (South Dallas / Diamond Bar) | `ghost_warehouses_no_directs` |
-| Nathan James NV 89434 | Sometimes (e.g. Orlando batches, limited share) | `sometimes_builds_directs` |
-| JLA Home GA 31407 - SV2 | Not directs — far scans are scatter, not a 1–10% recurring hub | `no_directs` |
-
-## Results summary
-
-Updated on each run via `output/directs/directs_supplier_cohorts_summary.csv`.
+| Supplier | Parent WH states | Result |
+|----------|------------------|--------|
+| Unique Loom SC29707 | CA, SC | Fresno CA → **non_compliant**; Orlando etc. can still be actually-direct |
+| Nathan James NV 89434 | NV | Orlando → **sometimes_builds_directs** |
+| Edecor Center Inc._1 NJ 08110 | NJ | South Dallas / Diamond Bar → **ghost_warehouses** |
+| JLA Home GA 31407 - SV2 | (local scatter) | **no_directs** |
 
 ## How to run
 
 ```bash
 python3 scripts/run_directs_supplier_cohorts.py
-python3 scripts/run_directs_supplier_cohorts.py --window pdd_10w --cohort sometimes_builds_directs
 ```
 
 ## Outputs
 
 | File | Contents |
 |------|----------|
-| `output/directs/directs_supplier_cohorts.csv` | Full supplier × window results |
-| `output/directs/directs_supplier_cohorts_summary.csv` | Cohort counts / volumes |
-| `output/directs/pdd_10w_*.csv` / `msbd_2w_*.csv` | Per-window cohort slices |
+| `output/directs/directs_supplier_cohorts.csv` | Full supplier × window |
+| `output/directs/directs_supplier_cohorts_summary.csv` | Cohort counts |
+| `output/directs/pdd_10w_*.csv` / `msbd_2w_*.csv` | Per-cohort slices |
 
-Useful columns: `potential_direct_vol`, `potential_direct_share`, `true_direct_vol`, `true_direct_share`, `weeks_with_true_direct`, `true_direct_by_week`, `top_true_direct_hubs`, `ghost_hubs`, `within_200_vol`, `pct_within_200_of_assigned`, `missing_actual_hub_vol`.
+Key columns: `parent_warehouse_states`, `candidate_vol`, `actually_direct_vol`, `top_actually_direct_hubs`, `ghost_hubs`, `noncompliant_hubs`, `noncompliant_candidate_vol`, `direct_cohort`.

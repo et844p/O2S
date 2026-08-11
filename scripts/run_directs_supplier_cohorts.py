@@ -25,7 +25,8 @@ OUTPUT_DIR = ROOT / "output" / "directs"
 COHORT_EXPORTS = {
     "consistently_builds_directs": "consistently_builds_directs.csv",
     "sometimes_builds_directs": "sometimes_builds_directs.csv",
-    "ghost_warehouses_no_directs": "ghost_warehouses_no_directs.csv",
+    "ghost_warehouses": "ghost_warehouses.csv",
+    "non_compliant_shipping": "non_compliant_shipping.csv",
     "no_directs": "no_directs.csv",
 }
 
@@ -51,9 +52,12 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "direct_cohort": cohort,
                     "suppliers": len(cdf),
                     "total_vol": int(cdf["total_vol"].sum()),
-                    "potential_direct_vol": int(cdf["potential_direct_vol"].sum()),
-                    "true_direct_vol": int(cdf["true_direct_vol"].sum()),
+                    "candidate_vol": int(cdf["candidate_vol"].sum()),
+                    "actually_direct_vol": int(cdf["actually_direct_vol"].sum()),
                     "ghost_hub_vol": int(cdf["ghost_hub_vol"].sum()),
+                    "noncompliant_candidate_vol": int(
+                        cdf["noncompliant_candidate_vol"].sum()
+                    ),
                     "missing_actual_hub_vol": int(cdf["missing_actual_hub_vol"].sum()),
                 }
             )
@@ -102,10 +106,10 @@ def main() -> None:
     print(summary.to_string(index=False))
     print()
 
-    # Known calibration examples
     examples = df[
         df["su_name"].astype(str).str.contains(
-            "Edecor Center Inc._1 NJ 08110|Nathan James NV 89434|JLA Home GA 31407 - SV2",
+            "Edecor Center Inc._1 NJ 08110|Nathan James NV 89434|"
+            "JLA Home GA 31407 - SV2|Unique Loom SC29707",
             regex=True,
             na=False,
         )
@@ -114,13 +118,13 @@ def main() -> None:
             "lookback_window",
             "su_name",
             "direct_cohort",
+            "parent_warehouse_states",
             "total_vol",
-            "potential_direct_vol",
-            "true_direct_vol",
-            "true_direct_share",
-            "weeks_with_true_direct",
-            "weeks_with_vol",
-            "top_true_direct_hubs",
+            "candidate_vol",
+            "actually_direct_vol",
+            "noncompliant_candidate_vol",
+            "top_actually_direct_hubs",
+            "noncompliant_hubs",
             "ghost_hubs",
         ]
     ]
@@ -135,6 +139,10 @@ def main() -> None:
         if args.window == "all"
         else [args.window]
     )
+
+    # Remove obsolete cohort files from prior schema
+    for stale in args.output_dir.glob("*_ghost_warehouses_no_directs.csv"):
+        stale.unlink(missing_ok=True)
 
     for window in windows:
         wdf = df[df["lookback_window"] == window]

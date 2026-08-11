@@ -1,9 +1,11 @@
-lookback_window,window_label,direct_cohort,suppliers,total_vol,potential_direct_vol,true_direct_vol,ghost_hub_vol,missing_actual_hub_vol
-msbd_2w,2-week MSBD,no_directs,7715,1348337,17155,0,0,70267
-msbd_2w,2-week MSBD,ghost_warehouses_no_directs,1576,205550,51980,2084,74436,6309
-msbd_2w,2-week MSBD,consistently_builds_directs,134,68550,4617,2676,0,1582
-msbd_2w,2-week MSBD,sometimes_builds_directs,12,13133,514,330,0,543
-pdd_10w,10-week promised delivery date,no_directs,8339,3972215,328707,0,0,170067
-pdd_10w,10-week promised delivery date,sometimes_builds_directs,2299,2340970,358595,65212,0,38730
-pdd_10w,10-week promised delivery date,ghost_warehouses_no_directs,2053,913869,300743,34801,258399,12405
-pdd_10w,10-week promised delivery date,consistently_builds_directs,39,203027,32889,10642,0,3921
+lookback_window,window_label,direct_cohort,suppliers,total_vol,candidate_vol,actually_direct_vol,ghost_hub_vol,noncompliant_candidate_vol,missing_actual_hub_vol
+msbd_2w,2-week MSBD,no_directs,6802,1155658,9614,0,0,500,89567
+msbd_2w,2-week MSBD,non_compliant_shipping,1388,210217,19424,0,0,16829,11384
+msbd_2w,2-week MSBD,ghost_warehouses,1019,132240,35085,504,49234,2097,7704
+msbd_2w,2-week MSBD,sometimes_builds_directs,68,31988,2040,960,0,358,1369
+msbd_2w,2-week MSBD,consistently_builds_directs,10,6291,449,288,0,55,239
+pdd_10w,10-week promised delivery date,no_directs,4744,3020189,210961,0,0,6089,155950
+pdd_10w,10-week promised delivery date,non_compliant_shipping,4151,1228993,162474,0,0,55413,19176
+pdd_10w,10-week promised delivery date,sometimes_builds_directs,2511,2399044,378478,65744,0,39474,39288
+pdd_10w,10-week promised delivery date,ghost_warehouses,1273,659948,233280,25640,194603,15461,7575
+pdd_10w,10-week promised delivery date,consistently_builds_directs,30,85614,17611,4525,0,3607,1648
