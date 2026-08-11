@@ -198,12 +198,15 @@ supplier_week AS (
 ),
 
 hub_agg AS (
+  -- Grain: supplier × hub name only (not state). Grouping by state duplicated
+  -- hubs that report multiple states and broke candidate partition identity.
   SELECT
     lookback_window,
     supplier_id,
     actual_induction_hub_name,
-    actual_induction_hub_state,
-    ANY_VALUE(is_sibling_state) AS is_sibling_state,
+    ANY_VALUE(actual_induction_hub_state) AS actual_induction_hub_state,
+    -- Sibling if ANY candidate induction state for this hub is a parent WH state
+    MAX(is_sibling_state) AS is_sibling_state,
     COUNT(DISTINCT week_start) AS weeks_present,
     COUNT(DISTINCT ops) AS hub_vol,
     COUNT(DISTINCT IF(is_candidate = 1, ops, NULL)) AS hub_candidate_vol,
@@ -214,7 +217,7 @@ hub_agg AS (
   FROM base_enriched
   WHERE missing_actual_hub = 0
     AND actual_induction_hub_name IS NOT NULL
-  GROUP BY 1, 2, 3, 4
+  GROUP BY 1, 2, 3
 ),
 
 supplier_meta AS (
@@ -335,7 +338,7 @@ order_classified AS (
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
         AND b.is_grouped = 1
-        AND b.direct_gain >= 0.4 THEN 'actually_direct'
+        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 'actually_direct'
       WHEN b.is_candidate = 1
         AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 'jumbo'
       ELSE 'non_candidate'
@@ -435,8 +438,8 @@ true_direct_week AS (
     b.lookback_window,
     b.supplier_id,
     b.week_start,
-    COUNT(DISTINCT IF(b.direct_gain >= 0.4, b.ops, NULL)) AS actually_direct_vol,
-    COUNT(DISTINCT IF(NOT (b.direct_gain >= 0.4), b.ops, NULL)) AS patterned_jumbo_vol
+    COUNT(DISTINCT IF(b.direct_gain IS NOT NULL AND b.direct_gain >= 0.4, b.ops, NULL)) AS actually_direct_vol,
+    COUNT(DISTINCT IF(b.direct_gain IS NULL OR b.direct_gain < 0.4, b.ops, NULL)) AS patterned_jumbo_vol
   FROM base_enriched AS b
   JOIN direct_hubs AS d
     ON b.lookback_window = d.lookback_window

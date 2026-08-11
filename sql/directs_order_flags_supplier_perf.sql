@@ -172,12 +172,13 @@ supplier_meta AS (
 ),
 
 hub_agg AS (
+  -- Grain: supplier × hub name only (not state) to avoid join fanout.
   SELECT
     lookback_window,
     supplier_id,
     actual_induction_hub_name,
-    actual_induction_hub_state,
-    ANY_VALUE(is_sibling_state) AS is_sibling_state,
+    ANY_VALUE(actual_induction_hub_state) AS actual_induction_hub_state,
+    MAX(is_sibling_state) AS is_sibling_state,
     COUNT(DISTINCT ops) AS hub_vol,
     COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL)) AS hub_candidate_vol,
     COUNT(DISTINCT IF(is_grouped = 1, ops, NULL)) AS hub_grouped_vol,
@@ -187,7 +188,7 @@ hub_agg AS (
   FROM base_enriched
   WHERE missing_actual_hub = 0
     AND actual_induction_hub_name IS NOT NULL
-  GROUP BY 1, 2, 3, 4
+  GROUP BY 1, 2, 3
 ),
 
 hub_bucketed AS (
@@ -284,8 +285,8 @@ order_flagged AS (
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
         AND b.is_grouped = 1
-        AND b.direct_gain >= 0.4 THEN 'actually_direct'
-      -- Jumbo = remaining final candidates (gain < 0.4 pattern + residual)
+        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 'actually_direct'
+      -- Jumbo = remaining final candidates (gain < 0.4 / null pattern + residual)
       WHEN b.is_direct_candidate = 1
         AND COALESCE(h.hub_bucket, 'not_candidate') != 'not_candidate' THEN 'jumbo'
       ELSE 'non_candidate'
@@ -304,7 +305,7 @@ order_flagged AS (
       WHEN b.is_direct_candidate = 1
         AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
         AND b.is_grouped = 1
-        AND b.direct_gain >= 0.4 THEN 1
+        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 1
       ELSE 0
     END AS is_actually_direct,
     CASE
@@ -316,7 +317,7 @@ order_flagged AS (
           OR (
             COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
             AND b.is_grouped = 1
-            AND b.direct_gain >= 0.4
+            AND COALESCE(b.direct_gain, 0) >= 0.4
           )
         ) THEN 1
       ELSE 0
