@@ -122,6 +122,7 @@ def main() -> None:
             "total_vol",
             "candidate_vol",
             "actually_direct_vol",
+            "jumbo_vol",
             "noncompliant_candidate_vol",
             "top_actually_direct_hubs",
             "noncompliant_hubs",

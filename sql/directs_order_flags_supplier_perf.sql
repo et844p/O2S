@@ -5,9 +5,11 @@
 --               AND distance_assignedhub_customer >= 400
 --               AND distance_assignedhub_actualhub >= 200
 --   Then split candidates via parent warehouse states + induction grouping:
---     actually_direct / jumbo / ghost_warehouse / non_compliant / other_candidate
---   Actually direct also requires direct_gain >= 0.4; same pattern with gain < 0.4
---   (or null) is classified as jumbo.
+--     non_compliant / ghost_warehouse / actually_direct / jumbo / other_candidate
+--   Sibling-state candidates are always non_compliant.
+--   Actually direct: grouped far batches, <10% supplier vol, no minimum share, gain >= 0.4.
+--   Jumbo: same pattern with gain < 0.4 / null.
+--   Large grouped alternate hubs (>=10% grouped) that are not ghost = relief/FedEx → non_candidate.
 --
 -- Default window: last 10 weeks by promised_delivery_end_range_date_at_order.
 -- Change `windows` CTE to switch timebase/length.
@@ -201,21 +203,14 @@ hub_bucketed AS (
         THEN 'ghost_warehouse'
       WHEN h.is_sibling_state = 1
         AND h.hub_candidate_vol > 0
-        AND (
-          h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-          OR SAFE_DIVIDE(h.hub_grouped_vol, NULLIF(h.hub_candidate_vol, 0)) < 0.5
-          OR h.weeks_with_grouped <= 1
-        )
         THEN 'non_compliant'
+      WHEN h.is_sibling_state = 0
+        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) >= 0.10
+        THEN 'not_candidate'
       WHEN h.hub_grouped_vol > 0
         AND h.weeks_with_grouped >= 2
         AND h.pct_far >= 0.8
-        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) >= 0.01
         AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) < 0.10
-        AND NOT (
-          h.is_sibling_state = 1
-          AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-        )
         THEN 'actually_direct'
       WHEN h.hub_candidate_vol > 0 THEN 'other_candidate'
       ELSE 'not_candidate'

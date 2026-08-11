@@ -25,10 +25,11 @@ Uses **parent warehouse states** (distinct `state_name` of all DS SUIDs under `p
 
 | Bucket | Rule |
 |--------|------|
-| **Actually direct** | Grouped batches at a far hub, recurring (≥2 weeks), **1–10%** of supplier vol; not systematic sibling cross-ship; **`direct_gain >= 0.4`** |
+| **Actually direct** | Grouped batches at a far hub, recurring (≥2 weeks), **under 10%** of supplier vol; **no minimum %** (shared direct trailers OK); **`direct_gain >= 0.4`** |
 | **Jumbo** | Same pattern as actually direct but **`direct_gain < 0.4` or null** |
 | **Ghost warehouse** | Far hub ≥10% of supplier vol, most weeks, and parent has **no** warehouse in that induction state |
-| **Non-compliant** | Candidate in a state where parent **has** another warehouse (sibling) — systematic (most weeks) or sporadic / weakly grouped misships |
+| **Non-compliant** | Candidate in a state where parent **has** another warehouse (any volume — not only consistent weeks) |
+| **Non-candidate (relief)** | Large grouped alternate hub (≥10% grouped share) that is not ghost — FedEx / constrained-hub relief |
 
 ## Supplier cohorts (priority order)
 

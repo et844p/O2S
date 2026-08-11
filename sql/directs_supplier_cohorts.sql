@@ -3,11 +3,13 @@
 -- Flow:
 --   1) Direct CANDIDATE = distance conditions (400 / 200)
 --   2) Split candidates using parent warehouse states + induction timing:
---        actually_direct     — grouped (same-day) batches; limited share; direct_gain >= 0.4
---        jumbo               — same pattern as actually_direct but direct_gain < 0.4 / null
---        ghost_warehouse     — persistent far hub where parent has NO WH in that state
---        non_compliant       — candidate in a state where parent HAS another warehouse
---                              (systematic or sporadic misship / wrong-SUID ship-from)
+--        non_compliant       — ANY candidate in a state where parent HAS another WH
+--        ghost_warehouse     — persistent far hub (>=10% vol) where parent has NO WH
+--        not_candidate       — relief / FedEx constrained-hub pull (>=10% grouped share, not ghost)
+--        actually_direct     — grouped far batches, <10% of supplier vol, gain >= 0.4
+--                              (no minimum % share — shared direct trailers can be small for one SU)
+--        jumbo               — same pattern as actually_direct but gain < 0.4 / null
+--        other_candidate     — remaining candidates
 --
 -- Candidate (use raw distances; do NOT trust distance_assignedhub_actualhub_200_plus):
 --   assignedhub_notequal_actualhub_flag = 1
@@ -18,7 +20,7 @@
 -- Grouped = 2+ candidate ops at same supplier + actual hub + induction day.
 --
 -- Supplier cohorts (priority):
---   ghost_warehouses_no_directs
+--   ghost_warehouses
 --   consistently_builds_directs / sometimes_builds_directs  (from actually_direct)
 --   non_compliant_shipping
 --   no_directs
@@ -275,27 +277,22 @@ hub_bucketed AS (
         AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
         THEN 'ghost_warehouse'
 
-      -- Non-compliant: parent has WH in that state (sibling) and candidates are
-      -- systematic (most weeks) OR sporadic / weakly grouped
+      -- Non-compliant: parent has a WH in that state (any candidate volume)
       WHEN h.is_sibling_state = 1
         AND h.hub_candidate_vol > 0
-        AND (
-          h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-          OR SAFE_DIVIDE(h.hub_grouped_vol, NULLIF(h.hub_candidate_vol, 0)) < 0.5
-          OR h.weeks_with_grouped <= 1
-        )
         THEN 'non_compliant'
 
-      -- Actually direct (incl. intermittent sibling multi-node): grouped batches, 1-10% share
+      -- Relief / FedEx constrained-hub pull: large grouped alternate hub that is not ghost
+      WHEN h.is_sibling_state = 0
+        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) >= 0.10
+        THEN 'not_candidate'
+
+      -- Actually direct: grouped far batches; no minimum share (shared trailers OK);
+      -- keep under 10% so ghost-scale hubs stay ghost/relief above
       WHEN h.hub_grouped_vol > 0
         AND h.weeks_with_grouped >= 2
         AND h.pct_far >= 0.8
-        AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) >= 0.01
         AND SAFE_DIVIDE(h.hub_grouped_vol, m.total_vol) < 0.10
-        AND NOT (
-          h.is_sibling_state = 1
-          AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-        )
         THEN 'actually_direct'
 
       WHEN h.hub_candidate_vol > 0 THEN 'other_candidate'
