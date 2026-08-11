@@ -1,0 +1,11 @@
+tracking_number,purchase_order_number,ops,promised_delivery_end_range_date_at_order,assigned_induction_hub_name,assigned_station_state,actual_induction_hub_name,actual_induction_hub_state,destination_state,destination_zipcode,distance_assignedhub_customer,distance_actualhub_customer,distance_assignedhub_actualhub,direct_gain,inducted_on_time_or_early,delivery_rel,address_1,city_name,postal_code,state_name
+875325974145,672076222,80181643140,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,SC,29669,2266.2,,448.7,,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875327114162,671976239,80180626910,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,IN,47201,2065.7,2269.9,448.7,-0.09885268916105934,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875264689979,671642279,80177196140,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,,02127,,,448.7,,0,1,20800 Krameria Aveune,Riverside,92518,CA
+875267078080,671736299,80178159610,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,,02747,,,448.7,,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875442845174,672472348,80185903550,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,CA,94070,431.3,70.9,448.7,0.835613262230466,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875494646676,672641122,80187703860,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,CA,91344,81.4,378.8,448.7,-3.653562653562653,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875491862760,672624597,80187520270,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,CA,91344,81.4,378.8,448.7,-3.653562653562653,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875475391068,672475690,80185940210,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,CO,80016,995.7,1237.4,448.7,-0.24274379833283122,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875016158085,670854277,80169108430,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,,L5G 0B3,,,448.7,,1,1,20800 Krameria Aveune,Riverside,92518,CA
+875272656508,671933338,12497778432,2026-08-10,RIALTO LOCAL,CA,Fairfield Annex,CA,GA,30458,2340.3,2685.5,448.7,-0.14750245694996358,1,1,20800 Krameria Aveune,Riverside,92518,CA
