@@ -5,7 +5,9 @@
 --               AND distance_assignedhub_customer >= 400
 --               AND distance_assignedhub_actualhub >= 200
 --   Then split candidates via parent warehouse states + induction grouping:
---     actually_direct / ghost_warehouse / non_compliant / other_candidate
+--     actually_direct / jumbo / ghost_warehouse / non_compliant / other_candidate
+--   Actually direct also requires direct_gain >= 0.4; same pattern with gain < 0.4
+--   (or null) is classified as jumbo.
 --
 -- Default window: last 10 weeks by promised_delivery_end_range_date_at_order.
 -- Change `windows` CTE to switch timebase/length.
@@ -272,7 +274,10 @@ order_flagged AS (
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 'ghost_warehouse'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1 THEN 'actually_direct'
+        AND b.is_grouped = 1
+        AND b.direct_gain >= 0.4 THEN 'actually_direct'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND b.is_grouped = 1 THEN 'jumbo'
       WHEN b.is_direct_candidate = 1 THEN 'other_candidate'
       ELSE 'non_candidate'
     END AS candidate_bucket,
@@ -289,9 +294,17 @@ order_flagged AS (
     CASE
       WHEN b.is_direct_candidate = 1
         AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1 THEN 1
+        AND b.is_grouped = 1
+        AND b.direct_gain >= 0.4 THEN 1
       ELSE 0
     END AS is_actually_direct,
+    CASE
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND b.is_grouped = 1
+        AND NOT (b.direct_gain >= 0.4) THEN 1
+      ELSE 0
+    END AS is_jumbo,
     CASE
       WHEN b.is_direct_candidate = 1
         AND NOT (
@@ -314,6 +327,8 @@ order_flagged AS (
 )
 
 -- ORDER-LEVEL OUTPUT
+-- Flags: is_direct_candidate, is_actually_direct (gain>=0.4), is_jumbo (same pattern, gain<0.4/null),
+--        is_ghost_warehouse, is_non_compliant, is_other_candidate, candidate_bucket
 SELECT *
 FROM order_flagged
 ORDER BY supplier_id, promised_delivery_end_range_date_at_order DESC, ops

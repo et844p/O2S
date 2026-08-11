@@ -25,7 +25,8 @@ Uses **parent warehouse states** (distinct `state_name` of all DS SUIDs under `p
 
 | Bucket | Rule |
 |--------|------|
-| **Actually direct** | Grouped batches at a far hub, recurring (≥2 weeks), **1–10%** of supplier vol; not systematic sibling cross-ship |
+| **Actually direct** | Grouped batches at a far hub, recurring (≥2 weeks), **1–10%** of supplier vol; not systematic sibling cross-ship; **`direct_gain >= 0.4`** |
+| **Jumbo** | Same pattern as actually direct but **`direct_gain < 0.4` or null** |
 | **Ghost warehouse** | Far hub ≥10% of supplier vol, most weeks, and parent has **no** warehouse in that induction state |
 | **Non-compliant** | Candidate in a state where parent **has** another warehouse (sibling) — systematic (most weeks) or sporadic / weakly grouped misships |
 
@@ -59,7 +60,7 @@ python3 scripts/run_directs_supplier_cohorts.py
 Separate query tags every ops, then rolls up supplier counts/% with IFR (`inducted_on_time_or_early`) and `delivery_rel` split by:
 
 - direct candidate vs non-candidate
-- within candidates: actually direct / ghost / non-compliant / other
+- within candidates: actually direct (gain ≥ 0.4) / jumbo (gain < 0.4) / ghost / non-compliant / other
 
 | Artifact | Link |
 |----------|------|

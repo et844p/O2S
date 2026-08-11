@@ -3,7 +3,8 @@
 -- Flow:
 --   1) Direct CANDIDATE = distance conditions (400 / 200)
 --   2) Split candidates using parent warehouse states + induction timing:
---        actually_direct     — grouped (same-day) batches; limited share
+--        actually_direct     — grouped (same-day) batches; limited share; direct_gain >= 0.4
+--        jumbo               — same pattern as actually_direct but direct_gain < 0.4 / null
 --        ghost_warehouse     — persistent far hub where parent has NO WH in that state
 --        non_compliant       — candidate in a state where parent HAS another warehouse
 --                              (systematic or sporadic misship / wrong-SUID ship-from)
@@ -357,7 +358,8 @@ true_direct_week AS (
     b.lookback_window,
     b.supplier_id,
     b.week_start,
-    COUNT(DISTINCT b.ops) AS actually_direct_vol
+    COUNT(DISTINCT IF(b.direct_gain >= 0.4, b.ops, NULL)) AS actually_direct_vol,
+    COUNT(DISTINCT IF(NOT (b.direct_gain >= 0.4), b.ops, NULL)) AS jumbo_vol
   FROM base_enriched AS b
   JOIN direct_hubs AS d
     ON b.lookback_window = d.lookback_window
@@ -372,6 +374,7 @@ true_direct_supplier AS (
     lookback_window,
     supplier_id,
     SUM(actually_direct_vol) AS actually_direct_vol,
+    SUM(jumbo_vol) AS jumbo_vol,
     COUNTIF(actually_direct_vol >= 1) AS weeks_with_actually_direct,
     STRING_AGG(
       CONCAT(CAST(week_start AS STRING), ': ', CAST(actually_direct_vol AS STRING)),
@@ -423,6 +426,8 @@ classified AS (
     m.grouped_candidate_vol,
     COALESCE(t.actually_direct_vol, 0) AS actually_direct_vol,
     SAFE_DIVIDE(COALESCE(t.actually_direct_vol, 0), m.total_vol) AS actually_direct_share,
+    COALESCE(t.jumbo_vol, 0) AS jumbo_vol,
+    SAFE_DIVIDE(COALESCE(t.jumbo_vol, 0), m.total_vol) AS jumbo_share,
     COALESCE(t.weeks_with_actually_direct, 0) AS weeks_with_actually_direct,
     SAFE_DIVIDE(COALESCE(t.weeks_with_actually_direct, 0), m.weeks_with_vol) AS pct_weeks_with_actually_direct,
     t.actually_direct_by_week,

@@ -114,9 +114,11 @@ def main() -> None:
                     "delivery_rel_candidate",
                     "delivery_rel_non_candidate",
                     "actually_direct_vol",
+                    "jumbo_vol",
                     "ghost_warehouse_vol",
                     "non_compliant_vol",
                     "ifr_actually_direct",
+                    "ifr_jumbo",
                     "ifr_ghost",
                     "ifr_non_compliant",
                 ]

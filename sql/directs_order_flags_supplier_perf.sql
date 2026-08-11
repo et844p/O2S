@@ -5,7 +5,9 @@
 --               AND distance_assignedhub_customer >= 400
 --               AND distance_assignedhub_actualhub >= 200
 --   Then split candidates via parent warehouse states + induction grouping:
---     actually_direct / ghost_warehouse / non_compliant / other_candidate
+--     actually_direct / jumbo / ghost_warehouse / non_compliant / other_candidate
+--   Actually direct also requires direct_gain >= 0.4; same pattern with gain < 0.4
+--   (or null) is classified as jumbo.
 --
 -- Default window: last 10 weeks by promised_delivery_end_range_date_at_order.
 -- Change `windows` CTE to switch timebase/length.
@@ -272,7 +274,10 @@ order_flagged AS (
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'ghost_warehouse' THEN 'ghost_warehouse'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'non_compliant' THEN 'non_compliant'
       WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1 THEN 'actually_direct'
+        AND b.is_grouped = 1
+        AND b.direct_gain >= 0.4 THEN 'actually_direct'
+      WHEN COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND b.is_grouped = 1 THEN 'jumbo'
       WHEN b.is_direct_candidate = 1 THEN 'other_candidate'
       ELSE 'non_candidate'
     END AS candidate_bucket,
@@ -289,9 +294,17 @@ order_flagged AS (
     CASE
       WHEN b.is_direct_candidate = 1
         AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
-        AND b.is_grouped = 1 THEN 1
+        AND b.is_grouped = 1
+        AND b.direct_gain >= 0.4 THEN 1
       ELSE 0
     END AS is_actually_direct,
+    CASE
+      WHEN b.is_direct_candidate = 1
+        AND COALESCE(h.hub_bucket, 'not_candidate') = 'actually_direct'
+        AND b.is_grouped = 1
+        AND NOT (b.direct_gain >= 0.4) THEN 1
+      ELSE 0
+    END AS is_jumbo,
     CASE
       WHEN b.is_direct_candidate = 1
         AND NOT (
@@ -351,7 +364,7 @@ SELECT
   AVG(IF(is_direct_candidate = 1, delivery_rel, NULL)) AS delivery_rel_candidate,
   AVG(IF(is_direct_candidate = 0, delivery_rel, NULL)) AS delivery_rel_non_candidate,
 
-  -- Within candidates: actually direct
+  -- Within candidates: actually direct (gain >= 0.4)
   COUNT(DISTINCT IF(is_actually_direct = 1, ops, NULL)) AS actually_direct_vol,
   SAFE_DIVIDE(
     COUNT(DISTINCT IF(is_actually_direct = 1, ops, NULL)),
@@ -363,6 +376,21 @@ SELECT
   ) AS pct_of_total_actually_direct,
   AVG(IF(is_actually_direct = 1, inducted_on_time_or_early, NULL)) AS ifr_actually_direct,
   AVG(IF(is_actually_direct = 1, delivery_rel, NULL)) AS delivery_rel_actually_direct,
+  AVG(IF(is_actually_direct = 1, direct_gain, NULL)) AS avg_gain_actually_direct,
+
+  -- Within candidates: jumbo (direct pattern but gain < 0.4 or null)
+  COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)) AS jumbo_vol,
+  SAFE_DIVIDE(
+    COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)),
+    COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL))
+  ) AS pct_of_candidates_jumbo,
+  SAFE_DIVIDE(
+    COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)),
+    COUNT(DISTINCT ops)
+  ) AS pct_of_total_jumbo,
+  AVG(IF(is_jumbo = 1, inducted_on_time_or_early, NULL)) AS ifr_jumbo,
+  AVG(IF(is_jumbo = 1, delivery_rel, NULL)) AS delivery_rel_jumbo,
+  AVG(IF(is_jumbo = 1, direct_gain, NULL)) AS avg_gain_jumbo,
 
   -- Within candidates: ghost warehouse
   COUNT(DISTINCT IF(is_ghost_warehouse = 1, ops, NULL)) AS ghost_warehouse_vol,
