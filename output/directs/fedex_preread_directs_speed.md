@@ -11,11 +11,12 @@
 
 ## 1. Bottom line (read this first)
 
-1. **Directs shorten miles after induction** (often ~80–100 mi vs ~1,300–2,000 mi on local SoCal induct). The *routing* works.
-2. **Directs do not reliably improve end-to-end customer speed (O2D actual).** On SoCal-assigned volume, directs are **~0.4d slower** than local. For suppliers who normally ship local and then directed in Memorial Day, directs were **~0.8d slower** than their own BAU local.
-3. In the high-vol week itself, directs are only a **small mitigation vs same-week local** (−0.2d), not a win vs normal operations.
-4. We **expect IFR to dip** when directing under constraint — that alone is not a reason to reject directs. The open question is **speed**.
-5. Until we see a clear O2D actual win (or a jointly agreed network benefit that Wayfair values), **pushing suppliers harder on directs is hard to justify on customer-speed grounds.**
+**How we look for the speed benefit:** same **origin** (SoCal constrained) + same **destination region** — volume from suppliers/orders **building directs** vs volume **not building directs** — compare **O2D actual**.
+
+1. On that apples-to-apples OD cut, **directs are slower on O2D actual in every major dest region** (typically **+0.2d to +0.5d**; Midwest **+0.43d**).
+2. **Directs shorten miles after induction** (~80–100 mi vs ~1,300–2,000 mi). The *routing* works; **customer clock time does not**.
+3. We **expect IFR to dip** when directing — that alone is not a reject. The open question is **speed (O2D actual)**.
+4. Until we see a clear O2D actual win on same OD (or a jointly agreed network KPI), **pushing suppliers harder on directs is hard to justify on customer-speed grounds.**
 
 ---
 
@@ -54,9 +55,37 @@ SoCal assigned hubs are **~96% constrained origins** (`assigned_constrained_mark
 
 ---
 
-## 4. Core speed test — SoCal constrained origins
+## 4. Core speed test — same origin × same destination
 
-**Question:** For constrained SoCal origins, is O2D **actual** faster when suppliers build directs in a high-vol week vs (a) same-week local and (b) their own BAU local pattern?
+**Proof design (agreed lens):** Hold **origin = SoCal constrained** fixed. Split destination region. Compare:
+
+| Arm | Definition |
+|-----|------------|
+| Builds directs | Classified `direct` on that OD |
+| Does not build directs | `non_candidate` / local induct on that same OD |
+
+**Pass =** O2D actual lower (faster) for the directs arm.
+
+### Table A0 — Same SoCal origin × dest region (May–Aug MSBD, DS)
+
+| Dest region | Directs vol | No-direct vol | **O2D actual (directs)** | **O2D actual (no direct)** | **Δ (direct − no direct)** | Direct IFR | No-direct IFR |
+|-------------|-------------|---------------|--------------------------|----------------------------|----------------------------|------------|---------------|
+| Midwest | 66,812 | 225,809 | **7.45** | **7.02** | **+0.43d** | 87.7% | 89.3% |
+| Southeast | 51,184 | 161,941 | 7.31 | 6.99 | **+0.32d** | 87.9% | 89.5% |
+| Mountain | 39,731 | 255,142 | 4.64 | 4.11 | **+0.53d** | 88.5% | 90.1% |
+| South Central | 36,265 | 157,978 | 5.29 | 5.11 | **+0.18d** | 88.4% | 89.6% |
+| Northeast | 34,888 | 129,936 | 7.68 | 7.36 | **+0.33d** | 87.2% | 89.5% |
+| Florida | 34,477 | 94,226 | 7.43 | 7.12 | **+0.31d** | 87.8% | 89.6% |
+| Mid-Atlantic | 32,380 | 78,206 | 7.55 | 7.17 | **+0.38d** | 88.0% | 89.5% |
+| West Coast | 65,201 | 576,858 | 4.62 | 3.51 | **+1.11d** | 88.2% | 90.0% |
+
+**Result:** No major dest region shows a directs O2D actual win. Miles after induction still favor directs; the customer clock does not.
+
+---
+
+## 4b. Stress-week check — SoCal constrained origins (Memorial Day)
+
+**Question:** Under high-vol constraint stress, does directing help vs same-week local / vs BAU? (Secondary to Table A0.)
 
 ### Table A — Period totals (constrained SoCal origin)
 
@@ -162,7 +191,7 @@ Directs look like a **FedEx network / last-mile / constrained-hub relief** play.
 
 ## 9. Discussion questions for FedEx
 
-1. **Where should we see the O2D benefit?** Same origin, same dest, O2D actual — if not there, what metric should Wayfair use to green-light a supplier push?
+1. **On same origin × same destination, O2D actual favors non-directs today.** What would need to change (induction SLA, lane selection, tender timing) for directs to win that cut by ≥0.5d?
 2. **Induction SLA on directs:** What scan-by / tender expectations exist when a supplier skips the assigned SoCal hub? Can FedEx commit to induction parity with local?
 3. **When directs *do* help:** Are there lanes, package profiles, or days-of-week where FedEx expects O2D actual to beat local by ≥0.5d? We can validate those next.
 4. **Constrained-origin relief vs customer speed:** If the value is hub relief (not O2D), can we quantify that jointly so Wayfair isn’t selling “faster delivery” to suppliers/customers?
