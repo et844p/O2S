@@ -1,0 +1,1304 @@
+grain,supplier_id,su_name,parent_suid,parent_su_name,address_1,city_name,state_name,postal_code,distinct_parents,distinct_suppliers,volume
+PARENT,,,49636,General Sherman International Inc.,,,,,,18,7740
+PARENT,,,39423,COMPHOME.CORP,,,,,,19,4664
+PARENT,,,72498,"SOOTEN INTERNATIONAL TRADING CO., LIMITED_1",,,,,,15,3739
+PARENT,,,354157,Silverton Partners LLC,,,,,,7,3141
+PARENT,,,81878,All-In furniture Inc,,,,,,15,2566
+PARENT,,,135780,Hebei Xiong an Aibike Technology Co Ltd,,,,,,10,2499
+PARENT,,,399949,"Hangzhou Langting Network Technology Co., Ltd.",,,,,,4,2265
+PARENT,,,242916,Tengjian Electronic Technology Shenzhen Co LTD,,,,,,6,2149
+PARENT,,,244259,"ANJI XIN SHI JUE HOUSEHOLD SUPPLIES CO.,LTD",,,,,,4,2126
+PARENT,,,79674,SHENZHEN TIANSHUXING TECHNOLOGY CO LTD,,,,,,18,1899
+PARENT,,,8574,Comptree Inc,,,,,,18,1754
+PARENT,,,89747,OPTIONS TRADING LLC,,,,,,18,1708
+PARENT,,,200164,"Shijiazhuang New Cast Sun Trading Co., Ltd",,,,,,11,1650
+PARENT,,,232560,Gujia Furniture LLC,,,,,,18,1644
+PARENT,,,314245,"Changsha Yuefeng Zhisheng Technical Service Co., Ltd.",,,,,,18,1621
+PARENT,,,302479,Suzhou Yuanrun Trading Co.,,,,,,14,1535
+PARENT,,,201347,Home Sweet Dream Joy Inc,,,,,,13,1458
+PARENT,,,281985,Greenhome Trade Inc,,,,,,14,1432
+PARENT,,,178315,Joywaa inc,,,,,,13,1368
+PARENT,,,300621,Bitwise Techie Inc,,,,,,14,1360
+PARENT,,,67212,"Shenzhenshi Damengyuan Technology Co., Ltd",,,,,,18,1324
+PARENT,,,201348,Shinely Homes Style Inc,,,,,,16,1302
+PARENT,,,106010,Smash sports group Inc,,,,,,14,1294
+PARENT,,,86671,"Wuhan Gojin Technology Co., Ltd.",,,,,,6,1214
+PARENT,,,57457,"Lefun Trading co.,ltd.",,,,,,10,1123
+PARENT,,,74031,Farm On Table Inc,,,,,,12,1110
+PARENT,,,105692,GOBEYONDWF INC,,,,,,15,1110
+PARENT,,,249405,Albany Living INC,,,,,,2,1090
+PARENT,,,296357,shenzhenshipengchengfengmaoyiyouxiangongsi,,,,,,14,1070
+PARENT,,,220960,Impact Outdoor Supplies Ltd.,,,,,,16,1028
+PARENT,,,54500,Phoebecat Inc,,,,,,4,1027
+PARENT,,,299761,Chet Connect Inc,,,,,,13,1008
+PARENT,,,296339,shenzhenwannengdakejiyouxiangongsi,,,,,,14,984
+PARENT,,,77714,haoqingnianus inc,,,,,,16,970
+PARENT,,,321015,shenzhenheimaokejiyouxiangongsi,,,,,,14,966
+PARENT,,,323094,langfangshituruiqimaoyiyouxiangongsi,,,,,,15,965
+PARENT,,,208802,FURNITURE GROUP LIMITED,,,,,,13,964
+PARENT,,,320356,haikouqiyikemaoyiyouxiangongsi,,,,,,21,952
+PARENT,,,211665,LAIHAMEUS INDUSTRIAL LIMITED,,,,,,18,946
+PARENT,,,292376,fuzhoutongtuomaoyiyouxiangongsi,,,,,,3,931
+PARENT,,,110026,_YIWUSHIQUEYUEMAOYIYOUXIANGONG,,,,,,14,923
+PARENT,,,324170,"Office Furniture Concepts, Inc.",,,,,,14,916
+PARENT,,,305799,ningjinxiannuojiejiajuyouxiangongsi,,,,,,14,904
+PARENT,,,240536,langfangyuemingqishangmaoyouxiangongsi,,,,,,5,900
+PARENT,,,300115,"Shenzhen Dachen Times Technology Co., Ltd.",,,,,,17,843
+PARENT,,,172396,Dongguan Hewei Kejiyouxiangongsi,,,,,,13,840
+PARENT,,,348609,"Yiwu Zeyi E-commerce Co., Ltd",,,,,,12,822
+PARENT,,,238168,taiyuan bidengguai dianzishangwu youxiangongsi,,,,,,5,815
+PARENT,,,298106,SHANGHAI LEJIA MAOYI YOUXIANGONGSI,,,,,,4,803
+PARENT,,,248957,"Anji YiMengZhongJia E-commerce Co., Ltd",,,,,,15,801
+PARENT,,,76378,A&L Technology Support LLC,,,,,,11,794
+PARENT,,,93985,"Yiwu Longfei Trading Co.,Ltd",,,,,,15,792
+PARENT,,,234304,quanzhoushilipobaowangluokejiyouxiangongsi,,,,,,14,792
+PARENT,,,46785,JZ Home Decor LLC,,,,,,13,778
+PARENT,,,271401,Amorphous Biz Inc,,,,,,16,770
+PARENT,,,286653,bazhoushidetaijiajuyouxiangongsi,,,,,,16,767
+PARENT,,,209850,langfangouluolashangmaoyouxiangongsi,,,,,,4,766
+PARENT,,,271400,Tech Cube Inc,,,,,,11,744
+PARENT,,,68923,WILLAMSPACE LLC,,,,,,19,743
+PARENT,,,208461,Audio Visual Commodity Ltd,,,,,,13,739
+PARENT,,,201517,HIKING GARDEN LIMITED,,,,,,20,738
+PARENT,,,315215,shenzhenshijinmanningkejiyouxiangongsi,,,,,,13,709
+PARENT,,,147909,"Xiamen Enjoy Industry Co.,Ltd.",,,,,,11,696
+PARENT,,,350699,QUANZHOURUNYONGMAOYIYOUXIANGONGSI,,,,,,12,692
+PARENT,,,282199,SDK Mirror Inc,,,,,,13,682
+PARENT,,,281393,Willow-Wares ltd,,,,,,18,682
+PARENT,,,105677,Shenzhen Guli Wangluokeji youxiangongsi,,,,,,2,681
+PARENT,,,205980,Jetly Prey Outdoor Inc,,,,,,4,678
+PARENT,,,69838,BANGTON INC,,,,,,9,678
+PARENT,,,354350,"Xuzhou Abosi Network Technology Co., Ltd",,,,,,17,675
+PARENT,,,335668,WU HAN SU DA YUE DIAN ZI SHANG WU YOU XIAN GONG SI,,,,,,6,674
+PARENT,,,107006,SHHANGHAIYUNMAFUSHIYOUXIANGONGSI,,,,,,16,672
+PARENT,,,120229,"Shenzhen Xiao Hailuo Shangmao Co., Ltd.",,,,,,15,668
+PARENT,,,89762,KINGHOSE INDUSTRY LLC,,,,,,19,659
+PARENT,,,83121,"Fujian DecoWin E-commerce Co., Ltd",,,,,,2,654
+PARENT,,,273296,Skunk Pro Inc,,,,,,12,638
+PARENT,,,308220,Dwelling Dots Ltd,,,,,,3,637
+PARENT,,,120310,Forest Aurora Inc,,,,,,11,636
+PARENT,,,108449,Anji Junmei Furniture Partnership,,,,,,16,631
+PARENT,,,124034,zhengzhoushisatingmaoyiyouxiangongsi,,,,,,13,624
+PARENT,,,333348,Honorine Axis Inc,,,,,,12,619
+PARENT,,,227111,bazhoushiderongjiajuyouxiangongsi,,,,,,8,618
+PARENT,,,209042,VOLMAY FURNITURE INC,,,,,,2,618
+PARENT,,,70737,KARLIE FAMILY WHOLESALE INC,,,,,,12,617
+PARENT,,,69377,MONOTTI FURNITURE INC,,,,,,15,617
+PARENT,,,274919,SUMIJ LTD,,,,,,10,610
+PARENT,,,124692,GOODSILO LLC,,,,,,4,610
+PARENT,,,247010,DongguanshiYuanmumuDianzikejiYouxiangongsi,,,,,,13,607
+PARENT,,,329993,"WEIHENG INTERNATIONAL TRADING CO., LIMITED",,,,,,4,595
+PARENT,,,304161,"Artist Only, LLC",,,,,,12,592
+PARENT,,,353189,"Taizhou Yourun Trading Co., Ltd",,,,,,12,585
+PARENT,,,322685,"Kunming Shanru International Trading Co., Ltd.",,,,,,15,583
+PARENT,,,206258,The Awesome View Inc,,,,,,3,577
+PARENT,,,326423,"Chenggu Hengxin Trading Co., Ltd.",,,,,,15,571
+PARENT,,,182898,Hadda Kella INC,,,,,,16,559
+PARENT,,,214653,Stylish Lamps Ltd,,,,,,11,559
+PARENT,,,214024,Longtrace Integration Inc,,,,,,6,558
+PARENT,,,269964,Graceful Garments LLC,,,,,,4,548
+PARENT,,,357395,"Zhuji Zeze Trading Co., Ltd",,,,,,12,547
+PARENT,,,337242,iNestopia Limited,,,,,,7,547
+PARENT,,,431802,"Yisheng E-Commerce (Foshan) Co., Ltd.",,,,,,15,546
+PARENT,,,74029,Sofa Template Inc,,,,,,14,544
+PARENT,,,350037,fo shan shi pin zhi dian zi shang wu you xian gong si_1,,,,,,2,541
+PARENT,,,354698,"Chuangyi Network Technology (Taizhou City) Co., Ltd",,,,,,14,541
+PARENT,,,299331,shenzhenshiweixunguangdiankejiyouxiangongsi,,,,,,13,535
+PARENT,,,206479,changzhou brilliant dianzi shangwu youxiangongsi,,,,,,15,534
+PARENT,,,296053,"CREATEABLE, LLC",,,,,,14,534
+PARENT,,,208431,BOSSTON DRIVEWAYS AND PATIOS LTD,,,,,,14,530
+PARENT,,,431816,"Kunming Yuandeguan Trading Co., Ltd.",,,,,,12,529
+PARENT,,,189543,ATLAS CG COMPANY LLC,,,,,,17,527
+PARENT,,,63585,"Huzhou Shenzhou Home Furnishing Co.,Ltd",,,,,,15,524
+PARENT,,,299347,shenzhenshichenyangzhichuangkejiyouxiangongsi,,,,,,12,524
+PARENT,,,103170,shenzhenshi bonaite dianzishangwu youxiangongsi,,,,,,3,523
+PARENT,,,34959,Bella Depot Inc.,,,,,,4,519
+PARENT,,,132263,"Shenzhen Huli Network Technology Co., Ltd.",,,,,,6,518
+PARENT,,,445334,RAYMOON LIMITED,,,,,,3,515
+PARENT,,,359637,"Guangzhou Licen Trading Co., Ltd",,,,,,14,510
+PARENT,,,334599,"Xinghua Feixi Trading Co., Ltd",,,,,,4,505
+PARENT,,,299412,HOME FREE HOMES SP LLC,,,,,,11,499
+PARENT,,,77629,"WANSHENG ENTERPRISE CO., LIMITED",,,,,,11,499
+PARENT,,,271948,ONOTIM LTD,,,,,,17,490
+PARENT,,,255127,Dapper Doodles Inc,,,,,,12,486
+PARENT,,,243505,1 UP 1 Down Ltd,,,,,,19,477
+PARENT,,,108080,Morandi Grey Inc,,,,,,6,477
+PARENT,,,313421,"Honghe Lewang E-commerce Co., Ltd",,,,,,13,473
+PARENT,,,295478,Trading Sizzle Inc,,,,,,2,468
+PARENT,,,206246,Greenery Assembly Inc,,,,,,4,464
+PARENT,,,337916,"Boai County Xingfan Trading Co., Ltd",,,,,,12,461
+PARENT,,,453525,guang zhou yun shen mao yi you xian gong si,,,,,,12,461
+PARENT,,,402143,"ZhenGongfang (Foshan) Trading Co., Ltd",,,,,,12,457
+PARENT,,,211441,quanzhoushilianqiangdianzi LLC,,,,,,13,451
+PARENT,,,205869,Express Through Fashion Inc,,,,,,13,450
+PARENT,,,212607,Myhomekeepers Limited,,,,,,12,449
+PARENT,,,115537,"US- JIANGSU BENMU INDUSTRY CO., LTD",,,,,,5,444
+PARENT,,,213156,Home View Improvements Ltd,,,,,,10,444
+PARENT,,,44345,39f Inc.,,,,,,10,444
+PARENT,,,78881,"Anji Shengxing Office Furniture Co., Ltd",,,,,,17,442
+PARENT,,,368644,"Zhongshan Suowei Network Technology Co., Ltd",,,,,,13,441
+PARENT,,,317078,shenzhenshihuihuadianzishangwuyouxiangongsi,,,,,,9,437
+PARENT,,,350128,Quanzhou Ceyueshangmao Youxiangongsi,,,,,,4,437
+PARENT,,,73782,HECARIM HOLDINGS LIMITED,,,,,,3,433
+PARENT,,,357807,bazhoushijuhongjiajuyouxiangongsi,,,,,,13,432
+PARENT,,,271202,ASCREATE INC.,,,,,,11,429
+PARENT,,,295355,Shenzhenshiliyuguojimaoyiyouxianzerengongsi,,,,,,11,427
+PARENT,,,303646,MIAMI CUSTOM FURNITURE & UPHOLSTERY LLC,,,,,,12,423
+PARENT,,,244508,CX GLOBAL TRADING INC,,,,,,2,421
+PARENT,,,94795,huozhoushi leyikeji youxiangongsi,,,,,,3,421
+PARENT,,,354008,"Quanzhou Walton Trading Co., Ltd",,,,,,13,419
+PARENT,,,286935,"AIW FURNITURE, INC.",,,,,,13,411
+PARENT,,,39143,Formosa Living Products,,,,,,2,410
+PARENT,,,207075,MAGIC CACTUS INC,,,,,,4,405
+PARENT,,,289054,"SZHEJIANG JIETE SMART TECHNOLOGY CO.,LTD",,,,,,12,404
+PARENT,,,209956,"Shenzhen Haiyi Cross border Technology Co., Ltd",,,,,,13,399
+PARENT,,,103840,Anji Xuanxian Commercial Trading Co Ltd,,,,,,18,398
+PARENT,,,441892,wu han shi xiao zhen wu mao yi you xian gong si,,,,,,12,397
+PARENT,,,283625,Urban-Unite Ltd,,,,,,17,396
+PARENT,,,281758,Goowinny Technologies Limited,,,,,,14,394
+PARENT,,,345861,"Hangzhou Runxin E-commerce Co., Ltd",,,,,,10,392
+PARENT,,,249819,Think Urban Inc,,,,,,12,391
+PARENT,,,374226,Jiaying Business Inc,,,,,,13,390
+PARENT,,,178597,YDT furniture inc,,,,,,4,383
+PARENT,,,80044,DELTA FURNITURE INC.,,,,,,17,382
+PARENT,,,246400,Aio Trading Limited,,,,,,2,379
+PARENT,,,67058,Takasan Inc,,,,,,3,379
+PARENT,,,84664,FOSH NATURE INC,,,,,,6,378
+PARENT,,,193450,BIRCHLAND TRADING LTD.,,,,,,11,373
+PARENT,,,365856,"Kunming Wuhua District Lvchenman Trading Co., Ltd",,,,,,13,373
+PARENT,,,214395,Han Lin Furniture LLC,,,,,,10,372
+PARENT,,,270772,foshanshinanhaikangjianweiyuyouxiangongsi,,,,,,13,371
+PARENT,,,286680,Protons Link Inc,,,,,,1,371
+PARENT,,,92999,RUIAN INC,,,,,,12,369
+PARENT,,,212531,"HANGZHOU QIANYU TECHNOLOGY CO., LTD.",,,,,,4,362
+PARENT,,,369642,"Suzhou suiyi E-commerce Co., Ltd",,,,,,13,361
+PARENT,,,63339,GOOD GLASS HOME FURNISHINGS LLC,,,,,,8,361
+PARENT,,,103159,shenzhenshi hongmu jinchukoumaoyi youxiangongsi,,,,,,3,360
+PARENT,,,442353,"DC CARPET SFL, INC.",,,,,,10,358
+PARENT,,,368647,"Foshan Wangzhi Trading Co., Ltd",,,,,,4,358
+PARENT,,,83935,YULONGGE Inc,,,,,,13,358
+PARENT,,,402089,"YiQiyin (Hangzhou) Trading Co., Ltd",,,,,,3,356
+PARENT,,,188902,Senbabe Inc,,,,,,6,355
+PARENT,,,296346,shenzhenxunwangkejifuwuyouxiangongsi,,,,,,14,354
+PARENT,,,214756,Outdoor Retail Limited,,,,,,12,353
+PARENT,,,460922,"Longyan Kaishi Information Technology Co., Ltd",,,,,,11,352
+PARENT,,,352361,"NANJING HENGKE ELECTRONIC COMMERCE CO., LTD",,,,,,3,352
+PARENT,,,46556,5 Oaks Furniture,,,,,,3,351
+PARENT,,,376118,"Yichang Wanruxi Technology Co., LTD",,,,,,11,350
+PARENT,,,212093,Grace ecommerce LLC,,,,,,9,349
+PARENT,,,203102,"ROOM FULL OF ROOMS, LLC",,,,,,13,348
+PARENT,,,343379,RIDGEPOLE BUSSINESS INC,,,,,,11,346
+PARENT,,,238018,HUNANAOLAIFUKUAJINGDIANZISHANGWUYOUXIANGONGSI,,,,,,16,343
+PARENT,,,367690,Shenzhenshiyaoqinmaoyiyouxiangongsi,,,,,,2,333
+PARENT,,,411663,"YueShengshi (Guangzhou) Information Technology Co., Ltd",,,,,,14,331
+PARENT,,,371448,"Wuhan Tingkunke Trading Co., Ltd",,,,,,10,331
+PARENT,,,184576,Sevenine LLC,,,,,,5,328
+PARENT,,,91619,"Anji Xuanxian Commercial and Trading Co.,Ltd",,,,,,12,327
+PARENT,,,289091,shenzhenyuanhuankejiyouxiangongsi,,,,,,19,326
+PARENT,,,266638,Magic Racks Inc,,,,,,19,325
+PARENT,,,63938,Brilliant International Trading Inc,,,,,,11,324
+PARENT,,,369964,Xiju Keji (Guangzhou) YouxianGongsi,,,,,,4,321
+PARENT,,,72363,"WingLanber Co., Ltd.",,,,,,16,321
+PARENT,,,363189,"Foshan Jinghong Network Technology Co., Ltd",,,,,,11,320
+PARENT,,,363899,"Beijing Bactrian Camel Technology Co., Ltd.​",,,,,,14,320
+PARENT,,,66991,Schnappi Inc,,,,,,15,319
+PARENT,,,247824,wuhanbaizhikejiyouxiangongsi,,,,,,10,316
+PARENT,,,269987,ELATEP LIMITED,,,,,,4,315
+PARENT,,,218572,WOLTU GmbH_1,,,,,,14,313
+PARENT,,,274990,Huizhou Juzhiran Furniture Co Ltd,,,,,,14,312
+PARENT,,,450419,"Zhengsheng E-Commerce (Jiangxi) Co., Ltd",,,,,,8,311
+PARENT,,,153390,SOARFLASH LLC,,,,,,3,310
+PARENT,,,459308,"Wenzhou Qingmu Xing Building Materials Co., Ltd",,,,,,11,303
+PARENT,,,369884,"Shenzhen Hengyuehai Trading Co., Ltd",,,,,,11,303
+PARENT,,,82112,"Hangzhou Zhuoli Furniture Co., Ltd.",,,,,,2,303
+PARENT,,,245661,Abay Tech LLC,,,,,,3,300
+PARENT,,,301816,Time Apparel Inc,,,,,,2,297
+PARENT,,,75517,Amzmos,,,,,,3,296
+PARENT,,,66041,"shenzhen coeus technology  co,ltd",,,,,,9,295
+PARENT,,,81879,BLUE SOFA INC,,,,,,3,295
+PARENT,,,241051,ZhangzhoushiXiangchengquXiaoluoboDianzishangwuyouxiangongsi,,,,,,14,294
+PARENT,,,85208,Kunpeng Inc.,,,,,,19,292
+PARENT,,,208712,"Shenzhen Gemwon Technology CO., LTD.",,,,,,14,292
+PARENT,,,65377,"Shenzhen Chuangjicheng Network Technology Co., Ltd",,,,,,3,292
+PARENT,,,431885,"Qixian Jiafan Trading Co., Ltd.",,,,,,11,291
+PARENT,,,288148,Petal Perfecto Inc,,,,,,11,291
+PARENT,,,105688,Red Cloud Inc,,,,,,11,291
+PARENT,,,286718,Mosaic-Motif Ltd,,,,,,18,290
+PARENT,,,68042,"Langfang Juwangshang E-Commerce Co., Ltd",,,,,,13,290
+PARENT,,,66187,Knlnny Lighting,,,,,,14,289
+PARENT,,,74026,"Beyond Sofa,Inc",,,,,,3,288
+PARENT,,,214780,"Qingju Kitchen and bathroom Technology Co., Ltd",,,,,,10,288
+PARENT,,,221637,BURDOCK PROPERTY LIMITED,,,,,,6,285
+PARENT,,,35652,Living Source International,,,,,,11,285
+PARENT,,,431627,"Guangzhou Dianya Mansion E-commerce Trading Co., Ltd.",,,,,,6,285
+PARENT,,,56227,LALA  WONZ INC.,,,,,,16,285
+PARENT,,,333931,shenzhenshiqishanghongyuekejiyouxiangongsi,,,,,,19,285
+PARENT,,,60235,Aufind Inc.,,,,,,10,284
+PARENT,,,87111,HomaaPack LLC,,,,,,11,283
+PARENT,,,93035,"Chengdu Fangbo Fire Fighting Equipment Co., Ltd.",,,,,,15,282
+PARENT,,,81356,"Hangzhou Obay Home Decor Co., Ltd.",,,,,,5,279
+PARENT,,,269305,Bantam Interiors Inc,,,,,,9,277
+PARENT,,,195928,ARTCHIRLY INC,,,,,,8,277
+PARENT,,,292482,InnovateTech Corner Inc,,,,,,5,275
+PARENT,,,366520,Senlin Bosheng Trading Limited,,,,,,5,274
+PARENT,,,62128,SOLOLIFE LLC.,,,,,,7,274
+PARENT,,,103176,shenzhen jiejiegao wangluokejiyouxiangongsi,,,,,,2,273
+PARENT,,,438068,dongguanshiliqiangwangluokejiyouxiangongsi,,,,,,2,272
+PARENT,,,434320,RED GINGER 88 INC,,,,,,10,272
+PARENT,,,157915,"Chengdu Cuihu Palace Wall Technology Co., Ltd.",,,,,,19,271
+PARENT,,,447173,Harbor Nooks Inc,,,,,,11,270
+PARENT,,,403150,"Chongqing Rongwanda Trading Co., Ltd",,,,,,11,269
+PARENT,,,342726,"Dongguan Zhengqiang Furniture Ltd, Co.",,,,,,5,266
+PARENT,,,323520,"Xihe (Beijing) Biotechnology Co., Ltd.",,,,,,3,265
+PARENT,,,235183,"Huizhou Jiade Smart Home Co., LTD",,,,,,15,264
+PARENT,,,294744,"Quanzhou Yuze trading Co., LTD",,,,,,16,263
+PARENT,,,211138,FURNITURE FRENZY LTD,,,,,,9,262
+PARENT,,,91615,Home Variety,,,,,,16,261
+PARENT,,,104995,HONG KONG HORIZON REACH LIMITED,,,,,,3,258
+PARENT,,,369481,"Nanyang Xiaoyang Trading Co., Ltd",,,,,,10,257
+PARENT,,,363184,"Zhongshan Jufu Trading Co., Ltd",,,,,,10,257
+PARENT,,,298107,"Fujian Yitai Investment Co.,LTD.",,,,,,16,257
+PARENT,,,31000,JUXING furniture inc,,,,,,15,254
+PARENT,,,253048,Great Nature Tracks Inc,,,,,,17,253
+PARENT,,,354699,"Cixi Mohai E-commerce Co., Ltd",,,,,,11,252
+PARENT,,,186788,Landskip Yard LLC,,,,,,13,252
+PARENT,,,307492,HUNG THUAN DAT ONE MEMBER LIMITED  LIABILITY COMPANY,,,,,,10,251
+PARENT,,,299073,"PV SUPPLIERS TO THE HOSPITALITY INDUSTRY, INC.",,,,,,17,251
+PARENT,,,269996,Magics Simplicity LLC,,,,,,14,248
+PARENT,,,184022,Epoch Site INC,,,,,,12,247
+PARENT,,,299058,"A & S SUPPLIERS, INC.",,,,,,15,247
+PARENT,,,464962,HONG KONG ZHICHENG TRADING CO LIMITED,,,,,,11,247
+PARENT,,,109123,chengduyanzhiguikejiyouxiangongsi,,,,,,18,245
+PARENT,,,81179,Beijingwuyimingyunshangmaoyouxiangongsi,,,,,,3,245
+PARENT,,,62404,Join In Technology Limited,,,,,,17,244
+PARENT,,,300630,Casa Decors Inc,,,,,,9,242
+PARENT,,,77337,"Shenzhou Home Furnishing Co.,Limited",,,,,,12,240
+PARENT,,,183523,Fune Corp INC,,,,,,7,238
+PARENT,,,291120,Smart Bit Trade Inc,,,,,,2,236
+PARENT,,,327249,shenzhenkaisenlingkejiyouxiangongsi,,,,,,4,234
+PARENT,,,133238,BEINGNEXT INC,,,,,,4,234
+PARENT,,,302651,Aromas Style LLC,,,,,,11,234
+PARENT,,,405091,"Ningbo Zhenen Network Technology Co., Ltd",,,,,,12,232
+PARENT,,,289461,"Xiamen Senjoys Trade Co.,Ltd.",,,,,,9,232
+PARENT,,,324564,"Jiangsu Xiewan Home Technology Co.,Ltd",,,,,,5,231
+PARENT,,,207429,Za Online Shop Inc,,,,,,17,230
+PARENT,,,213497,MERYT INC,,,,,,13,230
+PARENT,,,443011,"Guangzhou Xinpinjia Information Technology Co., Ltd",,,,,,11,230
+PARENT,,,404322,bazhoushiguanchenjiajuyouxiangongsi,,,,,,11,230
+PARENT,,,434147,Yeuk Fung GS international Limited,,,,,,16,229
+PARENT,,,269994,Elevated Eats Inc,,,,,,13,228
+PARENT,,,270506,Best Robe Ever Inc,,,,,,10,228
+PARENT,,,74724,RED CHAIR PRODUCTIONS,,,,,,14,227
+PARENT,,,80813,Lifelong Company,,,,,,17,227
+PARENT,,,185923,Hara Aches INC,,,,,,15,225
+PARENT,,,104983,Beeleo International inc,,,,,,10,224
+PARENT,,,297421,ART SECURITY METAL CORP.,,,,,,15,222
+PARENT,,,363488,"Foshan Meiyijia E-commerce Co., Ltd",,,,,,11,222
+PARENT,,,215177,BED BATH AND HOME LIMITED,,,,,,7,220
+PARENT,,,324827,Shenzhenjiahongnianhuakejiyouxiangongsi,,,,,,1,220
+PARENT,,,332776,GRFFINHOME INTERIORS LLC,,,,,,13,219
+PARENT,,,340742,"Xichong County Zhaoxin E-commerce Business Co., Ltd",,,,,,13,219
+PARENT,,,80811,"Yiwu YiKong Trading Co., Ltd",,,,,,17,218
+PARENT,,,210590,"FOSHAN WEIQUAN TRADING CO.,LTD",,,,,,9,218
+PARENT,,,333930,shenzhenlihongshangwuyouxiangongsi_1,,,,,,19,218
+PARENT,,,23772,Direct Wicker,,,,,,9,216
+PARENT,,,255424,"Shenzhen Yousi Internet Digital Marketing C o., Ltd.",,,,,,1,216
+PARENT,,,431412,"Xiangyang Xuexin Trading Co., Ltd.",,,,,,10,215
+PARENT,,,367246,"Guangzhou Xinmian E-commerce Co., Ltd",,,,,,11,214
+PARENT,,,231595,quanzhoushi wobodianzishangwu youxiangongsi,,,,,,15,213
+PARENT,,,365791,ZHANGMINGFANG,,,,,,8,210
+PARENT,,,376053,"Shenzhen Zhichao E-commerce Co., Ltd",,,,,,3,209
+PARENT,,,175356,Lingshui Yingzhou hua hua hua Electronic Commerce studio,,,,,,11,209
+PARENT,,,206790,ADESSO EXTERIORS LLC,,,,,,4,208
+PARENT,,,253298,Go Peak Track Inc,,,,,,10,207
+PARENT,,,369961,DINGXIN INTELLIGENCE HOME (HK) LIMITED,,,,,,4,206
+PARENT,,,321207,shenzhenshidingdangxiangkejiyouxiangongsi,,,,,,17,206
+PARENT,,,299297,Classic Maple Lovesac Inc,,,,,,12,206
+PARENT,,,296347,shenzhendefuxinnengyuankejiyouxiangongsi,,,,,,10,206
+PARENT,,,186944,Yiwu Dai Bo E-commerce Co.,,,,,,15,203
+PARENT,,,37764,LivEditor Lighting Co. Ltd.,,,,,,1,202
+PARENT,,,266442,Home Enter Hub Inc,,,,,,11,202
+PARENT,,,341112,Ju Liang Yun ( Shen Zhen ) Ke Ji You Xian Gong Si,,,,,,2,202
+PARENT,,,295102,"PURPLEDREAMJG, LLC",,,,,,3,201
+PARENT,,,307373,"ANJI MUFAN FURNITURE CO.,LTD",,,,,,4,201
+PARENT,,,251331,bazhoushinuolijiajuyouxiangongsi,,,,,,5,199
+PARENT,,,351812,"Yongkang Chengmi Trading Co., Ltd",,,,,,10,198
+PARENT,,,84639,"Changsha Lulang Information Technology Co., Ltd.",,,,,,10,198
+PARENT,,,149502,"GWI.,INC.",,,,,,7,196
+PARENT,,,221660,TABLE FABLES LIMITED,,,,,,13,196
+PARENT,,,306852,anjijiuyangjiajuyouxiangongsi,,,,,,4,195
+PARENT,,,124089,YJ TONWIN INC,,,,,,16,194
+PARENT,,,368642,"Qiyu E-commerce (Zhongshan) Co., Ltd",,,,,,12,193
+PARENT,,,85516,Sunny yard LLC,,,,,,8,192
+PARENT,,,297292,Buriza Can Inc,,,,,,2,192
+PARENT,,,408587,"Hangzhou Yanning Trading Co., Ltd.",,,,,,7,192
+PARENT,,,363187,"Foshan Chenyuan E-commerce Co., Ltd",,,,,,11,191
+PARENT,,,241579,DEEPSKY FURNITURE INC,,,,,,15,191
+PARENT,,,304188,COFVIAL LTD,,,,,,11,191
+PARENT,,,430870,WuLiang Company Inc,,,,,,10,191
+PARENT,,,276834,"US KINDLY, INC.",,,,,,13,190
+PARENT,,,306058,"OMEGA KITCHENS, LLC",,,,,,18,189
+PARENT,,,207418,Patio Crafty Furn Inc,,,,,,14,189
+PARENT,,,404079,Kellyderike LLC,,,,,,11,187
+PARENT,,,229877,"Foshan Yifanshi Home Furnishing Co., Ltd.,",,,,,,6,186
+PARENT,,,53471,Lanora Lighting,,,,,,2,185
+PARENT,,,75618,3AM Technology Inc,,,,,,12,184
+PARENT,,,238652,"Huizhou Xinlin Jiaju Technology Co., LTD",,,,,,11,184
+PARENT,,,320623,Kunming Zhuhe International Trading Co.，Ltd.,,,,,,11,184
+PARENT,,,224465,BQBP ELECTRONICS INC.,,,,,,14,183
+PARENT,,,329047,shenzhenshixinyinxiangkejiyouxiangongsi,,,,,,3,183
+PARENT,,,238092,"Wuxi Yuhua E-commerce Co., Ltd.",,,,,,11,183
+PARENT,,,56225,Suzhou Yunding Information Technology Co.,,,,,,15,182
+PARENT,,,58520,Cheerwing Trading Limited,,,,,,4,181
+PARENT,,,241110,zhangzhoukailelongmaoyiyouxiangongsi,,,,,,13,181
+PARENT,,,291172,Shenzhen Shaoting Technology Co.Ltd.,,,,,,7,178
+PARENT,,,334593,"Guangzhou Xiangkai Technology Co., Ltd",,,,,,15,177
+PARENT,,,284461,Langfangbaobolijiajuyouxiangongsi,,,,,,11,177
+PARENT,,,323133,"Sansu Wood Industry (Xia Men) Co., LTD",,,,,,1,177
+PARENT,,,216206,Shen zhen shi zhu si ke ji you xian gong si,,,,,,15,176
+PARENT,,,326600,shenzhenshixinyuehedianzikejiyouxiangongsi,,,,,,13,175
+PARENT,,,92672,eChamp CO.LTD,,,,,,2,173
+PARENT,,,293580,Blue Ocean Electronics Inc,,,,,,15,173
+PARENT,,,202245,ZHEJIANG XINGHUA FURNITURE CO LTD,,,,,,2,173
+PARENT,,,76873,JJI Deco LLC_1,,,,,,6,172
+PARENT,,,200281,Foshan Weixun Furniture,,,,,,5,171
+PARENT,,,245497,Elevate Furns Inc,,,,,,14,170
+PARENT,,,200633,GRILLO HOME SOLUTIONS LLC,,,,,,11,170
+PARENT,,,79472,"Shenzhen You Nuo Yunshang Electronic Commerce Co.,",,,,,,8,170
+PARENT,,,400560,shen zhen shi jin hui feng jian cai you xian gong si,,,,,,12,169
+PARENT,,,452361,WINMATCH GLOBAL (HK) TRADING LIMITED,,,,,,2,167
+PARENT,,,301858,"Dongguan Youxiang Homefurnishing CO.,Ltd",,,,,,5,166
+PARENT,,,244828,AMZURI PRODUCTIONS LLC,,,,,,12,166
+PARENT,,,300604,Nova Regel Inc,,,,,,1,166
+PARENT,,,245035,Evanly Decor Inc,,,,,,14,165
+PARENT,,,131844,"Taizhou Boxiao Network Technology Co., Ltd.",,,,,,11,165
+PARENT,,,404948,"Ningbo Cloudvigor Intelligent Technology Co.,Ltd.",,,,,,8,165
+PARENT,,,205866,Phantom Interiors Inc,,,,,,2,163
+PARENT,,,63567,Moonlight INC.,,,,,,4,163
+PARENT,,,347202,foshanshihuanlingshangmaoyouxiangongsi_1,,,,,,2,162
+PARENT,,,411049,"Yangjiang Tairuiying Trading Co., Ltd.",,,,,,10,162
+PARENT,,,214720,Sutherland's Luxury Pet Beds Ltd,,,,,,12,161
+PARENT,,,108447,"Yuchenyijia (Anji) Furniture Co.,Ltd",,,,,,12,161
+PARENT,,,369641,"Suzhou Daxient Trading Co., Ltd",,,,,,11,157
+PARENT,,,326409,ANHUI MORDEN LIVING CO LTD,,,,,,9,156
+PARENT,,,223158,COOKING CRAZE LLC,,,,,,4,155
+PARENT,,,322688,"Kunming Zhuangzhen E-commerce Co., Ltd.",,,,,,10,155
+PARENT,,,452956,minhouxianxinjichenjiajuzhizaoyouxiangongsi,,,,,,2,154
+PARENT,,,283279,"Foshan Ailianwei furniture Co., LTD",,,,,,2,154
+PARENT,,,272876,shanghai zhentu dianzi shangwu youxian gongsi,,,,,,14,154
+PARENT,,,285711,Daggers Link Inc,,,,,,9,154
+PARENT,,,254633,Wondrous Iconic Inc,,,,,,11,154
+PARENT,,,207249,HBI COMMERCE LIMITED,,,,,,13,152
+PARENT,,,431400,"Ningbo Zhuofan Technology Development Co., Ltd",,,,,,3,151
+PARENT,,,301389,"Hangzhou Cloudyard Technology Co., Ltd.",,,,,,9,150
+PARENT,,,104525,Zhengzhou A Mazhuo Wangluo Keji Youxian Gongsi,,,,,,12,150
+PARENT,,,184033,Amer Thyst INC,,,,,,10,149
+PARENT,,,340750,"Chengdu Yuanzheng E-commerce Co., Ltd",,,,,,11,149
+PARENT,,,362622,DongGuanAnJiaJiaJuYongPinYouXianGongSi,,,,,,2,149
+PARENT,,,411109,"Shaanxi Shensu Lao Electronic Technology Co., Ltd.",,,,,,11,149
+PARENT,,,462565,Zeltor Quinvex Inc,,,,,,11,149
+PARENT,,,363139,"Foshan Xiaoman Technology Co., Ltd.",,,,,,2,148
+PARENT,,,127503,guang zhou tiao tuo dian zi shang wu you xian gong si,,,,,,4,148
+PARENT,,,301787,Taroo Clocks Inc,,,,,,10,148
+PARENT,,,309383,shen qi xian ren zhang you xian gong si,,,,,,2,146
+PARENT,,,71757,gazepo inc,,,,,,18,146
+PARENT,,,431460,zhaoqingshiyehongkejiyouxiangongsi,,,,,,6,144
+PARENT,,,287964,"ART TO WALK ON, INC.",,,,,,13,143
+PARENT,,,402001,GUANGZHOUQINGYANGQIMOYOUXIANGONGSI,,,,,,1,143
+PARENT,,,239679,Changchun Penglin Trading CoLtd,,,,,,13,143
+PARENT,,,315796,Guangzhou Jurong E-Commerce Co Ltd,,,,,,1,143
+PARENT,,,225189,Vanity Stars & Sparkle Inc.,,,,,,11,143
+PARENT,,,274443,VOLBAL LTD,,,,,,6,141
+PARENT,,,61645,COZIO PTY LTD,,,,,,3,141
+PARENT,,,285449,"Dongguan Youpeng Home Furnishings Co., Ltd.",,,,,,11,141
+PARENT,,,39645,VECELO,,,,,,14,141
+PARENT,,,453824,zhi jiang shi gui yin que ke ji you xian gong si,,,,,,9,140
+PARENT,,,210847,linn homelife Inc,,,,,,16,139
+PARENT,,,266447,OutHome Furni Inc,,,,,,11,138
+PARENT,,,300719,JIBCOP LTD,,,,,,13,137
+PARENT,,,123090,Shenzhen Jinchanglian keji youxian gongsi,,,,,,12,136
+PARENT,,,143311,"Sunrinx (Xiamen) Sanitary Co., Ltd",,,,,,3,136
+PARENT,,,304051,POPULUS TRADING INC,,,,,,1,136
+PARENT,,,109086,Anji Yifeng Furniture Co Ltd,,,,,,13,136
+PARENT,,,409471,"Anji Haiwei Import and Export Trading Co., Ltd",,,,,,4,136
+PARENT,,,266300,Craft Home Inc,,,,,,5,135
+PARENT,,,206228,Shopper Stage Inc,,,,,,12,134
+PARENT,,,268391,BOXING INC,,,,,,11,134
+PARENT,,,323714,"Taining Fulitai Technology Co., Ltd",,,,,,7,133
+PARENT,,,464259,"Yangzhou Bote Home Trading Co., Ltd",,,,,,11,132
+PARENT,,,297236,shenzhenshijunzhichuangkejiyouxiangongsi ,,,,,,9,132
+PARENT,,,436831,ningyuanyingshengmaoyiyouxiangongsi,,,,,,9,131
+PARENT,,,462858,changshashihongwangluokejiyouxiangongsi,,,,,,12,131
+PARENT,,,312226,CHOICES TOGETHER,,,,,,10,129
+PARENT,,,253069,"Shenzhen Hengtuoyuan Electronics Co., Ltd.",,,,,,14,129
+PARENT,,,354749,guangzhoufengshukejiyouxiangongsi,,,,,,1,129
+PARENT,,,208797,A Second Home For You,,,,,,14,128
+PARENT,,,239530,GDC Global Trading Corporation LTD.,,,,,,2,128
+PARENT,,,318636,shenzhenshisidayuekejiyouxiangongsi,,,,,,10,128
+PARENT,,,453791,"Wuxi Fimello Trading Co., Ltd",,,,,,3,127
+PARENT,,,279234,Reprise Designs Inc,,,,,,13,127
+PARENT,,,67040,HOPE SHIP LLC,,,,,,11,127
+PARENT,,,125997,"Shandongrushizhenchuan International Trade Co., Ltd",,,,,,15,126
+PARENT,,,73810,RM Wholesale USA Inc,,,,,,11,126
+PARENT,,,208375,Deelight Inc,,,,,,9,126
+PARENT,,,297075,"Taining County Maidile Technology Co., Ltd",,,,,,3,126
+PARENT,,,304083,SPS INTERNATIONAL GROUP INC,,,,,,1,125
+PARENT,,,267364,Kiddie Furniture Inc,,,,,,14,125
+PARENT,,,289998,TRIVOB LTD.,,,,,,1,124
+PARENT,,,74857,WEST-LINE TRADING LTD,,,,,,3,124
+PARENT,,,147595,VEELAR PRODUCTS LLC,,,,,,10,124
+PARENT,,,268727,Green Crescent Inc,,,,,,10,122
+PARENT,,,409388,nandishangmaojinzhoushiyouxiangongsi,,,,,,15,122
+PARENT,,,351124,shenzhenjiefubeilachujuyouxiangongsi,,,,,,15,122
+PARENT,,,271309,ACCOLADE FURNITURE LLC,,,,,,10,121
+PARENT,,,219145,"Fu Owner, LLC",,,,,,16,121
+PARENT,,,433132,DI PHONG LIMITED LIABILITY COMPANY,,,,,,20,121
+PARENT,,,214339,Coastal Bathrooms & Kitchens Limited,,,,,,11,120
+PARENT,,,183524,Viva Home INC,,,,,,5,120
+PARENT,,,120004,"GOODLUX TRADING CO.,LTD.",,,,,,2,120
+PARENT,,,283609,Velvet-Vanguard Ltd,,,,,,17,119
+PARENT,,,324556,COSY FURNITURE CO. LIMITED,,,,,,10,119
+PARENT,,,203686,Abrahams Table Inc.,,,,,,10,119
+PARENT,,,450133,Guang Zhou Mai Bao Shang Mao You Xian Gong Si,,,,,,1,118
+PARENT,,,315511,shenzhenshierlingerlingdianzishangwuyouxiangongsi,,,,,,16,118
+PARENT,,,212630,"WEISHI XINGKAI WOOD INTUSDRY CO., LTD",,,,,,3,117
+PARENT,,,248063,ZHEJIANG KANGLAIBAO SPORTING GOODS INC.,,,,,,10,117
+PARENT,,,342901,chang sha can an zhu zhi dian zi shang wu you xian gong si,,,,,,3,117
+PARENT,,,91946,shao xing you zi qi che yong pin you xian gong si,,,,,,18,117
+PARENT,,,464134,guang zhou yun chuan mao yi you xian gong si,,,,,,11,116
+PARENT,,,308761,VAYNE INTERNATIONAL TRADING,,,,,,2,116
+PARENT,,,242765,"Hengermei Lighting Co., LTD",,,,,,13,115
+PARENT,,,460942,"Fuqing Henghui Furniture Co., Ltd",,,,,,10,115
+PARENT,,,337919,"Kunming Faping International Trading Co., Ltd",,,,,,11,114
+PARENT,,,349420,Foshanshilanchuangzebaomaoyiyouxiangongsi,,,,,,9,113
+PARENT,,,441438,Mesa Hybrid Inc,,,,,,8,113
+PARENT,,,45278,Galaxy Home Furnishing Inc.,,,,,,1,112
+PARENT,,,299103,Zhongshanhaoshenglai Lighting. LLC,,,,,,16,112
+PARENT,,,225675,WOOD BARN USA LLC,,,,,,5,111
+PARENT,,,433335,US_zhejiangruimeijinchukouyouxiangongsi,,,,,,2,111
+PARENT,,,283555,OVOSMY Ltd.,,,,,,12,111
+PARENT,,,64458,TOYOSUN INC,,,,,,8,110
+PARENT,,,204098,Artisan Design Furniture,,,,,,10,110
+PARENT,,,12210,Comfort Pointe,,,,,,2,109
+PARENT,,,360294,DongGuanShiYiXuanJiaJuYongPinYouXianGongSi,,,,,,5,109
+PARENT,,,218855,FLOOR BY FLOOR LTD,,,,,,8,108
+PARENT,,,229920,quanzhou tuoyuxun dianzishangwu youxiangongsi,,,,,,12,108
+PARENT,,,219957,Shenzhen Xingzhiyi Technology Co.Ltd,,,,,,13,108
+PARENT,,,322708,anjixingqidianzishangwuyouxiangongsi,,,,,,2,107
+PARENT,,,315544,shenzhenshiyibeilekuajingdianshangyouxiangongsi,,,,,,16,107
+PARENT,,,326705,Changshayuejufangkuajingdianzishangwuyouxiangongsi,,,,,,12,107
+PARENT,,,461674,"Ningbo Xiaowen Electronic Commerce Co., Ltd.",,,,,,11,106
+PARENT,,,343150,shenzhenjinshoushikejiyouxiangongsi,,,,,,10,106
+PARENT,,,295682,"Dezhou Haolong Wood Industry Co., Ltd.",,,,,,4,105
+PARENT,,,245357,Mesa Home Depot Inc,,,,,,10,104
+PARENT,,,76227,Pabin Inc,,,,,,6,103
+PARENT,,,199601,Jiashan Tianshu Leisure Products Co Ltd,,,,,,4,102
+PARENT,,,68153,"YUANING NETWORK CO.,LTD",,,,,,12,101
+PARENT,,,365545,"ANJI  WANJUN   TECHNOLOGY  CO.,LTD",,,,,,7,100
+PARENT,,,301993,shenzhenshijuxingjiajugongyinglianfuwuyouxiangongsi,,,,,,10,99
+PARENT,,,234220,"CAN_Nantong Yasai Textile Co., LTD.",,,,,,1,99
+PARENT,,,250206,CALENA TECHNOLOGY CORPORATION,,,,,,9,98
+PARENT,,,222173,OUTDOOR ADVENTURE GIRLS LTD,,,,,,6,98
+PARENT,,,163344,"Shandong Homechoice International Trade Co.,Ltd",,,,,,3,98
+PARENT,,,312078,"Shenzhen Sailforever Technology Co., Ltd.",,,,,,3,97
+PARENT,,,198009,DOMI COZY LLC,,,,,,14,97
+PARENT,,,229563,Zhangzhoushi Junbaomuzhipin Youxiangongsi,,,,,,11,97
+PARENT,,,437877,"HONGKONG CINEPRO TECHNOLOGY CO., LIMITED",,,,,,11,97
+PARENT,,,222876,Bathin INC.,,,,,,10,96
+PARENT,,,431822,"Qixian Zhenbao Trading Co., Ltd.",,,,,,3,96
+PARENT,,,297130,LEJOMA CO,,,,,,7,96
+PARENT,,,411660,"Meizhou Puyong Trading Co., Ltd",,,,,,10,96
+PARENT,,,202210,Good Deed Furniture Inc,,,,,,10,95
+PARENT,,,411761,"Xuzhou Zhonggong Network Technology Co., Ltd",,,,,,10,95
+PARENT,,,149314,Weststyle LLC,,,,,,7,95
+PARENT,,,268711,"GAOSHENG home art SHENZHEN CO.,Ltd",,,,,,11,94
+PARENT,,,281647,Ansainey LLC,,,,,,3,94
+PARENT,,,267121,Trading Saw Inc,,,,,,6,93
+PARENT,,,324797,"Gucheng County Huangliandu Trading Co., Ltd.",,,,,,9,93
+PARENT,,,105431,Lonloo Pati Inc,,,,,,10,92
+PARENT,,,270433,INVOSH LTD,,,,,,11,92
+PARENT,,,371473,"Taiyuan Tongle Yunguan Technology Co., Ltd",,,,,,12,92
+PARENT,,,251581,"Huizhou Mishaou Home Furnishing Co., Ltd.",,,,,,5,91
+PARENT,,,299494,Sliny Toy Trade Inc,,,,,,12,91
+PARENT,,,346146,chaozhoushihaisigongyinglianyouxiangongsi,,,,,,8,90
+PARENT,,,352951,shenzhenshiwenmeifushiyouxiangongsi,,,,,,9,90
+PARENT,,,337236,hangzhousushijiajushejiyouxiangongsi,,,,,,11,90
+PARENT,,,353202,"Quanzhou Monterey Home Furnishing Co., Ltd.",,,,,,11,89
+PARENT,,,344660,weishimanshenzhenkejiyouxiangongsi,,,,,,17,89
+PARENT,,,414053,ANJI DAIGAO FURNITURE CO LTD,,,,,,5,88
+PARENT,,,347593,"Suzhou Chaojijia Internet Technology Co., Ltd.",,,,,,3,88
+PARENT,,,237427,Cozy Living Inc,,,,,,12,88
+PARENT,,,254762,"Derry Furniture Co., Ltd",,,,,,1,88
+PARENT,,,253377,8FINICARE HOME HEALTH LLC,,,,,,13,87
+PARENT,,,275127,SAUVENER ENTERPRISES LLC,,,,,,6,87
+PARENT,,,78946,Kapok LTD.,,,,,,1,87
+PARENT,,,250361,"ANJI JINLEI FURNITURE CO.,LTD",,,,,,3,85
+PARENT,,,299064,UDAMET LTD,,,,,,2,85
+PARENT,,,233901,"JEFFREY LEE, INC",,,,,,6,85
+PARENT,,,291879,REFSIL LIMITED,,,,,,9,85
+PARENT,,,156196,"Shenzhen Saitu Information Technology Co., Ltd.",,,,,,9,84
+PARENT,,,341266,shenzhenshi ha te sai er maoyiyouxiangongsi,,,,,,4,83
+PARENT,,,285816,RENEHA Limited,,,,,,13,83
+PARENT,,,351497,Huizhou Dingxin Zhineng Jiaju Youxian Gongsi,,,,,,6,83
+PARENT,,,333099,"Foshan Manting Home Furnising Technology Co., Ltd",,,,,,1,83
+PARENT,,,285182,INFINITY FURNITURE INDUSTRY SDN BHD,,,,,,9,82
+PARENT,,,280424,henanshuangruimaoyiyouxiangongsi,,,,,,11,82
+PARENT,,,326416,"Dangtu County Weifeng Trading Co., Ltd.",,,,,,14,81
+PARENT,,,316843,24 LOUISE STREET LLC,,,,,,5,81
+PARENT,,,299348,shenzhenshiyizhixiongkejiyouxiangongsi,,,,,,10,80
+PARENT,,,106011,YD Teck Inc,,,,,,6,80
+PARENT,,,436750,LORYN LLC,,,,,,1,80
+PARENT,,,357400,"Hangzhou Tusheng Network Technology Co., Ltd",,,,,,9,79
+PARENT,,,451373,"LIN'S ADVENTURE, LLC",,,,,,6,78
+PARENT,,,431912,"Shaanxi Tianying Yueman Trading Co., Ltd.",,,,,,4,77
+PARENT,,,216149,Doule golden inc,,,,,,10,76
+PARENT,,,208407,hunanhaoshengtongdianzishangwuyouxiangongsi,,,,,,6,76
+PARENT,,,234575,NINGBO LEEBAO IMPORT AND EXPORT COMPANY LIMITED,,,,,,2,76
+PARENT,,,283154,BERETIX CO,,,,,,8,75
+PARENT,,,92612,"SHENZHEN LAWRENCE ELECTRONIC MATERIALS CO., LTD..",,,,,,8,75
+PARENT,,,211348,"Foshan Zhi Bai Home Co.,LTD",,,,,,15,75
+PARENT,,,330712,WF-Gangyan,,,,,,9,74
+PARENT,,,272103,LIGHTING PROS LLC,,,,,,2,74
+PARENT,,,211640,Sol Home LLC,,,,,,1,74
+PARENT,,,65417,AquaView Inc,,,,,,15,74
+PARENT,,,371674,"Shaanxi Flattery Trading Co., Ltd",,,,,,3,73
+PARENT,,,214650,Four Lamps Limited,,,,,,2,73
+PARENT,,,178347,Manman sky inc,,,,,,11,73
+PARENT,,,460821,"Yangjiang Zhicheng E-Commerce Co., Ltd",,,,,,11,73
+PARENT,,,63741,BNK BATHROOM  KITCHEN,,,,,,9,72
+PARENT,,,240047,"SHIZUKA, LLC",,,,,,2,72
+PARENT,,,255210,Harmony Edge Inc,,,,,,11,72
+PARENT,,,67639,MIRROR FLY LLC,,,,,,4,72
+PARENT,,,220944,Paula's Gourmet Table Corp.,,,,,,2,72
+PARENT,,,91595,Hongkong Keynat Home Furnishing Limited,,,,,,12,71
+PARENT,,,174085,"Foshan Wenhua Electronic Commerce Co., Ltd.",,,,,,7,71
+PARENT,,,80805,"ANJI XINXIANG Science and Technology CO., Ltd.",,,,,,1,70
+PARENT,,,322687,"Xiangyang Chaolei Trading Co., Ltd.",,,,,,17,70
+PARENT,,,287012,GAINESVILLE DISCOUNT FURNITURE INC.,,,,,,15,70
+PARENT,,,405908,"Shenzhen Juanbao Network Technology Co., Ltd.",,,,,,4,69
+PARENT,,,403821,"Changzhou Jingrui Home Technology Co., Ltd.",,,,,,13,69
+PARENT,,,434884,"Anji Xingzhou Furniture Co., Ltd.",,,,,,7,69
+PARENT,,,404861,shenzhenshizhanghongkejiyouxiangongsi,,,,,,13,68
+PARENT,,,81187,Sunny House Inc.,,,,,,13,68
+PARENT,,,214344,Floors With More Ltd,,,,,,4,68
+PARENT,,,59502,Dilon Inc,,,,,,5,68
+PARENT,,,224654,weifangshijinyekuajingdianzishangwuyouxiangongsi,,,,,,1,67
+PARENT,,,213190,Seaside Eastbourne Ltd,,,,,,12,67
+PARENT,,,274680,CANVASHIVE LLC,,,,,,14,66
+PARENT,,,347102,LuAnJiJiWangLuoKeJiYouXianGongSi,,,,,,10,66
+PARENT,,,302031,Innovations Spaces Inc,,,,,,5,66
+PARENT,,,341261,JIUJIANGSHI HUASHAO DIANZI SHANGWU YOUXIAN GONGSI,,,,,,11,66
+PARENT,,,364757,Maison Eclat House Of Brilliance,,,,,,8,66
+PARENT,,,399423,fo shan shi ai bi ni jia ju you xian gong si,,,,,,9,65
+PARENT,,,404748,shenzhenshihaifanshiyeyouxiangongsi,,,,,,8,65
+PARENT,,,126573,"Zhejiang Fuma Network Technology Co.,Ltd",,,,,,13,65
+PARENT,,,281611,"Yangzhou Yiran Network Technology Co., Ltd",,,,,,4,65
+PARENT,,,359060,Collective Creativity Iimited,,,,,,3,65
+PARENT,,,439917,SHENZHENSHIQIMAIDIANZISHANGWUYOUXIANGONGSI,,,,,,1,64
+PARENT,,,399511,shanxixuechuyangbinshangmaoyouxiangongsi,,,,,,2,64
+PARENT,,,55835,Haukkie Inc.,,,,,,2,63
+PARENT,,,326864,(US)ZYMINTERET TRADING LIMITED,,,,,,6,63
+PARENT,,,304293,Sanctuary Vogue Ltd,,,,,,2,63
+PARENT,,,435184,WOW PIONEER C-Corp,,,,,,3,63
+PARENT,,,304036,"FURNITURE FACTORY OUTLET, LLC",,,,,,12,63
+PARENT,,,487649,shenzhenshizhuoruideshumakejiyouxiangongsi,,,,,,2,61
+PARENT,,,271331,"Fameglobal (Shenzhen) Cross-border Supply Chain Management Co., Ltd.",,,,,,7,61
+PARENT,,,269315,Siscar Lands Inc,,,,,,12,59
+PARENT,,,337940,shenzhenshijinxundadianzishangwuyouxiangongsi,,,,,,6,59
+PARENT,,,295783,"Lin Hai Guanghe Craft Co., Ltd.",,,,,,4,59
+PARENT,,,70424,"Shenzhen Yalei Trade Co.,Ltd",,,,,,13,59
+PARENT,,,234041,huizhoushihuijushengkejiyouxiangongsi,,,,,,2,59
+PARENT,,,71846,"Shenzhenshi Ruiran shiye Co.,Ltd",,,,,,2,59
+PARENT,,,79918,SEANNAL INC,,,,,,2,59
+PARENT,,,271047,Chateaux Ciao Inc,,,,,,14,58
+PARENT,,,173407,foshanshimeidunjiesiweiyuyouxiangongsi,,,,,,5,58
+PARENT,,,370502,suzhoukunshanshiyizemaoyiyouxiangongsi,,,,,,5,58
+PARENT,,,283014,Dwell-Divine Ltd,,,,,,10,58
+PARENT,,,302176,"Shenzhen Xinmaoda Electronics Co.,Ltd",,,,,,3,57
+PARENT,,,289992,zhongshanshihuabangdengshizhaomingyouxiangongsi,,,,,,2,56
+PARENT,,,337299,"Guangzhou Jiangyao Trading Co., Ltd.",,,,,,3,56
+PARENT,,,268722,Elegance Plexi Home Inc,,,,,,8,56
+PARENT,,,221763,Ralston Decor Inc,,,,,,5,56
+PARENT,,,368173,foshanshiqiaoyuzhinengjiajuyouxiangongsi,,,,,,1,56
+PARENT,,,404325,"Wuhan Mr. Waiba Home Furnishing CO.,Ltd",,,,,,5,56
+PARENT,,,302976,Elfin Estate Ltd,,,,,,2,55
+PARENT,,,178348,Rongeng inc,,,,,,7,55
+PARENT,,,85784,Shanghai Jinxing Maoyiyouxiangongsi,,,,,,7,55
+PARENT,,,217063,Chaozhou Xingning Chu Wei Ke Ji You Xian Gong Si,,,,,,4,54
+PARENT,,,449131,"Hong Kong Weifeng Co., Limited",,,,,,3,54
+PARENT,,,354392,"Jiaxing leide home furnishings co.,ltd",,,,,,4,54
+PARENT,,,72734,"VISION VORTEX CO.,LTD",,,,,,1,54
+PARENT,,,20974,Summerville Furnishings,,,,,,9,54
+PARENT,,,296771,shenzhenshixiaojingkejiyouxiangongsi,,,,,,7,54
+PARENT,,,361845,"Shenzhen Shicheng Home Furnishing Co., Ltd.",,,,,,12,54
+PARENT,,,410559,guang zhou qian yi xin xi ke ji you xian gong si,,,,,,8,54
+PARENT,,,436971,JINCHENG HONG KONG INTERNATIONAL LIMITED,,,,,,11,53
+PARENT,,,320592,GTS PRO TRADING INC,,,,,,3,53
+PARENT,,,297317,Lined Espinon Inc,,,,,,3,53
+PARENT,,,107574,"Shenzhen Gushan Snow Exploration Technology Co., Ltd.",,,,,,15,53
+PARENT,,,271339,Edenbrook Home Inc,,,,,,2,53
+PARENT,,,249932,MODERN HABITAT INC,,,,,,6,53
+PARENT,,,63558,"Xiamen Meiyahulian E-Commerce Co., Ltd.",,,,,,10,53
+PARENT,,,272344,Valeva Stows Inc,,,,,,2,52
+PARENT,,,445747,cheng du wo er mei jia shang mao you xian gong si,,,,,,13,52
+PARENT,,,315508,shenzhenshitaisenaokejiyouxiangongsi,,,,,,15,52
+PARENT,,,88789,Jiaw Inc,,,,,,9,52
+PARENT,,,353184,"Guangxi Quansheng Trading Co., Ltd",,,,,,5,51
+PARENT,,,330754,Brit Zonk inc,,,,,,3,51
+PARENT,,,69369,QUANSHIGOU LLC,,,,,,13,51
+PARENT,,,64405,Guangzhou Yingshun Information Technology Ltd,,,,,,4,51
+PARENT,,,431386,HANGZHOU YUFEI NETWORK TECHNOLOGY LIMITED COMPANY,,,,,,1,51
+PARENT,,,348544,shenzhenshimobaikejiyouxiangongsi,,,,,,1,50
+PARENT,,,367761,"Hengyang Senyou Technology Co., Ltd.",,,,,,8,50
+PARENT,,,438945,Durable Living Innovations Limited,,,,,,4,49
+PARENT,,,330652,Qidian Experiential Education Technology Limited,,,,,,6,49
+PARENT,,,288158,Normsman Inc_1,,,,,,1,49
+PARENT,,,464393,"Suzhou Yituantuan Technology Co., Ltd.",,,,,,9,48
+PARENT,,,291130,KINGMYS LLC,,,,,,3,47
+PARENT,,,340877,shenzhensanjundianzishangwuyouxiangongsi,,,,,,7,47
+PARENT,,,453047,"Taizhou Liangzhiyan Trading Co., Ltd",,,,,,7,47
+PARENT,,,229437,YongKangShiKangPaoGongMaoYouXianGongSi,,,,,,6,47
+PARENT,,,330284,jiangxixintuopugongyinglianyouxiangongsi,,,,,,4,47
+PARENT,,,251504,Mo Shang Shi Ye (ShenZhen) You Xian Gong Si,,,,,,3,47
+PARENT,,,350747,"FOSHAN AI SU IMPORT＆EXPORT CO.,LTD",,,,,,3,46
+PARENT,,,269029,"ZHEJIANG KEYUAN CHAIR INDUSTRY CO.,LTD.",,,,,,5,46
+PARENT,,,79744,FORKING INC.,,,,,,6,46
+PARENT,,,309465,Dazzle Hives Inc,,,,,,9,46
+PARENT,,,330262,shenzhenshidamaludianzishangwuyouxiangongsi,,,,,,9,46
+PARENT,,,209429,Breanna Decor Inc,,,,,,5,46
+PARENT,,,271371,(US)Shenzhenshi Hongwanxing KeJiYouXianGongSi,,,,,,11,46
+PARENT,,,123104,Guangzhoushibaisituowangluokejiyouxiangongsi,,,,,,2,45
+PARENT,,,271738,Casa Eclat Inc,,,,,,10,45
+PARENT,,,286721,Crywolf Fortech Inc,,,,,,4,45
+PARENT,,,315554,shenzhenshishenweikejiyouxiangongsi,,,,,,12,45
+PARENT,,,300655,The Delightful Recipes Inc,,,,,,3,44
+PARENT,,,242069,"Foshan City You Jiang Fang Furniture co.,ltd",,,,,,11,44
+PARENT,,,464853,Roc Lofty Trade Limited,,,,,,11,44
+PARENT,,,66334,Modland Inc,,,,,,6,44
+PARENT,,,303624,shenzhenshixidikejiyouxiangongsi,,,,,,2,44
+PARENT,,,104481,"Taining Zhitaiou Technology Co., Ltd.",,,,,,4,44
+PARENT,,,350371,"Fangzhen (Nanjing) Technology Co.,LTD.",,,,,,6,43
+PARENT,,,81359,Shirckone Inc.,,,,,,1,43
+PARENT,,,300610,Crak Muzic Inc,,,,,,6,43
+PARENT,,,329334,"Jiangmen Allred Lighting Technology Co., Ltd.",,,,,,3,43
+PARENT,,,213083,Induslyfe Decor Inc,,,,,,1,43
+PARENT,,,62617,"Minhou Minxing Weaving CO.,Ltd",,,,,,4,42
+PARENT,,,452974,"Yiwu Linxiang Network Technology Co., Ltd",,,,,,4,42
+PARENT,,,272183,Cyber Byte Tech Inc,,,,,,6,42
+PARENT,,,107044,"Suzhou Yiyong Trading Co., Ltd.",,,,,,2,41
+PARENT,,,12357,BX International Inc. dba Skybound USA,,,,,,6,41
+PARENT,,,191217,Cosmic Trade INC,,,,,,11,41
+PARENT,,,206262,Lucky Kempt Home Inc,,,,,,7,40
+PARENT,,,299739,TIBMUTO CO,,,,,,3,40
+PARENT,,,200160,shenzhenshi dieyunsen keji youxiangongsi,,,,,,10,40
+PARENT,,,235745,Office Pines Trade Inc,,,,,,9,40
+PARENT,,,81348,4CASA INTERNATIONAL INC,,,,,,1,40
+PARENT,,,407886,Epicenter Excellence LLC,,,,,,2,39
+PARENT,,,65215,MOLAMOLA,,,,,,8,39
+PARENT,,,277348,Blu Aired Merch Inc,,,,,,10,39
+PARENT,,,374036,"Foshan Yangmei Shengwei Furniture Co., Ltd.",,,,,,8,39
+PARENT,,,336213,"Guangzhou Dongmai Technology Co., Ltd.",,,,,,4,39
+PARENT,,,266960,Lovely Bloom Inc,,,,,,10,38
+PARENT,,,270346,Visco Link Inc,,,,,,1,38
+PARENT,,,299000,GUANG ZHOU YI SHU WANG LUO KE JI YOU XIAN ZE REN GONG SI,,,,,,12,38
+PARENT,,,107820,shenzhenshi shuilongyin kejiyouxiangongsi,,,,,,14,38
+PARENT,,,450433,"Chigeng (Yiwu) Network Technology Co., Ltd",,,,,,6,38
+PARENT,,,275905,"MAZE FURNISHINGS CONSIGNMENT & INTERIOR DESIGN, LLC",,,,,,13,38
+PARENT,,,107049,Ningbo Linnuo International Trade Co.  Ltd.,,,,,,7,37
+PARENT,,,374043,Glorious Rise Ecommerce Co.,,,,,,6,37
+PARENT,,,469286,HONG KONG PINGFENG BUSINESS LIMITED,,,,,,9,37
+PARENT,,,482811,ELANDER ALIN INC.,,,,,,3,37
+PARENT,,,286387,Que Linda Stationery Shop,,,,,,9,37
+PARENT,,,277880,"Hangzhou KuoMan Furniture Co.,Ltd.",,,,,,6,37
+PARENT,,,81516,"Guangzhou Tianhe District Ku Gu Xia Trading Co., L",,,,,,7,36
+PARENT,,,243784,Olde Homey Styles Inc,,,,,,5,36
+PARENT,,,404066,"Hangzhou Shangying E-Commerce Co., Ltd",,,,,,2,36
+PARENT,,,56051,Soges,,,,,,1,36
+PARENT,,,320212,Shenzhenshiyundanfengqingkejiyouxiangongsi,,,,,,2,36
+PARENT,,,277467,HengYang furniture trade LLC,,,,,,11,35
+PARENT,,,223536,"Shenzhen Baicui Technology Co., Ltd.",,,,,,3,35
+PARENT,,,299066,"U.S.A. HOSPITALITY, INC",,,,,,11,35
+PARENT,,,216727,Taizhou Jiayin jia ju ke ji you xian gong si,,,,,,1,35
+PARENT,,,307940,"US_Guangzhou Xingyuan Home Furnishings Co., Ltd",,,,,,2,35
+PARENT,,,364966,"Ningxia Xingchenxin Trading Co., Ltd._1",,,,,,2,35
+PARENT,,,402154,ShenZhenShiShengLiYaMaoYiYouXianGongSi,,,,,,2,35
+PARENT,,,343156,shenzhenshixingxuanchenmaoyiyouxiangongsi,,,,,,13,35
+PARENT,,,414517,"Chengdu Aiweike Technology Co., Ltd",,,,,,8,34
+PARENT,,,304206,WORK LOGICS LLC,,,,,,11,34
+PARENT,,,467638,"Zhangpu Xiyou Information Technology Co., Ltd",,,,,,3,34
+PARENT,,,93693,"Guangzhou Yuye Internet Technology Co., Ltd",,,,,,3,34
+PARENT,,,479014,VLISBO HOME LLC,,,,,,2,33
+PARENT,,,358680,"ANJIPUFU JIAJUYONGPIN CO.,LTD",,,,,,3,33
+PARENT,,,64906,Hmpower INC.,,,,,,4,33
+PARENT,,,478365,Shanghaioumingjiajukejiyouxiangongsi,,,,,,10,32
+PARENT,,,91237,HEQIGREAT HOMEINNFEEL INC,,,,,,9,32
+PARENT,,,120142,NuStory,,,,,,1,32
+PARENT,,,347103,"Jining Chunhua Supply Chain Co., Ltd.",,,,,,7,32
+PARENT,,,122267,Mengyoung LLC,,,,,,5,32
+PARENT,,,342537,TwentyTwo INC,,,,,,2,32
+PARENT,,,352358,"Shenzhen Eden Grove Decoration Co., LTD",,,,,,1,32
+PARENT,,,178313,Joyee garden inc,,,,,,2,32
+PARENT,,,101732,"SHUNSHI INTERNATIONAL TRADING CO., LIMITED",,,,,,8,32
+PARENT,,,283563,FONHOL Ltd.,,,,,,9,32
+PARENT,,,152716,"Levin furniture co.,Limited",,,,,,5,32
+PARENT,,,473565,"Brilliance Soar Co., Ltd.",,,,,,6,32
+PARENT,,,242074,Xingtai Shanhao Trading CoLtd,,,,,,10,32
+PARENT,,,363021,hangzhoudaizukejiyouxiangongsi,,,,,,4,31
+PARENT,,,375867,Mineo Trading LLC,,,,,,11,31
+PARENT,,,154568,"Xiamen Renzaiqiantu Network Technology Co., Ltd",,,,,,7,31
+PARENT,,,200280,"HONGKONG ITERATIVE INNOVATION TECHNOLOGY CO.,LIMITED",,,,,,3,31
+PARENT,,,459734,"Hunan Jiuxiang E-commerce Consulting Services Co., Ltd.",,,,,,10,30
+PARENT,,,450199,"Qiu Ze Shun Jia Ju (HK) Co., Limited",,,,,,2,30
+PARENT,,,462221,"HK ZI XUAN CO., LIMITED",,,,,,1,30
+PARENT,,,365340,Lignum Atelier Inc,,,,,,4,30
+PARENT,,,449554,Foshan HongChuang Meatal Products CO.LTD,,,,,,2,30
+PARENT,,,130964,wo li da （guang zhou ）ke ji you xian gong si,,,,,,6,30
+PARENT,,,346539,guangzhouyuehuxinnengyuantouziyouxiangongsi,,,,,,2,29
+PARENT,,,483228,"Yunfu Xiyu E-commerce Co., Ltd",,,,,,3,29
+PARENT,,,274538,"POWER GROWTH CO., LTD",,,,,,8,29
+PARENT,,,76508,HOMYCASA DESIGN INC,,,,,,5,29
+PARENT,,,80820,Park Haven Inc,,,,,,3,29
+PARENT,,,207284,shen zhen shi hong ye zhi neng ke ji you xian gong si,,,,,,4,29
+PARENT,,,217857,Kossmai,,,,,,7,29
+PARENT,,,370151,Foshan Jidian Furniture Co Ltd,,,,,,1,29
+PARENT,,,453198,Wende Changyun Limited,,,,,,3,29
+PARENT,,,370727,sichuan lufeijian kejiyouxiangongsi,,,,,,2,29
+PARENT,,,268416,Starry Chateau Inc,,,,,,1,29
+PARENT,,,240976,"CURLS RX BEAUTY, LLC",,,,,,6,29
+PARENT,,,60250,"Shenzhen Xiaozhu Technology Co., Ltd.",,,,,,9,28
+PARENT,,,75929,Guangzhou Yixue Notebook Technology Co. LTD,,,,,,5,28
+PARENT,,,266439,Porch Lightings Inc,,,,,,6,28
+PARENT,,,55931,VISCARL INC,,,,,,2,27
+PARENT,,,295564,"Shenzhen Jinhongxiang Energy Technology Co., Ltd",,,,,,2,27
+PARENT,,,410364,jinjiangshi shuiying technology limited company,,,,,,2,27
+PARENT,,,321743,shenzhenshixiuyekejiyouxiangongsi,,,,,,9,27
+PARENT,,,439131,"Dongyangshiqidamaoyi Co., Ltd.",,,,,,1,27
+PARENT,,,340749,"Chengdu Lidachang Trading Co., Ltd",,,,,,4,27
+PARENT,,,253854,ABOSOME LTD,,,,,,3,27
+PARENT,,,75617,877 Board Up LLC,,,,,,2,26
+PARENT,,,369463,"Congcong Mangmang E-commerce (Shenzhen) Co., Ltd.",,,,,,7,26
+PARENT,,,214649,Finchley Decor Inc,,,,,,9,26
+PARENT,,,245757,"Linhai Dongxiang Travel Goods Co., LTD",,,,,,1,25
+PARENT,,,248702,(US)zhongshanshiyuelonghulianwangkejiyouxiangongsi,,,,,,4,25
+PARENT,,,64033,GHOMEG PRODUCTS INC,,,,,,1,25
+PARENT,,,277782,"FUZHOU MIX LIVING PRODUCTS CO.,LIMITED",,,,,,4,25
+PARENT,,,358260,"Jiangmen Xiaoyi Trading Co., Ltd",,,,,,10,25
+PARENT,,,452915,"Huojulong Trading Co., Limited",,,,,,7,25
+PARENT,,,457363,"Foshan Chancheng Manjia E-commerce Co., Ltd.",,,,,,6,25
+PARENT,,,486601,"Chengdu Green Qiuxiang Fragrance Home Furnishings Co., Ltd",,,,,,3,25
+PARENT,,,450227,"MANYBOX TECHNOLOGY CO., LIMITED",,,,,,2,25
+PARENT,,,319978,shenzhenshidaqinzhihengkejiyouxiangongsi,,,,,,4,25
+PARENT,,,452297,Kunming Jieyiyi Guoji Maoyi Youxian Gongsi,,,,,,3,24
+PARENT,,,359442,guangzhouquanyunkejiyouxiangongsi,,,,,,11,24
+PARENT,,,64870,Renist Kitchen  Bath LLC,,,,,,6,24
+PARENT,,,206126,Realty Home Decor Inc,,,,,,10,24
+PARENT,,,103588,Shenzhenshihuizidianzishangwuyouxiangongsi,,,,,,10,24
+PARENT,,,244840,Entity INC,,,,,,2,24
+PARENT,,,85804,Dayesmile Inc,,,,,,2,24
+PARENT,,,249169,"Hebei Xiong'an Benq Trading Co., Ltd",,,,,,5,23
+PARENT,,,443424,Talk Limited,,,,,,5,23
+PARENT,,,408270,MEARAY INC_1,,,,,,4,23
+PARENT,,,282028,Serene Resin Inc,,,,,,3,23
+PARENT,,,335788,Xianyou Tansen Furniture Co Ltd,,,,,,3,23
+PARENT,,,51560,AOOLIVE INC,,,,,,11,23
+PARENT,,,322686,"Henan Changhou Information Technology Co., Ltd.",,,,,,2,23
+PARENT,,,459349,ENDEMOL LATINO N A INC,,,,,,7,23
+PARENT,,,303530,LUCROD LTD.,,,,,,9,23
+PARENT,,,56612,Artrage Limited,,,,,,7,23
+PARENT,,,81358,PRIMESTOK INC,,,,,,2,23
+PARENT,,,64593,PURELY HOME LIMITED,,,,,,7,23
+PARENT,,,324970,huizhoushishenshenbaokejiyouxiangongsi,,,,,,3,22
+PARENT,,,287469,"Zhongshan Ningmeng Lighting Co., Ltd.",,,,,,2,22
+PARENT,,,304218,IRHOMA CO,,,,,,8,22
+PARENT,,,491385,"Fujian Anxi Qisheng Network Technology Co., Ltd.",,,,,,9,22
+PARENT,,,143543,Cusp Barn inc,,,,,,1,22
+PARENT,,,186240,Upward,,,,,,2,22
+PARENT,,,281968,Bacchus Outfit Inc,,,,,,1,22
+PARENT,,,219767,Shenzhen Dingliu Technology inc.,,,,,,1,22
+PARENT,,,441342,si chuan hui li shang mao you xian gong si,,,,,,1,22
+PARENT,,,238169,STAR HOME AMERICA INC.,,,,,,4,22
+PARENT,,,351817,"Hangzhou Feixin Trading Co., Ltd",,,,,,3,22
+PARENT,,,59756,Haiwen Trading Co. LTD.,,,,,,2,22
+PARENT,,,271731,Gecko Compware Inc,,,,,,5,21
+PARENT,,,310733,Tianning Import and Export Limited,,,,,,7,21
+PARENT,,,343278,shan xi fei yue mao yi you xian gong si,,,,,,4,21
+PARENT,,,88956,Jieyandong Tech Co.Ltd.,,,,,,10,21
+PARENT,,,343510,foshanshijindaxinnengyuancailiaoyouxiangongsi,,,,,,5,21
+PARENT,,,89129,Qiurukun Tech Co.Ltd.,,,,,,8,21
+PARENT,,,354197,dongguanshixingguangyafushiyouxiangongsi,,,,,,1,21
+PARENT,,,133410,Rao Emporium,,,,,,1,21
+PARENT,,,304381,nanjingweiyidianzishangwuyouxiangongsi,,,,,,2,21
+PARENT,,,300167,YUBIOM LIMITED,,,,,,2,21
+PARENT,,,467642,"Hong Kong Winning Road Trading Co., Limited",,,,,,1,20
+PARENT,,,271716,Hipster Home Inc,,,,,,6,20
+PARENT,,,452285,"Shenzhen uwant Industrial Co., LTD",,,,,,2,20
+PARENT,,,272053,"Haikou Yuexue Haoyi trading Co., LTD",,,,,,6,20
+PARENT,,,297959,Nature Veil Silk Inc,,,,,,3,20
+PARENT,,,487075,"Beijing Yunjing Tongda Technology Co., Ltd.",,,,,,7,20
+PARENT,,,100316,SHEN ZHEN SHI FANG ZE YUAN KE JI YOU XIAN GONG SI,,,,,,5,20
+PARENT,,,342780,"Crafted Palm, LLC",,,,,,1,20
+PARENT,,,208187,Elsa Decor inc,,,,,,7,20
+PARENT,,,374089,Anna And Phoebe Inc.,,,,,,1,19
+PARENT,,,450186,shenzhenshihengliweilaikejiyouxiangongsi,,,,,,6,19
+PARENT,,,309575,KETY INDUSTRIAL LIMITED,,,,,,5,19
+PARENT,,,359517,HUIZHOU HONGYU FURNITURE,,,,,,3,19
+PARENT,,,486660,"Chengdu Yishengxuan Trading Co., Ltd",,,,,,4,19
+PARENT,,,462574,TerraLink Supply Inc,,,,,,7,19
+PARENT,,,354697,"Taizhou Jieya E-commerce Co., Ltd",,,,,,3,19
+PARENT,,,493798,"Nanning Ousihang E-Commerce Co., Ltd.",,,,,,10,19
+PARENT,,,42878,"DANDELION INTERNATIONAL, INC.",,,,,,3,18
+PARENT,,,333769,"Zhongshan Aurora International Supply Chain Management Co., Ltd",,,,,,2,18
+PARENT,,,62156,Great Gamix Ltd,,,,,,1,18
+PARENT,,,77315,"Foshan Senge Furniture Co.,ltd",,,,,,6,18
+PARENT,,,50463,Alipu Inc,,,,,,3,18
+PARENT,,,302978,Beaksy Rush Inc,,,,,,5,18
+PARENT,,,334250,"Shenzhen Mingxin Lianchuang Technology Co., LTD",,,,,,11,18
+PARENT,,,248365,"Shenzhen ShangYa Innovation and Development Co., Ltd",,,,,,1,18
+PARENT,,,329676,"Shenzhen Red Wild Technology Co., Ltd.",,,,,,4,18
+PARENT,,,270009,"Hongyexin (Shenzhen) Industrial Co., Ltd",,,,,,5,18
+PARENT,,,361929,quanzhouzhendazhongwangluokejiyouxiangongsi,,,,,,4,18
+PARENT,,,348882,shenzhenshizhongshengchuangzhankejiyouxiangongsi,,,,,,2,18
+PARENT,,,223739,Shenzhenshiyaotushengshigongyinglianguanliyouxiangongsi,,,,,,1,17
+PARENT,,,342720,EFS FURNITURE VIETNAM CO.LTD,,,,,,3,17
+PARENT,,,324939,"XIANJU EVERGREEN TRADING CO.,LTD.",,,,,,1,17
+PARENT,,,84648,Westin LLC,,,,,,8,17
+PARENT,,,452764,"Zhongshan Olipus Electric Appliance Co., Ltd",,,,,,1,17
+PARENT,,,463792,"Changsha Qiyou Manxu E-commerce Co., Ltd",,,,,,1,17
+PARENT,,,455859,FASADI LIMITED,,,,,,2,17
+PARENT,,,372859,"Suzhou Decesen Business Consulting Co., Ltd",,,,,,4,17
+PARENT,,,364855,guang zhou shi ai xi ou jin chu kou you xian gong si,,,,,,2,17
+PARENT,,,506266,jin hu yong yu xin cai liao ke ji you xian gong si,,,,,,5,17
+PARENT,,,349521,"Hangzhou yimai Electronic Commerce Co., Ltd",,,,,,2,17
+PARENT,,,455729,CHOICER INC,,,,,,8,17
+PARENT,,,279066,Foshan Kangpeng Home Furnishing Co.,,,,,,5,17
+PARENT,,,287947,CARPET DESIGN UNLIMITED 2015 LLC,,,,,,9,17
+PARENT,,,478232,"Foshan Nanhai District Jushangpinju Furniture Co., Ltd.",,,,,,1,16
+PARENT,,,67387,surise Inc,,,,,,4,16
+PARENT,,,495220,"YONGZHOU JINGRUI TECHNOLOGY CO., LTD.",,,,,,2,16
+PARENT,,,286843,HongKong Sunwave Technology Limited,,,,,,4,16
+PARENT,,,370198,"HaoHan Shenzhen Trading Co., Ltd",,,,,,1,16
+PARENT,,,498917,"Guangzhou Kenhe Home Furnishing Co., Ltd.",,,,,,6,16
+PARENT,,,443796,YUNGWOO LTD,,,,,,6,16
+PARENT,,,445262,BANSEY(HK)INTERNATIONAL CO.，LIMITED,,,,,,5,16
+PARENT,,,348337,yantaishenghesuyeyouxiangongsi,,,,,,1,15
+PARENT,,,482541,"Hengyang Hengpu Network Technology Co., Ltd",,,,,,3,15
+PARENT,,,75934,"Shenzhenshi Xibeile Technology Co., Ltd.",,,,,,2,15
+PARENT,,,359516,guangzhouzhenghongkejiyouxiangongsi,,,,,,1,15
+PARENT,,,335216,anjigufengjiajuyouxiangongsi,,,,,,3,15
+PARENT,,,366268,"HANGZHOU BOXIAO NETWORK TECHNOLOGY CO., LTD.",,,,,,5,15
+PARENT,,,282642,Suzhou Qizhiyun Modern Logistics Technology Co,,,,,,3,15
+PARENT,,,494256,Shenzhenshi Kaitaizhiyuan Keji Youxiangongsi,,,,,,2,15
+PARENT,,,149187,dongguanshiguangyifangdichandailiyouxiangongsidishiwufengongsi,,,,,,5,15
+PARENT,,,334377,"Shenzhen Anjie Home Technology Co., LTD",,,,,,7,15
+PARENT,,,294018,GUDADI LIMITED,,,,,,3,15
+PARENT,,,91481,GUANGZHOUCHANGLIANG GUANGDIANKEJIYOUXIANGONGSI,,,,,,1,14
+PARENT,,,459312,AquaWood LLC_1,,,,,,7,14
+PARENT,,,177841,Kichae Star Inc,,,,,,3,14
+PARENT,,,237892,Ash Moonshine Inc,,,,,,2,14
+PARENT,,,364953,NABBIE INC,,,,,,2,14
+PARENT,,,268501,"FOSHAN ZHONGYANG FURNITURE CO., LTD.",,,,,,2,14
+PARENT,,,241167,Anji Hongqiang furniture Co LTD,,,,,,3,14
+PARENT,,,348007,"Yiwu Huanyi Network Technology Co., Ltd",,,,,,3,14
+PARENT,,,50278,"US_INSONG TRADING CO., LIMITED",,,,,,3,14
+PARENT,,,279552,"CAN_Nantong Yasai Textile Co., LTD._1",,,,,,5,14
+PARENT,,,88252,FURGLE CO.LTD,,,,,,1,14
+PARENT,,,291809,YTTSOYTS,,,,,,1,14
+PARENT,,,451416,"Shenzhen MeowStar Chain Cross-Border Trade Co., Ltd.",,,,,,1,14
+PARENT,,,94526,WH HOME CASA INC,,,,,,4,14
+PARENT,,,62602,WELLHOME INC,,,,,,1,13
+PARENT,,,354687,shen zhen shi xin hong xin tou zi zi xun you xian gong si,,,,,,2,13
+PARENT,,,439112,kunmingfengzhiyangbaihuo,,,,,,7,13
+PARENT,,,132369,FaBao Information Technology Co. Ltd.,,,,,,3,13
+PARENT,,,472983,"Fuzhou Youremai E-commerce Co., Ltd",,,,,,3,13
+PARENT,,,208333,OUTDOOR CREATIONS & MORE INC.,,,,,,8,13
+PARENT,,,439978,"Zhongshan Mingqixuan Lighting Co., Ltd.",,,,,,1,13
+PARENT,,,441560,henanmuhuamaoyiyouxiangongsi,,,,,,10,13
+PARENT,,,489163,"Changsha Xinche Network Technology Co., Ltd.",,,,,,3,13
+PARENT,,,277540,"Shenzhen Rich Technology Industrial Co., Ltd.",,,,,,4,13
+PARENT,,,313410,Shang Hai Di Meng Ke Ji You Xian Gong Si,,,,,,1,13
+PARENT,,,238566,"Jiaxing heyi industry and trade Co., LTD",,,,,,6,13
+PARENT,,,82128,zhengzhoudieshushangmaoyouxiangongsi,,,,,,6,13
+PARENT,,,247434,Modern Escapes Decor Inc,,,,,,7,12
+PARENT,,,184954,LIBER REAR INC,,,,,,5,12
+PARENT,,,443216,HK FUGUO TRADING LIMITED,,,,,,4,12
+PARENT,,,149204,"Quanzhou Xiangyuan Arts & Crafts Co., Ltd.",,,,,,1,12
+PARENT,,,70264,YIGOBUY INC,,,,,,4,12
+PARENT,,,465779,YANBIN DIANZISHANGMAO LIMITED,,,,,,3,12
+PARENT,,,294832,"Cloudjoy Home (Shanghai) Technology Co., Ltd.",,,,,,3,12
+PARENT,,,478385,"Wuxi Tingsheng Trading Co., Ltd",,,,,,7,12
+PARENT,,,284131,Malsion Homes Inc,,,,,,6,12
+PARENT,,,292735,Shenzhen Huabin Furniture Co Ltd,,,,,,2,12
+PARENT,,,212215,Henry,,,,,,1,11
+PARENT,,,303187,Mantel Memories Ltd,,,,,,8,11
+PARENT,,,365126,"Fuzhouhongtiankeji Co., Ltd.",,,,,,5,11
+PARENT,,,221044,PRIME SOURCE TRADING LLC,,,,,,1,11
+PARENT,,,219571,1080 C LLC,,,,,,1,11
+PARENT,,,104006,foshanshi fujiamao yiyouxiangongsi,,,,,,3,11
+PARENT,,,478831,SOSWEETY ARINA INC,,,,,,1,11
+PARENT,,,270574,BONDFU CO,,,,,,3,11
+PARENT,,,86651,"Shenzhen Maisuiwo Network Technology Co., Ltd.",,,,,,1,11
+PARENT,,,503542,"Jiangxi Limu Furniture Co., Ltd.",,,,,,3,11
+PARENT,,,400931,FUJIANXINGSHANGKEKEJIYOUXIANGONGSI,,,,,,1,11
+PARENT,,,151526,HALOKIN TECHNOLOGY LIMITED,,,,,,3,11
+PARENT,,,447952,Ningbo qiantu gongyinglianguanli youxiangongsi_1,,,,,,1,11
+PARENT,,,219846,woodenshine limited,,,,,,2,11
+PARENT,,,487441,JY TRADING INC,,,,,,3,11
+PARENT,,,47207,TONA Sanitaryware Co,,,,,,4,11
+PARENT,,,495152,"Anji Mingfan Furniture Co.,Ltd.",,,,,,2,10
+PARENT,,,442224,Shanghai Taoshuliyue Business Ltd. Co.,,,,,,6,10
+PARENT,,,267359,"Foshan Fudeyi Trading Co., Ltd",,,,,,2,10
+PARENT,,,344426,shenzhenshiyingkejiyouxiangongsi,,,,,,5,10
+PARENT,,,309602,LUOSIKEN INC.,,,,,,1,10
+PARENT,,,372630,GaoAnShiDeRuiDianZiShangWuYouXianGongSi,,,,,,2,10
+PARENT,,,69708,Casa Link Inc,,,,,,3,10
+PARENT,,,466159,CONGXUJIAMR INC,,,,,,4,10
+PARENT,,,292484,Aden Trans Inc,,,,,,2,10
+PARENT,,,354549,Crafts Way LLC,,,,,,3,10
+PARENT,,,78844,"JIAXING BEST FURNITURE CO.,LTD",,,,,,5,10
+PARENT,,,400819,Createglory Limited,,,,,,2,10
+PARENT,,,65677,"JIANGXI KINYING INDUSTIAL CO.,LTD",,,,,,1,10
+PARENT,,,401158,Escredible Limited_2,,,,,,4,10
+PARENT,,,400924,shenzhenshihuaxuhongkejiyouxianggongsi,,,,,,3,10
+PARENT,,,479806,"Yunfu Renjie E-commerce Co., Ltd",,,,,,3,10
+PARENT,,,96970,hangzhououyiguojimaoyiyouxiangongsi,,,,,,4,9
+PARENT,,,234397,Shenzhenshiqiweitingkejiyouxiangongsi,,,,,,3,9
+PARENT,,,212013,Yafa Premium Products Inc,,,,,,3,9
+PARENT,,,55967,UFaucet,,,,,,1,9
+PARENT,,,473362,"Yangzhou Miaoguo Trading Co., Ltd",,,,,,3,9
+PARENT,,,488237,THELY BUSINESS LIMITED,,,,,,1,9
+PARENT,,,210899,RisingStar Creator LLC,,,,,,1,9
+PARENT,,,325681,Luoyang Bizoe Furniture Technology Co.,,,,,,2,9
+PARENT,,,190577,Long Term INC,,,,,,5,9
+PARENT,,,65671,"SHENZHEN MEIJIAJING HOME DECORATION TRADING CO,LTD",,,,,,1,9
+PARENT,,,348852,Dongguankezhuodianziyouxiangongsi_1,,,,,,5,9
+PARENT,,,355360,"Chengduxinchaomeiju Network Technology Co., Ltd",,,,,,2,9
+PARENT,,,254815,"PAKI HOME DECOR, LLC",,,,,,2,9
+PARENT,,,400583,zhoukouyihongwangluokejiyouxiangongsi,,,,,,7,9
+PARENT,,,341702,shenzhenshisenxingyankejiyouxiangongsi,,,,,,5,8
+PARENT,,,207427,Laromy Inc,,,,,,2,8
+PARENT,,,488103,"Ninghai Changheng E-commerce Co., Ltd",,,,,,1,8
+PARENT,,,494024,Chang sha shi heng tu rui da dian zi shang wu you xian gong si,,,,,,2,8
+PARENT,,,439127,"Shenzhen Peilin Hengfeng Technology Co., Ltd.",,,,,,2,8
+PARENT,,,50414,LTMATE GLOBAL INC.,,,,,,2,8
+PARENT,,,369039,DongGuanShiHuiNanJiaJuYouXianGongSi,,,,,,3,8
+PARENT,,,467487,"Shenzhen Yujiashengpai Home Furnishings Co., Ltd.",,,,,,3,8
+PARENT,,,108030,CLEARVISTA INTERNATIONAL LIMITED_1,,,,,,2,8
+PARENT,,,356595,CAL-SCAN TRADING PTE. LTD.,,,,,,5,8
+PARENT,,,483285,"Quanzhou Xiaopeng Information Technology Co., Ltd",,,,,,2,8
+PARENT,,,105439,Chery Industrial inc,,,,,,1,8
+PARENT,,,299307,changshashienxiudianzimaoyiyouxiangongsi,,,,,,5,8
+PARENT,,,489908,"Wenling MasaiTrading Co., Ltd",,,,,,1,8
+PARENT,,,486672,"Henan Kuaisheng Trading Co., Ltd",,,,,,4,8
+PARENT,,,437219,HONG KONG ULTRA STRONG INDUSTRIES  LIMITED,,,,,,3,8
+PARENT,,,77036,"GrandBoard Home, Inc.",,,,,,1,8
+PARENT,,,486875,"Jieyang Xinqun Trading Co., Ltd",,,,,,3,8
+PARENT,,,492629,"Zhongshan Muwei E-commerce Co., Ltd.",,,,,,3,8
+PARENT,,,361018,yiwushigangbokejiyouxiangongsi,,,,,,5,8
+PARENT,,,315643,GLORY DESIGN GROUP LLC,,,,,,5,8
+PARENT,,,276591,DongGuan Jia Mu Trading Company Limited,,,,,,3,7
+PARENT,,,455152,VODKALETI FORMATIONS LLC,,,,,,6,7
+PARENT,,,295202,"Chengdu Xiwuyingxue Home Co., Ltd.",,,,,,3,7
+PARENT,,,62825,MIM Home Furnishings INC.,,,,,,1,7
+PARENT,,,245107,"Qingdao Egles International Trade Co., Ltd.",,,,,,1,7
+PARENT,,,365555,"Nanjing Longyu Home Technology Co., Ltd.",,,,,,4,7
+PARENT,,,451765,"Suzhou Yunxiangjia Trading Co., Ltd.",,,,,,5,7
+PARENT,,,483101,"Dongguan Tuike Network Technology Co., Ltd",,,,,,1,7
+PARENT,,,287967,"ICELAINE Crafts (Shenzhen) Co.,Ltd",,,,,,2,7
+PARENT,,,271581,SHENZHENSHI YINHUOCHONG KEJI CO. LTD.,,,,,,3,7
+PARENT,,,468828,Aether Chain Inc,,,,,,4,7
+PARENT,,,350558,"Huzhou Chuangke Sponge Products Co., Ltd",,,,,,1,7
+PARENT,,,82673,FurnitureR Inc,,,,,,4,7
+PARENT,,,374591,jiangmenshisonghuizhaomingyouxiangongsi,,,,,,3,7
+PARENT,,,308792,fo shan fu qi lin jia ju you xian gong si,,,,,,1,7
+PARENT,,,213014,Grand Servico Inc,,,,,,1,7
+PARENT,,,305242,SANNWSG INC,,,,,,3,7
+PARENT,,,334866,zhejiangyoukaixinkejiyouxiangongsi,,,,,,3,7
+PARENT,,,79186,JOIN CROWN COSMETICS TRADING COMPANY,,,,,,3,7
+PARENT,,,56360,J Sing LLC,,,,,,1,7
+PARENT,,,72365,ZHANGHU AMUSEMENT INC,,,,,,3,7
+PARENT,,,369117,"Yunfu Kexing Kitchen and Bathroom Co., Ltd.",,,,,,5,7
+PARENT,,,156202,ShenZhenShiYingZeZhiNengWeiYuYouXianGongSi,,,,,,1,7
+PARENT,,,68305,Qingdao Jimi Kitchen Supply Co.ltd,,,,,,1,7
+PARENT,,,281610,Rugus Inc,,,,,,6,7
+PARENT,,,486929,Hong Kong Aikepide Technology Limited,,,,,,4,7
+PARENT,,,406931,"Guangzhou Aocheng Trading Co., Ltd",,,,,,1,6
+PARENT,,,473035,ENERGY ILLUMINATION LLC,,,,,,2,6
+PARENT,,,49538,NORTH ELM ARTISAN LLC_1,,,,,,1,6
+PARENT,,,475988,Tway Innocraft Inc,,,,,,3,6
+PARENT,,,65085,Hapeisy,,,,,,1,6
+PARENT,,,312994,"Kaiping Linlong Sanitary Technology Co., Ltd",,,,,,1,6
+PARENT,,,496925,"Zhaoqing Meizhi Trading Co., Ltd",,,,,,2,6
+PARENT,,,497801,HONG KONG ZERO BEST BUSINESS LIMITED,,,,,,4,6
+PARENT,,,490642,"FUZHOU WONDERLAND FURNITURE CO.,LTD.",,,,,,1,6
+PARENT,,,213857,UTOPIA FULFILLMENT INC,,,,,,1,6
+PARENT,,,350553,Sunshine Home America Ltd_1,,,,,,1,6
+PARENT,,,494210,Skybound Inc,,,,,,2,6
+PARENT,,,214337,xia men qi yao xun ke dian zi shang wu you xian go,,,,,,1,6
+PARENT,,,200843,yichunshi yuhong jiaju youxian gongsi,,,,,,4,6
+PARENT,,,510990,huizhoushizhuoyuezhinengjiajuyouxiangongsi,,,,,,1,6
+PARENT,,,408549,HUHONGTAO NNA INC,,,,,,1,6
+PARENT,,,438966,"Plum Chef Electrical Appliance Co., Limited",,,,,,1,6
+PARENT,,,474515,"Hubei Lihuitong Trading Co., Ltd.",,,,,,4,6
+PARENT,,,254253,FOSHAN WEIQUANSHUN FURNITURE CO LTD,,,,,,2,6
+PARENT,,,312242,shenzhenkeweichuangxiangzhinengkejiyouxiangongsi,,,,,,1,6
+PARENT,,,367191,guangzhoudoudoubokuajingdianshangyouxiangongsi,,,,,,4,6
+PARENT,,,455779,"Ji'an Shijia E-Commerce Co., Ltd",,,,,,2,6
+PARENT,,,497058,"Meishan Yechen Trading Co., Ltd",,,,,,1,6
+PARENT,,,405723,"Hong Kong Yimile Technology Co., Limited",,,,,,2,6
+PARENT,,,182867,Watque Kita INC,,,,,,4,6
+PARENT,,,460696,HK Birds Business Investment Co.. Limited,,,,,,1,5
+PARENT,,,81809,"ANJI JIAHONG IMPORTEXPORT TRADING CO.,LTD",,,,,,3,5
+PARENT,,,58094,Castle Rock Inc,,,,,,2,5
+PARENT,,,176049,shenzhenshiduokekejiyouxiangongsi,,,,,,2,5
+PARENT,,,302028,Guangzhou Xinxiangkun Trading Co,,,,,,1,5
+PARENT,,,329062,wu han liu xin dian zi shang wu you xian gong si,,,,,,1,5
+PARENT,,,91801,KEEHOOM INC,,,,,,4,5
+PARENT,,,483447,xia men mu rui ying kai mao yi you xian gong si,,,,,,2,5
+PARENT,,,239960,Fuzhou Yawode Electronic Commerce Co. LTD,,,,,,1,5
+PARENT,,,271405,Ezees Hub Inc,,,,,,2,5
+PARENT,,,329552,Hangzhou Leyu E Commerce Co Ltd,,,,,,1,5
+PARENT,,,356175,shantoushimeihekejifazhanyouxiangongsi,,,,,,4,5
+PARENT,,,358201,"Foshan Haixiang Trading Co., Ltd",,,,,,1,5
+PARENT,,,453357,"Hong Kong Friend Trading Co., Limited",,,,,,3,5
+PARENT,,,205626,A Luxury Galore Inc,,,,,,3,5
+PARENT,,,508909,shen zhen shi ze xing wang dian zi shang wu you xian gong si,,,,,,3,5
+PARENT,,,503558,"HK Lando International Trading Co., Limited",,,,,,3,5
+PARENT,,,82223,"Shaoxing LianFeng Textile CO.,LTD",,,,,,2,5
+PARENT,,,368605,"Guangdong Yagas Home Furnishings Co., Ltd.",,,,,,4,5
+PARENT,,,332787,"Shenzhen Huiyouqian Network Technology Co., Ltd.",,,,,,3,5
+PARENT,,,298707,"Zhongshan Big Blue Elephant Lighting Co., Ltd.",,,,,,3,5
+PARENT,,,473400,"Rizhao Baixiangda Trading Co., Ltd",,,,,,2,5
+PARENT,,,269179,ADL House Pros LLC,,,,,,2,5
+PARENT,,,471709,LUCKHUZ INC,,,,,,3,5
+PARENT,,,64914,Homelink INC.,,,,,,1,5
+PARENT,,,267915,zhongshanshifengzhiyuanwangluokejiyouxiangongsi,,,,,,3,5
+PARENT,,,486600,"Ruian City Yingtu Trading Co., Ltd",,,,,,4,4
+PARENT,,,407264,MAKE FUN INC.,,,,,,1,4
+PARENT,,,344412,SHENZHENSHI TAXI MAOYI YOUXIAN GONGSI,,,,,,3,4
+PARENT,,,297588,"Shenzhenshihaidexinxinxijishu Co., Ltd",,,,,,2,4
+PARENT,,,348854,"Auburn Home (Hong Kong) International Trade Co., Limited",,,,,,1,4
+PARENT,,,478602,an hui sheng mai shang mao you xian gong si,,,,,,1,4
+PARENT,,,105685,"Jiangsu Star Intelligent Home Furnishing Co., Ltd.",,,,,,1,4
+PARENT,,,485469,Henanyangyukejiyouxiangongsi,,,,,,2,4
+PARENT,,,59265,"Guangzhou Yuyi Trade Co., Ltd",,,,,,3,4
+PARENT,,,291267,"Zhongshan Meiyangyang Lighting Co., LTD",,,,,,1,4
+PARENT,,,221796,Shenzhen Weiruida Technology Co Ltd,,,,,,2,4
+PARENT,,,486231,METAPULSE LLC,,,,,,2,4
+PARENT,,,450394,"Huizhou CaiZhi E-Commerce Co., Ltd",,,,,,1,4
+PARENT,,,247601,Ningbo Huitianfu E-commerce Co.Ltd,,,,,,1,4
+PARENT,,,317510,"Ningbo Karry Furniture Co., Ltd.",,,,,,1,4
+PARENT,,,267911,"HUZHOU YIXIN IMPORT & EXPORT CO.,  LTD",,,,,,1,4
+PARENT,,,189650,JK Industry Inc.,,,,,,3,4
+PARENT,,,454217,FUJIAN JINZUAN ARTS&CRAFTS CO..LTD,,,,,,2,4
+PARENT,,,192812,HOMARNI FURNISHINGS INC,,,,,,1,4
+PARENT,,,349232,nanjingwanshitongjiajuyouxiangongsi,,,,,,1,4
+PARENT,,,66327,"Foshan Shi Wo Fu Furniture Co.,Ltd",,,,,,2,4
+PARENT,,,359822,"Huzhou Shenzhou Home Furnishing Co., Ltd",,,,,,1,4
+PARENT,,,67813,hangzhou wentong crafts furniture manufacturing co,,,,,,2,4
+PARENT,,,469523,嘉兴澳霖家居用品有限公司,,,,,,1,4
+PARENT,,,324799,"Xiangyang Quanmian Trading Co., Ltd.",,,,,,2,4
+PARENT,,,464202,"Ruian Xincong Trading Co., Ltd",,,,,,2,3
+PARENT,,,64096,"NANJING HENGNING HOME FURNISHING CO., LTD.",,,,,,2,3
+PARENT,,,255249,"LINHAI JIYUN TEXTILE TECHNOLOGY CO.,LTD",,,,,,1,3
+PARENT,,,150637,HIGHRATING TRADE INC,,,,,,2,3
+PARENT,,,410974,AetherLight Technology Studio INC,,,,,,1,3
+PARENT,,,400043,"Ningbo Yuxun E-commerce Co., Ltd.",,,,,,1,3
+PARENT,,,374883,"Shenzhen Asisen international trade CO.,LTD",,,,,,2,3
+PARENT,,,472937,ECOVILLAGE REAL ESTATE LLC,,,,,,2,3
+PARENT,,,348967,nanyangdingjiayueshangmaoyouxiangongsi,,,,,,1,3
+PARENT,,,228384,"Kaiping Dejin Hardware Industry Co., Ltd",,,,,,3,3
+PARENT,,,305803,ning bo lian gou dian zi shang wu you xian gong si,,,,,,2,3
+PARENT,,,57449,Topcraft Kitchen and Bath Inc,,,,,,2,3
+PARENT,,,321071,"Guangdong HaoYun Furniture Co., Ltd.",,,,,,2,3
+PARENT,,,265421,SHIELD TRADING LIMITED,,,,,,1,3
+PARENT,,,488255,Fo shan shi yi pai chan ye tou zi you xian gong si,,,,,,1,3
+PARENT,,,508253,"ANJI MINGJIA FURNITURE CO.,LTD.",,,,,,3,3
+PARENT,,,433298,"Foshan Muting Bath Sanitary Equipment Co.,Ltd",,,,,,1,3
+PARENT,,,57016,ROOJER LIMITED,,,,,,3,3
+PARENT,,,172742,Foshanpensenjiancaiyouxiangongsi,,,,,,2,3
+PARENT,,,347185,Anji Zhongchi Intelligent Home Products Co.,,,,,,2,3
+PARENT,,,486951,"Wenzhou Yiwei Building Materials Co., Ltd",,,,,,2,3
+PARENT,,,431408,"Sichuan Maijin Era Technology Co., Ltd.",,,,,,3,3
+PARENT,,,296729,shenzhenshiweishengouludianzishangwuyouxiangongsi,,,,,,2,3
+PARENT,,,410537,fu qing shi hai long mao yi you xian gong si,,,,,,1,3
+PARENT,,,458492,"GANZHOU XINLIXING INTELLIGENT FURNITURE Co., Ltd",,,,,,1,3
+PARENT,,,440818,"Zhongshan Qianze Technology Co., Ltd",,,,,,1,3
+PARENT,,,406984,guang zhou jie xun xin xi ke ji you xian gong si,,,,,,2,3
+PARENT,,,89748,"Guangzhou Hengli supply chain Co., Ltd",,,,,,2,3
+PARENT,,,478731,"Zhanjiang Xinjie E-commerce Co., Ltd",,,,,,1,3
+PARENT,,,266635,Sunbeam Lure Inc,,,,,,2,3
+PARENT,,,337051,"Shanghai Youbeijia Supply Chain Co., Ltd.",,,,,,1,3
+PARENT,,,213266,Weilianda Home LLC,,,,,,1,3
+PARENT,,,289088,"China Holdya Tech Co., Limited",,,,,,2,3
+PARENT,,,486554,"Wuhan Xingqi E-Commerce Co., Ltd",,,,,,3,3
+PARENT,,,74319,"DONGGUAN HANER FURNITURE CO.,LTD",,,,,,1,3
+PARENT,,,266196,Ningbo Free Trade Zone Top Green Industry and Trade Co Ltd,,,,,,3,3
+PARENT,,,490162,"Nanchang Zanhui Trading Co., Ltd",,,,,,1,3
+PARENT,,,408244,SINTHE,,,,,,1,3
+PARENT,,,374503,"Shenzhen Yihang Home Furnishing Co., Ltd.",,,,,,2,3
+PARENT,,,464457,"Hangzhou Jinguaisi Trading Co., Ltd.",,,,,,2,3
+PARENT,,,349032,An Yang Shi Qi En Shang Mao You Xian Gong Si,,,,,,1,3
+PARENT,,,301991,shenzhenshituomengmaoyiyouxiangongsi,,,,,,1,3
+PARENT,,,490601,SU ZHOU SAN HEI WANG LUO JI SHU YOU XIAN GONG SI,,,,,,2,3
+PARENT,,,483095,"HANGZHOU ZHONGKEJIGUANG LASER TECHNOLOGY SERVICES CO.,LTD",,,,,,1,3
+PARENT,,,303026,Estate Splendor Ltd,,,,,,2,3
+PARENT,,,323433,"FoshanShi Shaina keji Co., Ltd.",,,,,,1,3
+PARENT,,,355576,"Xuzhou Sansheng Sauna Equipment Co., Ltd.",,,,,,2,2
+PARENT,,,444666,"FoshanchengyuejujiajuCo.,ltd",,,,,,2,2
+PARENT,,,488807,zhongshanshimingoukejiyouxiangongsi,,,,,,1,2
+PARENT,,,337918,"Wuhan Xinyun Tong Trading Co., Ltd",,,,,,1,2
+PARENT,,,245666,Guanda Furniture,,,,,,1,2
+PARENT,,,497916,"Foshan Wendangdi Furniture Co., Ltd.",,,,,,2,2
+PARENT,,,470427,Limitless Leaf Inc.,,,,,,1,2
+PARENT,,,459873,FUNTECH INCORPORATION LIMITED,,,,,,1,2
+PARENT,,,349422,HONGKONG TEMPUAL TRADING LIMITED,,,,,,1,2
+PARENT,,,309776,UNITEMAN TECHNOLOGY (HK) LIMITED,,,,,,1,2
+PARENT,,,103843,Zhejiang Paide Network Technology Co Ltd,,,,,,2,2
+PARENT,,,107564,"Shenzhen Bona Technology Co., LTD",,,,,,1,2
+PARENT,,,469266,Lenmoe kapool Commercial Limited,,,,,,2,2
+PARENT,,,244096,TATEUS LLC,,,,,,1,2
+PARENT,,,365557,"Shenzhen Xuan Engineering machinery rental  INDUSTRIAL CO.,LTD",,,,,,1,2
+PARENT,,,287864,hangzhoukuajingyiwangluokejiyouxiangongsi,,,,,,1,2
+PARENT,,,475562,"Zhaoqing Sishufang Trading Co., Ltd",,,,,,1,2
+PARENT,,,455774,"Shenzhen Xingfei Network Technology Co., Ltd",,,,,,1,2
+PARENT,,,105234,ShenZhen BeiMei GaoDuan GuoJi ShangWuZiXun You Xian Gong Si,,,,,,2,2
+PARENT,,,474000,"Ningbo Weisheng E-Commerce Co., Ltd",,,,,,2,2
+PARENT,,,266530,"Shenzhen Huoji Home Furnishing Co., Ltd",,,,,,1,2
+PARENT,,,237039,Shenzhenshichenzhoukejikaifayouxiangongsi,,,,,,2,2
+PARENT,,,270003,Foshanshifengyanjiajuyouxiangongsi,,,,,,1,2
+PARENT,,,479316,"Wuhan Linggui Digital Technology Co., LTD",,,,,,2,2
+PARENT,,,411368,yichuangyundatianjinkejiyouxiangongsi,,,,,,1,2
+PARENT,,,473457,"Quanzhou Fengze Zhongyu Technology Co., Ltd",,,,,,2,2
+PARENT,,,156231,"Shenzhen Shengyuan home furnishing Co., Ltd",,,,,,1,2
+PARENT,,,479505,qingdaozhaohaoshengmaoyiyouxiangongsi,,,,,,2,2
+PARENT,,,468335,"Fuqing Tengxiang Trading Co., Ltd",,,,,,1,2
+PARENT,,,334255,fo shan shi lan fei lin wei yu you xian gong si,,,,,,1,2
+PARENT,,,473299,"Ruian City Junchi E-commerce Co., Ltd",,,,,,1,2
+PARENT,,,384069,"Zhejiang Wuliang Intelligent Computing Technology Co., Ltd",,,,,,1,2
+PARENT,,,491795,Lagolak Commerce Inc,,,,,,1,2
+PARENT,,,320740,JueQiGongYingLian(GuangDong)You XianGongSi,,,,,,1,2
+PARENT,,,302223,DECOR TREND INDUSTRIES SDN.BHD.,,,,,,1,2
+PARENT,,,206109,"UPPER ECHELON PRODUCTS, LLC_1",,,,,,1,2
+PARENT,,,450480,"Anji Xiaoluohao Home Furnishings CO.,Ltd",,,,,,1,2
+PARENT,,,238324,Quanzhouhuciweiyuyouxiangongsi,,,,,,2,2
+PARENT,,,475323,"Shenzhen Jiamingyang Trading Co., Ltd",,,,,,2,2
+PARENT,,,447734,"Foshan Kaiyue Home Technology Co., Ltd.",,,,,,2,2
+PARENT,,,476568,Strive Stream Inc.,,,,,,1,2
+PARENT,,,176369,"Tang Sheng (Shenzhen) International Trade Co., Ltd",,,,,,1,2
+PARENT,,,498980,jiaxingfeifankejiyouxiangongsi,,,,,,2,2
+PARENT,,,348052,"Ningbo Jinchai Network Technology Co., Ltd",,,,,,2,2
+PARENT,,,369424,"Shenzhen Aolai Electronic Commerce Co., Ltd.",,,,,,1,2
+PARENT,,,431388,Foshan Bobao furniture co ltd,,,,,,2,2
+PARENT,,,296562,"Tianze E-Commerce Technology Co., Limited",,,,,,2,2
+PARENT,,,491124,SHENZHENLUOERERDIANZISHANGWUYOUXIANGONGSI,,,,,,1,2
+PARENT,,,505396,Great Grace LLC,,,,,,2,2
+PARENT,,,63216,HHK Furniture Inc.,,,,,,2,2
+PARENT,,,62432,"Changle Yasen Houseware Co.,Ltd",,,,,,1,2
+PARENT,,,445455,"SHEN ZHEN ZHI HAN TRADING CO., LTD.",,,,,,2,2
+PARENT,,,400586,Fuzhoudianxiangdianzishangwuyouxiangongsi,,,,,,1,2
+PARENT,,,157524,HOLTEK Home LLC,,,,,,1,2
+PARENT,,,358388,RESO HOMES EWC LLC,,,,,,2,2
+PARENT,,,487600,"Jiaxing Baibian E-Commerce Co., Ltd",,,,,,1,2
+PARENT,,,451429,fu zhou zhang xiu ke ji you xian gong si,,,,,,1,2
+PARENT,,,68371,LyKings Global inc,,,,,,1,2
+PARENT,,,62237,GLAM HOME INC,,,,,,1,1
+PARENT,,,284842,GAFIKY CO,,,,,,1,1
+PARENT,,,59929,"Longzhaoxin Furniture Co., Ltd.",,,,,,1,1
+PARENT,,,65184,Smartlet Bidet,,,,,,1,1
+PARENT,,,500113,nanjingqiersixinxikejiyouxiangongsi,,,,,,1,1
+PARENT,,,431639,Su Zhou Feng Zhi Gu Ke Ji You Xian Gong Si,,,,,,1,1
+PARENT,,,252402,"New Hong Ning Electronic Technology (Shenzhen) Co., Ltd",,,,,,1,1
+PARENT,,,284754,"Anji Youjia Furniture Accessory Co.,Ltd",,,,,,1,1
+PARENT,,,224164,"Shenzhen Mengya Technology Co., Ltd",,,,,,1,1
+PARENT,,,486894,"Jiaheng Network Technology (Qidong) Co., Ltd",,,,,,1,1
+PARENT,,,340856,"Nantong Haimen Mengyiduo home textiles Co., LTD",,,,,,1,1
+PARENT,,,323425,nanyangrongmingshangmaoyouxiangongsi,,,,,,1,1
+PARENT,,,403423,foshan shi jian chuang guan pin jia ju you xian gong si,,,,,,1,1
+PARENT,,,473372,"Shao Guan Chengrui Trading Co., Ltd",,,,,,1,1
+PARENT,,,196515,Anysonic inc,,,,,,1,1
+PARENT,,,59446,JXZH Inc.,,,,,,1,1
+PARENT,,,317567,Alteck LLC,,,,,,1,1
+PARENT,,,301799,Marina Surf Eshop Inc,,,,,,1,1
+PARENT,,,268720,Jdm Interiors Inc,,,,,,1,1
+PARENT,,,303003,ALRETA LIMITED,,,,,,1,1
+PARENT,,,487686,"Daliy City Qiyirong Culture and Media Co., Ltd.",,,,,,1,1
+PARENT,,,293002,GLIBOY LTD.,,,,,,1,1
+PARENT,,,288139,Craft Tech Haven Inc,,,,,,1,1
+PARENT,,,276860,FOSHAN HONGJUN FURNITURE CO.，LTD,,,,,,1,1
+PARENT,,,496725,ABOSI GLOBAL TRADING LIMITED,,,,,,1,1
+PARENT,,,490596,chengdufengyinwuyushangmaoyouxiangongsi,,,,,,1,1
+PARENT,,,439016,"Guangzhou Yicheng Trading Co., Ltd.",,,,,,1,1
+PARENT,,,480437,"Maoming Keying Trading Co., Ltd",,,,,,1,1
+PARENT,,,473302,"Shaoguan Yuanfeng Trading Co., Ltd",,,,,,1,1
+PARENT,,,101027,"Xiamen Ama Silk E-commerce Co.,Ltd.",,,,,,1,1
+PARENT,,,353901,Home Ease,,,,,,1,1
+PARENT,,,70240,KANAS LLC,,,,,,1,1
+PARENT,,,65449,ROVOGO LLC,,,,,,1,1
+PARENT,,,62646,ROOMFITTERS CO LTD,,,,,,1,1
+PARENT,,,104462,JTJ INTERNATIONAL INC.,,,,,,1,1
+PARENT,,,510225,株式会社システムK,,,,,,1,1
+PARENT,,,327716,hangzhou maoqi jiaju keji youxiangongsi,,,,,,1,1
+PARENT,,,135247,Grandor Max LLC,,,,,,1,1
+PARENT,,,348875,yiwufengjudianzishangwuyouxiangongsi,,,,,,1,1
+PARENT,,,183527,Kaden Ena INC,,,,,,1,1
+PARENT,,,332127,Xian You Jing Shan Mao Yi You Xian Gongsi,,,,,,1,1
+PARENT,,,271373,"Foshan Meigu Home Furnishing Co., Ltd.",,,,,,1,1
+PARENT,,,177829,Extromax Lea Inc,,,,,,1,1
+PARENT,,,306909,shenzhenyoumichuangxinshengtaikejiyouxiangongsi,,,,,,1,1
+PARENT,,,243715,AISHIMEI INTERNATIONAL E-COMMERCE TRADE  LIMITED,,,,,,1,1
+PARENT,,,479823,"Qingdao Liandaojia Decoration Materials Co., Ltd.",,,,,,1,1
+PARENT,,,61460,Tammy Decor,,,,,,1,1
+PARENT,,,336370,"Shenzhen Yaqi Furniture Co., Ltd.",,,,,,1,1
+PARENT,,,436250,Milestone International (Global) Limited,,,,,,1,1
+PARENT,,,296657,"Suzhou Tou Ju San Technology Co., Ltd.",,,,,,1,1
+PARENT,,,242366,SOULMATE ART INC,,,,,,1,1
+PARENT,,,491606,"Langfang Lanyang Trading Co., Ltd.",,,,,,1,1
+PARENT,,,353509,guangzhoulankunmaoyiyouxiangongsi,,,,,,1,1
+PARENT,,,250964,shenzhenshiwoshidakejiyouxiangongsi,,,,,,1,1
+PARENT,,,450089,"Puning  Qundihui Network Technology Co., Ltd",,,,,,1,1
+PARENT,,,412110,"Huzhou Shunyuan Trading Co., Ltd",,,,,,1,1
+PARENT,,,291902,"CROSS BORDER SUPPLY CHAIN MANAGEMENT (VIETNAM) CO.,LTD",,,,,,1,1
+PARENT,,,467236,JinSong Home Furnishing (HongKong) Limited,,,,,,1,1
+PARENT,,,413493,KAIMAX INC,,,,,,1,1
+PARENT,,,266699,SWIFT MIRACLE LIMITED,,,,,,1,1
+PARENT,,,370029,"Pinghu Leyou Sanitary Ware Co.,Ltd",,,,,,1,1
+PARENT,,,354431,Brilliant Home Inc,,,,,,1,1
+PARENT,,,77866,QingyuanBaibianjiajuyouxiangongsi,,,,,,1,1
+PARENT,,,486855,danchengxianguangmaoshangmaoyouxiangongsi,,,,,,1,1
+PARENT,,,503865,shanxibangjumashangmaoyouxiangongsi,,,,,,1,1
+PARENT,,,508536,"Wuhan Bu Suanzi Trading Co., Ltd.",,,,,,1,1
+PARENT,,,66987,TANK FACTORY LLC,,,,,,1,1
+PARENT,,,233192,VANITII LLC,,,,,,1,1
+PARENT,,,65706,Sarlai Home Inc,,,,,,1,1
+PARENT,,,344489,ShenZhenShi xin zhu ke ji you xian gong si,,,,,,1,1
+PARENT,,,120001,HongKong Mingyu Enterprise Limited_1,,,,,,1,1
+PARENT,,,89121,Hikon International LLC,,,,,,1,1
+PARENT,,,359638,BLISS STAR LLC,,,,,,1,1
+PARENT,,,369287,"Guangzhou Yican Trading Co., Ltd.",,,,,,1,1
+PARENT,,,495676,Guangzhou SanLi kejifazhanyouxiangongsi,,,,,,1,1
+PARENT,,,343198,"Shenzhen Dingtai Huaxian Supply Chain Management Co., LTD",,,,,,1,1
+PARENT,,,354020,guang zhou lin he mu yu ke ji you xian gong si,,,,,,1,1
+PARENT,,,210857,Sanmin,,,,,,1,1
+PARENT,,,500280,"Hong Kong Rover Technology Co., Limited",,,,,,1,1
+PARENT,,,97922,SHENZHENSHIQINGCHUNSHUKEJIYOUXIANGONGSI,,,,,,1,1
+PARENT,,,208184,LL TRADE LLC,,,,,,1,1
+PARENT,,,473413,"Fuzhou Cangshan Susheng Technology Co., Ltd",,,,,,1,1
+PARENT,,,121226,Comopink Decor Inc,,,,,,1,1
+PARENT,,,357343,dong guan shi su bei ya dian zi shang wu you xian gong si,,,,,,1,1
+PARENT,,,413510,Furniture Direct,,,,,,1,1
+PARENT,,,227011,Deluxe Living Inc,,,,,,1,1
+PARENT,,,473052,"Ningbo Henglan Trading Co., Ltd",,,,,,1,1
+PARENT,,,460493,TREXO LLC,,,,,,1,1
+PARENT,,,211924,Hautice LLC,,,,,,1,1
+PARENT,,,290823,"Huanggang Xinyue e-commerce Co., Ltd.",,,,,,1,1
+PARENT,,,478990,Shen Zhen Mai Tuo Sheng Ke Ji You Xian Gong Si,,,,,,1,1
+PARENT,,,361549,shenzhenzhiyukejiyouxiangongsi,,,,,,1,1
+PARENT,,,434815,guang zhou kong zhong zhen di ke ji you xian gong si,,,,,,1,1
+PARENT,,,60844,Shenzhen Shi Ji Xing Shi Dai Technology Co.,,,,,,1,1
+PARENT,,,232997,nanjingjiaduoduojiajukejiyouxiangongsi,,,,,,1,1
+PARENT,,,95328,"Huizhou Rongxingtai Industrial Co., Ltd",,,,,,1,1
+PARENT,,,30987,FlexiSpot Inc,,,,,,1,1
+PARENT,,,361198,MODEL HOME DESIGN INC,,,,,,1,1
+PARENT,,,464742,"Xiamen Geno Industry and Trade Co., Ltd.",,,,,,1,1
+PARENT,,,69210,Right Way Light LLC,,,,,,1,1
+PARENT,,,270173,Suzhou Zhenyingxiang keji you xian gong si,,,,,,1,1

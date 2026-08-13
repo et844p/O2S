@@ -1,0 +1,33 @@
+grain,supplier_id,su_name,parent_suid,parent_su_name,address_1,city_name,state_name,postal_code,distinct_parents,distinct_suppliers,volume
+WAREHOUSE,,,,,1380 Jesse Cronic Road,Braselton,GA,30517,756,758,27391
+WAREHOUSE,,,,,1113 West Oakdale Road,Grand Prairie,TX,75050,779,780,25479
+WAREHOUSE,,,,,3001 Jimmy Deloach Parkway,Bloomingdale,GA,31302,615,615,21542
+WAREHOUSE,,,,,311 Cranbury Half Acre Rd,Cranbury ,NJ,08512,619,621,17835
+WAREHOUSE,,,,,133 Coleman Blvd,Savannah,GA,31408,265,265,14589
+WAREHOUSE,,,,,425 Jimmy Deloach Parkway,Savannah,GA,31407,495,496,14332
+WAREHOUSE,,,,,543 Monmouth Rd.,Jackson Township,NJ,08527,475,475,13655
+WAREHOUSE,,,,,10850 Business Dr,Fontana ,CA,92337,473,476,13345
+WAREHOUSE,,,,,13521 Santa Ana Ave,Fontana,CA,92337,346,348,12785
+WAREHOUSE,,,,,1165 Cranbury South River Rd,Dayton,NJ,08810,366,369,8991
+WAREHOUSE,,,,,4388 Shirle Avenue,El Monte,CA,91731,454,455,7010
+WAREHOUSE,,,,,850 Douglas Hills Rd,Lithia Springs,GA,30122,212,212,6908
+WAREHOUSE,,,,,5140 E Santa Ana St,Ontario,CA,91761,274,275,6625
+WAREHOUSE,,,,,800 N Barrington Avenue,Ontario,CA,91764,455,455,6487
+WAREHOUSE,,,,,3655 E Philadelphia Street,Ontario,CA,91761,269,270,6463
+WAREHOUSE,,,,,121 Herrod Blvd,Dayton,NJ,08810,153,153,5446
+WAREHOUSE,,,,,10721 Jasmine Street,Fontana,CA,92337,310,318,5190
+WAREHOUSE,,,,,3510 E Francis St,Ontario,CA,91761,222,222,4420
+WAREHOUSE,,,,,1670 S. Etiwanda Ave. ,Ontario,CA,91761,34,34,2858
+WAREHOUSE,,,,,1714 S Anderson Ave,Compton,CA,90220,252,252,2097
+WAREHOUSE,,,,,Slover Distribution Center 5,Fontana,CA,92337,39,39,1116
+WAREHOUSE,,,,,108 to 118 brea canyon road,city of industry,CA,91789,44,44,1095
+WAREHOUSE,,,,,1670 Etiwanda Ave,ONTARIO,CA,91761,51,51,1082
+WAREHOUSE,,,,,311 Half Acre Rd,Cranbury,NJ,08512,21,21,1079
+WAREHOUSE,,,,,108 to 118 Brea Canyon Rd,Walnut,CA,91789,11,12,905
+WAREHOUSE,,,,,13512 Marlay Ave ,Fontana,CA,92337,9,9,346
+WAREHOUSE,,,,,4388 Shirley Ave,El Monte,CA,91731,11,11,230
+WAREHOUSE,,,,,3510 E Francis Street,Ontario,CA,91761,4,4,193
+WAREHOUSE,,,,,800 Barrington Ave,Ontario,CA,91764,2,2,57
+WAREHOUSE,,,,,21325 Superior Street,Chatsworth,CA,91311,4,4,11
+WAREHOUSE,,,,,"8500 Mount Pleasant Way, Unit 1",Milton,ON,996,1,1,4
+WAREHOUSE,,,,,1714 South Anderson Ave,Compton,CA,90220,1,1,1
