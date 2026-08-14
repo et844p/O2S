@@ -4,3 +4,5 @@ __pycache__/
 .env
 .venv/
 venv/
+output/wrong_lt_monitor/wrong_lt_*.csv
+output/wrong_lt_monitor/latest_summary.md
