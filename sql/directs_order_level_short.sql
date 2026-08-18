@@ -1,5 +1,5 @@
 -- Short order-level directs flags (DS, last 10w by PDD)
--- candidate_bucket: misshipping | ghost_warehouse | jumbo | direct | non_candidate
+-- candidate_bucket: misshipping | ghost_warehouse | jumbo | direct | sparse_far | non_candidate
 -- Uncomment a WHERE at the bottom to filter.
 
 WITH
@@ -80,18 +80,40 @@ supplier_meta AS (
   GROUP BY 1
 ),
 
-ghost_hubs AS (
-  SELECT e.supplier_id, e.actual_induction_hub_name
+hub_agg AS (
+  SELECT
+    e.supplier_id,
+    e.actual_induction_hub_name,
+    MAX(e.is_sibling_state) AS is_sibling_state,
+    COUNT(DISTINCT e.ops) AS hub_vol,
+    COUNT(DISTINCT IF(e.is_candidate = 1, e.ops, NULL)) AS hub_candidate_vol,
+    COUNT(DISTINCT IF(e.is_candidate = 1, e.week_start, NULL)) AS weeks_with_candidate,
+    AVG(IF(COALESCE(e.distance_assignedhub_actualhub, 0) >= 200, 1, 0)) AS pct_far
   FROM enriched AS e
+  WHERE e.actual_induction_hub_name IS NOT NULL
+  GROUP BY 1, 2
+),
+
+ghost_hubs AS (
+  SELECT h.supplier_id, h.actual_induction_hub_name
+  FROM hub_agg AS h
   JOIN supplier_meta AS m USING (supplier_id)
-  WHERE e.is_candidate = 1
-    AND e.actual_induction_hub_name IS NOT NULL
-    AND e.is_sibling_state = 0
-  GROUP BY e.supplier_id, e.actual_induction_hub_name, m.total_vol, m.weeks_with_vol
-  HAVING SAFE_DIVIDE(COUNT(DISTINCT e.ops), m.total_vol) >= 0.10
-     AND COUNT(DISTINCT e.week_start)
-         >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
-     AND AVG(IF(e.distance_assignedhub_actualhub >= 200, 1, 0)) >= 0.8
+  WHERE h.is_sibling_state = 0
+    AND h.hub_candidate_vol > 0
+    AND h.pct_far >= 0.8
+    AND h.weeks_with_candidate >= GREATEST(2, CAST(CEIL(0.5 * m.weeks_with_vol) AS INT64))
+    AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
+),
+
+material_direct_hubs AS (
+  SELECT h.supplier_id, h.actual_induction_hub_name
+  FROM hub_agg AS h
+  JOIN supplier_meta AS m USING (supplier_id)
+  WHERE h.hub_candidate_vol >= GREATEST(20, CAST(CEIL(0.003 * m.total_vol) AS INT64))
+     OR (
+       SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.005
+       AND h.hub_candidate_vol >= 10
+     )
 )
 
 SELECT
@@ -101,12 +123,16 @@ SELECT
     WHEN e.is_sibling_state = 1 THEN 'misshipping'
     WHEN g.actual_induction_hub_name IS NOT NULL THEN 'ghost_warehouse'
     WHEN COALESCE(e.direct_gain, 0) < 0.4 THEN 'jumbo'
-    ELSE 'direct'
+    WHEN md.actual_induction_hub_name IS NOT NULL THEN 'direct'
+    ELSE 'sparse_far'
   END AS candidate_bucket
 FROM enriched AS e
 LEFT JOIN ghost_hubs AS g
   ON e.supplier_id = g.supplier_id
  AND e.actual_induction_hub_name = g.actual_induction_hub_name
+LEFT JOIN material_direct_hubs AS md
+  ON e.supplier_id = md.supplier_id
+ AND e.actual_induction_hub_name = md.actual_induction_hub_name
 -- WHERE e.supplier_id = 12345
 -- WHERE e.is_candidate = 1
 ORDER BY e.supplier_id, e.promised_delivery_end_range_date_at_order DESC, e.ops

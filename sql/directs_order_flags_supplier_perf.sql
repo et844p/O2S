@@ -178,6 +178,21 @@ ghost_hubs AS (
     AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
 ),
 
+material_direct_hubs AS (
+  SELECT
+    h.lookback_window,
+    h.supplier_id,
+    h.actual_induction_hub_name
+  FROM hub_agg AS h
+  JOIN supplier_meta AS m
+    USING (lookback_window, supplier_id)
+  WHERE h.hub_candidate_vol >= GREATEST(20, CAST(CEIL(0.003 * m.total_vol) AS INT64))
+     OR (
+       SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.005
+       AND h.hub_candidate_vol >= 10
+     )
+),
+
 order_flagged AS (
   SELECT
     b.lookback_window,
@@ -224,7 +239,8 @@ order_flagged AS (
       WHEN b.is_sibling_state = 1 THEN 'misshipping'
       WHEN g.actual_induction_hub_name IS NOT NULL THEN 'ghost_warehouse'
       WHEN COALESCE(b.direct_gain, 0) < 0.4 THEN 'jumbo'
-      ELSE 'direct'
+      WHEN md.actual_induction_hub_name IS NOT NULL THEN 'direct'
+      ELSE 'sparse_far'
     END AS candidate_bucket,
     CASE
       WHEN b.is_direct_candidate = 1 AND b.is_sibling_state = 1 THEN 1
@@ -247,14 +263,27 @@ order_flagged AS (
       WHEN b.is_direct_candidate = 1
         AND b.is_sibling_state = 0
         AND g.actual_induction_hub_name IS NULL
-        AND COALESCE(b.direct_gain, 0) >= 0.4 THEN 1
+        AND COALESCE(b.direct_gain, 0) >= 0.4
+        AND md.actual_induction_hub_name IS NOT NULL THEN 1
       ELSE 0
-    END AS is_direct
+    END AS is_direct,
+    CASE
+      WHEN b.is_direct_candidate = 1
+        AND b.is_sibling_state = 0
+        AND g.actual_induction_hub_name IS NULL
+        AND COALESCE(b.direct_gain, 0) >= 0.4
+        AND md.actual_induction_hub_name IS NULL THEN 1
+      ELSE 0
+    END AS is_sparse_far
   FROM base_enriched AS b
   LEFT JOIN ghost_hubs AS g
     ON b.lookback_window = g.lookback_window
    AND b.supplier_id = g.supplier_id
    AND b.actual_induction_hub_name = g.actual_induction_hub_name
+  LEFT JOIN material_direct_hubs AS md
+    ON b.lookback_window = md.lookback_window
+   AND b.supplier_id = md.supplier_id
+   AND b.actual_induction_hub_name = md.actual_induction_hub_name
   LEFT JOIN parent_state_list AS p
     ON b.lookback_window = p.lookback_window
    AND b.parent_suid = p.parent_suid
@@ -263,7 +292,7 @@ order_flagged AS (
 -- =====================================================================
 -- SUPPLIER ROLLUP
 -- Swap this block for `SELECT * FROM order_flagged` to get order-level.
--- Partition: candidate = direct + jumbo + ghost + misshipping
+-- Partition: candidate = direct + sparse_far + jumbo + ghost + misshipping
 -- =====================================================================
 SELECT
   lookback_window,
@@ -306,6 +335,14 @@ SELECT
   AVG(IF(is_direct = 1, delivery_rel, NULL)) AS delivery_rel_direct,
   AVG(IF(is_direct = 1, direct_gain, NULL)) AS avg_gain_direct,
 
+  COUNT(DISTINCT IF(is_sparse_far = 1, ops, NULL)) AS sparse_far_vol,
+  SAFE_DIVIDE(
+    COUNT(DISTINCT IF(is_sparse_far = 1, ops, NULL)),
+    COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL))
+  ) AS pct_of_candidates_sparse_far,
+  AVG(IF(is_sparse_far = 1, inducted_on_time_or_early, NULL)) AS ifr_sparse_far,
+  AVG(IF(is_sparse_far = 1, delivery_rel, NULL)) AS delivery_rel_sparse_far,
+
   COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)) AS jumbo_vol,
   SAFE_DIVIDE(
     COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL)),
@@ -333,6 +370,7 @@ SELECT
 
   (
     COUNT(DISTINCT IF(is_direct = 1, ops, NULL))
+    + COUNT(DISTINCT IF(is_sparse_far = 1, ops, NULL))
     + COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL))
     + COUNT(DISTINCT IF(is_ghost_warehouse = 1, ops, NULL))
     + COUNT(DISTINCT IF(is_misshipping = 1, ops, NULL))
@@ -341,6 +379,7 @@ SELECT
     COUNT(DISTINCT IF(is_direct_candidate = 1, ops, NULL))
     = (
       COUNT(DISTINCT IF(is_direct = 1, ops, NULL))
+      + COUNT(DISTINCT IF(is_sparse_far = 1, ops, NULL))
       + COUNT(DISTINCT IF(is_jumbo = 1, ops, NULL))
       + COUNT(DISTINCT IF(is_ghost_warehouse = 1, ops, NULL))
       + COUNT(DISTINCT IF(is_misshipping = 1, ops, NULL))

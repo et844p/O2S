@@ -12,15 +12,21 @@
 --                          no parent WH in that state). Typically day-in/day-out
 --                          shipping from an undeclared location.
 --        jumbo           — direct_gain < 0.4 (null treated as < 0.4)
---        direct          — everything else (gain >= 0.4, not misshipping/ghost)
+--        direct          — gain >= 0.4 AND material volume at that hub:
+--                            hub_cand >= GREATEST(20, CEIL(0.3% of supplier vol))
+--                            OR (hub_share >= 0.5% AND hub_cand >= 10)
+--        sparse_far      — gain >= 0.4 but hub fails materiality
+--                          (noise / data quirks / one-off far hubs; e.g. tiny
+--                          Salt Lake scans that are not intentional directs)
 --
---   candidate_vol = misshipping + ghost + jumbo + direct
+--   candidate_vol = misshipping + ghost + jumbo + direct + sparse_far
 --
 -- Parent warehouse states = distinct state_name of all DS SUIDs under parent_suid.
 --
 -- Supplier cohorts (priority):
 --   ghost_warehouses
---   consistently_builds_directs / sometimes_builds_directs  (from direct)
+--   consistently_builds_directs / sometimes_builds_directs
+--     (from material direct only; require direct_vol >= 20 on pdd_10w / >= 10 on msbd_2w)
 --   misshipping
 --   no_directs
 --
@@ -240,6 +246,25 @@ ghost_hubs AS (
     AND SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.10
 ),
 
+-- Hubs with enough volume to count as intentional directs (not sparse noise).
+material_direct_hubs AS (
+  SELECT
+    h.lookback_window,
+    h.supplier_id,
+    h.actual_induction_hub_name,
+    SAFE_DIVIDE(h.hub_vol, m.total_vol) AS hub_share,
+    h.hub_candidate_vol,
+    GREATEST(20, CAST(CEIL(0.003 * m.total_vol) AS INT64)) AS min_hub_candidate_vol
+  FROM hub_agg AS h
+  JOIN supplier_meta AS m
+    USING (lookback_window, supplier_id)
+  WHERE h.hub_candidate_vol >= GREATEST(20, CAST(CEIL(0.003 * m.total_vol) AS INT64))
+     OR (
+       SAFE_DIVIDE(h.hub_vol, m.total_vol) >= 0.005
+       AND h.hub_candidate_vol >= 10
+     )
+),
+
 order_classified AS (
   SELECT
     b.*,
@@ -248,13 +273,18 @@ order_classified AS (
       WHEN b.is_sibling_state = 1 THEN 'misshipping'
       WHEN g.actual_induction_hub_name IS NOT NULL THEN 'ghost_warehouse'
       WHEN COALESCE(b.direct_gain, 0) < 0.4 THEN 'jumbo'
-      ELSE 'direct'
+      WHEN md.actual_induction_hub_name IS NOT NULL THEN 'direct'
+      ELSE 'sparse_far'
     END AS candidate_bucket
   FROM base_enriched AS b
   LEFT JOIN ghost_hubs AS g
     ON b.lookback_window = g.lookback_window
    AND b.supplier_id = g.supplier_id
    AND b.actual_induction_hub_name = g.actual_induction_hub_name
+  LEFT JOIN material_direct_hubs AS md
+    ON b.lookback_window = md.lookback_window
+   AND b.supplier_id = md.supplier_id
+   AND b.actual_induction_hub_name = md.actual_induction_hub_name
 ),
 
 supplier_buckets AS (
@@ -263,12 +293,15 @@ supplier_buckets AS (
     supplier_id,
     COUNT(DISTINCT IF(is_candidate = 1, ops, NULL)) AS candidate_vol,
     COUNT(DISTINCT IF(candidate_bucket = 'direct', ops, NULL)) AS direct_vol,
+    COUNT(DISTINCT IF(candidate_bucket = 'sparse_far', ops, NULL)) AS sparse_far_vol,
     COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL)) AS jumbo_vol,
     COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL)) AS ghost_vol,
     COUNT(DISTINCT IF(candidate_bucket = 'misshipping', ops, NULL)) AS misshipping_vol,
     AVG(IF(is_candidate = 1, direct_gain, NULL)) AS avg_gain_on_candidate,
     AVG(IF(candidate_bucket = 'direct', inducted_on_time_or_early, NULL)) AS ifr_direct,
     AVG(IF(candidate_bucket = 'direct', delivery_rel, NULL)) AS delivery_rel_direct,
+    AVG(IF(candidate_bucket = 'sparse_far', inducted_on_time_or_early, NULL)) AS ifr_sparse_far,
+    AVG(IF(candidate_bucket = 'sparse_far', delivery_rel, NULL)) AS delivery_rel_sparse_far,
     AVG(IF(candidate_bucket = 'jumbo', inducted_on_time_or_early, NULL)) AS ifr_jumbo,
     AVG(IF(candidate_bucket = 'jumbo', delivery_rel, NULL)) AS delivery_rel_jumbo,
     AVG(IF(candidate_bucket = 'ghost_warehouse', inducted_on_time_or_early, NULL)) AS ifr_ghost,
@@ -279,6 +312,7 @@ supplier_buckets AS (
     AVG(IF(is_candidate = 1, delivery_rel, NULL)) AS delivery_rel_candidate,
     (
       COUNT(DISTINCT IF(candidate_bucket = 'direct', ops, NULL))
+      + COUNT(DISTINCT IF(candidate_bucket = 'sparse_far', ops, NULL))
       + COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL))
       + COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL))
       + COUNT(DISTINCT IF(candidate_bucket = 'misshipping', ops, NULL))
@@ -287,6 +321,7 @@ supplier_buckets AS (
       COUNT(DISTINCT IF(is_candidate = 1, ops, NULL))
       = (
         COUNT(DISTINCT IF(candidate_bucket = 'direct', ops, NULL))
+        + COUNT(DISTINCT IF(candidate_bucket = 'sparse_far', ops, NULL))
         + COUNT(DISTINCT IF(candidate_bucket = 'jumbo', ops, NULL))
         + COUNT(DISTINCT IF(candidate_bucket = 'ghost_warehouse', ops, NULL))
         + COUNT(DISTINCT IF(candidate_bucket = 'misshipping', ops, NULL))
@@ -424,6 +459,8 @@ classified AS (
     SAFE_DIVIDE(COALESCE(sb.candidate_vol, 0), m.total_vol) AS candidate_share,
     COALESCE(sb.direct_vol, 0) AS direct_vol,
     SAFE_DIVIDE(COALESCE(sb.direct_vol, 0), m.total_vol) AS direct_share,
+    COALESCE(sb.sparse_far_vol, 0) AS sparse_far_vol,
+    SAFE_DIVIDE(COALESCE(sb.sparse_far_vol, 0), m.total_vol) AS sparse_far_share,
     COALESCE(sb.jumbo_vol, 0) AS jumbo_vol,
     SAFE_DIVIDE(COALESCE(sb.jumbo_vol, 0), m.total_vol) AS jumbo_share,
     COALESCE(sb.ghost_vol, 0) AS ghost_vol,
@@ -456,6 +493,8 @@ classified AS (
     sb.delivery_rel_candidate,
     sb.ifr_direct,
     sb.delivery_rel_direct,
+    sb.ifr_sparse_far,
+    sb.delivery_rel_sparse_far,
     sb.ifr_jumbo,
     sb.delivery_rel_jumbo,
     sb.ifr_ghost,
@@ -466,18 +505,29 @@ classified AS (
     COALESCE(sb.candidate_partition_ok, TRUE) AS candidate_partition_ok,
     CASE
       WHEN COALESCE(sb.ghost_vol, 0) > 0 THEN 'ghost_warehouses'
-      WHEN COALESCE(t.weeks_with_direct, 0) >= m.weeks_with_vol
-        OR (
-          m.weeks_with_vol >= 4
-          AND COALESCE(t.weeks_with_direct, 0) >= m.weeks_with_vol - 1
-        )
-        OR (
-          m.lookback_weeks <= 2
-          AND m.weeks_with_vol >= 2
-          AND COALESCE(t.weeks_with_direct, 0) = m.weeks_with_vol
+      WHEN COALESCE(sb.direct_vol, 0) >= CASE
+          WHEN m.lookback_window = 'pdd_10w' THEN 20
+          ELSE 10
+        END
+        AND (
+          COALESCE(t.weeks_with_direct, 0) >= m.weeks_with_vol
+          OR (
+            m.weeks_with_vol >= 4
+            AND COALESCE(t.weeks_with_direct, 0) >= m.weeks_with_vol - 1
+          )
+          OR (
+            m.lookback_weeks <= 2
+            AND m.weeks_with_vol >= 2
+            AND COALESCE(t.weeks_with_direct, 0) = m.weeks_with_vol
+          )
         )
         THEN 'consistently_builds_directs'
-      WHEN COALESCE(t.weeks_with_direct, 0) >= 1 THEN 'sometimes_builds_directs'
+      WHEN COALESCE(sb.direct_vol, 0) >= CASE
+          WHEN m.lookback_window = 'pdd_10w' THEN 20
+          ELSE 10
+        END
+        AND COALESCE(t.weeks_with_direct, 0) >= 1
+        THEN 'sometimes_builds_directs'
       WHEN SAFE_DIVIDE(COALESCE(sb.misshipping_vol, 0), m.total_vol) >= 0.01
         THEN 'misshipping'
       ELSE 'no_directs'

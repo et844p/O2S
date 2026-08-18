@@ -63,6 +63,7 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "total_vol": int(cdf["total_vol"].sum()),
                     "candidate_vol": int(cdf["candidate_vol"].sum()),
                     "direct_vol": int(cdf["direct_vol"].sum()),
+                    "sparse_far_vol": int(cdf["sparse_far_vol"].sum()),
                     "jumbo_vol": int(cdf["jumbo_vol"].sum()),
                     "ghost_vol": int(cdf["ghost_vol"].sum()),
                     "misshipping_vol": int(cdf["misshipping_vol"].sum()),
@@ -78,6 +79,12 @@ def _summary_frame(df: pd.DataFrame) -> pd.DataFrame:
                     "ifr_direct": _weighted_avg(cdf["ifr_direct"], cdf["direct_vol"]),
                     "delivery_rel_direct": _weighted_avg(
                         cdf["delivery_rel_direct"], cdf["direct_vol"]
+                    ),
+                    "ifr_sparse_far": _weighted_avg(
+                        cdf["ifr_sparse_far"], cdf["sparse_far_vol"]
+                    ),
+                    "delivery_rel_sparse_far": _weighted_avg(
+                        cdf["delivery_rel_sparse_far"], cdf["sparse_far_vol"]
                     ),
                     "ifr_jumbo": _weighted_avg(cdf["ifr_jumbo"], cdf["jumbo_vol"]),
                     "delivery_rel_jumbo": _weighted_avg(
