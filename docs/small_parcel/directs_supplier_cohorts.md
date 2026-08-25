@@ -1,6 +1,9 @@
 # Directs Supplier Cohorts
 
-Generated: 2026-08-18
+> **Prefer the new pipeline:** `docs/small_parcel/far_hub_order_flags.md`  
+> (`scripts/run_far_hub_order_flags.py`) — supplier behavior first, then OPID flags, with focus on **ghost** and **misshipping**. This cohort SQL overstated directs builders.
+
+Generated: 2026-08-18 (legacy cohort logic)
 
 Classifies dropship (`fulfillment_type = 'DS'`) candidates into exclusive buckets.
 

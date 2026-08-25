@@ -1,0 +1,6 @@
+supplier_behavior,suppliers,total_vol,candidate_vol,misshipping_opid_vol,ghost_opid_vol,direct_opid_vol,other_far_opid_vol,jumbo_opid_vol
+ghost_warehouse,775,749770,137271,19869,54423,0,40715,22264
+misshipping,5677,2688763,323478,117319,0,0,145740,60419
+builds_directs,672,1664626,169531,3444,0,52525,81276,32286
+far_hub_noise,4363,1833857,98477,3596,0,0,72997,21884
+clean,1199,349493,513,79,0,0,325,109
