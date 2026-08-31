@@ -128,6 +128,8 @@ Use this reference for natural-language data pull requests against the Small Par
 | `o2d_stated_5` | INT | Boolean (1/0): stated O2D ≤ 5 days (fast-badged orders) |
 | `o2d_actual_5` | INT | Boolean (1/0): actual O2D ≤ 5 days |
 | `delivery_rel` | INT | Boolean (1/0): delivered on or before promised delivery date |
+| `det_delivery_date` | DATE | Deterministic delivery date (carrier transit from on-time induction) |
+| `det_del_rel` | INT | Boolean (1/0): deterministic reliability vs the promise |
 | `S2D` | INT | Ship-to-delivery days. Total delivery = O2S + S2D |
 
 ### Induction performance (supplier MSBD)

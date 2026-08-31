@@ -23,6 +23,8 @@ SELECT
   h.o2d_actual_5,
   h.delivery_rel,
   h.delivery_date,
+  h.det_delivery_date,
+  h.det_del_rel,
   h.inducted_on_time_or_early,
   CASE
     WHEN h.order_complete_date >= DATE_SUB(e.enable_week, INTERVAL 6 WEEK)

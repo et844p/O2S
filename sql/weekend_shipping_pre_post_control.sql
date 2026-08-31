@@ -58,8 +58,10 @@ SELECT
   AVG(h.o2d_actual) AS o2d_actual,
   AVG(h.o2s_actual) AS o2s_actual,
   AVG(h.o2d_stated_5) AS fast_badge,
-  AVG(h.o2d_actual_5) AS actual_o2d_le_5,
-  AVG(IF(h.delivery_date IS NOT NULL, h.delivery_rel, NULL)) AS del_rel
+  AVG(h.o2d_actual_5) AS o2d_actual_less5,
+  AVG(IF(h.delivery_date IS NOT NULL, h.delivery_rel, NULL)) AS del_rel,
+  AVG(DATE_DIFF(h.det_delivery_date, h.order_complete_date, DAY)) AS o2d_det,
+  AVG(IF(h.det_delivery_date IS NOT NULL, h.det_del_rel, NULL)) AS det_del_rel
 FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring` AS h
 INNER JOIN control_ids AS c
   ON c.supplier_id = h.supplier_id
