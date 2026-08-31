@@ -17,7 +17,10 @@ SELECT
   h.o2d_stated,
   h.o2d_actual,
   h.o2s_actual,
+  h.o2sumsbd,
+  h.o2s_stated_1,
   h.o2d_stated_5,
+  h.o2d_actual_5,
   h.delivery_rel,
   h.delivery_date,
   h.inducted_on_time_or_early,
@@ -30,6 +33,7 @@ SELECT
   CASE
     WHEN h.order_dow IN (6, 7) THEN 'fri_sat'
     WHEN h.order_dow IN (2, 3, 4, 5) THEN 'weekday'
+    WHEN h.order_dow = 1 THEN 'sunday'
   END AS order_bucket,
   DATE_TRUNC(h.order_complete_date, WEEK(SUNDAY)) AS week_start,
   DATE_DIFF(
@@ -44,4 +48,4 @@ WHERE h.fulfillment_type = 'DS'
   AND h.sp_lt = 24
   AND h.order_complete_date >= DATE_SUB(e.enable_week, INTERVAL 6 WEEK)
   AND h.order_complete_date < DATE '2026-08-17'
-  AND h.order_dow IN (2, 3, 4, 5, 6, 7)
+  AND h.order_dow BETWEEN 1 AND 7

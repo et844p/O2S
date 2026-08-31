@@ -52,10 +52,13 @@ SELECT
     COUNT(DISTINCT h.ops)
   ) AS sun_ship_adj,
   AVG(h.inducted_on_time_or_early) AS ifr,
+  AVG(h.o2sumsbd) AS o2s_stated,
+  AVG(h.o2s_stated_1) AS o2s_stated_1,
   AVG(h.o2d_stated) AS o2d_stated,
   AVG(h.o2d_actual) AS o2d_actual,
   AVG(h.o2s_actual) AS o2s_actual,
   AVG(h.o2d_stated_5) AS fast_badge,
+  AVG(h.o2d_actual_5) AS actual_fast_badge,
   AVG(IF(h.delivery_date IS NOT NULL, h.delivery_rel, NULL)) AS del_rel
 FROM `wf-gcp-us-ae-global-tnd-prod.speed_and_reliability.HVE_perf_Monitoring` AS h
 INNER JOIN control_ids AS c

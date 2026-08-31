@@ -12,11 +12,34 @@ Wave 1 (12 warehouses; nuLOOM NJ on **2026-06-21**, then Safavieh / Aosom / Giga
 
 - **Setting took:** Fri/Sat weekend MSBD share went from 0.0% to 73.4%.
 - **Speed improved, but less than the promise:** stated O2D 5.16 → 4.71 days (-0.45d); actual O2D 4.56 → 4.33 (-0.24d). Fast badge 75.3% → 80.3% (+5.0 pp).
+- **Excel:** all warehouse-level pre/post rows plus this summary are in `output/weekend_shipping_pre_post/weekend_shipping_pre_post_supplier.xlsx`.
 - **Reliability got worse on weekend-placed orders:** IFR 95.5% → 80.6% (-14.9 pp); delivery reliability 86.0% → 79.3% (-6.7 pp).
 - **Operations did not move to Saturday:** weekend induction held (68.9% → 66.7%), but it is almost all **Sunday** (64.8%) vs **Saturday** (2.0%). Friday orders with a Saturday MSBD that induct Sunday miss IFR.
 - **Weekdays for the same warehouses improved:** IFR 89.9% → 94.2%; delivery reliability 85.8% → 86.9%. The miss is weekend-order specific.
 
 Wave 2 (72 warehouses, enable week **2026-08-02**; post is only ~2 weeks through 8/16) shows the same pattern: promised speed and fast-badge up, IFR and delivery reliability down on Fri/Sat orders.
+
+## Wave 1 — overall stated speed and badging (all order days)
+
+This is the warehouse-level mix including weekdays, so the stated-speed move is smaller than the Fri/Sat-only slice, but it is the right view for “did promises get faster overall.”
+
+| Metric | Pre | Post | Change |
+| --- | ---: | ---: | ---: |
+| Volume (distinct ops) | 135,999 | 122,268 | — |
+| Weekend MSBD share | 0.0% | 24.0% | +24.0 pp |
+| Weekend ship (Sat+Sun adj) | 20.2% | 20.0% | -0.2 pp |
+| Saturday induction | 0.9% | 0.6% | -0.3 pp |
+| Sunday induction | 19.4% | 19.5% | +0.1 pp |
+| IFR (on-time vs supplier MSBD) | 91.7% | 86.9% | -4.8 pp |
+| Late orders | 11,316 | 16,014 | +4,698 |
+| Stated O2S (days, o2sumsbd) | 1.39 | 1.03 | -0.36d |
+| 1-day stated O2S share | 55.5% | 64.1% | +8.5 pp |
+| Stated O2D (days) | 4.56 | 4.23 | -0.33d |
+| Actual O2D (days) | 3.96 | 3.74 | -0.22d |
+| Actual O2S (days) | 1.03 | 0.96 | -0.07d |
+| Fast badge (stated O2D ≤ 5) | 80.9% | 83.9% | +3.0 pp |
+| Actual O2D ≤ 5 | 83.3% | 85.5% | +2.2 pp |
+| Delivery reliability | 86.6% | 84.9% | -1.7 pp |
 
 ## Wave 1 — Friday/Saturday placed orders
 
@@ -31,10 +54,13 @@ Wave 2 (72 warehouses, enable week **2026-08-02**; post is only ~2 weeks through
 | Sunday induction | 66.3% | 64.8% | -1.6 pp |
 | IFR (on-time vs supplier MSBD) | 95.5% | 80.6% | -14.9 pp |
 | Late orders | 1,596 | 6,391 | +4,795 |
+| Stated O2S (days, o2sumsbd) | 2.29 | 1.33 | -0.96d |
+| 1-day stated O2S share | 0.0% | 45.8% | +45.8 pp |
 | Stated O2D (days) | 5.16 | 4.71 | -0.45d |
 | Actual O2D (days) | 4.56 | 4.33 | -0.24d |
 | Actual O2S (days) | 1.41 | 1.33 | -0.09d |
 | Fast badge (stated O2D ≤ 5) | 75.3% | 80.3% | +5.0 pp |
+| Actual O2D ≤ 5 | 78.3% | 80.5% | +2.2 pp |
 | Delivery reliability | 86.0% | 79.3% | -6.7 pp |
 
 ### Same warehouses, Monday–Thursday placed (within-supplier control)
@@ -48,10 +74,13 @@ Wave 2 (72 warehouses, enable week **2026-08-02**; post is only ~2 weeks through
 | Sunday induction | 0.6% | 0.2% | -0.4 pp |
 | IFR (on-time vs supplier MSBD) | 89.9% | 94.2% | +4.3 pp |
 | Late orders | 7,689 | 3,762 | -3,927 |
+| Stated O2S (days, o2sumsbd) | 0.99 | 0.90 | -0.09d |
+| 1-day stated O2S share | 75.4% | 68.1% | -7.3 pp |
 | Stated O2D (days) | 4.30 | 4.00 | -0.30d |
 | Actual O2D (days) | 3.71 | 3.46 | -0.25d |
 | Actual O2S (days) | 0.84 | 0.73 | -0.10d |
 | Fast badge (stated O2D ≤ 5) | 81.2% | 83.4% | +2.2 pp |
+| Actual O2D ≤ 5 | 83.8% | 86.0% | +2.2 pp |
 | Delivery reliability | 85.8% | 86.9% | +1.0 pp |
 
 ## Wave 1 warehouse detail (Fri/Sat)
@@ -77,6 +106,26 @@ WINADO’s post weekend-MSBD share did not stay high after the first week — tr
 
 Post window is 2026-08-02 through 2026-08-16 only. Directionally the same as Wave 1 on Fri/Sat orders: weekend MSBD 0.2% → 88.8%; IFR 98.4% → 88.1%; delivery reliability 90.2% → 82.6%; stated O2D 5.30 → 4.81; actual O2D 4.57 → 4.32. Saturday induction is higher than Wave 1 (11.9%) but still minority vs Sunday (61.7%).
 
+### Wave 2 overall (all order days) — stated speed and badging
+
+| Metric | Pre | Post | Change |
+| --- | ---: | ---: | ---: |
+| Volume (distinct ops) | 140,470 | 45,808 | — |
+| Weekend MSBD share | 0.1% | 23.2% | +23.1 pp |
+| Weekend ship (Sat+Sun adj) | 24.9% | 22.6% | -2.3 pp |
+| Saturday induction | 4.1% | 3.3% | -0.8 pp |
+| Sunday induction | 20.8% | 19.3% | -1.4 pp |
+| IFR (on-time vs supplier MSBD) | 94.4% | 91.5% | -2.9 pp |
+| Late orders | 7,895 | 3,884 | -4,011 |
+| Stated O2S (days, o2sumsbd) | 1.52 | 1.09 | -0.43d |
+| 1-day stated O2S share | 60.4% | 78.7% | +18.3 pp |
+| Stated O2D (days) | 4.71 | 4.31 | -0.40d |
+| Actual O2D (days) | 4.04 | 3.78 | -0.26d |
+| Actual O2S (days) | 1.00 | 0.96 | -0.04d |
+| Fast badge (stated O2D ≤ 5) | 75.7% | 81.7% | +6.0 pp |
+| Actual O2D ≤ 5 | 80.0% | 84.0% | +4.0 pp |
+| Delivery reliability | 87.9% | 86.0% | -1.9 pp |
+
 | Metric | Pre | Post | Change |
 | --- | ---: | ---: | ---: |
 | Volume (distinct ops) | 38,797 | 11,718 | — |
@@ -86,13 +135,16 @@ Post window is 2026-08-02 through 2026-08-16 only. Directionally the same as Wav
 | Sunday induction | 63.1% | 61.7% | -1.4 pp |
 | IFR (on-time vs supplier MSBD) | 98.4% | 88.1% | -10.3 pp |
 | Late orders | 619 | 1,393 | +774 |
+| Stated O2S (days, o2sumsbd) | 2.46 | 1.42 | -1.04d |
+| 1-day stated O2S share | 0.0% | 49.5% | +49.5 pp |
 | Stated O2D (days) | 5.30 | 4.81 | -0.49d |
 | Actual O2D (days) | 4.57 | 4.32 | -0.25d |
 | Actual O2S (days) | 1.26 | 1.21 | -0.05d |
 | Fast badge (stated O2D ≤ 5) | 68.2% | 77.8% | +9.6 pp |
+| Actual O2D ≤ 5 | 75.6% | 78.9% | +3.3 pp |
 | Delivery reliability | 90.2% | 82.6% | -7.6 pp |
 
-Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/supplier_pre_post.csv`.
+Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/weekend_shipping_pre_post_supplier.xlsx` (sheets `Supplier_FriSat` and `Supplier_Overall`).
 
 ## 24hr control (not enabled)
 
@@ -124,7 +176,7 @@ Fri/Sat control: IFR 91.8% → 90.8% (-1.0 pp); delivery reliability 83.4% → 8
 | Volume | `COUNT(DISTINCT ops)` |
 | IFR | `AVG(inducted_on_time_or_early)` |
 | Delivery reliability | `AVG(delivery_rel)` among rows with `delivery_date IS NOT NULL` |
-| Speed | `AVG(o2d_stated)`, `AVG(o2d_actual)`, `AVG(o2s_actual)`; fast badge = `o2d_stated_5` |
+| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; fast badge = `AVG(o2d_stated_5)` |
 
 The July 2026 candidate finder (`sql/weekend_shipping_supplier_analysis.sql`) treated `order_dow IN (5, 6)` as Fri/Sat. Empirically that is **Thursday + Friday**. This impact rerun uses the corrected Friday + Saturday filter.
 

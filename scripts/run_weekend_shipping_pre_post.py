@@ -60,7 +60,10 @@ def prep_orders(df: pd.DataFrame) -> pd.DataFrame:
     df["o2d_stated"] = pd.to_numeric(df["o2d_stated"], errors="coerce")
     df["o2d_actual"] = pd.to_numeric(df["o2d_actual"], errors="coerce")
     df["o2s_actual"] = pd.to_numeric(df["o2s_actual"], errors="coerce")
+    df["o2s_stated"] = pd.to_numeric(df["o2sumsbd"], errors="coerce")
+    df["o2s_stated_1"] = pd.to_numeric(df["o2s_stated_1"], errors="coerce")
     df["fast_badge"] = pd.to_numeric(df["o2d_stated_5"], errors="coerce")
+    df["actual_fast_badge"] = pd.to_numeric(df["o2d_actual_5"], errors="coerce")
     df["delivery_rel"] = pd.to_numeric(df["delivery_rel"], errors="coerce")
     return df[df["period"].notna() & df["order_bucket"].notna()].copy()
 
@@ -80,10 +83,13 @@ def summarize(g: pd.DataFrame) -> pd.Series:
             "sun_ship": float(g["is_sun_ship"].mean()) if vol else np.nan,
             "ifr": ifr,
             "late_orders": vol * (1 - ifr) if vol and pd.notna(ifr) else np.nan,
+            "o2s_stated": float(g["o2s_stated"].mean()) if vol else np.nan,
+            "o2s_stated_1": float(g["o2s_stated_1"].mean()) if vol else np.nan,
             "o2d_stated": float(g["o2d_stated"].mean()) if vol else np.nan,
             "o2d_actual": float(g["o2d_actual"].mean()) if vol else np.nan,
             "o2s_actual": float(g["o2s_actual"].mean()) if vol else np.nan,
             "fast_badge": float(g["fast_badge"].mean()) if vol else np.nan,
+            "actual_fast_badge": float(g["actual_fast_badge"].mean()) if vol else np.nan,
             "del_rel": float(g.loc[delivered, "delivery_rel"].mean()) if delivered.any() else np.nan,
             "delivered_vol": int(g.loc[delivered, "ops"].nunique()),
         }
@@ -134,10 +140,13 @@ def metric_table_md(pre: pd.Series, post: pd.Series) -> str:
         ("Sunday induction", pct(pre["sun_ship"]), pct(post["sun_ship"]), pp(post["sun_ship"], pre["sun_ship"])),
         ("IFR (on-time vs supplier MSBD)", pct(pre["ifr"]), pct(post["ifr"]), pp(post["ifr"], pre["ifr"])),
         ("Late orders", f"{pre['late_orders']:,.0f}", f"{post['late_orders']:,.0f}", f"{post['late_orders'] - pre['late_orders']:+,.0f}"),
+        ("Stated O2S (days, o2sumsbd)", num(pre["o2s_stated"]), num(post["o2s_stated"]), days(post["o2s_stated"], pre["o2s_stated"])),
+        ("1-day stated O2S share", pct(pre["o2s_stated_1"]), pct(post["o2s_stated_1"]), pp(post["o2s_stated_1"], pre["o2s_stated_1"])),
         ("Stated O2D (days)", num(pre["o2d_stated"]), num(post["o2d_stated"]), days(post["o2d_stated"], pre["o2d_stated"])),
         ("Actual O2D (days)", num(pre["o2d_actual"]), num(post["o2d_actual"]), days(post["o2d_actual"], pre["o2d_actual"])),
         ("Actual O2S (days)", num(pre["o2s_actual"]), num(post["o2s_actual"]), days(post["o2s_actual"], pre["o2s_actual"])),
         ("Fast badge (stated O2D ≤ 5)", pct(pre["fast_badge"]), pct(post["fast_badge"]), pp(post["fast_badge"], pre["fast_badge"])),
+        ("Actual O2D ≤ 5", pct(pre["actual_fast_badge"]), pct(post["actual_fast_badge"]), pp(post["actual_fast_badge"], pre["actual_fast_badge"])),
         ("Delivery reliability", pct(pre["del_rel"]), pct(post["del_rel"]), pp(post["del_rel"], pre["del_rel"])),
     ]
     lines = [
@@ -438,7 +447,9 @@ def write_report(
 ) -> None:
     w1_fs_pre, w1_fs_post = slice_pair(rollup, "wave1_jun_jul", "fri_sat")
     w1_wd_pre, w1_wd_post = slice_pair(rollup, "wave1_jun_jul", "weekday")
+    w1_all_pre, w1_all_post = slice_pair(rollup, "wave1_jun_jul", "all")
     w2_fs_pre, w2_fs_post = slice_pair(rollup, "wave2_aug", "fri_sat")
+    w2_all_pre, w2_all_post = slice_pair(rollup, "wave2_aug", "all")
 
     ctrl = control.copy()
     ctrl_fs = ctrl[ctrl["order_bucket"] == "fri_sat"].set_index("period")
@@ -460,11 +471,18 @@ Wave 1 (12 warehouses; nuLOOM NJ on **2026-06-21**, then Safavieh / Aosom / Giga
 
 - **Setting took:** Fri/Sat weekend MSBD share went from {pct(w1_fs_pre['weekend_msbd'])} to {pct(w1_fs_post['weekend_msbd'])}.
 - **Speed improved, but less than the promise:** stated O2D {num(w1_fs_pre['o2d_stated'])} → {num(w1_fs_post['o2d_stated'])} days ({days(w1_fs_post['o2d_stated'], w1_fs_pre['o2d_stated'])}); actual O2D {num(w1_fs_pre['o2d_actual'])} → {num(w1_fs_post['o2d_actual'])} ({days(w1_fs_post['o2d_actual'], w1_fs_pre['o2d_actual'])}). Fast badge {pct(w1_fs_pre['fast_badge'])} → {pct(w1_fs_post['fast_badge'])} ({pp(w1_fs_post['fast_badge'], w1_fs_pre['fast_badge'])}).
+- **Excel:** all warehouse-level pre/post rows plus this summary are in `output/weekend_shipping_pre_post/weekend_shipping_pre_post_supplier.xlsx`.
 - **Reliability got worse on weekend-placed orders:** IFR {pct(w1_fs_pre['ifr'])} → {pct(w1_fs_post['ifr'])} ({pp(w1_fs_post['ifr'], w1_fs_pre['ifr'])}); delivery reliability {pct(w1_fs_pre['del_rel'])} → {pct(w1_fs_post['del_rel'])} ({pp(w1_fs_post['del_rel'], w1_fs_pre['del_rel'])}).
 - **Operations did not move to Saturday:** weekend induction held ({pct(w1_fs_pre['weekend_ship'])} → {pct(w1_fs_post['weekend_ship'])}), but it is almost all **Sunday** ({pct(w1_fs_post['sun_ship'])}) vs **Saturday** ({pct(w1_fs_post['sat_ship'])}). Friday orders with a Saturday MSBD that induct Sunday miss IFR.
 - **Weekdays for the same warehouses improved:** IFR {pct(w1_wd_pre['ifr'])} → {pct(w1_wd_post['ifr'])}; delivery reliability {pct(w1_wd_pre['del_rel'])} → {pct(w1_wd_post['del_rel'])}. The miss is weekend-order specific.
 
 Wave 2 ({n_w2} warehouses, enable week **2026-08-02**; post is only ~2 weeks through 8/16) shows the same pattern: promised speed and fast-badge up, IFR and delivery reliability down on Fri/Sat orders.
+
+## Wave 1 — overall stated speed and badging (all order days)
+
+This is the warehouse-level mix including weekdays, so the stated-speed move is smaller than the Fri/Sat-only slice, but it is the right view for “did promises get faster overall.”
+
+{metric_table_md(w1_all_pre, w1_all_post)}
 
 ## Wave 1 — Friday/Saturday placed orders
 
@@ -486,9 +504,13 @@ WINADO’s post weekend-MSBD share did not stay high after the first week — tr
 
 Post window is 2026-08-02 through 2026-08-16 only. Directionally the same as Wave 1 on Fri/Sat orders: weekend MSBD {pct(w2_fs_pre['weekend_msbd'])} → {pct(w2_fs_post['weekend_msbd'])}; IFR {pct(w2_fs_pre['ifr'])} → {pct(w2_fs_post['ifr'])}; delivery reliability {pct(w2_fs_pre['del_rel'])} → {pct(w2_fs_post['del_rel'])}; stated O2D {num(w2_fs_pre['o2d_stated'])} → {num(w2_fs_post['o2d_stated'])}; actual O2D {num(w2_fs_pre['o2d_actual'])} → {num(w2_fs_post['o2d_actual'])}. Saturday induction is higher than Wave 1 ({pct(w2_fs_post['sat_ship'])}) but still minority vs Sunday ({pct(w2_fs_post['sun_ship'])}).
 
+### Wave 2 overall (all order days) — stated speed and badging
+
+{metric_table_md(w2_all_pre, w2_all_post)}
+
 {metric_table_md(w2_fs_pre, w2_fs_post)}
 
-Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/supplier_pre_post.csv`.
+Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/weekend_shipping_pre_post_supplier.xlsx` (sheets `Supplier_FriSat` and `Supplier_Overall`).
 
 ## 24hr control (not enabled)
 
@@ -533,7 +555,7 @@ Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/supplier_pre_post.
 | Volume | `COUNT(DISTINCT ops)` |
 | IFR | `AVG(inducted_on_time_or_early)` |
 | Delivery reliability | `AVG(delivery_rel)` among rows with `delivery_date IS NOT NULL` |
-| Speed | `AVG(o2d_stated)`, `AVG(o2d_actual)`, `AVG(o2s_actual)`; fast badge = `o2d_stated_5` |
+| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; fast badge = `AVG(o2d_stated_5)` |
 
 The July 2026 candidate finder (`sql/weekend_shipping_supplier_analysis.sql`) treated `order_dow IN (5, 6)` as Fri/Sat. Empirically that is **Thursday + Friday**. This impact rerun uses the corrected Friday + Saturday filter.
 
@@ -558,8 +580,324 @@ The July 2026 candidate finder (`sql/weekend_shipping_supplier_analysis.sql`) tr
     DOC.write_text(md)
 
 
+RATE_COLS = {
+    "weekend_msbd",
+    "weekend_ship",
+    "sat_ship",
+    "sun_ship",
+    "ifr",
+    "o2s_stated_1",
+    "fast_badge",
+    "actual_fast_badge",
+    "del_rel",
+}
+DAY_COLS = {"o2s_stated", "o2d_stated", "o2s_actual", "o2d_actual"}
+COUNT_COLS = {"vol", "late_orders", "delivered_vol", "n_suppliers"}
+
+WIDE_METRICS = [
+    "vol",
+    "o2s_stated",
+    "o2s_stated_1",
+    "o2d_stated",
+    "fast_badge",
+    "actual_fast_badge",
+    "o2s_actual",
+    "o2d_actual",
+    "ifr",
+    "del_rel",
+    "late_orders",
+    "weekend_msbd",
+    "weekend_ship",
+    "sat_ship",
+    "sun_ship",
+]
+WIDE_ID = ["wave", "supplier_id", "su_name", "parent_su_name", "sto", "srm", "enable_week"]
+
+
+def wide_supplier(supplier: pd.DataFrame, bucket: str) -> pd.DataFrame:
+    sub = supplier[supplier["order_bucket"] == bucket].copy()
+    pre = sub[sub["period"] == "pre"]
+    post = sub[sub["period"] == "post"]
+    keep = [c for c in WIDE_ID + WIDE_METRICS if c in sub.columns]
+    pre_r = pre[keep].rename(columns={m: f"pre_{m}" for m in WIDE_METRICS})
+    post_r = post[["supplier_id"] + [m for m in WIDE_METRICS if m in post.columns]].rename(
+        columns={m: f"post_{m}" for m in WIDE_METRICS}
+    )
+    out = pre_r.merge(post_r, on="supplier_id", how="outer")
+    for m in WIDE_METRICS:
+        pre_c, post_c = f"pre_{m}", f"post_{m}"
+        if pre_c in out.columns and post_c in out.columns:
+            out[f"delta_{m}"] = out[post_c] - out[pre_c]
+    ordered = list(WIDE_ID)
+    for m in WIDE_METRICS:
+        ordered.extend([c for c in (f"pre_{m}", f"post_{m}", f"delta_{m}") if c in out.columns])
+    out = out[[c for c in ordered if c in out.columns]]
+    sort_col = "post_vol" if "post_vol" in out.columns else "pre_vol"
+    out[sort_col] = pd.to_numeric(out[sort_col], errors="coerce")
+    parts = []
+    for wave in ("wave1_jun_jul", "wave2_aug"):
+        parts.append(out[out["wave"] == wave].sort_values(sort_col, ascending=False, na_position="last"))
+    parts.append(out[~out["wave"].isin(["wave1_jun_jul", "wave2_aug"])].sort_values(sort_col, ascending=False, na_position="last"))
+    return pd.concat(parts, ignore_index=True)
+
+
+def _header_fill():
+    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+
+    return {
+        "font": Font(bold=True, color="FFFFFF", name="Calibri", size=10),
+        "fill": PatternFill("solid", fgColor="1A365D"),
+        "align": Alignment(wrap_text=True, vertical="center", horizontal="center"),
+        "border": Border(
+            left=Side(style="thin", color="D9D9D9"),
+            right=Side(style="thin", color="D9D9D9"),
+            top=Side(style="thin", color="D9D9D9"),
+            bottom=Side(style="thin", color="D9D9D9"),
+        ),
+    }
+
+
+def _style_sheet(ws, df: pd.DataFrame) -> None:
+    from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+    from openpyxl.utils import get_column_letter
+    from openpyxl.formatting.rule import ColorScaleRule
+
+    hdr = _header_fill()
+    ws.freeze_panes = "A2"
+    ws.auto_filter.ref = ws.dimensions
+    ws.row_dimensions[1].height = 32
+    for col_idx, col in enumerate(df.columns, start=1):
+        cell = ws.cell(1, col_idx)
+        cell.font = hdr["font"]
+        cell.fill = hdr["fill"]
+        cell.alignment = hdr["align"]
+        cell.border = hdr["border"]
+        letter = get_column_letter(col_idx)
+        width = min(28, max(12, len(str(col)) + 2))
+        if col in {"su_name", "parent_su_name"}:
+            width = 36
+        ws.column_dimensions[letter].width = width
+
+        metric = col.replace("pre_", "").replace("post_", "").replace("delta_", "")
+        if col.startswith("delta_") and metric in RATE_COLS:
+            fmt = "+0.0%;-0.0%;0.0%"
+        elif metric in RATE_COLS and not col.startswith("delta_"):
+            fmt = "0.0%"
+        elif col.startswith("delta_") and metric in DAY_COLS:
+            fmt = "+0.00;-0.00;0.00"
+        elif metric in DAY_COLS:
+            fmt = "0.00"
+        elif metric in COUNT_COLS:
+            fmt = "#,##0"
+        else:
+            fmt = None
+        if fmt:
+            for row in range(2, ws.max_row + 1):
+                ws.cell(row, col_idx).number_format = fmt
+
+        if col.startswith("delta_") and metric in RATE_COLS | DAY_COLS and ws.max_row >= 2:
+            # Faster stated speed is negative (green). Badge/IFR increase is positive (green).
+            if metric in DAY_COLS:
+                ws.conditional_formatting.add(
+                    f"{letter}2:{letter}{ws.max_row}",
+                    ColorScaleRule(
+                        start_type="num",
+                        start_value=-0.5,
+                        start_color="1E8449",
+                        mid_type="num",
+                        mid_value=0,
+                        mid_color="FFFFFF",
+                        end_type="num",
+                        end_value=0.5,
+                        end_color="C0392B",
+                    ),
+                )
+            else:
+                ws.conditional_formatting.add(
+                    f"{letter}2:{letter}{ws.max_row}",
+                    ColorScaleRule(
+                        start_type="num",
+                        start_value=-0.1,
+                        start_color="C0392B",
+                        mid_type="num",
+                        mid_value=0,
+                        mid_color="FFFFFF",
+                        end_type="num",
+                        end_value=0.1,
+                        end_color="1E8449",
+                    ),
+                )
+
+
+def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None:
+    from openpyxl.styles import Font, PatternFill, Alignment
+
+    title = Font(name="Calibri", size=16, bold=True, color="1A365D")
+    section = Font(name="Calibri", size=12, bold=True, color="1A365D")
+    body = Font(name="Calibri", size=11)
+    hdr_font = Font(name="Calibri", size=10, bold=True, color="FFFFFF")
+    hdr_fill = PatternFill("solid", fgColor="1A365D")
+
+    ws["A1"] = "Weekend MSBD enablement — supplier pre/post workbook"
+    ws["A1"].font = title
+    ws.merge_cells("A1:G1")
+    ws["A2"] = (
+        "Generated 2026-08-31. Pre = 6 weeks before each warehouse’s first weekend-MSBD week. "
+        "Post = enable week through 2026-08-16. Stated O2S = o2sumsbd (order date to supplier MSBD). "
+        "Fast badge = stated O2D ≤ 5 days. Negative day deltas = faster."
+    )
+    ws["A2"].font = body
+    ws["A2"].alignment = Alignment(wrap_text=True)
+    ws.merge_cells("A2:G2")
+    ws.row_dimensions[2].height = 48
+
+    def write_block(start_row: int, heading: str, pre: pd.Series, post: pd.Series) -> int:
+        ws.cell(start_row, 1, heading).font = section
+        ws.merge_cells(start_row=start_row, start_column=1, end_row=start_row, end_column=5)
+        headers = ["Metric", "Pre", "Post", "Change", "Notes"]
+        for i, h in enumerate(headers, 1):
+            c = ws.cell(start_row + 1, i, h)
+            c.font = hdr_font
+            c.fill = hdr_fill
+        rows = [
+            ("Suppliers", int(pre["n_suppliers"]), int(post["n_suppliers"]), None, None),
+            ("Volume (distinct ops)", int(pre["vol"]), int(post["vol"]), None, None),
+            ("Stated O2S (days)", pre["o2s_stated"], post["o2s_stated"], post["o2s_stated"] - pre["o2s_stated"], "o2sumsbd; lower = faster promise"),
+            ("1-day stated O2S", pre["o2s_stated_1"], post["o2s_stated_1"], post["o2s_stated_1"] - pre["o2s_stated_1"], "o2s_stated_1 share"),
+            ("Stated O2D (days)", pre["o2d_stated"], post["o2d_stated"], post["o2d_stated"] - pre["o2d_stated"], "lower = faster customer promise"),
+            ("Fast badge (stated O2D ≤ 5)", pre["fast_badge"], post["fast_badge"], post["fast_badge"] - pre["fast_badge"], "o2d_stated_5"),
+            ("Actual O2D ≤ 5", pre["actual_fast_badge"], post["actual_fast_badge"], post["actual_fast_badge"] - pre["actual_fast_badge"], "o2d_actual_5"),
+            ("Actual O2S (days)", pre["o2s_actual"], post["o2s_actual"], post["o2s_actual"] - pre["o2s_actual"], None),
+            ("Actual O2D (days)", pre["o2d_actual"], post["o2d_actual"], post["o2d_actual"] - pre["o2d_actual"], None),
+            ("IFR", pre["ifr"], post["ifr"], post["ifr"] - pre["ifr"], None),
+            ("Delivery reliability", pre["del_rel"], post["del_rel"], post["del_rel"] - pre["del_rel"], "delivered orders only"),
+            ("Weekend MSBD share", pre["weekend_msbd"], post["weekend_msbd"], post["weekend_msbd"] - pre["weekend_msbd"], None),
+            ("Weekend ship (Sat+Sun)", pre["weekend_ship"], post["weekend_ship"], post["weekend_ship"] - pre["weekend_ship"], "induction_dow_adj 1 or 7"),
+            ("Saturday induction", pre["sat_ship"], post["sat_ship"], post["sat_ship"] - pre["sat_ship"], None),
+            ("Sunday induction", pre["sun_ship"], post["sun_ship"], post["sun_ship"] - pre["sun_ship"], None),
+        ]
+        rate_labels = {
+            "1-day stated O2S",
+            "Fast badge (stated O2D ≤ 5)",
+            "Actual O2D ≤ 5",
+            "IFR",
+            "Delivery reliability",
+            "Weekend MSBD share",
+            "Weekend ship (Sat+Sun)",
+            "Saturday induction",
+            "Sunday induction",
+        }
+        day_labels = {
+            "Stated O2S (days)",
+            "Stated O2D (days)",
+            "Actual O2S (days)",
+            "Actual O2D (days)",
+        }
+        for i, (label, a, b, d, note) in enumerate(rows):
+            r = start_row + 2 + i
+            ws.cell(r, 1, label).font = body
+            ws.cell(r, 2, a)
+            ws.cell(r, 3, b)
+            if d is not None:
+                ws.cell(r, 4, d)
+            if note:
+                ws.cell(r, 5, note).font = Font(name="Calibri", size=9, italic=True, color="666666")
+            if label in rate_labels:
+                ws.cell(r, 2).number_format = "0.0%"
+                ws.cell(r, 3).number_format = "0.0%"
+                if d is not None:
+                    ws.cell(r, 4).number_format = "+0.0%;-0.0%;0.0%"
+            elif label in day_labels:
+                ws.cell(r, 2).number_format = "0.00"
+                ws.cell(r, 3).number_format = "0.00"
+                if d is not None:
+                    ws.cell(r, 4).number_format = "+0.00;-0.00;0.00"
+            elif label in {"Suppliers", "Volume (distinct ops)"}:
+                ws.cell(r, 2).number_format = "#,##0"
+                ws.cell(r, 3).number_format = "#,##0"
+        return start_row + 2 + len(rows) + 2
+
+    r = 4
+    w1_all_pre, w1_all_post = slice_pair(rollup, "wave1_jun_jul", "all")
+    w1_fs_pre, w1_fs_post = slice_pair(rollup, "wave1_jun_jul", "fri_sat")
+    w1_wd_pre, w1_wd_post = slice_pair(rollup, "wave1_jun_jul", "weekday")
+    w2_all_pre, w2_all_post = slice_pair(rollup, "wave2_aug", "all")
+    w2_fs_pre, w2_fs_post = slice_pair(rollup, "wave2_aug", "fri_sat")
+
+    r = write_block(
+        r,
+        "Wave 1 — OVERALL (all order days): stated O2S / O2D and badging",
+        w1_all_pre,
+        w1_all_post,
+    )
+    r = write_block(r, "Wave 1 — Friday/Saturday placed orders", w1_fs_pre, w1_fs_post)
+    r = write_block(r, "Wave 1 — Monday–Thursday placed (same warehouses)", w1_wd_pre, w1_wd_post)
+    r = write_block(
+        r,
+        "Wave 2 (Aug 2 sprint, early 2-week post) — OVERALL stated speed & badging",
+        w2_all_pre,
+        w2_all_post,
+    )
+    r = write_block(r, "Wave 2 — Friday/Saturday placed orders", w2_fs_pre, w2_fs_post)
+
+    ws.cell(r, 1, "Sheets").font = section
+    notes = [
+        "Supplier_FriSat — every enabled warehouse, Fri/Sat orders, pre / post / delta",
+        "Supplier_Overall — every enabled warehouse, all order days (speed & badge view)",
+        "Supplier_Weekday — Monday–Thursday control at the same warehouses",
+        "Wave1_FriSat — the original 12 June/July warehouses only",
+        "Roster — enable week and wave assignment",
+        "Negative stated O2S / O2D deltas mean the promise got faster. Positive badge deltas mean more 5-day (or 1-day O2S) orders.",
+    ]
+    for i, line in enumerate(notes):
+        ws.cell(r + 1 + i, 1, line).font = body
+    ws.column_dimensions["A"].width = 42
+    ws.column_dimensions["B"].width = 14
+    ws.column_dimensions["C"].width = 14
+    ws.column_dimensions["D"].width = 14
+    ws.column_dimensions["E"].width = 42
+
+
+def write_excel(
+    roster: pd.DataFrame,
+    rollup: pd.DataFrame,
+    supplier: pd.DataFrame,
+    supplier_all: pd.DataFrame,
+    control: pd.DataFrame,
+) -> Path:
+    path = OUT / "weekend_shipping_pre_post_supplier.xlsx"
+    fri = wide_supplier(supplier, "fri_sat")
+    weekday = wide_supplier(supplier, "weekday")
+    overall = wide_supplier(supplier_all, "all")
+    wave1 = fri[fri["wave"] == "wave1_jun_jul"].copy()
+
+    sheets = {
+        "Supplier_FriSat": fri,
+        "Supplier_Overall": overall,
+        "Supplier_Weekday": weekday,
+        "Wave1_FriSat": wave1,
+        "Roster": roster.copy(),
+        "Cohort_rollup": rollup.copy(),
+        "Control": control.copy(),
+    }
+
+    with pd.ExcelWriter(path, engine="openpyxl") as writer:
+        for name, df in sheets.items():
+            export = df.copy()
+            if "enable_week" in export.columns:
+                export["enable_week"] = pd.to_datetime(export["enable_week"], errors="coerce").dt.date
+            export.to_excel(writer, sheet_name=name, index=False)
+        wb = writer.book
+        ws = wb.create_sheet("Summary", 0)
+        _write_summary_sheet(ws, rollup, roster)
+        for name, df in sheets.items():
+            _style_sheet(wb[name], df)
+
+    return path
+
+
 def fetch() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    cache = Path("/tmp/weekend_shipping_pre_post_cache.pkl")
+    cache = Path("/tmp/weekend_shipping_pre_post_cache_v2.pkl")
     if cache.exists():
         print(f"Loading cached extracts from {cache}")
         return pd.read_pickle(cache)
@@ -597,12 +935,32 @@ def main() -> None:
         .apply(summarize)
         .reset_index()
     )
+    all_rollup = (
+        orders.groupby(["wave", "period"], dropna=True)
+        .apply(summarize)
+        .reset_index()
+    )
+    all_rollup["order_bucket"] = "all"
+    rollup = pd.concat([rollup, all_rollup], ignore_index=True)
+
+    supplier_all = (
+        orders.groupby(
+            ["wave", "supplier_id", "su_name", "parent_su_name", "sto", "srm", "enable_week", "period"],
+            dropna=True,
+        )
+        .apply(summarize)
+        .reset_index()
+    )
+    supplier_all["order_bucket"] = "all"
 
     roster.to_csv(OUT / "enabled_roster.csv", index=False)
     rollup.to_csv(OUT / "cohort_rollup.csv", index=False)
     supplier.to_csv(OUT / "supplier_pre_post.csv", index=False)
+    supplier_all.to_csv(OUT / "supplier_pre_post_overall.csv", index=False)
     weekly.to_csv(OUT / "weekly_relative.csv", index=False)
     control.to_csv(OUT / "control_rollup.csv", index=False)
+    wide_supplier(supplier, "fri_sat").to_csv(OUT / "supplier_fri_sat_wide.csv", index=False)
+    wide_supplier(supplier_all, "all").to_csv(OUT / "supplier_overall_wide.csv", index=False)
 
     print("Building charts…")
     chart_grouped_bars(rollup)
@@ -613,10 +971,12 @@ def main() -> None:
     chart_wave2(rollup)
 
     write_report(roster, rollup, supplier, control)
+    xlsx = write_excel(roster, rollup, supplier, supplier_all, control)
 
     print(f"Roster: {len(roster)} enabled warehouses")
     print(roster.groupby("wave").size().to_string())
     print(f"Wrote CSVs to {OUT}")
+    print(f"Wrote Excel to {xlsx}")
     print(f"Wrote charts to {CHARTS}")
     print(f"Wrote {DOC}")
 
