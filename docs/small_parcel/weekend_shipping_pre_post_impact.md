@@ -152,6 +152,59 @@ Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/weekend_shipping_p
 
 Fri/Sat control: IFR 91.8% → 90.8% (-1.0 pp); delivery reliability 83.4% → 82.9% (-0.5 pp); actual O2D 5.39 → 5.06 (-0.33d). Control reliability did not drop the way enabled Fri/Sat orders did.
 
+## Hurt from the Sunday-MSBD pull set
+
+Counterfactual: hold Fri/Sat IFR and Fri/Sat delivery reliability at each warehouse’s own **pre** rate, then compare to observed post. Weekday post is left as-is (it improved at most of these buildings).
+
+### Wave 1 pull (Safavieh IN / GA / CA + NFusion El Monte)
+
+These four are 27% of the warehouses’ volume but **51% of their lates** after enablement.
+
+| Slice | Pre | Post | Change |
+| --- | ---: | ---: | ---: |
+| Fri/Sat IFR | 96.5% | 67.8% | **-28.7 pp** |
+| Fri/Sat delivery reliability | 81.7% | 77.5% | **-4.2 pp** |
+| Weekday IFR | 89.9% | 95.0% | +5.0 pp |
+| Weekday delivery reliability | 84.3% | 87.2% | +2.9 pp |
+| **Overall IFR (all days)** | **91.6%** | **83.1%** | **-8.5 pp** |
+| Overall delivery reliability | 83.6% | 84.7% | +1.1 pp |
+
+- Extra Fri/Sat IFR lates vs holding pre IFR: **+3,550** (3,980 observed vs 430 expected).
+- Extra Fri/Sat delivery misses vs holding pre del-rel: **+512**.
+- If Fri/Sat IFR had stayed at 96.5%, overall IFR would be **90.8%** instead of 83.1%. The weekend miss accounts for **7.7 pp** of the 8.5 pp overall IFR drop. Weekdays actually offset some of the damage.
+
+Warehouse-level (post window through 8/16):
+
+| Warehouse | Extra Fri/Sat IFR lates | Extra Fri/Sat del misses | Overall IFR Δ | of which weekend |
+| --- | ---: | ---: | ---: | ---: |
+| Safavieh IN46075 | 1,747 | 253 | -12.3 pp | 10.4 pp |
+| Safavieh CA 92518 | 788 | 134 | -7.4 pp | 8.6 pp |
+| Safavieh GA31407 B | 721 | 96 | -6.9 pp | 8.4 pp |
+| NFusion CA El Monte | 294 | 29 | -4.4 pp | 4.7 pp |
+
+Safavieh CA/GA overall IFR would have *risen* if Fri/Sat had held, because weekdays got better.
+
+### All 17 super-poor warehouses (Wave 1 pull + Wave 2 early)
+
+Same pattern, noisier because Wave 2 post is only ~2 weeks.
+
+| Slice | Pre | Post | Change |
+| --- | ---: | ---: | ---: |
+| Fri/Sat IFR | 92.3% | 62.3% | **-30.0 pp** |
+| Fri/Sat delivery reliability | 86.2% | 79.0% | **-7.2 pp** |
+| Weekday IFR | 92.3% | 90.8% | -1.5 pp |
+| **Overall IFR** | **92.3%** | **83.1%** | **-9.2 pp** |
+
+- Extra Fri/Sat IFR lates: **+5,563**. Extra Fri/Sat delivery misses: **+1,059**.
+- Weekend-attributable overall IFR hit: **8.0 pp** of the 9.2 pp drop (counterfactual overall IFR 91.1% if Fri/Sat had held).
+- Fri/Sat is 27% of volume and **52% of lates**.
+
+Standouts:
+
+- **TwinXLcom MN:** Fri/Sat del-rel 91.7% → 50.0% (**-41.7 pp**, +148 extra delivery misses). Overall IFR -7.1 pp, almost all weekend (+6.8 pp). Weekday IFR held.
+- **AMEZIEL IN 46219:** Fri/Sat is 30% of volume but **93% of lates**. Overall IFR -20.6 pp; **19.8 pp is weekend**. Weekdays are fine (96.9% IFR).
+- **aifei GA 30517:** overall IFR crash is **not** weekend-only — weekday IFR also collapsed (91.9% → 49.1%). Pulling Sunday MSBD would not fix this supplier.
+
 ## What this means
 
 1. **Enablement worked in the promise:** weekend MSBD is on; stated O2D and 5-day badging improved on Fri/Sat orders.
