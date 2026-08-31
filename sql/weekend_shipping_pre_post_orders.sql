@@ -25,6 +25,7 @@ SELECT
   h.delivery_date,
   h.det_delivery_date,
   h.det_del_rel,
+  DATE_DIFF(h.det_delivery_date, h.order_complete_date, DAY) AS det_o2d,
   h.inducted_on_time_or_early,
   CASE
     WHEN h.order_complete_date >= DATE_SUB(e.enable_week, INTERVAL 6 WEEK)

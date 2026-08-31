@@ -67,7 +67,12 @@ def prep_orders(df: pd.DataFrame) -> pd.DataFrame:
     df["o2d_actual_less5"] = pd.to_numeric(df["o2d_actual_5"], errors="coerce")
     df["delivery_rel"] = pd.to_numeric(df["delivery_rel"], errors="coerce")
     df["det_delivery_date"] = pd.to_datetime(df["det_delivery_date"], errors="coerce")
-    df["o2d_det"] = (df["det_delivery_date"] - df["order_complete_date"]).dt.days
+    computed_det_o2d = (df["det_delivery_date"] - df["order_complete_date"]).dt.days
+    if "det_o2d" in df.columns:
+        df["det_o2d"] = pd.to_numeric(df["det_o2d"], errors="coerce")
+        df["det_o2d"] = df["det_o2d"].fillna(computed_det_o2d)
+    else:
+        df["det_o2d"] = computed_det_o2d
     df["det_del_rel"] = pd.to_numeric(df["det_del_rel"], errors="coerce")
     return df[df["period"].notna() & df["order_bucket"].notna()].copy()
 
@@ -95,7 +100,7 @@ def summarize(g: pd.DataFrame) -> pd.Series:
             "o2s_actual": float(g["o2s_actual"].mean()) if vol else np.nan,
             "fast_badge": float(g["fast_badge"].mean()) if vol else np.nan,
             "o2d_actual_less5": float(g["o2d_actual_less5"].mean()) if vol else np.nan,
-            "o2d_det": float(g.loc[has_det, "o2d_det"].mean()) if has_det.any() else np.nan,
+            "det_o2d": float(g.loc[has_det, "det_o2d"].mean()) if has_det.any() else np.nan,
             "det_del_rel": float(g.loc[has_det, "det_del_rel"].mean()) if has_det.any() else np.nan,
             "del_rel": float(g.loc[delivered, "delivery_rel"].mean()) if delivered.any() else np.nan,
             "delivered_vol": int(g.loc[delivered, "ops"].nunique()),
@@ -155,7 +160,7 @@ def metric_table_md(pre: pd.Series, post: pd.Series) -> str:
         ("Actual O2S (days)", num(pre["o2s_actual"]), num(post["o2s_actual"]), days(post["o2s_actual"], pre["o2s_actual"])),
         ("Fast badge (stated O2D ≤ 5)", pct(pre["fast_badge"]), pct(post["fast_badge"]), pp(post["fast_badge"], pre["fast_badge"])),
         ("Actual O2D ≤ 5", pct(pre["o2d_actual_less5"]), pct(post["o2d_actual_less5"]), pp(post["o2d_actual_less5"], pre["o2d_actual_less5"])),
-        ("Deterministic O2D (days)", num(pre["o2d_det"]), num(post["o2d_det"]), days(post["o2d_det"], pre["o2d_det"])),
+        ("Deterministic O2D (det_o2d)", num(pre["det_o2d"]), num(post["det_o2d"]), days(post["det_o2d"], pre["det_o2d"])),
         ("Deterministic reliability", pct(pre["det_del_rel"]), pct(post["det_del_rel"]), pp(post["det_del_rel"], pre["det_del_rel"])),
         ("Delivery reliability", pct(pre["del_rel"]), pct(post["del_rel"]), pp(post["del_rel"], pre["del_rel"])),
     ]
@@ -628,10 +633,13 @@ DAY_COLS = {
     "o2d_stated",
     "o2s_actual",
     "o2d_actual",
-    "o2d_det",
-    "o2d_det_overall",
-    "o2d_det_fri_sat",
-    "o2d_det_weekday",
+    "det_o2d",
+    "det_o2d_overall",
+    "det_o2d_fri_sat",
+    "det_o2d_weekday",
+    "o2d_stated_overall",
+    "o2d_stated_fri_sat",
+    "o2d_stated_weekday",
 }
 COUNT_COLS = {
     "vol",
@@ -661,7 +669,7 @@ WIDE_METRICS = [
     "o2d_actual_less5",
     "o2s_actual",
     "o2d_actual",
-    "o2d_det",
+    "det_o2d",
     "ifr",
     "del_rel",
     "det_del_rel",
@@ -683,14 +691,8 @@ EXCEL_HEADERS = {
     "pre_o2d_actual_less5": "pre_o2d_actual_less5",
     "post_o2d_actual_less5": "post_o2d_actual_less5",
     "delta_o2d_actual_less5": "delta_o2d_actual_less5",
-    "o2d_det": "Deterministic O2D (days)",
-    "pre_o2d_det": "Pre det O2D (days)",
-    "post_o2d_det": "Post det O2D (days)",
-    "delta_o2d_det": "Δ det O2D (days)",
-    "det_del_rel": "Deterministic reliability",
-    "pre_det_del_rel": "Pre det reliability",
-    "post_det_del_rel": "Post det reliability",
-    "delta_det_del_rel": "Δ det reliability",
+    "ifr_dip_source": "IFR dip source",
+    "dr_dip_source": "DR dip source",
     "pre_ifr_fri_sat": "Pre IFR Fri/Sat",
     "post_ifr_fri_sat": "Post IFR Fri/Sat",
     "delta_ifr_fri_sat": "Δ IFR Fri/Sat",
@@ -709,15 +711,15 @@ EXCEL_HEADERS = {
     "pre_del_rel_overall": "Pre DR overall",
     "post_del_rel_overall": "Post DR overall",
     "delta_del_rel_overall": "Δ DR overall",
-    "pre_o2d_det_fri_sat": "Pre det O2D Fri/Sat",
-    "post_o2d_det_fri_sat": "Post det O2D Fri/Sat",
-    "delta_o2d_det_fri_sat": "Δ det O2D Fri/Sat",
-    "pre_o2d_det_weekday": "Pre det O2D Mon–Thu",
-    "post_o2d_det_weekday": "Post det O2D Mon–Thu",
-    "delta_o2d_det_weekday": "Δ det O2D Mon–Thu",
-    "pre_o2d_det_overall": "Pre det O2D overall",
-    "post_o2d_det_overall": "Post det O2D overall",
-    "delta_o2d_det_overall": "Δ det O2D overall",
+    "pre_det_o2d_fri_sat": "Pre det O2D Fri/Sat",
+    "post_det_o2d_fri_sat": "Post det O2D Fri/Sat",
+    "delta_det_o2d_fri_sat": "Δ det O2D Fri/Sat",
+    "pre_det_o2d_weekday": "Pre det O2D Mon–Thu",
+    "post_det_o2d_weekday": "Post det O2D Mon–Thu",
+    "delta_det_o2d_weekday": "Δ det O2D Mon–Thu",
+    "pre_det_o2d_overall": "Pre det O2D overall",
+    "post_det_o2d_overall": "Post det O2D overall",
+    "delta_det_o2d_overall": "Δ det O2D overall",
     "pre_det_del_rel_fri_sat": "Pre det rel Fri/Sat",
     "post_det_del_rel_fri_sat": "Post det rel Fri/Sat",
     "delta_det_del_rel_fri_sat": "Δ det rel Fri/Sat",
@@ -778,8 +780,9 @@ IMPACT_METRICS = [
     "vol",
     "ifr",
     "del_rel",
-    "o2d_det",
+    "det_o2d",
     "det_del_rel",
+    "o2d_stated",
     "o2d_actual_less5",
     "late_orders",
     "delivered_vol",
@@ -823,7 +826,30 @@ def build_ifr_dr_impact(supplier: pd.DataFrame, supplier_all: pd.DataFrame) -> p
     out["weekday_del_rel_hit_on_overall"] = (wd_del / ov_del) * out["delta_del_rel_weekday"]
     out["overall_del_rel_if_frisat_held"] = out["post_del_rel_overall"] - out["weekend_del_rel_hit_on_overall"]
 
+    def _dip_source(overall: pd.Series, weekend: pd.Series, weekday: pd.Series) -> pd.Series:
+        cut = -0.01
+        out_src = []
+        for ov, we, wd in zip(overall, weekend, weekday):
+            if pd.isna(ov):
+                out_src.append("")
+            elif ov >= cut:
+                out_src.append("no overall dip")
+            elif pd.notna(we) and we < cut and (pd.isna(wd) or wd >= cut):
+                out_src.append("weekend orders only")
+            elif pd.notna(we) and we < cut and pd.notna(wd) and wd < cut:
+                out_src.append("weekday and weekend")
+            elif pd.notna(wd) and wd < cut:
+                out_src.append("weekday orders")
+            else:
+                out_src.append("other (mix/Sunday)")
+        return pd.Series(out_src, index=out.index)
+
+    out["ifr_dip_source"] = _dip_source(out["delta_ifr_overall"], out["delta_ifr_fri_sat"], out["delta_ifr_weekday"])
+    out["dr_dip_source"] = _dip_source(out["delta_del_rel_overall"], out["delta_del_rel_fri_sat"], out["delta_del_rel_weekday"])
+
     ordered = list(WIDE_ID) + [
+        "ifr_dip_source",
+        "dr_dip_source",
         "pre_vol_overall",
         "post_vol_overall",
         "pre_vol_fri_sat",
@@ -862,15 +888,24 @@ def build_ifr_dr_impact(supplier: pd.DataFrame, supplier_all: pd.DataFrame) -> p
         "overall_del_rel_if_frisat_held",
         "weekend_del_rel_hit_on_overall",
         "weekday_del_rel_hit_on_overall",
-        "pre_o2d_det_overall",
-        "post_o2d_det_overall",
-        "delta_o2d_det_overall",
-        "pre_o2d_det_fri_sat",
-        "post_o2d_det_fri_sat",
-        "delta_o2d_det_fri_sat",
-        "pre_o2d_det_weekday",
-        "post_o2d_det_weekday",
-        "delta_o2d_det_weekday",
+        "pre_det_o2d_overall",
+        "post_det_o2d_overall",
+        "delta_det_o2d_overall",
+        "pre_det_o2d_fri_sat",
+        "post_det_o2d_fri_sat",
+        "delta_det_o2d_fri_sat",
+        "pre_det_o2d_weekday",
+        "post_det_o2d_weekday",
+        "delta_det_o2d_weekday",
+        "pre_o2d_stated_overall",
+        "post_o2d_stated_overall",
+        "delta_o2d_stated_overall",
+        "pre_o2d_stated_fri_sat",
+        "post_o2d_stated_fri_sat",
+        "delta_o2d_stated_fri_sat",
+        "pre_o2d_stated_weekday",
+        "post_o2d_stated_weekday",
+        "delta_o2d_stated_weekday",
         "pre_det_del_rel_overall",
         "post_det_del_rel_overall",
         "delta_det_del_rel_overall",
@@ -903,6 +938,103 @@ def build_ifr_dr_impact(supplier: pd.DataFrame, supplier_all: pd.DataFrame) -> p
         )
     )
     return pd.concat(parts, ignore_index=True)
+
+
+def classify_cohort_dip(wd_ifr_delta: float, fs_ifr_delta: float, ov_ifr_delta: float) -> str:
+    cut = -0.01
+    if pd.isna(ov_ifr_delta) or ov_ifr_delta >= cut:
+        return "No overall IFR dip"
+    if pd.notna(fs_ifr_delta) and fs_ifr_delta < cut and (pd.isna(wd_ifr_delta) or wd_ifr_delta >= cut):
+        return "Overall IFR dip is from weekend orders; Mon–Thu held or improved"
+    if pd.notna(fs_ifr_delta) and fs_ifr_delta < cut and pd.notna(wd_ifr_delta) and wd_ifr_delta < cut:
+        return "IFR dipped on both Mon–Thu and weekend orders"
+    if pd.notna(wd_ifr_delta) and wd_ifr_delta < cut:
+        return "Overall IFR dip is from Mon–Thu orders"
+    return "Overall IFR dip is mix / Sunday"
+
+
+def build_cohort_slice_summary(rollup: pd.DataFrame) -> pd.DataFrame:
+    """Wave-level Mon–Thu vs Fri/Sat vs overall: IFR, DR, stated O2D, det_o2d, det_del_rel."""
+    labels = [("weekday", "Mon-Thu"), ("fri_sat", "Fri/Sat"), ("all", "Overall")]
+    rows = []
+    for wave in ("wave1_jun_jul", "wave2_aug"):
+        pairs: dict[str, tuple[pd.Series, pd.Series]] = {}
+        for bucket, _label in labels:
+            try:
+                pairs[bucket] = slice_pair(rollup, wave, bucket)
+            except (IndexError, KeyError):
+                continue
+        diagnosis = ""
+        if set(pairs) >= {"weekday", "fri_sat", "all"}:
+            diagnosis = classify_cohort_dip(
+                pairs["weekday"][1]["ifr"] - pairs["weekday"][0]["ifr"],
+                pairs["fri_sat"][1]["ifr"] - pairs["fri_sat"][0]["ifr"],
+                pairs["all"][1]["ifr"] - pairs["all"][0]["ifr"],
+            )
+        for bucket, label in labels:
+            if bucket not in pairs:
+                continue
+            pre, post = pairs[bucket]
+            fs_share = pairs["fri_sat"][1]["vol"] / pairs["all"][1]["vol"] if set(pairs) >= {"fri_sat", "all"} else np.nan
+            wd_share = pairs["weekday"][1]["vol"] / pairs["all"][1]["vol"] if set(pairs) >= {"weekday", "all"} else np.nan
+            weekend_ifr_hit = (
+                fs_share * (pairs["fri_sat"][1]["ifr"] - pairs["fri_sat"][0]["ifr"])
+                if set(pairs) >= {"fri_sat", "all"}
+                else np.nan
+            )
+            weekday_ifr_hit = (
+                wd_share * (pairs["weekday"][1]["ifr"] - pairs["weekday"][0]["ifr"])
+                if set(pairs) >= {"weekday", "all"}
+                else np.nan
+            )
+            rows.append(
+                {
+                    "wave": wave,
+                    "order_slice": label,
+                    "n_suppliers": int(post["n_suppliers"]),
+                    "pre_vol": pre["vol"],
+                    "post_vol": post["vol"],
+                    "pre_ifr": pre["ifr"],
+                    "post_ifr": post["ifr"],
+                    "delta_ifr": post["ifr"] - pre["ifr"],
+                    "pre_del_rel": pre["del_rel"],
+                    "post_del_rel": post["del_rel"],
+                    "delta_del_rel": post["del_rel"] - pre["del_rel"],
+                    "pre_o2d_stated": pre["o2d_stated"],
+                    "post_o2d_stated": post["o2d_stated"],
+                    "delta_o2d_stated": post["o2d_stated"] - pre["o2d_stated"],
+                    "pre_det_o2d": pre["det_o2d"],
+                    "post_det_o2d": post["det_o2d"],
+                    "delta_det_o2d": post["det_o2d"] - pre["det_o2d"],
+                    "pre_det_del_rel": pre["det_del_rel"],
+                    "post_det_del_rel": post["det_del_rel"],
+                    "delta_det_del_rel": post["det_del_rel"] - pre["det_del_rel"],
+                    "pre_o2d_actual": pre["o2d_actual"],
+                    "post_o2d_actual": post["o2d_actual"],
+                    "delta_o2d_actual": post["o2d_actual"] - pre["o2d_actual"],
+                    "weekend_ifr_hit_on_overall": weekend_ifr_hit if label == "Overall" else np.nan,
+                    "weekday_ifr_hit_on_overall": weekday_ifr_hit if label == "Overall" else np.nan,
+                    "overall_ifr_if_frisat_held": (
+                        (post["ifr"] - weekend_ifr_hit) if label == "Overall" and pd.notna(weekend_ifr_hit) else np.nan
+                    ),
+                    "ifr_dip_source": diagnosis if label == "Overall" else "",
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def build_all_supplier_data(supplier: pd.DataFrame, supplier_all: pd.DataFrame) -> pd.DataFrame:
+    """Every warehouse × slice (Overall / Fri/Sat / Mon-Thu) with the full pre/post metric set."""
+    frames = []
+    for bucket, label, src in (
+        ("all", "Overall", supplier_all),
+        ("fri_sat", "Fri/Sat", supplier),
+        ("weekday", "Mon-Thu", supplier),
+    ):
+        wide = wide_supplier(src, bucket)
+        wide.insert(len(WIDE_ID), "order_slice", label)
+        frames.append(wide)
+    return pd.concat(frames, ignore_index=True)
 
 
 def _header_fill():
@@ -942,6 +1074,8 @@ def _style_sheet(ws, df: pd.DataFrame) -> None:
         width = min(36, max(12, len(str(display)) + 2))
         if col in {"su_name", "parent_su_name"}:
             width = 36
+        if col in {"ifr_dip_source", "dr_dip_source", "order_slice"}:
+            width = 42
         ws.column_dimensions[letter].width = width
 
         metric = col
@@ -1015,7 +1149,8 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
         "Generated 2026-08-31. Pre = 6 weeks before each warehouse’s first weekend-MSBD week. "
         "Post = enable week through 2026-08-16. Stated O2S = o2sumsbd (order date to supplier MSBD). "
         "Fast badge = stated O2D ≤ 5 only (customer badge). o2d_actual_less5 is actual O2D ≤ 5, not a badge. "
-        "Deterministic O2D / reliability use det_delivery_date and det_del_rel. Negative day deltas = faster."
+        "det_o2d / det_del_rel are the on-site ML promise O2D and deterministic reliability "
+        "(det_o2d computed from det_delivery_date until the table column lands). Negative day deltas = faster."
     )
     ws["A2"].font = body
     ws["A2"].alignment = Alignment(wrap_text=True)
@@ -1038,12 +1173,12 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             ("Stated O2D (days)", pre["o2d_stated"], post["o2d_stated"], post["o2d_stated"] - pre["o2d_stated"], "lower = faster customer promise"),
             ("Fast badge (stated O2D ≤ 5)", pre["fast_badge"], post["fast_badge"], post["fast_badge"] - pre["fast_badge"], "o2d_stated_5 — badge is stated only"),
             ("Actual O2D ≤ 5", pre["o2d_actual_less5"], post["o2d_actual_less5"], post["o2d_actual_less5"] - pre["o2d_actual_less5"], "o2d_actual_5 — not a badge"),
-            ("Deterministic O2D (days)", pre["o2d_det"], post["o2d_det"], post["o2d_det"] - pre["o2d_det"], "order date to det_delivery_date"),
+            ("Deterministic O2D (det_o2d)", pre["det_o2d"], post["det_o2d"], post["det_o2d"] - pre["det_o2d"], "ML on-site promise; DATE_DIFF(det_delivery_date, order_complete_date) until det_o2d lands"),
             ("Actual O2S (days)", pre["o2s_actual"], post["o2s_actual"], post["o2s_actual"] - pre["o2s_actual"], None),
             ("Actual O2D (days)", pre["o2d_actual"], post["o2d_actual"], post["o2d_actual"] - pre["o2d_actual"], None),
             ("IFR", pre["ifr"], post["ifr"], post["ifr"] - pre["ifr"], None),
             ("Delivery reliability", pre["del_rel"], post["del_rel"], post["del_rel"] - pre["del_rel"], "delivered orders only"),
-            ("Deterministic reliability", pre["det_del_rel"], post["det_del_rel"], post["det_del_rel"] - pre["det_del_rel"], "det_del_rel where det_delivery_date is set"),
+            ("Deterministic reliability (det_del_rel)", pre["det_del_rel"], post["det_del_rel"], post["det_del_rel"] - pre["det_del_rel"], "vs the ML / on-site promise"),
             ("Weekend MSBD share", pre["weekend_msbd"], post["weekend_msbd"], post["weekend_msbd"] - pre["weekend_msbd"], None),
             ("Weekend ship (Sat+Sun)", pre["weekend_ship"], post["weekend_ship"], post["weekend_ship"] - pre["weekend_ship"], "induction_dow_adj 1 or 7"),
             ("Saturday induction", pre["sat_ship"], post["sat_ship"], post["sat_ship"] - pre["sat_ship"], None),
@@ -1055,7 +1190,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             "Actual O2D ≤ 5",
             "IFR",
             "Delivery reliability",
-            "Deterministic reliability",
+            "Deterministic reliability (det_del_rel)",
             "Weekend MSBD share",
             "Weekend ship (Sat+Sun)",
             "Saturday induction",
@@ -1066,7 +1201,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             "Stated O2D (days)",
             "Actual O2S (days)",
             "Actual O2D (days)",
-            "Deterministic O2D (days)",
+            "Deterministic O2D (det_o2d)",
         }
         for i, (label, a, b, d, note) in enumerate(rows):
             r = start_row + 2 + i
@@ -1143,9 +1278,9 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
                 pre["del_rel"],
                 post["del_rel"],
                 post["del_rel"] - pre["del_rel"],
-                pre["o2d_det"],
-                post["o2d_det"],
-                post["o2d_det"] - pre["o2d_det"],
+                pre["det_o2d"],
+                post["det_o2d"],
+                post["det_o2d"] - pre["det_o2d"],
                 pre["det_del_rel"],
                 post["det_del_rel"],
                 post["det_del_rel"] - pre["det_del_rel"],
@@ -1187,35 +1322,43 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
     w2_fs_pre, w2_fs_post = slice_pair(rollup, "wave2_aug", "fri_sat")
     w2_wd_pre, w2_wd_post = slice_pair(rollup, "wave2_aug", "weekday")
 
-    r = write_slice_compare(r, "Wave 1 — IFR / DR / det O2D by order day (how weekend MSBD hits overall)", "wave1_jun_jul")
-    r = write_slice_compare(r, "Wave 2 — IFR / DR / det O2D by order day (early 2-week post)", "wave2_aug")
-    r = write_block(
-        r,
-        "Wave 1 — OVERALL (all order days): stated O2S / O2D and badging",
-        w1_all_pre,
-        w1_all_post,
+    w1_diag = classify_cohort_dip(
+        w1_wd_post["ifr"] - w1_wd_pre["ifr"],
+        w1_fs_post["ifr"] - w1_fs_pre["ifr"],
+        w1_all_post["ifr"] - w1_all_pre["ifr"],
     )
-    r = write_block(r, "Wave 1 — Friday/Saturday placed orders", w1_fs_pre, w1_fs_post)
+    w2_diag = classify_cohort_dip(
+        w2_wd_post["ifr"] - w2_wd_pre["ifr"],
+        w2_fs_post["ifr"] - w2_fs_pre["ifr"],
+        w2_all_post["ifr"] - w2_all_pre["ifr"],
+    )
+    ws.cell(r, 1, f"Wave 1: {w1_diag}").font = section
+    ws.merge_cells(start_row=r, start_column=1, end_row=r, end_column=10)
+    ws.cell(r + 1, 1, f"Wave 2: {w2_diag}").font = section
+    ws.merge_cells(start_row=r + 1, start_column=1, end_row=r + 1, end_column=10)
+    r += 3
+
+    r = write_slice_compare(r, "Wave 1 — Mon–Thu vs Fri/Sat vs overall (IFR, DR, det_o2d, det_del_rel)", "wave1_jun_jul")
+    r = write_slice_compare(r, "Wave 2 — Mon–Thu vs Fri/Sat vs overall (early 2-week post)", "wave2_aug")
     r = write_block(r, "Wave 1 — Monday–Thursday placed (same warehouses)", w1_wd_pre, w1_wd_post)
-    r = write_block(
-        r,
-        "Wave 2 (Aug 2 sprint, early 2-week post) — OVERALL stated speed & badging",
-        w2_all_pre,
-        w2_all_post,
-    )
-    r = write_block(r, "Wave 2 — Friday/Saturday placed orders", w2_fs_pre, w2_fs_post)
+    r = write_block(r, "Wave 1 — Friday/Saturday placed orders", w1_fs_pre, w1_fs_post)
+    r = write_block(r, "Wave 1 — OVERALL (all order days)", w1_all_pre, w1_all_post)
     r = write_block(r, "Wave 2 — Monday–Thursday placed (same warehouses)", w2_wd_pre, w2_wd_post)
+    r = write_block(r, "Wave 2 — Friday/Saturday placed orders", w2_fs_pre, w2_fs_post)
+    r = write_block(r, "Wave 2 — OVERALL (all order days, early 2-week post)", w2_all_pre, w2_all_post)
 
     ws.cell(r, 1, "Sheets").font = section
     notes = [
-        "FriSat_vs_Weekday — warehouse-level Mon–Thu vs Fri/Sat vs overall IFR, DR, det O2D; weekend hit on overall",
+        "Cohort_Summary — wave-level Mon–Thu vs Fri/Sat vs overall IFR, DR, o2d_stated, det_o2d, det_del_rel",
+        "All_Data — every warehouse × Overall / Fri/Sat / Mon–Thu with the full pre/post metric set",
+        "FriSat_vs_Weekday — warehouse IFR/DR dip source (weekend only vs weekday too) plus det_o2d / det_del_rel",
         "Supplier_FriSat — every enabled warehouse, Fri/Sat orders, pre / post / delta",
         "Supplier_Overall — every enabled warehouse, all order days (speed & badge view)",
         "Supplier_Weekday — Monday–Thursday at the same warehouses",
         "Wave1_FriSat — the original 12 June/July warehouses only",
         "Roster — enable week and wave assignment",
         "o2d_actual_less5 = actual O2D ≤ 5 (not a badge). Fast badge = stated O2D ≤ 5 only.",
-        "Deterministic O2D = days from order date to det_delivery_date. Det reliability = det_del_rel.",
+        "det_o2d = ML on-site promise O2D (from det_delivery_date until the table column lands). det_del_rel = deterministic reliability.",
     ]
     for i, line in enumerate(notes):
         ws.cell(r + 1 + i, 1, line).font = body
@@ -1240,10 +1383,14 @@ def write_excel(
     weekday = wide_supplier(supplier, "weekday")
     overall = wide_supplier(supplier_all, "all")
     impact = build_ifr_dr_impact(supplier, supplier_all)
+    cohort_sum = build_cohort_slice_summary(rollup)
+    all_data = build_all_supplier_data(supplier, supplier_all)
     wave1 = fri[fri["wave"] == "wave1_jun_jul"].copy()
     wave1_impact = impact[impact["wave"] == "wave1_jun_jul"].copy()
 
     sheets = {
+        "Cohort_Summary": cohort_sum,
+        "All_Data": all_data,
         "FriSat_vs_Weekday": impact,
         "Wave1_FriSat_vs_Weekday": wave1_impact,
         "Supplier_FriSat": fri,
@@ -1275,6 +1422,13 @@ def fetch() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     if cache.exists():
         print(f"Loading cached extracts from {cache}")
         roster, orders, control = pd.read_pickle(cache)
+        orders = orders.rename(columns={"o2d_det": "det_o2d"})
+        control = control.rename(columns={"o2d_det": "det_o2d"})
+        if "det_o2d" not in orders.columns and "det_delivery_date" in orders.columns:
+            orders["det_delivery_date"] = pd.to_datetime(orders["det_delivery_date"], errors="coerce")
+            orders["det_o2d"] = (
+                orders["det_delivery_date"] - pd.to_datetime(orders["order_complete_date"])
+            ).dt.days
         return roster, orders, control
     print("Querying enabled roster…")
     roster = query_df(with_cte("weekend_shipping_pre_post_roster.sql"))
@@ -1338,14 +1492,8 @@ def main() -> None:
     wide_supplier(supplier_all, "all").to_csv(OUT / "supplier_overall_wide.csv", index=False)
     wide_supplier(supplier, "weekday").to_csv(OUT / "supplier_weekday_wide.csv", index=False)
     build_ifr_dr_impact(supplier, supplier_all).to_csv(OUT / "supplier_ifr_dr_impact.csv", index=False)
-
-    print("Building charts…")
-    chart_grouped_bars(rollup)
-    chart_weekday_vs_weekend(rollup)
-    chart_sat_sun(rollup)
-    chart_supplier_lollipop(supplier)
-    chart_weekly(orders)
-    chart_wave2(rollup)
+    build_cohort_slice_summary(rollup).to_csv(OUT / "cohort_slice_summary.csv", index=False)
+    build_all_supplier_data(supplier, supplier_all).to_csv(OUT / "supplier_all_data.csv", index=False)
 
     xlsx = write_excel(roster, rollup, supplier, supplier_all, control)
 
