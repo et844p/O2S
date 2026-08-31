@@ -100,8 +100,8 @@ def summarize(g: pd.DataFrame) -> pd.Series:
             "o2s_actual": float(g["o2s_actual"].mean()) if vol else np.nan,
             "fast_badge": float(g["fast_badge"].mean()) if vol else np.nan,
             "o2d_actual_less5": float(g["o2d_actual_less5"].mean()) if vol else np.nan,
-            "det_o2d": float(g.loc[has_det, "det_o2d"].mean()) if has_det.any() else np.nan,
-            "det_del_rel": float(g.loc[has_det, "det_del_rel"].mean()) if has_det.any() else np.nan,
+            "det_o2d": float(g["det_o2d"].mean()) if vol else np.nan,
+            "det_del_rel": float(g["det_del_rel"].mean()) if vol else np.nan,
             "del_rel": float(g.loc[delivered, "delivery_rel"].mean()) if delivered.any() else np.nan,
             "delivered_vol": int(g.loc[delivered, "ops"].nunique()),
             "det_vol": int(g.loc[has_det, "ops"].nunique()) if "ops" in g.columns else int(has_det.sum()),
@@ -1146,16 +1146,17 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
     ws["A1"].font = title
     ws.merge_cells("A1:G1")
     ws["A2"] = (
-        "Generated 2026-08-31. Pre = 6 weeks before each warehouse’s first weekend-MSBD week. "
-        "Post = enable week through 2026-08-16. Stated O2S = o2sumsbd (order date to supplier MSBD). "
-        "Fast badge = stated O2D ≤ 5 only (customer badge). o2d_actual_less5 is actual O2D ≤ 5, not a badge. "
-        "det_o2d / det_del_rel are the on-site ML promise O2D and deterministic reliability "
-        "(det_o2d computed from det_delivery_date until the table column lands). Negative day deltas = faster."
+        "Generated 2026-08-31. Same MSBD cuts for both waves: pre 2026-05-31 to 2026-06-27, "
+        "post 2026-08-02 to 2026-08-29. US delivered only (destination_country_id = 1; "
+        "excludes CA/northbound where det_del_rel is near zero). Volume = distinct delivered ops. "
+        "Stated O2S = o2sumsbd. Fast badge = stated O2D ≤ 5 only. "
+        "det_o2d / det_del_rel = on-site ML promise O2D and deterministic reliability "
+        "(det_o2d from det_delivery_date until the table column lands). Negative day deltas = faster."
     )
     ws["A2"].font = body
     ws["A2"].alignment = Alignment(wrap_text=True)
     ws.merge_cells("A2:G2")
-    ws.row_dimensions[2].height = 48
+    ws.row_dimensions[2].height = 64
 
     def write_block(start_row: int, heading: str, pre: pd.Series, post: pd.Series) -> int:
         ws.cell(start_row, 1, heading).font = section
@@ -1167,7 +1168,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             c.fill = hdr_fill
         rows = [
             ("Suppliers", int(pre["n_suppliers"]), int(post["n_suppliers"]), None, None),
-            ("Volume (distinct ops)", int(pre["vol"]), int(post["vol"]), None, None),
+            ("Volume (delivered US ops)", int(pre["vol"]), int(post["vol"]), None, "destination_country_id = 1, delivery_date not null"),
             ("Stated O2S (days)", pre["o2s_stated"], post["o2s_stated"], post["o2s_stated"] - pre["o2s_stated"], "o2sumsbd; lower = faster promise"),
             ("1-day stated O2S", pre["o2s_stated_1"], post["o2s_stated_1"], post["o2s_stated_1"] - pre["o2s_stated_1"], "o2s_stated_1 share"),
             ("Stated O2D (days)", pre["o2d_stated"], post["o2d_stated"], post["o2d_stated"] - pre["o2d_stated"], "lower = faster customer promise"),
@@ -1177,8 +1178,8 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             ("Actual O2S (days)", pre["o2s_actual"], post["o2s_actual"], post["o2s_actual"] - pre["o2s_actual"], None),
             ("Actual O2D (days)", pre["o2d_actual"], post["o2d_actual"], post["o2d_actual"] - pre["o2d_actual"], None),
             ("IFR", pre["ifr"], post["ifr"], post["ifr"] - pre["ifr"], None),
-            ("Delivery reliability", pre["del_rel"], post["del_rel"], post["del_rel"] - pre["del_rel"], "delivered orders only"),
-            ("Deterministic reliability (det_del_rel)", pre["det_del_rel"], post["det_del_rel"], post["det_del_rel"] - pre["det_del_rel"], "vs the ML / on-site promise"),
+            ("Delivery reliability", pre["del_rel"], post["del_rel"], post["del_rel"] - pre["del_rel"], "all rows are delivered"),
+            ("Deterministic reliability (det_del_rel)", pre["det_del_rel"], post["det_del_rel"], post["det_del_rel"] - pre["det_del_rel"], "US only; CA excluded"),
             ("Weekend MSBD share", pre["weekend_msbd"], post["weekend_msbd"], post["weekend_msbd"] - pre["weekend_msbd"], None),
             ("Weekend ship (Sat+Sun)", pre["weekend_ship"], post["weekend_ship"], post["weekend_ship"] - pre["weekend_ship"], "induction_dow_adj 1 or 7"),
             ("Saturday induction", pre["sat_ship"], post["sat_ship"], post["sat_ship"] - pre["sat_ship"], None),
@@ -1222,7 +1223,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
                 ws.cell(r, 3).number_format = "0.00"
                 if d is not None:
                     ws.cell(r, 4).number_format = "+0.00;-0.00;0.00"
-            elif label in {"Suppliers", "Volume (distinct ops)"}:
+            elif label in {"Suppliers", "Volume (delivered US ops)"}:
                 ws.cell(r, 2).number_format = "#,##0"
                 ws.cell(r, 3).number_format = "#,##0"
         return start_row + 2 + len(rows) + 2
@@ -1339,17 +1340,17 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
     r += 3
 
     r = write_slice_compare(r, "Wave 1 — Mon–Thu vs Fri/Sat vs overall (IFR, DR, det_o2d, det_del_rel)", "wave1_jun_jul")
-    r = write_slice_compare(r, "Wave 2 — Mon–Thu vs Fri/Sat vs overall (early 2-week post)", "wave2_aug")
+    r = write_slice_compare(r, "Wave 2 — Mon–Thu vs Fri/Sat vs overall (same MSBD cuts)", "wave2_aug")
     r = write_block(r, "Wave 1 — Monday–Thursday placed (same warehouses)", w1_wd_pre, w1_wd_post)
     r = write_block(r, "Wave 1 — Friday/Saturday placed orders", w1_fs_pre, w1_fs_post)
     r = write_block(r, "Wave 1 — OVERALL (all order days)", w1_all_pre, w1_all_post)
     r = write_block(r, "Wave 2 — Monday–Thursday placed (same warehouses)", w2_wd_pre, w2_wd_post)
     r = write_block(r, "Wave 2 — Friday/Saturday placed orders", w2_fs_pre, w2_fs_post)
-    r = write_block(r, "Wave 2 — OVERALL (all order days, early 2-week post)", w2_all_pre, w2_all_post)
+    r = write_block(r, "Wave 2 — OVERALL (all order days)", w2_all_pre, w2_all_post)
 
     ws.cell(r, 1, "Sheets").font = section
     notes = [
-        "Cohort_Summary — wave-level Mon–Thu vs Fri/Sat vs overall IFR, DR, o2d_stated, det_o2d, det_del_rel",
+        "Cohort_Summary — wave-level Mon–Thu vs Fri/Sat vs overall; same MSBD cuts; US delivered",
         "All_Data — every warehouse × Overall / Fri/Sat / Mon–Thu with the full pre/post metric set",
         "FriSat_vs_Weekday — warehouse IFR/DR dip source (weekend only vs weekday too) plus det_o2d / det_del_rel",
         "Supplier_FriSat — every enabled warehouse, Fri/Sat orders, pre / post / delta",
@@ -1358,7 +1359,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
         "Wave1_FriSat — the original 12 June/July warehouses only",
         "Roster — enable week and wave assignment",
         "o2d_actual_less5 = actual O2D ≤ 5 (not a badge). Fast badge = stated O2D ≤ 5 only.",
-        "det_o2d = ML on-site promise O2D (from det_delivery_date until the table column lands). det_del_rel = deterministic reliability.",
+        "US delivered only (destination_country_id = 1). Pre MSBD 5/31–6/27, post MSBD 8/02–8/29 for both waves. nuLOOM NJ enable 6/21 overlaps the last week of pre.",
     ]
     for i, line in enumerate(notes):
         ws.cell(r + 1 + i, 1, line).font = body
@@ -1418,18 +1419,10 @@ def write_excel(
 
 
 def fetch() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    cache = Path("/tmp/weekend_shipping_pre_post_cache_v3.pkl")
+    cache = Path("/tmp/weekend_shipping_pre_post_cache_v4.pkl")
     if cache.exists():
         print(f"Loading cached extracts from {cache}")
-        roster, orders, control = pd.read_pickle(cache)
-        orders = orders.rename(columns={"o2d_det": "det_o2d"})
-        control = control.rename(columns={"o2d_det": "det_o2d"})
-        if "det_o2d" not in orders.columns and "det_delivery_date" in orders.columns:
-            orders["det_delivery_date"] = pd.to_datetime(orders["det_delivery_date"], errors="coerce")
-            orders["det_o2d"] = (
-                orders["det_delivery_date"] - pd.to_datetime(orders["order_complete_date"])
-            ).dt.days
-        return roster, orders, control
+        return pd.read_pickle(cache)
     print("Querying enabled roster…")
     roster = query_df(with_cte("weekend_shipping_pre_post_roster.sql"))
     print("Querying enabled orders…")
