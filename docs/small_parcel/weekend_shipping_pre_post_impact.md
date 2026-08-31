@@ -229,7 +229,7 @@ Standouts:
 | Volume | `COUNT(DISTINCT ops)` |
 | IFR | `AVG(inducted_on_time_or_early)` |
 | Delivery reliability | `AVG(delivery_rel)` among rows with `delivery_date IS NOT NULL` |
-| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; fast badge = `AVG(o2d_stated_5)` |
+| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; Fast badge = `AVG(o2d_stated_5)` (stated only); Actual O2D ≤ 5 = `AVG(o2d_actual_5)` (outcome, not a badge) |
 
 The July 2026 candidate finder (`sql/weekend_shipping_supplier_analysis.sql`) treated `order_dow IN (5, 6)` as Fri/Sat. Empirically that is **Thursday + Friday**. This impact rerun uses the corrected Friday + Saturday filter.
 

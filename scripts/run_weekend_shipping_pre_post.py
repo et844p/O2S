@@ -63,7 +63,8 @@ def prep_orders(df: pd.DataFrame) -> pd.DataFrame:
     df["o2s_stated"] = pd.to_numeric(df["o2sumsbd"], errors="coerce")
     df["o2s_stated_1"] = pd.to_numeric(df["o2s_stated_1"], errors="coerce")
     df["fast_badge"] = pd.to_numeric(df["o2d_stated_5"], errors="coerce")
-    df["actual_fast_badge"] = pd.to_numeric(df["o2d_actual_5"], errors="coerce")
+    # Delivery outcome, not a badge — Fast badge is stated O2D only.
+    df["actual_o2d_le_5"] = pd.to_numeric(df["o2d_actual_5"], errors="coerce")
     df["delivery_rel"] = pd.to_numeric(df["delivery_rel"], errors="coerce")
     return df[df["period"].notna() & df["order_bucket"].notna()].copy()
 
@@ -89,7 +90,7 @@ def summarize(g: pd.DataFrame) -> pd.Series:
             "o2d_actual": float(g["o2d_actual"].mean()) if vol else np.nan,
             "o2s_actual": float(g["o2s_actual"].mean()) if vol else np.nan,
             "fast_badge": float(g["fast_badge"].mean()) if vol else np.nan,
-            "actual_fast_badge": float(g["actual_fast_badge"].mean()) if vol else np.nan,
+            "actual_o2d_le_5": float(g["actual_o2d_le_5"].mean()) if vol else np.nan,
             "del_rel": float(g.loc[delivered, "delivery_rel"].mean()) if delivered.any() else np.nan,
             "delivered_vol": int(g.loc[delivered, "ops"].nunique()),
         }
@@ -146,7 +147,7 @@ def metric_table_md(pre: pd.Series, post: pd.Series) -> str:
         ("Actual O2D (days)", num(pre["o2d_actual"]), num(post["o2d_actual"]), days(post["o2d_actual"], pre["o2d_actual"])),
         ("Actual O2S (days)", num(pre["o2s_actual"]), num(post["o2s_actual"]), days(post["o2s_actual"], pre["o2s_actual"])),
         ("Fast badge (stated O2D ≤ 5)", pct(pre["fast_badge"]), pct(post["fast_badge"]), pp(post["fast_badge"], pre["fast_badge"])),
-        ("Actual O2D ≤ 5", pct(pre["actual_fast_badge"]), pct(post["actual_fast_badge"]), pp(post["actual_fast_badge"], pre["actual_fast_badge"])),
+        ("Actual O2D ≤ 5", pct(pre["actual_o2d_le_5"]), pct(post["actual_o2d_le_5"]), pp(post["actual_o2d_le_5"], pre["actual_o2d_le_5"])),
         ("Delivery reliability", pct(pre["del_rel"]), pct(post["del_rel"]), pp(post["del_rel"], pre["del_rel"])),
     ]
     lines = [
@@ -555,7 +556,7 @@ Full Wave 2 warehouse file: `output/weekend_shipping_pre_post/weekend_shipping_p
 | Volume | `COUNT(DISTINCT ops)` |
 | IFR | `AVG(inducted_on_time_or_early)` |
 | Delivery reliability | `AVG(delivery_rel)` among rows with `delivery_date IS NOT NULL` |
-| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; fast badge = `AVG(o2d_stated_5)` |
+| Speed | Stated O2S = `AVG(o2sumsbd)`; stated O2D = `AVG(o2d_stated)`; actual O2S/O2D; 1-day O2S = `AVG(o2s_stated_1)`; Fast badge = `AVG(o2d_stated_5)` (stated only); Actual O2D ≤ 5 = `AVG(o2d_actual_5)` (outcome, not a badge) |
 
 The July 2026 candidate finder (`sql/weekend_shipping_supplier_analysis.sql`) treated `order_dow IN (5, 6)` as Fri/Sat. Empirically that is **Thursday + Friday**. This impact rerun uses the corrected Friday + Saturday filter.
 
@@ -588,7 +589,7 @@ RATE_COLS = {
     "ifr",
     "o2s_stated_1",
     "fast_badge",
-    "actual_fast_badge",
+    "actual_o2d_le_5",
     "del_rel",
 }
 DAY_COLS = {"o2s_stated", "o2d_stated", "o2s_actual", "o2d_actual"}
@@ -600,7 +601,7 @@ WIDE_METRICS = [
     "o2s_stated_1",
     "o2d_stated",
     "fast_badge",
-    "actual_fast_badge",
+    "actual_o2d_le_5",
     "o2s_actual",
     "o2d_actual",
     "ifr",
@@ -612,6 +613,18 @@ WIDE_METRICS = [
     "sun_ship",
 ]
 WIDE_ID = ["wave", "supplier_id", "su_name", "parent_su_name", "sto", "srm", "enable_week"]
+
+# Excel headers: Fast badge is stated O2D only. Actual O2D ≤ 5 is outcome, not a badge.
+EXCEL_HEADERS = {
+    "fast_badge": "Fast badge (stated O2D ≤ 5)",
+    "pre_fast_badge": "Pre Fast badge (stated O2D ≤ 5)",
+    "post_fast_badge": "Post Fast badge (stated O2D ≤ 5)",
+    "delta_fast_badge": "Δ Fast badge (stated O2D ≤ 5)",
+    "actual_o2d_le_5": "Actual O2D ≤ 5",
+    "pre_actual_o2d_le_5": "Pre actual O2D ≤ 5",
+    "post_actual_o2d_le_5": "Post actual O2D ≤ 5",
+    "delta_actual_o2d_le_5": "Δ actual O2D ≤ 5",
+}
 
 
 def wide_supplier(supplier: pd.DataFrame, bucket: str) -> pd.DataFrame:
@@ -665,15 +678,17 @@ def _style_sheet(ws, df: pd.DataFrame) -> None:
     hdr = _header_fill()
     ws.freeze_panes = "A2"
     ws.auto_filter.ref = ws.dimensions
-    ws.row_dimensions[1].height = 32
+    ws.row_dimensions[1].height = 40
     for col_idx, col in enumerate(df.columns, start=1):
         cell = ws.cell(1, col_idx)
+        display = EXCEL_HEADERS.get(col, col)
+        cell.value = display
         cell.font = hdr["font"]
         cell.fill = hdr["fill"]
         cell.alignment = hdr["align"]
         cell.border = hdr["border"]
         letter = get_column_letter(col_idx)
-        width = min(28, max(12, len(str(col)) + 2))
+        width = min(36, max(12, len(str(display)) + 2))
         if col in {"su_name", "parent_su_name"}:
             width = 36
         ws.column_dimensions[letter].width = width
@@ -744,7 +759,8 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
     ws["A2"] = (
         "Generated 2026-08-31. Pre = 6 weeks before each warehouse’s first weekend-MSBD week. "
         "Post = enable week through 2026-08-16. Stated O2S = o2sumsbd (order date to supplier MSBD). "
-        "Fast badge = stated O2D ≤ 5 days. Negative day deltas = faster."
+        "Fast badge = stated O2D ≤ 5 only (customer badge). Actual O2D ≤ 5 is delivery outcome, not a badge. "
+        "Negative day deltas = faster."
     )
     ws["A2"].font = body
     ws["A2"].alignment = Alignment(wrap_text=True)
@@ -765,8 +781,8 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
             ("Stated O2S (days)", pre["o2s_stated"], post["o2s_stated"], post["o2s_stated"] - pre["o2s_stated"], "o2sumsbd; lower = faster promise"),
             ("1-day stated O2S", pre["o2s_stated_1"], post["o2s_stated_1"], post["o2s_stated_1"] - pre["o2s_stated_1"], "o2s_stated_1 share"),
             ("Stated O2D (days)", pre["o2d_stated"], post["o2d_stated"], post["o2d_stated"] - pre["o2d_stated"], "lower = faster customer promise"),
-            ("Fast badge (stated O2D ≤ 5)", pre["fast_badge"], post["fast_badge"], post["fast_badge"] - pre["fast_badge"], "o2d_stated_5"),
-            ("Actual O2D ≤ 5", pre["actual_fast_badge"], post["actual_fast_badge"], post["actual_fast_badge"] - pre["actual_fast_badge"], "o2d_actual_5"),
+            ("Fast badge (stated O2D ≤ 5)", pre["fast_badge"], post["fast_badge"], post["fast_badge"] - pre["fast_badge"], "o2d_stated_5 — badge is stated only"),
+            ("Actual O2D ≤ 5", pre["actual_o2d_le_5"], post["actual_o2d_le_5"], post["actual_o2d_le_5"] - pre["actual_o2d_le_5"], "o2d_actual_5 — delivery outcome, not a badge"),
             ("Actual O2S (days)", pre["o2s_actual"], post["o2s_actual"], post["o2s_actual"] - pre["o2s_actual"], None),
             ("Actual O2D (days)", pre["o2d_actual"], post["o2d_actual"], post["o2d_actual"] - pre["o2d_actual"], None),
             ("IFR", pre["ifr"], post["ifr"], post["ifr"] - pre["ifr"], None),
@@ -847,7 +863,7 @@ def _write_summary_sheet(ws, rollup: pd.DataFrame, roster: pd.DataFrame) -> None
         "Supplier_Weekday — Monday–Thursday control at the same warehouses",
         "Wave1_FriSat — the original 12 June/July warehouses only",
         "Roster — enable week and wave assignment",
-        "Negative stated O2S / O2D deltas mean the promise got faster. Positive badge deltas mean more 5-day (or 1-day O2S) orders.",
+        "Negative stated O2S / O2D deltas mean the promise got faster. Positive Fast badge deltas mean more stated-O2D≤5 orders.",
     ]
     for i, line in enumerate(notes):
         ws.cell(r + 1 + i, 1, line).font = body
@@ -900,7 +916,12 @@ def fetch() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     cache = Path("/tmp/weekend_shipping_pre_post_cache_v2.pkl")
     if cache.exists():
         print(f"Loading cached extracts from {cache}")
-        return pd.read_pickle(cache)
+        roster, orders, control = pd.read_pickle(cache)
+        orders = orders.rename(columns={"actual_fast_badge": "actual_o2d_le_5"})
+        control = control.rename(columns={"actual_fast_badge": "actual_o2d_le_5"})
+        if "actual_o2d_le_5" not in orders.columns and "o2d_actual_5" in orders.columns:
+            orders["actual_o2d_le_5"] = pd.to_numeric(orders["o2d_actual_5"], errors="coerce")
+        return roster, orders, control
     print("Querying enabled roster…")
     roster = query_df(with_cte("weekend_shipping_pre_post_roster.sql"))
     print("Querying enabled orders…")
