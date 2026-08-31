@@ -9,7 +9,11 @@
 -- Not weekend shipping: < 30% Fri/Sat weekend ship rate (with Fri/Sat volume).
 -- Filter: suppliers with >= 500 ops in the last 6 weeks.
 --
--- Day-of-week reference (order_dow / induction_dow_adj): ISO 8601, Monday = 1 … Sunday = 7.
+-- Day-of-week (historical): this query treated order_dow IN (5, 6) as Fri/Sat and
+-- induction_dow_adj IN (6, 7) as Sat/Sun. Empirically both columns are Sunday = 1
+-- … Saturday = 7, so those filters are Thu/Fri placed and Fri/Sat induction.
+-- Corrected impact analysis: sql/weekend_shipping_pre_post_cte.sql
+--   Fri/Sat placed = order_dow IN (6, 7); weekend ship = induction_dow_adj IN (1, 7).
 
 WITH params AS (
   SELECT

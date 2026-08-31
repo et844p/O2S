@@ -101,7 +101,7 @@ Use this reference for natural-language data pull requests against the Small Par
 |--------|------|-------------|
 | `order_complete_date` | DATE | Date the order was fully processed |
 | `order_complete_date_time_local` | DATETIME | Order placed date/time in supplier local time |
-| `order_dow` | INT | Day of week order was placed (1–7) |
+| `order_dow` | INT | Day of week order was placed. **Sunday = 1 … Saturday = 7** (matches BigQuery `EXTRACT(DAYOFWEEK)`). Fri/Sat placed = `IN (6, 7)`. |
 | `msbd_su_week` | DATE | Start of week for Supplier Must Ship By Date |
 | `msbd_su` | DATE | **Supplier Must Ship By Date. Default timebase for analysis** |
 | `msbd_cu` | DATE | Customer-facing Must Ship By Date |
@@ -110,7 +110,7 @@ Use this reference for natural-language data pull requests against the Small Par
 | `SU_FR` | INT | Supplier Fill Rate (1/0): ASN on or before `msbd_su` |
 | `induction_date_lidd` | DATE | Induction date of the order |
 | `induction_date_WCP_local` | DATE | Backup induction date |
-| `induction_dow_adj` | INT | Adjusted day of week for induction (holidays/weekends) |
+| `induction_dow_adj` | INT | Adjusted induction day of week. **Sunday = 1 … Saturday = 7**. Early-morning scans (before ~8am) roll to the prior day. Weekend induction = `IN (1, 7)`. |
 | `carrier_first_induction_date_time` | DATETIME | Timestamp for carrier network induction scan |
 | `carrier_first_induction_WCP_local` | DATETIME | Backup induction scan timestamp |
 | `delivery_date` | DATE | Delivery date of the order |
@@ -138,7 +138,7 @@ Use this reference for natural-language data pull requests against the Small Par
 | `label_by_msbd_2` | INT | Boolean (1/0): label by 2pm on MSBD |
 | `label_7_ind_8` | INT | Boolean (1/0): label by 7pm MSBD and inducted by 8am next day |
 | `inducted_early` | INT | Boolean (1/0): inducted before Supplier MSBD |
-| `inducted_over_weekend` | INT | Boolean (1/0): inducted Saturday or Sunday |
+| `inducted_over_weekend` | INT | Boolean (1/0): intended as Saturday/Sunday induction. **Undercounts Sunday scans** — prefer `induction_dow_adj IN (1, 7)` for weekend ship rate. |
 | `inducted_on_time_or_early` | INT | Boolean (1/0): **use for On Time Performance % / Induction Fill Rate (IFR)** |
 | `inducted_on_time_or_early_10AM` | INT | Boolean (1/0): on-time with 10am adjustment (previous day if before 10am) |
 | `inducted_late` | INT | Boolean (1/0): inducted after Supplier MSBD |
@@ -219,6 +219,24 @@ Use this reference for natural-language data pull requests against the Small Par
 | `supplierpartnumber` | STR | Unique part number |
 | `SKU` | STR | Unique SKU |
 | `has_relabel` | INT | Relabel flag (present in table; confirm values as needed) |
+
+## Day-of-week convention
+
+Both `order_dow` and `induction_dow_adj` use **Sunday = 1 … Saturday = 7** (same as BigQuery `EXTRACT(DAYOFWEEK)`). This was verified against `order_complete_date` and `induction_date_lidd`.
+
+| Value | Day |
+| --- | --- |
+| 1 | Sunday |
+| 2 | Monday |
+| 3 | Tuesday |
+| 4 | Wednesday |
+| 5 | Thursday |
+| 6 | Friday |
+| 7 | Saturday |
+
+- Fri/Sat placed orders: `order_dow IN (6, 7)`
+- Weekend induction: `induction_dow_adj IN (1, 7)` (prefer this over `inducted_over_weekend`)
+- Weekend supplier MSBD: `EXTRACT(DAYOFWEEK FROM msbd_su) IN (1, 7)`
 
 ## Example queries
 
