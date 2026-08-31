@@ -1,0 +1,86 @@
+supplier_id,su_name,parent_su_name,sto,srm,sp_lt,enable_week,wave,pre6w_weekend_msbd_rate,pre6w_fri_sat_vol
+14129,nuLOOM NJ 08512,nuLOOM,Rugs,Brianna Barrett,24,2026-06-21,wave1_jun_jul,0.0003,4446
+93132,Safavieh IN46075,Safavieh,Rugs,Alex Resnick,24,2026-07-05,wave1_jun_jul,0.0005,5295
+223799,Safavieh Texas,Safavieh,Rugs,Alex Resnick,24,2026-07-05,wave1_jun_jul,0.0004,5076
+325564,SLM GA3,YISHANG TRADE INC,APS Outdoor,Melody Lu,24,2026-07-05,wave1_jun_jul,0.0,3383
+59119,Safavieh CA 92518,Safavieh,Rugs,Alex Resnick,24,2026-07-05,wave1_jun_jul,0.0006,3222
+85184,Aosom LLC GA30294,Aosom LLC,APS Outdoor,Amber Xiang,24,2026-07-05,wave1_jun_jul,0.0007,2756
+34809,Safavieh GA31407 B,Safavieh,Rugs,Alex Resnick,24,2026-07-05,wave1_jun_jul,0.0,2455
+70707,Aosom LLC NJ 08022,Aosom LLC,APS Outdoor,Amber Xiang,24,2026-07-05,wave1_jun_jul,0.0,2309
+288109,WINADO INC NJ 08505(3),WINADO INC,APS Outdoor,Melody Lu,24,2026-07-05,wave1_jun_jul,0.0,1926
+28971,NFusion CA 91761 Warehouse CA11,"GigaCloud Trading, Inc.",Outdoor Furniture,Amy Connell,24,2026-07-05,wave1_jun_jul,0.0011,1902
+27593,NFusion CA El Monte,"GigaCloud Trading, Inc.",Outdoor Furniture,Amy Connell,24,2026-07-05,wave1_jun_jul,0.0007,1388
+59466,nuLOOM CA 95206,nuLOOM,Rugs,Brianna Barrett,24,2026-07-12,wave1_jun_jul,0.0,1684
+30326,VIG Furniture CA 90058 Slauson,Lima Trading LLC,Casegoods,Joseph Hannigan,24,2026-07-19,other,0.0,90
+302342,Westin Outdoor GA 31320,Westin Outdoor,Outdoor Furniture,Isha Singh,24,2026-08-02,wave2_aug,0.0007,3380
+119437,Aosom LLC CA 92374,Aosom LLC,APS Outdoor,Amber Xiang,24,2026-08-02,wave2_aug,0.0008,2273
+119825,shanghaihuzidian NJ 07836,Hong Kong HuaYa Trade Limited,APS Home Improvement,Yinan Du,24,2026-08-02,wave2_aug,0.0,1542
+239346,Annie Selke NJ 08512,Annie Selke,PG Rugs,Rachel Markham,24,2026-08-02,wave2_aug,0.0,1492
+79055,Costway NJ 08505,Costway,APS Outdoor,David Liu,24,2026-08-02,wave2_aug,0.0,1142
+401646,NEO CHAIR INC GA 30567,NEO CHAIR INC,Casegoods,Karolina Coulter,24,2026-08-02,wave2_aug,0.0006,956
+373889, SLM CA3,YISHANG TRADE INC,APS Outdoor,Melody Lu,24,2026-08-02,wave2_aug,0.0,938
+356194,Shenzhen Like Keji Youxiangongsi GA 31407,Shenzhen Like Keji Youxiangongsi,APS Bedroom,Lydia Liu,24,2026-08-02,wave2_aug,0.0,878
+58217,"VM MP, LLC PA 18634",Spreetail,Storage & Org - Frequency,Claire Przybocki,24,2026-08-02,wave2_aug,0.0,859
+67894,TwinXLcom MN,Bare Home,Soft Home,Jaiden Lawlor,24,2026-08-02,wave2_aug,0.0024,842
+234429,AMEZIEL INC IN 46219,AMEZIEL INC,APS AEOF,Carl Li,24,2026-08-02,wave2_aug,0.0016,754
+10585,Craig Frames Inc.,Craig Frames Inc.,Decor,Waverly Winterer,24,2026-08-02,wave2_aug,0.0,707
+498757,Alphamarts AL 08505,Alphamarts,APS Outdoor,Melody Lu,24,2026-08-02,wave2_aug,0.0,698
+325735,"Sorara Outdoor Living USA, Inc. GA 30168","Sorara Outdoor Living USA, Inc.",Outdoor Structures,Yun Yau,24,2026-08-02,wave2_aug,0.002,661
+122707,SLM TX2,YISHANG TRADE INC,APS Outdoor,Melody Lu,24,2026-08-02,wave2_aug,0.0,649
+182959,Brightech Inc. CA,Brightech Inc.,Lighting,Kya Mehlman,24,2026-08-02,wave2_aug,0.0015,578
+280957,"CHITA (HK) IMPORT & EXPORT CO., LIMITED CA 91762 ",SPRINGDIAL (HK) E-COMMERCE LIMITED,APS,Sean Xu,24,2026-08-02,wave2_aug,0.0,576
+28772,Linon CA 92408,Linon,Casegoods,Connor Henderson,24,2026-08-02,wave2_aug,0.0039,561
+292501,"FUFU and GAGA Trade Co., Ltd. NJ 08820","FUFU and GAGA Trade Co., Ltd.",APS Bedroom,Christal Ding,24,2026-08-02,wave2_aug,0.0,547
+324724,shanghaihuzidianzishangwuyouxiangongsi CA 91789 ,Hong Kong HuaYa Trade Limited,APS Home Improvement,Yinan Du,24,2026-08-02,wave2_aug,0.0,528
+329896,无忧达美东区NJJW04,Hong Kong Baojia International Limited,APS,Yinan Du,24,2026-08-02,wave2_aug,0.0,520
+62366,Best Choice Products IN 46231,Best Choice Products,Decor,Shannon Hoar,24,2026-08-02,wave2_aug,0.0,520
+320582,SmartStandard CA 92337,NORTH ELM ARTISAN LLC_1,APS Home Improvement,Aria Yao,24,2026-08-02,wave2_aug,0.0,503
+409062,NJ-19[谷仓新泽西19号仓],"Linyi Lingmoxuan Technology Co., Ltd",APS Bedroom,Iris Sang,24,2026-08-02,wave2_aug,0.0,492
+101813,"Zhejiang Xingyang Furniture Co.,Ltd. CA 92880","Zhejiang Xingyang Furniture Co.,Ltd.",APS,Lacey Yan,24,2026-08-02,wave2_aug,0.0021,481
+272293,AMEZIEL INC AW-TX 77489,AMEZIEL INC,APS AEOF,Carl Li,24,2026-08-02,wave2_aug,0.002,480
+406363,GA.,SHENZHENSHIMINGXIAOSHANGMAOYOUXIANGONGSI,APS Bedroom,Lydia Liu,24,2026-08-02,wave2_aug,0.0,475
+407374,"Shenzhen Litian Technology Co., Ltd CA 92324","Shenzhen Litian Technology Co., Ltd",APS Home Improvement,Nicole Sun,24,2026-08-02,wave2_aug,0.0,468
+58218,"VM MP, LLC IN 46143",Spreetail,Storage & Org - Frequency,Claire Przybocki,24,2026-08-02,wave2_aug,0.0,461
+322082,"Hangzhou Mengfeisi Home Furnishings Co., CA 92571 ","Hangzhou Mengfeisi Home Furnishings Co., Ltd",APS Outdoor,Moti Mao,24,2026-08-02,wave2_aug,0.0,461
+12396,Ashley Furniture MS 38841,Ashley Furniture,Upholstery,Anne Marie Conde,24,2026-08-02,wave2_aug,0.0,454
+59554,EC EXPORT INC. NJ 08505,EC EXPORT INC. NJ 08831,APS,Ida Li,24,2026-08-02,wave2_aug,0.0,450
+414154,"NINGBO JOYS IMP. EXP. CO.,LTD NJ 08505",Gymax LLC,APS Outdoor,David Liu,24,2026-08-02,wave2_aug,0.0029,450
+349462,YESURE INC. CA 92571,YESURE INC.,APS Decor,Qiwen Fan,24,2026-08-02,wave2_aug,0.0,432
+125733,Shenzhen Zhichen Trading Co. LTD. CA 91748,Shenzhen Zhichen Trading Co. LTD.,APS K&D,Stella Yin,24,2026-08-02,wave2_aug,0.0,423
+372043,shenzhenshilijinchengmaoyiyouxiangongsi GA 30331,Hong Kong HuaYa Trade Limited,APS Home Improvement,Yinan Du,24,2026-08-02,wave2_aug,0.0,413
+100349,Shenzhenshi hongyanzhiji keji CA 91761(6),HK DANSHUO TRADING LIMITED,APS,Yolanda GUI,24,2026-08-02,wave2_aug,0.0042,407
+225771,Shenzhenshixiangde CA91761(12),"HONG KONG LIUXIN TECHNOLOGY CO., LIMITED",APS,Yolanda GUI,24,2026-08-02,wave2_aug,0.0026,405
+406808,Yii Lighting CA  92324,Eternadecor INC_1,APS Home Improvement,Aria LI,24,2026-08-02,wave2_aug,0.0023,399
+153347,Alphamarts TX 77521(2),Alphamarts,APS Outdoor,Melody Lu,24,2026-08-02,wave2_aug,0.0,381
+346062,"FUFU and GAGA Trade Co., Ltd. CA 91761 (3)","FUFU and GAGA Trade Co., Ltd.",APS Bedroom,Christal Ding,24,2026-08-02,wave2_aug,0.0,381
+356699,shanghaihuzidianzishangwuyouxiangongsi NJ 08016,Hong Kong HuaYa Trade Limited,APS Home Improvement,Yinan Du,24,2026-08-02,wave2_aug,0.0025,368
+58219,"VM MP, LLC GA 31308",Spreetail,Storage & Org - Frequency,Claire Przybocki,24,2026-08-02,wave2_aug,0.0,363
+313006,"Hangzhou Skytech Outdoor Co., LTD CA 92880","Hangzhou Skytech Outdoor Co., LTD",APS,Danica Guo,24,2026-08-02,wave2_aug,0.0,356
+266873,Hong Kong Linsy International Trading NJ 08016(2),HONG KONG LINSYHOME INTERNATIONAL TRADING LIMITED,APS Bedroom,Wendy Wang,24,2026-08-02,wave2_aug,0.0,350
+324716,Stellweilan Tessberg LLC CA 91789,Stellweilan Tessberg LLC,Storage & Org,Supplier Service Desk,24,2026-08-02,wave2_aug,0.0,334
+344657,Shenzhenshi Daman Shiye Youxiangongsi GA 31407,Shenzhenshi Daman Shiye Youxiangongsi,APS K&D,Stella Yin,24,2026-08-02,wave2_aug,0.0,327
+409174,zhengzhoushijianxingwangluokejiyouxiangongsi GA 31407,zhengzhoushijianxingwangluokejiyouxiangongsi,APS Bedroom,Lydia Liu,24,2026-08-02,wave2_aug,0.0,320
+353664,shenzhenzhijingdianzishangwuyouxiangong WPPA2,shenzhenzhijingdianzishangwuyouxiangongsi,APS Bedroom,Lydia Liu,24,2026-08-02,wave2_aug,0.0,318
+461382, USNJHM01,LUXHOME (HK) TRADING LIMITED,APS Bedroom,Lydia Liu,24,2026-08-02,wave2_aug,0.0,312
+12397,Ashley Furniture WI 54612,Ashley Furniture,Upholstery,Anne Marie Conde,24,2026-08-02,wave2_aug,0.0,310
+458764,NEW BKFARMHOUSE INC CA 91761 (4),NEW BKFARMHOUSE INC,APS Pet,Regan Zou,24,2026-08-02,wave2_aug,0.0,302
+368845,GLERUS LTD NJ 07036,GLERUS LTD,Casegoods,Zichu Wang,24,2026-08-02,wave2_aug,0.0,301
+361472,Ningboyuxudianzishangwuyouxiangongsi NJ 08873,Ningboyuxudianzishangwuyouxiangongsi,APS AEOF,Ricky Yu,24,2026-08-02,wave2_aug,0.0,299
+87326,NeoChair TX 77507,NEO CHAIR INC,Casegoods,Karolina Coulter,24,2026-08-02,wave2_aug,0.0,298
+327749,无忧达美西区CAJW02,Hong Kong Baojia International Limited,APS,Yinan Du,24,2026-08-02,wave2_aug,0.0027,297
+174756,Zhejiang Paide Network Technology Co Ltd CA 92571,Zhejiang Paide Network Technology Co Ltd,APS,Ricky Yu,24,2026-08-02,wave2_aug,0.0,292
+349177,"Zhejiang Linya Co., Ltd NJ 07036",LINYA OUTDOOR LIVING LLC,APS Home Improvement,Danica Guo,24,2026-08-02,wave2_aug,0.0,280
+329946,Nourison PA 18067,Nourison,Rugs,Alex Melius,24,2026-08-02,wave2_aug,0.0,278
+468576,shilijincheng dangerous CA 91762(2),Hong Kong HuaYa Trade Limited,APS Home Improvement,Yinan Du,24,2026-08-02,wave2_aug,0.0,276
+347934,Ningbo Jiangbei Fufu CA 91761 (3),Ningbo Jiangbei Fufu,APS Bedroom,Christal Ding,24,2026-08-02,wave2_aug,0.0,274
+172965,BLUEBELL INTERNATIONAL INC. CA 91761,BLUEBELL INTERNATIONAL INC.,APS,Yolanda GUI,24,2026-08-02,wave2_aug,0.0,270
+429873,"Zhengzhou Bevi Import  Export Trading Co., Ltd. PA 19030","HONGKONG OUSHENG NETWORK TECHNOLOGY CO.,LIMITED",APS Bedroom,Asia Supplier Service Desk,24,2026-08-02,wave2_aug,0.0,270
+326372,Tmekeeper INC. CA 91761 (3),Tmekeeper INC.,APS Bedroom,Christal Ding,24,2026-08-02,wave2_aug,0.0,264
+247707,simplehuman CA 90808,simplehuman,Storage & Org - Frequency,Bryn Bennett,24,2026-08-02,wave2_aug,0.0,254
+51786,NeoChair CA 90723,NEO CHAIR INC,Casegoods,Karolina Coulter,24,2026-08-02,wave2_aug,0.0,249
+370173,aifei(shanghai)kejiyouxiangongsi GA 30517,aifei(shanghai)kejiyouxiangongsi,APS K&D,Eve Deng,24,2026-08-02,wave2_aug,0.0,184
+56438,Costway CA 92337B,Costway,APS Outdoor,David Liu,24,2026-08-02,wave2_aug,0.0,126
+493064,USSAV02,LUXHOME (HK) TRADING LIMITED,APS Bedroom,Lydia Liu,24,2026-08-09,wave2_aug,0.0,265
+239701,HangzhouSkytech NJ 08016,"Hangzhou Skytech Outdoor Co., LTD",APS,Danica Guo,24,2026-08-09,wave2_aug,0.0,85
+463964,Grand Leisure Outdoor Product CA 92335,Grand Leisure Outdoor Product Co.,APS Outdoor,Melody Lu,24,2026-08-16,wave2_aug,0.0124,392
+405768,"Haomaijia Technology (Shenzhen) Co., LTD NJ 07036",EBELLO HOME INC_1,APS Upholstery,Lacey Yan,24,2026-08-16,wave2_aug,0.0,46
