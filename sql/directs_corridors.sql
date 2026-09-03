@@ -1,0 +1,2 @@
+-- See scripts/run_directs_corridors.py for full corridor SQL (bucket classification + region map).
+-- Outputs: output/directs/directs_corridors_*.csv / .xlsx / .md
