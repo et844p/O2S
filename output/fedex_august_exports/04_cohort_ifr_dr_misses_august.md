@@ -1,0 +1,23 @@
+# August cohort IFR / DR misses
+
+Window: `delivery_date` 2026-08-01 → 2026-08-31
+Source: `fedex_order_classfication_ET`
+
+- **% of IFR misses** = cohort IFR-miss ops / network IFR-miss ops
+- **% of DR misses** = cohort DR-miss ops / network DR-miss ops
+
+| Cohort | % Vol | IFR | DR | % of IFR misses | % of DR misses |
+|--------|------:|----:|---:|----------------:|---------------:|
+| No concern | 90.9% | 90.7% | 84.8% | 85.7% | 84.6% |
+|   right hub | 57.1% | 90.9% | 83.1% | 52.5% | 59.1% |
+|   local_hub_within_100miles_sametransit | 33.3% | 90.3% | 87.7% | 32.8% | 25.1% |
+|   local_hub_within_100miles_notransit | 0.5% | 92.7% | 85.9% | 0.4% | 0.4% |
+| FedEx Transit Issues | 0.7% | 91.5% | 81.2% | 0.6% | 0.8% |
+|   Longer Transit | 0.3% | 91.1% | 66.2% | 0.3% | 0.7% |
+|   Shorter Transit | 0.4% | 91.8% | 94.2% | 0.3% | 0.1% |
+| Supplier Misshipping | 4.1% | 88.5% | 70.2% | 4.7% | 7.4% |
+|   Farther from CU | 2.5% | 88.1% | 58.3% | 3.0% | 6.3% |
+|   Closer to CU | 1.6% | 89.0% | 88.7% | 1.8% | 1.1% |
+| Ghost WHs | 4.3% | 79.6% | 73.1% | 9.0% | 7.1% |
+|   Farther from CU | 2.2% | 79.8% | 64.4% | 4.4% | 4.7% |
+|   Closer to CU | 2.2% | 79.4% | 81.8% | 4.5% | 2.4% |
