@@ -1,0 +1,78 @@
+LaneID,SuName,PoolPoint,RoutingType,Days,PlannedPickups,Add,Cancel,OutstandingPOs,PO_PU,Net
+3503,Lexicon Home LLC CA 94538 to Wayfair - Lathrop,Wayfair - Lathrop,Drop Pooled,3,8,14,0,315,25,14
+3998,Elegant Lighting B Street Multistop,Wayfair - Cranbury 3,Drop Pooled,3,9,11,0,218,20,11
+4159,Flash Furniture MS 38654 to Moe's Home Collection MS 30114 to Crestview Collection TN to Wayfair - McDonough,Wayfair - McDonough,OTR,3,6,9,0,414,32,9
+3893,Hooker Furniture VA Multistop,Wayfair - Greensboro,Drop Pooled,3,4,7,0,406,68,7
+3535,Liberty Furniture GA 31320 to Wayfair - McDonough,Wayfair - McDonough,OTR,3,0,5,0,94,55,5
+1783,Martin Furniture CA-Wayfair - Perris 1,Wayfair - Perris,Drop Pooled,3,5,4,0,126,20,4
+2791,Polywood IN 46567-Wayfair - South Elgin,Wayfair - South Elgin,OTR,3,1,4,0,36,20,4
+3487,CharBroil GA 31904 to Wayfair - McDonough,Wayfair - McDonough,Drop Pooled,3,1,4,0,55,28,4
+2342,Elegant Lighting Erie to Cranbury,Wayfair - Cranbury 3,Drop Pooled,2,2,3,0,48,18,3
+2607,Creative Co-Op TN-Wayfair - McDonough,Wayfair - McDonough,OTR,2,1,3,0,54,15,3
+4085,HomeStylesIN to South Elgin,Wayfair - South Elgin,OTR,3,0,3,0,53,65,3
+2345,SOHO Studio NJ 08075 to Wayfair - Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,2,3,2,1,76,17,1
+2649,Elegant Lighting PA 19140 Glenwood to Wayfair - Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,3,7,2,1,81,14,1
+2288,Intercon Inc. UT 84116 to Westwood Design UT 84116 to Wayfair - Perris,Wayfair - Perris,OTR,2,0,2,0,15,28,2
+2308,Megabrand Kitchen Bath Inc. CA to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,2,0,121,47,2
+2320,Liberty Furniture IL 60449 To Wayfair - South Elgin,Wayfair - South Elgin,Drop Pooled,1,1,2,0,382,59,2
+2449,Bernhart A - Wayfair - Greensboro,Wayfair - Greensboro,Drop Pooled,2,3,2,0,202,30,2
+3358,Crafters and Weavers IL-Wayfair - South Elgin,Wayfair - South Elgin,OTR,2,0,2,0,22,30,2
+3629,Net Direct Merchants AL 35630 to Wayfair - McDonough,Wayfair - McDonough,OTR,2,0,2,0,30,30,2
+4002,Vanity Art_1 ON L5S 2A4 to Wayfair - Missasauga,Wayfair - Mississauga,Drop Pooled,2,3,2,0,32,9,2
+4021,Jofran SC to Greensboro NC,Wayfair - Greensboro,OTR,2,0,2,0,27,39,2
+4267,MMI Door OH 45246 to Simmons Mattress OH 45050 to Serta National OH 45050 to Wayfair - South Elgin,Wayfair - South Elgin,OTR,2,0,2,0,104,60,2
+4280,The Stock Market OH 45822 to Wayfair - South Elgin,Wayfair - South Elgin,OTR,2,0,2,0,14,24,2
+2334,Modus Furniture International Inc. CA to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,3,1,1,163,55,0
+2335,Wyndham Collection CA to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,1,1,62,32,0
+2373,Steve Silver Company TX to Wayfair - Lancaster,Wayfair - Lancaster,Drop Pooled,2,2,1,1,203,91,0
+2374,Elements International TX to Wayfair - Lancaster,Wayfair - Lancaster,Drop Pooled,2,2,1,1,77,45,0
+2600,Escalade Sports IN 47711-Wayfair - South Elgin,Wayfair - South Elgin,OTR,2,4,1,1,185,30,0
+3453,American Heartland-Wayfair - McDonough,Wayfair - McDonough,OTR,2,1,1,1,15,100,0
+3473,Legends Furniture AZ to Soho Studio AZ  to Wayfair -Perris:,Wayfair - Perris,OTR,2,2,1,1,46,55,0
+3660,Vanity Art TX75234 to Betsy Trading LLC TX 75234 to Wayfair - Lancaster ,Wayfair - Lancaster,Drop Pooled,2,2,1,1,45,25,0
+3943,Modway NJ 08520 to Create comfort NJ 08520 to Wayfair - Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,2,2,1,1,132,68,0
+4034,MUSEM INC. NJ 08016 (2) to Wayfair - Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,2,2,1,1,39,20,0
+4145,"Sorara Outdoor Living USA, Inc. CA 91746 to Wayfair - Perris",Wayfair - Perris,Drop Pooled,2,1,1,1,21,40,0
+4284,Cottage Creek NC 28504 to Edgecombe Furniture WH Level to Wayfair - Greensboro,Wayfair - Greensboro,OTR,2,1,1,1,23,40,0
+2291,LifetimeUT84016-Wayfair - Perris 1,Wayfair - Perris,OTR,1,0,1,0,2,20,1
+2340,Meridian Furniture NJ 08638 to Cran,Wayfair - Cranbury 3,Drop Pooled,1,2,1,0,178,61,1
+2396,New Classic CA to Perris 1,Wayfair - Perris,Drop Pooled,1,1,1,0,91,37,1
+2472,Home Trends Design Ltd -Wayfair - Lancaster,Wayfair - Lancaster,OTR,1,0,1,0,72,59,1
+2516,FusionFurnitureInc MS38841 MTO to FusionFurnitureIncMS38841STOCK to Wayfair - McDonough,Wayfair - McDonough,OTR,1,0,1,0,6,31,1
+3116,Giannini Garden Ornaments Inc-Wayfair - Lathrop,Wayfair - Lathrop,OTR,1,0,1,0,37,21,1
+3230,Flexsteel KS-Wayfair - South Elgin,Wayfair - South Elgin,OTR,1,1,1,0,71,25,1
+3454,Catnapper MS 38855-Wayfair - McDonough,Wayfair - McDonough,OTR,1,0,1,0,8,30,1
+3550,CIAO JING INC CA 92879 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,2,1,0,252,27,1
+3667,Emerald Home Furnishings WA to Wayfair - Kent,Wayfair - Kent,Drop Pooled,1,0,1,0,56,53,1
+4229,Catnapper TN 37364 MTO-Wayfair - McDonough,Wayfair - McDonough,OTR,1,0,1,0,30,38,1
+3802,Kingway Inc CA 91761 (2) to Wayfair - Perris,Wayfair - Perris,Drop Pooled,3,12,0,12,5,72,-12
+2453,Star Home Living Corp. CA 92337 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,3,7,0,7,21,83,-7
+3617,Inspyre WH LLC CA 90040(2) to Perris,Wayfair - Perris,Drop Pooled,3,5,0,5,0,111,-5
+2343,M S International NJ 08817 to Cranbury,Wayfair - Cranbury 3,Drop Pooled,3,5,0,3,47,32,-3
+2394,VIG Furniture CA 90058 Slauson to Wayfair - Perris,Wayfair - Perris,Drop Pooled,3,4,0,3,85,85,-3
+2620,Atlas International CA 92649 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,3,0,3,161,20,-3
+2786,Andes Furniture Fontana C 92335 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,4,0,3,49,33,-3
+1835,Roundhill Furniture OH-Wayfair - South Elgin,Wayfair - South Elgin,OTR,2,5,0,2,266,37,-2
+2331,Vinnova CA 91761 ( 5695 E) to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,0,2,21,30,-2
+2332,Water Creation Inc CA 91761 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,0,2,15,20,-2
+2627,Andes Furniture CA 92870 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,0,2,22,20,-2
+3226,OaDeerHome CA 91761 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,0,2,47,45,-2
+3423,Glass Warehouse CA 92056 - Wayfair - Perris,Wayfair - Perris,Drop Pooled,2,2,0,2,38,32,-2
+3459, AlpineFurniture CA 92507 to Wayfair - Perris ,Wayfair - Perris,Drop Pooled,2,2,0,2,92,100,-2
+3604,Angle Industries NJ 07823 to Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,2,2,0,2,36,90,-2
+3657,Parker House CA 91761 to Wayfair - Perris 1,Wayfair - Perris,Drop Pooled,2,2,0,2,37,47,-2
+4079,Atlas International GA 31302 to Wayfair - McDonough,Wayfair - McDonough,OTR,2,7,0,2,134,21,-2
+4138,LY Home Living Inc CA 95691 to Wayfair - Lathrop,Wayfair - Lathrop,Drop Pooled,2,2,0,2,1,68,-2
+2289,International Home Miami FL-Wayfair - Jacksonville,Wayfair - Jacksonville,OTR,1,1,0,1,100,100,-1
+2458,Tigris GA 30122 - Wayfair - McDonough,Wayfair - McDonough,Drop Pooled,1,1,0,1,17,30,-1
+2482,Big Backyard TX75261 to Wayfair - Lancaster,Wayfair - Lancaster,Drop Pooled,1,1,0,1,5,9,-1
+2483,Blue Wave Products IL 60510 - Wayfair -  South Elgin,Wayfair - South Elgin,Drop Pooled,1,1,0,1,57,32,-1
+2644,Vinnova FL 32220 to Wayfair - Jacksonville,Wayfair - Jacksonville,Drop Pooled,1,1,0,1,15,30,-1
+2731,Ove Decors Clayton-Wayfair - South Elgin,Wayfair - South Elgin,OTR,1,1,0,1,30,30,-1
+3441,Sterling Rivers CA 91752 - Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,3,0,1,45,21,-1
+3585,Enitial Lab CA - Greemotion USA Inc CA - 247 Shop At Home CA - Furniture of America - Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,1,0,1,169,65,-1
+4005,Classic Home CA to Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,1,0,1,137,54,-1
+4087,Mercana Furniture & Décor Ltd VA 23603 to Furniture Classics Ltd VA  to Wayfair - Greensboro,Wayfair - Greensboro,OTR,1,1,0,1,77,50,-1
+4101,Coaster FL- 33025-3975 to Chans Furniture FL 33018 to Wayfair - Pompano,Wayfair - Pompano,Drop Pooled,1,1,0,1,32,95,-1
+4254,Lifestyle Solutions PA 18091 to Wayfair - Cranbury 3,Wayfair - Cranbury 3,Drop Pooled,1,1,0,1,91,55,-1
+4358,Million Dollar Baby CA 90660 to Wayfair - Perris,Wayfair - Perris,Drop Pooled,1,1,0,1,69,26,-1
